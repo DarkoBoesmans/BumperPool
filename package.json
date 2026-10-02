@@ -1,0 +1,11 @@
+{
+  "name": "golfbiljart",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "description": "Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
+  "scripts": {
+    "dev": "bun tools/serve.mjs",
+    "test": "bun test/selftest.mjs"
+  }
+}
