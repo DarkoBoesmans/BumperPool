@@ -1,0 +1,99 @@
+// Replay: letterbox bars, a REC dot, the camera's name, a freeze-frame tag.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-replay {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 2px, transparent 2px 4px);
+  &__bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 9vh;
+    background: #000;
+    transform-origin: top;
+    animation: c-replay-bar 0.4s ease both;
+    &--bottom {
+      top: auto;
+      bottom: 0;
+      transform-origin: bottom;
+    }
+    .c-replay--win & {
+      background: linear-gradient(90deg, #1a0e03, #3a2408 50%, #1a0e03);
+    }
+  }
+  &__tag {
+    position: fixed;
+    left: 24px;
+    top: calc(9vh + 16px);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font: 400 30px/1 $f-display;
+    letter-spacing: 0.08em;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+  }
+  &__label {
+    font-weight: 400;
+    font-size: 20px;
+    color: $gold;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid $gold;
+    letter-spacing: 0.12em;
+    .c-replay--win & {
+      background: linear-gradient(180deg, #fff1b8, #e8b64a);
+      color: #2a1204;
+      text-shadow: none;
+    }
+  }
+  &__rec {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: $red;
+    box-shadow: 0 0 12px $red;
+    animation: c-blink 1s steps(2) infinite;
+  }
+  &__freeze {
+    position: fixed;
+    left: 50%;
+    top: calc(9vh + 18px);
+    transform: translateX(-50%) skewX(-10deg);
+    padding: 6px 16px;
+    font: 400 24px $f-display;
+    letter-spacing: 0.14em;
+    color: #140904;
+    background: #fff;
+    opacity: 0;
+  }
+  &.is-frozen {
+    background:
+      repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.24) 0 2px, transparent 2px 4px), rgba(255, 255, 255, 0.04);
+  }
+  &.is-frozen &__freeze {
+    opacity: 1;
+    animation: c-blink 0.6s steps(2) infinite;
+  }
+  &__skip {
+    position: fixed;
+    right: 24px;
+    bottom: calc(9vh + 22px);
+    pointer-events: auto;
+  }
+  @include calm {
+    &__rec {
+      animation: none;
+    }
+  }
+}
+@keyframes c-replay-bar {
+  from {
+    transform: scaleY(0);
+  }
+}

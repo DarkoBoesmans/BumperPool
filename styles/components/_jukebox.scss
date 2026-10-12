@@ -1,0 +1,60 @@
+// The record that's playing, with a spinning disc.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-jukebox {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 2px solid var(--seg-edge);
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.3);
+  &__disc {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 240, 215, 0.12),
+      0 0 0 2px #000;
+    background-image:
+      radial-gradient(circle, #e8b64a 0 14%, #1a0e08 15% 18%, transparent 19%),
+      repeating-radial-gradient(circle, #0d0705 0 2px, #1c120c 2px 3px);
+    .is-on & {
+      animation: c-spin 1.8s linear infinite;
+    }
+  }
+  &__now {
+    display: grid;
+    min-width: 0;
+  }
+  &__title {
+    @include display(18px, 0.04em);
+    @include ellipsis;
+  }
+  &__info {
+    color: var(--ink-3);
+    font-size: 12.5px;
+    @include ellipsis;
+  }
+  .c-btn__label {
+    @include below($bp-phone) {
+      display: none;
+    }
+  }
+  @include short {
+    padding: 6px 10px;
+    grid-template-columns: 32px 1fr auto;
+    &__disc {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  @include calm {
+    &__disc {
+      animation: none !important;
+    }
+  }
+}

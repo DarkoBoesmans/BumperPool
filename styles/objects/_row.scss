@@ -1,0 +1,19 @@
+// A row of controls; the footer row of a menu view sits a little lower.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.o-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-top: $s2;
+  &--foot {
+    margin-top: $s3;
+    @include below($bp-phone) {
+      flex-wrap: wrap;
+    }
+    @include short {
+      margin-top: 6px;
+    }
+  }
+}

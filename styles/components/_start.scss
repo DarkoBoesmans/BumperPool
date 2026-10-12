@@ -1,0 +1,123 @@
+// The start menu: a poster on the left with the café turning behind it. The layout shrinks to fit;
+// on a very small screen only the middle of a view (its __body) scrolls, the title and the buttons stay.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-start {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: calc(env(safe-area-inset-top, 0px) + #{$s3}) clamp(16px, 6vw, 96px)
+    calc(env(safe-area-inset-bottom, 0px) + #{$s3});
+  overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(8, 4, 2, 0.72) 0%, rgba(8, 4, 2, 0.3) 42%, rgba(8, 4, 2, 0) 70%);
+  &__panel {
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    width: min(488px, 100%);
+    max-height: 100%;
+    padding: clamp(18px, 3.4vh, 34px) clamp(18px, 3vw, 34px);
+    &--wide {
+      width: min(1004px, 100%);
+    }
+    @include below($bp-phone) {
+      padding: 18px 14px 14px;
+    }
+    @include short {
+      padding: 10px 16px;
+    }
+  }
+  @include below($bp-phone) {
+    align-items: flex-end;
+    background: linear-gradient(0deg, rgba(8, 4, 2, 0.86) 0%, rgba(8, 4, 2, 0.2) 72%);
+  }
+  @include short {
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+// one screen of the start menu
+.c-view {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(5px, 1.2vh, 8px);
+  min-height: 0;
+  > * {
+    flex: none;
+    min-width: 0;
+  }
+  // the middle of a view; it comes after `> *` so it wins at the same weight
+  &__body {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+  }
+  &__title {
+    margin: 0 0 $s1;
+    text-align: center;
+    font: 400 34px/1 $f-poster;
+    color: $poster-red;
+    text-shadow: 2px 2px 0 rgba(31, 21, 14, 0.18);
+    @include short {
+      font-size: 22px;
+    }
+  }
+}
+// your record, in italics under the menu
+.c-record {
+  margin: $s1 0 0;
+  text-align: center;
+  font: italic 400 12.5px/1.5 $f-serif;
+  color: var(--ink-3);
+  @include short {
+    display: none;
+  }
+}
+// privacy, terms, accessibility and credits, small under the menu
+.c-legal-links {
+  margin: $s1 0 0;
+  text-align: center;
+  font: 600 12px/1.6 $f-ui;
+  color: var(--ink-3);
+  a {
+    color: inherit;
+    text-underline-offset: 2px;
+    &:hover {
+      color: var(--ink);
+    }
+  }
+}
+// "Playing as": a link to your player
+.c-as {
+  display: inline-flex;
+  align-items: center;
+  gap: $s2;
+  min-height: 44px;
+  padding: 0 $s2;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: italic 400 14px $f-serif;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 4px;
+  b {
+    font-style: normal;
+    color: var(--ink);
+  }
+  .o-icon {
+    color: var(--accent);
+  }
+  @include below($bp-phone) {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+}

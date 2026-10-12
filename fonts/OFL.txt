@@ -1,5 +1,7 @@
 anton.woff2: Copyright 2020 The Anton Project Authors (https://github.com/googlefonts/AntonFont)
 chakra-petch-*.woff2: Copyright 2018 The Chakra Petch Project Authors (https://github.com/m4rc1e/Chakra-Petch)
+abril-fatface.woff2: Copyright (c) 2011, TypeTogether (www.type-together.com), with Reserved Font Names "Abril" and "Abril Fatface"
+merriweather-*.woff2: Copyright 2024 The Merriweather Project Authors (https://github.com/EbenSorkin/Merriweather4), with Reserved Font Name "Merriweather"
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

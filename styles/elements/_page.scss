@@ -1,0 +1,21 @@
+// The page: dark, nothing scrolls, Chakra Petch for the HUD.
+@use "../settings/tokens" as *;
+
+:root {
+  @include dark-theme;
+  color-scheme: dark;
+}
+html,
+body {
+  overflow: hidden;
+  background: $ink;
+  color: var(--ink);
+}
+body {
+  font: 500 15px/1.45 $f-ui;
+  -webkit-font-smoothing: antialiased;
+}
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}

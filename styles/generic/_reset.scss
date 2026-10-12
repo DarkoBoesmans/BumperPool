@@ -1,0 +1,19 @@
+// A small reset: border-box everywhere, controls inherit the type, and `hidden` always hides.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+[hidden] {
+  display: none !important;
+}

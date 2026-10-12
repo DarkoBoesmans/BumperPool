@@ -1,0 +1,108 @@
+// The shop: a tab per kind of item, your tokens, and a grid of things to buy or equip.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-shop {
+  display: grid;
+  gap: $s3;
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $s3;
+  }
+  &__tabs {
+    flex: 1;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
+    align-content: start;
+    gap: $s2;
+    height: clamp(150px, 44vh, 377px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  &__note {
+    margin: 0;
+    font: italic 400 12px/1.5 $f-serif;
+    color: var(--ink-3);
+    text-align: center;
+    @include short {
+      display: none;
+    }
+  }
+  @include below($bp-phone) {
+    &__head {
+      flex-direction: column-reverse;
+      align-items: stretch;
+    }
+    &__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+.c-wallet {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: $poster-ink;
+  color: #e8b64a;
+  font: 400 20px $f-display;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  span {
+    font: italic 400 12px $f-serif;
+    color: $paper;
+  }
+}
+// one item: a swatch of what it looks like, its name, a line, and buy or equip
+.c-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  column-gap: $s2;
+  row-gap: 2px;
+  padding: $s2;
+  border: 2px solid $poster-ink;
+  background: rgba(255, 255, 255, 0.3);
+  &__swatch {
+    grid-row: 1 / 4;
+    width: 44px;
+    height: 44px;
+    border: 2px solid $poster-ink;
+    background: var(--c, #ccc);
+  }
+  &__name {
+    @include display(15px, 0.04em);
+    @include ellipsis;
+  }
+  &__desc {
+    font: italic 400 11.5px/1.35 $f-serif;
+    color: var(--ink-2);
+  }
+  &__goal {
+    font: 700 10.5px/1.3 $f-ui;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #74490c;
+  }
+  &__act {
+    grid-column: 1 / 3;
+    justify-self: end;
+    margin-top: 4px;
+  }
+  &.is-equipped {
+    box-shadow: 4px 4px 0 $poster-ink;
+    background: rgba(255, 255, 255, 0.55);
+  }
+  &--free {
+    border-color: #b8862a;
+    box-shadow: inset 0 0 0 2px #e8b64a;
+    &.is-equipped {
+      box-shadow:
+        inset 0 0 0 2px #e8b64a,
+        4px 4px 0 $poster-ink;
+    }
+  }
+}

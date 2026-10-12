@@ -1,0 +1,54 @@
+// The last shots, newest first, fading out at the bottom.
+@use "../settings/tokens" as *;
+
+.c-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  align-content: start;
+  min-height: 0;
+  overflow: hidden;
+  -webkit-mask: linear-gradient(180deg, #000 75%, transparent);
+  mask: linear-gradient(180deg, #000 75%, transparent);
+  &__item {
+    display: grid;
+    grid-template-columns: 2.2em 9px 1fr;
+    gap: 9px;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13.5px;
+  }
+  &__n {
+    font: 700 10.5px $f-ui;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+  }
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    align-self: center;
+    &[data-c="W"] {
+      background: $white-ball;
+    }
+    &[data-c="R"] {
+      background: $red-ball;
+    }
+  }
+  &__text {
+    &--fout {
+      color: var(--accent);
+    }
+    &--doel {
+      color: #24742e;
+    }
+  }
+  &__why {
+    display: block;
+    color: var(--ink-3);
+    font-size: 12.5px;
+    margin-top: 2px;
+  }
+}

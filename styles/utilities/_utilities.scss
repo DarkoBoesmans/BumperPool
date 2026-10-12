@@ -1,0 +1,12 @@
+// Utilities: single-purpose helpers that win over everything else.
+.u-grow {
+  flex: 1 !important;
+}
+.u-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}

@@ -1,0 +1,59 @@
+// The knock button that pops up right after one of your goals, above the banner and the replay, so you can thank the
+// table the moment the ball drops. It glows when there was luck in the goal.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-knock {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 56px);
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: $s2;
+  min-height: 48px;
+  padding: 0 $s4;
+  transform: translateX(-50%);
+  border: 2px solid var(--gold);
+  border-radius: 999px;
+  background: $glass-strong;
+  color: var(--ink);
+  font: 700 14px $f-ui;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: $shadow;
+  animation: c-knock-in 0.25s ease-out;
+  .o-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--gold);
+  }
+  &__key {
+    font: 700 10px $f-ui;
+    padding: 2px 5px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink-3);
+    @media (pointer: coarse) {
+      display: none;
+    }
+  }
+  &.is-lucky {
+    animation:
+      c-knock-in 0.25s ease-out,
+      c-rail-ready 1s ease-in-out infinite alternate;
+  }
+  @include upright {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 136px);
+  }
+  @include calm {
+    animation: none;
+  }
+}
+@keyframes c-knock-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+}

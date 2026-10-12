@@ -1,0 +1,52 @@
+// A speech bubble over the regular's head.
+@use "../settings/tokens" as *;
+
+.c-bubble {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  max-width: 260px;
+  padding: 10px 14px 11px;
+  background: #fffaf0;
+  color: #1c1008;
+  border: 3px solid #120a05;
+  border-radius: 14px;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  transition: opacity 0.15s;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -16px;
+    margin-left: -6px;
+    border: 10px solid transparent;
+    border-top: 14px solid #120a05;
+    border-bottom: 0;
+  }
+  &__who {
+    display: block;
+    font: 700 10.5px $f-ui;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $ox-2;
+  }
+  &__text {
+    display: block;
+    font: 700 16px/1.25 $f-ui;
+  }
+  &.is-popping {
+    animation: c-bubble-pop 0.35s cubic-bezier(0.2, 1.6, 0.4, 1);
+  }
+}
+@keyframes c-bubble-pop {
+  0% {
+    scale: 0.3;
+    rotate: -8deg;
+  }
+  100% {
+    scale: 1;
+    rotate: 0deg;
+  }
+}

@@ -1,0 +1,88 @@
+// A line on the poster menu: a red medallion, a title in poster caps, a line of italics, a chevron or a badge.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-menu-opt {
+  display: grid;
+  grid-template-columns: 34px 1fr auto;
+  align-items: center;
+  gap: $s3;
+  width: 100%;
+  padding: clamp(6px, 1.4vh, 13px) $s3;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  background: none;
+  text-align: left;
+  color: $poster-ink;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    background 0.15s;
+  &:first-of-type {
+    border-top: 2px solid $poster-ink;
+  }
+  &:hover,
+  &:focus-visible {
+    transform: translateX(5px);
+    background: rgba(165, 42, 30, 0.07);
+  }
+  &:disabled {
+    opacity: 0.45;
+    transform: none;
+    background: none;
+    cursor: default;
+  }
+  &__icon {
+    width: 34px;
+    height: 34px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: $paper;
+    background: $poster-red;
+    box-shadow:
+      0 0 0 2px $paper,
+      0 0 0 4px $poster-ink;
+  }
+  &__title {
+    display: block;
+    @include display(21px, 0.05em);
+    line-height: 1.05;
+  }
+  &__desc {
+    display: block;
+    color: var(--ink-2);
+    font: italic 400 13px/1.4 $f-serif;
+  }
+  &__chev {
+    color: $poster-red;
+  }
+  // the story counter: how many of the eighteen you have beaten
+  &__badge {
+    padding: 3px 10px;
+    font: 400 17px $f-display;
+    letter-spacing: 0.06em;
+    color: $paper;
+    background: $poster-ink;
+    transform: skewX(-10deg);
+    white-space: nowrap;
+  }
+  @include short {
+    padding: 3px 12px;
+    grid-template-columns: 28px 1fr auto;
+    &__icon {
+      width: 28px;
+      height: 28px;
+    }
+    &__title {
+      font-size: 17px;
+    }
+    &__desc {
+      display: none;
+    }
+  }
+  @include calm {
+    transition: none;
+  }
+}

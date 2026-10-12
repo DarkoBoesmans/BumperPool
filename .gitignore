@@ -1,4 +1,6 @@
 node_modules/
-.DS_Store
-Thumbs.db
+dist/
 *.log
+.DS_Store
+.claude/
+_update/

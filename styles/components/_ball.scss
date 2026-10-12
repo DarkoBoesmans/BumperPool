@@ -1,0 +1,13 @@
+// A white or red ball, as a dot: set data-c="W" or "R".
+.c-ball {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex: none;
+  &[data-c="W"] {
+    background: radial-gradient(circle at 35% 30%, #fff, #e9e0ca 55%, #9f957e);
+  }
+  &[data-c="R"] {
+    background: radial-gradient(circle at 35% 30%, #ff8a7c, #c8232d 55%, #650c10);
+  }
+}

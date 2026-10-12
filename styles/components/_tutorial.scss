@@ -1,0 +1,73 @@
+// How to play: a picture of the table, a few lines, the why in italics, dots for progress.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-tutorial {
+  &__canvas {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: min(34vh, 360px);
+    margin: 0 auto;
+    border: 2px solid $poster-ink;
+    @include short {
+      max-height: 30vh;
+    }
+  }
+  &__text {
+    margin: 2px 0 0;
+    min-height: 4.6em;
+    font: 400 14px/1.6 $f-serif;
+    @include short {
+      min-height: 0;
+      font-size: 13px;
+    }
+  }
+  &__why {
+    margin: 0;
+    min-height: 3em;
+    padding-left: $s3;
+    border-left: 3px solid $poster-red;
+    font: italic 400 13.5px/1.5 $f-serif;
+    color: var(--ink-2);
+    &:empty {
+      display: none;
+    }
+    @media (max-height: $bp-low) {
+      min-height: 0;
+    }
+    @include short {
+      display: none;
+    }
+  }
+  &__progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+  &__dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+  &__dot {
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    background: var(--line);
+    &.is-on {
+      background: $poster-red;
+    }
+  }
+  &__step {
+    margin: 0;
+    font: 400 12px $f-display;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    white-space: nowrap;
+  }
+}

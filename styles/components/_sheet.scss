@@ -1,0 +1,106 @@
+// The match drawer on the right: players, the shot log and the rules. Also the head of the settings dialog.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-sheet {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: min(400px, calc(100% - 24px));
+  z-index: 5;
+  padding: 20px 20px 22px;
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 14px;
+  transform: translateX(calc(100% + 30px));
+  transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
+  &.is-open {
+    transform: none;
+  }
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  &__title {
+    margin: 0;
+    font: 400 34px/1 $f-poster;
+    color: $poster-red;
+    text-shadow: 2px 2px 0 rgba(31, 21, 14, 0.18);
+    @include short {
+      font-size: 24px;
+    }
+  }
+  &__players {
+    grid-template-rows: auto auto auto auto 1fr;
+  }
+  @include short {
+    width: min(720px, calc(100% - 24px));
+    padding: 12px 14px;
+    gap: 8px;
+  }
+  @include calm {
+    transition: none;
+  }
+}
+.c-player-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  &__name {
+    width: 100%;
+    min-width: 0;
+    padding: 3px 0;
+    border: 0;
+    border-bottom: 1px dashed transparent;
+    background: transparent;
+    color: var(--ink);
+    font: 400 16px $f-serif;
+    &:hover:not(:disabled) {
+      border-bottom-color: var(--line);
+    }
+    &:disabled {
+      color: var(--ink);
+    }
+  }
+  &__seat {
+    grid-column: 2;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 13px;
+    color: var(--ink-3);
+    &:empty {
+      display: none;
+    }
+  }
+  @include short {
+    padding: 4px 0;
+  }
+}
+// the grade tag next to an opponent's name
+.c-gtag {
+  display: inline-block;
+  padding: 1px 8px;
+  background: var(--g);
+  color: $ink;
+  font: 400 13px $f-display;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: skewX(-12deg);
+}
+.c-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--gold);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}

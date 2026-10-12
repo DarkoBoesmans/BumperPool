@@ -1,0 +1,15 @@
+// Line icons from the sprite in index.html.
+.o-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  &--small {
+    width: 14px;
+    height: 14px;
+  }
+}
