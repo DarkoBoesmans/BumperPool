@@ -78,7 +78,7 @@ export function renderUI(): void {
     .reverse()
     .map(
       (e) =>
-        `<li class="c-log__item"><span class="c-log__n">#${e.n}</span><span class="c-log__dot" data-c="${e.c || ""}"></span><span class="c-log__text c-log__text--${e.kind}">${esc(e.text)}${e.why ? `<span class="c-log__why">${esc(e.why)}</span>` : ""}</span></li>`,
+        `<li class="c-log__item"><span class="c-log__n">#${esc(e.n)}</span><span class="c-log__dot" data-c="${esc(e.c || "")}"></span><span class="c-log__text c-log__text--${esc(e.kind)}">${esc(e.text)}${e.why ? `<span class="c-log__why">${esc(e.why)}</span>` : ""}</span></li>`,
     )
     .join("");
   const e = G.log[G.log.length - 1],

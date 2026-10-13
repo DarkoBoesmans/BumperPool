@@ -1,0 +1,49 @@
+<div class="c-view" data-view="me" hidden>
+  <h2 class="c-view__title">Your player</h2>
+  <div class="c-maker c-view__body">
+    <div class="c-maker__face">
+      <canvas class="c-maker__canvas" id="meFace" width="64" height="64" aria-hidden="true"></canvas>
+      <label class="c-field"
+        ><span class="c-field__label">Name</span
+        ><input
+          class="c-field__input"
+          id="meName"
+          placeholder="Your name"
+          maxlength="20"
+          autocomplete="nickname"
+          data-enter="#meDone"
+      /></label>
+    </div>
+    <div class="c-maker__form">
+      <div class="c-tabs" role="tablist" aria-label="Your player">
+        <button class="c-tabs__tab" type="button" role="tab" id="tbBody" aria-controls="tpBody" aria-selected="true">
+          Body
+        </button>
+        <button class="c-tabs__tab" type="button" role="tab" id="tbHair" aria-controls="tpHair" aria-selected="false">
+          Hair
+        </button>
+        <button class="c-tabs__tab" type="button" role="tab" id="tbFace" aria-controls="tpFace" aria-selected="false">
+          Face
+        </button>
+        <button class="c-tabs__tab" type="button" role="tab" id="tbStyle" aria-controls="tpStyle" aria-selected="false">
+          Style
+        </button>
+      </div>
+      <div class="o-stack" id="meForm">
+        <section class="o-stack__item c-maker__panel" id="tpBody" role="tabpanel" aria-labelledby="tbBody"></section>
+        <section class="o-stack__item c-maker__panel" id="tpHair" role="tabpanel" aria-labelledby="tbHair"></section>
+        <section class="o-stack__item c-maker__panel" id="tpFace" role="tabpanel" aria-labelledby="tbFace"></section>
+        <section class="o-stack__item c-maker__panel" id="tpStyle" role="tabpanel" aria-labelledby="tbStyle"></section>
+      </div>
+    </div>
+  </div>
+  <div class="o-row o-row--foot">
+    <button class="c-btn c-btn--ghost" type="button" data-go="home">
+      <span class="c-btn__label">Back</span>
+    </button>
+    <span class="u-grow"></span>
+    <button class="c-btn c-btn--cta" type="button" id="meDone">
+      <span class="c-btn__label">Save player</span>
+    </button>
+  </div>
+</div>

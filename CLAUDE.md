@@ -5,7 +5,8 @@ Belgian tap billiards in browser. Rules: GZV spelreglement 2026-2027 + standaard
 ## Stack
 - TypeScript strict, three.js 0.128.0 from npm, Dart Sass, bun. Only open source, local tools.
 - `bun run dev` watch server, `bun run build` to `dist/` (index.html, legal.html, licenses/), `bun run check` tsc, `bun test`, `bun run format` prettier.
-- GitHub Pages via `.github/workflows/pages.yml` (Source: GitHub Actions).
+- Page markup in `html/` partials, pulled into `index.html` by `<!-- include: html/x.html -->` at build. No inline styles except data-driven CSS vars.
+- GitHub Pages via `.github/workflows/pages.yml` (Source: GitHub Actions): https://darkoboesmans.github.io/BumperPool/. PRs run check/test/build; deploy only from `main`. Actions pinned to SHA + tag comment.
 
 ## Code
 - KISS. Small files, aim under 300 lines. No abstraction with one user.
@@ -25,9 +26,10 @@ Belgian tap billiards in browser. Rules: GZV spelreglement 2026-2027 + standaard
 ## Privacy, a11y
 - No cookies, analytics, ads, third-party scripts or embeds. Only `golfbiljart.*` localStorage (strictly necessary). New storage or tracking: update `legal.html` first, ask consent if not strictly necessary.
 - Keep menus keyboard + screen-reader friendly; run axe-core on every view after UI changes. Text contrast AA.
+- Security: build adds CSP meta (artifact build `NO_CSP=1`, host injects its own script). Escape every value put in `innerHTML` (`esc`). Online updates pass `src/net/sane.ts`. Console handle localhost only.
 
 ## Release
-- Every version: bump `package.json` version, `bun run check && bun test && bun run build`, publish `dist/` to artifact, copy source to user's local `Documents/Bumper Pool` (linked device folder), verify checksums match. Version shows under main menu (`v%VERSION%` filled by build).
+- Every version: bump `package.json` version, `bun run check && bun test && bun run build`, branch + PR, green CI, user merges (Pages deploys). Artifact: `NO_CSP=1 bun run build`, publish `dist/`. Local `Documents/Bumper Pool` is a git clone: user runs `git pull` (Windows Controlled Folder Access blocks overwrites from the device shell). Version shows under main menu (`v%VERSION%` filled by build).
 - Never commit unless asked. GitHub: `DarkoBoesmans/BumperPool`, branch first, PR to `main`. Never push `.claude/`.
 
 ## Text

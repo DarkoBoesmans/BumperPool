@@ -28,6 +28,7 @@ let last = performance.now(),
 const portrait = () => S.w < S.h;
 
 export function frame(now: number): void {
+  requestAnimationFrame(frame); // first, so one bad frame never stops the game
   const dt = Math.min(0.05, (now - last) / 1000);
   last = now;
   if (G.phase === "moving") {
@@ -115,5 +116,4 @@ export function frame(now: number): void {
     updateBoards(boardCtx());
   }
   render(now);
-  requestAnimationFrame(frame);
 }

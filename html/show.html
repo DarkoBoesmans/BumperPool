@@ -1,0 +1,71 @@
+<!-- ======================= End of a game ======================= -->
+<div class="c-endcard" id="endcard" hidden>
+  <div class="c-endcard__rays" aria-hidden="true"></div>
+  <div class="c-endcard__card c-poster" role="dialog" aria-labelledby="ecTitle" aria-describedby="ecNote">
+    <div class="c-endcard__medal" id="ecMedal" aria-hidden="true">
+      <canvas class="c-endcard__face" id="ecFace" width="64" height="64"></canvas
+      ><svg class="o-icon c-endcard__trophy"><use href="#i-trophy" /></svg>
+    </div>
+    <h2 class="c-endcard__title" id="ecTitle">
+      <span class="c-endcard__name" id="ecName">Player</span
+      ><span class="c-endcard__what" id="ecWhat">wins game 1</span>
+    </h2>
+    <div class="c-endcard__score">
+      <div class="c-endcard__side" id="ec0">
+        <span class="c-ball"></span><b class="c-endcard__side-name"></b><span class="c-endcard__side-stat"></span>
+      </div>
+      <div class="c-endcard__num"><b id="ecS0">1</b><i>:</i><b id="ecS1">0</b></div>
+      <div class="c-endcard__side c-endcard__side--right" id="ec1">
+        <span class="c-ball"></span><b class="c-endcard__side-name"></b><span class="c-endcard__side-stat"></span>
+      </div>
+    </div>
+    <p class="c-endcard__note" id="ecNote"></p>
+    <p class="c-endcard__reward" id="ecReward" hidden></p>
+    <div class="c-endcard__acts">
+      <button class="c-btn c-btn--ghost" type="button" id="ecMenu">
+        <span class="c-btn__label">Main menu</span>
+      </button>
+      <button class="c-btn c-btn--ghost" type="button" id="ecPick" hidden>
+        <span class="c-btn__label">Back to the story</span>
+      </button>
+      <button class="c-btn c-btn--cta" type="button" id="btnNext">
+        <span class="c-btn__label">Next game</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= Goal / foul show ======================= -->
+<div class="c-banner" id="banner" hidden aria-live="assertive">
+  <div class="c-banner__burst"></div>
+  <div class="c-banner__stripes"></div>
+  <div class="c-banner__card" aria-hidden="true"></div>
+  <div class="c-banner__word" id="bWord">GOAL!</div>
+  <div class="c-banner__who" id="bWho"></div>
+  <div class="c-banner__sub" id="bSub"></div>
+  <div class="c-banner__confetti" id="confetti" aria-hidden="true"></div>
+</div>
+<div class="c-replay" id="replay" hidden>
+  <div class="c-replay__bars" aria-hidden="true">
+    <i class="c-replay__bar"></i><i class="c-replay__bar c-replay__bar--bottom"></i>
+  </div>
+  <div class="c-replay__tag">
+    <span class="c-replay__rec"></span>REPLAY<b class="c-replay__label" id="rLabel">GOAL CAM</b>
+  </div>
+  <div class="c-replay__freeze" aria-hidden="true">FREEZE FRAME</div>
+  <div class="c-whycard" id="rWhy" hidden>
+    <b class="c-whycard__title" id="rTitle"></b><span class="c-whycard__by" id="rWho"></span>
+    <p class="c-whycard__text" id="rText"></p>
+    <p class="c-whycard__next" id="rNext"></p>
+    <span class="c-whycard__ref" id="rRef"></span>
+  </div>
+  <button class="c-btn c-replay__skip" type="button" id="rSkip">
+    <span class="c-btn__label">Skip replay</span>
+  </button>
+</div>
+
+<!-- right after one of your goals: knock twice on the table, also over the banner and the replay -->
+<button class="c-knock" type="button" id="knockNow" hidden>
+  <svg class="o-icon" aria-hidden="true"><use href="#i-knock" /></svg
+  ><span class="c-knock__label">Knock on the table</span><kbd class="c-knock__key">4</kbd>
+</button>

@@ -1,0 +1,133 @@
+<!-- ======================= Settings ======================= -->
+<div class="c-modal" id="settings" hidden>
+  <div class="c-modal__dialog c-poster" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+    <div class="c-sheet__head">
+      <h2 class="c-sheet__title" id="setTitle">Settings</h2>
+      <button class="c-btn c-btn--ghost" type="button" id="setClose">
+        <span class="c-btn__label">Done</span>
+      </button>
+    </div>
+    <div class="c-tabs" role="tablist" aria-label="Settings">
+      <button class="c-tabs__tab" type="button" role="tab" id="tbSound" aria-controls="tpSound" aria-selected="true">
+        Sound
+      </button>
+      <button
+        class="c-tabs__tab"
+        type="button"
+        role="tab"
+        id="tbPicture"
+        aria-controls="tpPicture"
+        aria-selected="false"
+      >
+        Picture
+      </button>
+      <button class="c-tabs__tab" type="button" role="tab" id="tbGame" aria-controls="tpGame" aria-selected="false">
+        Game
+      </button>
+    </div>
+    <div class="o-stack">
+      <section class="o-stack__item" id="tpSound" role="tabpanel" aria-labelledby="tbSound">
+        <label class="c-slider"
+          ><span class="c-slider__label">Master</span
+          ><input class="c-slider__input" type="range" id="vol_master" min="0" max="100" /><output
+            class="c-slider__value"
+            id="vol_master_v"
+            >90</output
+          ></label
+        >
+        <label class="c-slider"
+          ><span class="c-slider__label">Balls and referee</span
+          ><input class="c-slider__input" type="range" id="vol_fx" min="0" max="100" /><output
+            class="c-slider__value"
+            id="vol_fx_v"
+            >90</output
+          ></label
+        >
+        <label class="c-slider"
+          ><span class="c-slider__label">Café ambience</span
+          ><input class="c-slider__input" type="range" id="vol_amb" min="0" max="100" /><output
+            class="c-slider__value"
+            id="vol_amb_v"
+            >50</output
+          ></label
+        >
+        <label class="c-slider"
+          ><span class="c-slider__label">Jukebox</span
+          ><input class="c-slider__input" type="range" id="vol_music" min="0" max="100" /><output
+            class="c-slider__value"
+            id="vol_music_v"
+            >40</output
+          ></label
+        >
+        <div class="c-jukebox" id="jukebox">
+          <span class="c-jukebox__disc" aria-hidden="true"></span>
+          <span class="c-jukebox__now"
+            ><b class="c-jukebox__title" id="songTitle">Jukebox</b
+            ><small class="c-jukebox__info" id="songInfo">Starts with your first tap or click</small></span
+          >
+          <button class="c-btn c-btn--small" type="button" id="songNext" aria-label="Next record">
+            <svg class="o-icon o-icon--small"><use href="#i-skip" /></svg><span class="c-btn__label">Next record</span>
+          </button>
+        </div>
+        <div class="c-seg c-seg--5" role="radiogroup" aria-label="Records the jukebox plays">
+          <button class="c-seg__opt" type="button" role="radio" data-jstyle="all">All</button>
+          <button class="c-seg__opt" type="button" role="radio" data-jstyle="swing">Swing</button>
+          <button class="c-seg__opt" type="button" role="radio" data-jstyle="bossa">Bossa</button>
+          <button class="c-seg__opt" type="button" role="radio" data-jstyle="waltz">Waltz</button>
+          <button class="c-seg__opt" type="button" role="radio" data-jstyle="ballad">Ballad</button>
+        </div>
+      </section>
+      <section class="o-stack__item" id="tpPicture" role="tabpanel" aria-labelledby="tbPicture">
+        <div class="c-seg c-seg--3" role="radiogroup" aria-label="Look">
+          <button class="c-seg__opt" type="button" role="radio" data-look="clean">Clean</button>
+          <button class="c-seg__opt" type="button" role="radio" data-look="ps2">PS2</button>
+          <button class="c-seg__opt" type="button" role="radio" data-look="cinema">Cinema</button>
+        </div>
+        <div class="c-fx" id="fxSliders"></div>
+      </section>
+      <section class="o-stack__item" id="tpGame" role="tabpanel" aria-labelledby="tbGame">
+        <h3 class="c-subhead c-subhead--optional">Replays</h3>
+        <div class="c-seg c-seg--3" role="radiogroup" aria-label="Replays">
+          <button class="c-seg__opt" type="button" role="radio" data-replays="all">Every goal and foul</button>
+          <button class="c-seg__opt" type="button" role="radio" data-replays="key">Fouls and wins</button>
+          <button class="c-seg__opt" type="button" role="radio" data-replays="off">Off</button>
+        </div>
+        <h3 class="c-subhead c-subhead--optional">Table</h3>
+        <button class="c-toggle" type="button" role="switch" id="optClock">
+          <span class="c-toggle__text"
+            ><b class="c-toggle__title">Shot clock</b
+            ><small class="c-toggle__desc">One minute per shot (SP/3.2)</small></span
+          ><i class="c-toggle__switch"></i>
+        </button>
+        <button class="c-toggle" type="button" role="switch" id="optLines2">
+          <span class="c-toggle__text"
+            ><b class="c-toggle__title">Table lines</b
+            ><small class="c-toggle__desc"
+              >Shooting lines and triangles on the cloth, when the grade allows them</small
+            ></span
+          ><i class="c-toggle__switch"></i>
+        </button>
+        <h3 class="c-subhead">Your player while you play</h3>
+        <div class="c-seg c-seg--3" role="radiogroup" aria-label="Your player while you play">
+          <button class="c-seg__opt" type="button" role="radio" data-mine="show">Show</button>
+          <button class="c-seg__opt" type="button" role="radio" data-mine="fade">See-through</button>
+          <button class="c-seg__opt" type="button" role="radio" data-mine="hide">Hide</button>
+        </div>
+        <button class="c-toggle" type="button" role="switch" id="optCloth">
+          <span class="c-toggle__text"
+            ><b class="c-toggle__title">Cloth in the grade colour</b
+            ><small class="c-toggle__desc">Off: the cloth of the regular's own table</small></span
+          ><i class="c-toggle__switch"></i>
+        </button>
+        <h3 class="c-subhead c-subhead--optional">Your data</h3>
+        <p class="c-note">
+          Your player, record, tokens, items and settings live only in this browser.
+          <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a>
+        </p>
+        <button class="c-btn c-btn--danger" type="button" id="btnWipe">
+          <span class="c-btn__label">Delete my data</span>
+        </button>
+      </section>
+    </div>
+  </div>
+</div>

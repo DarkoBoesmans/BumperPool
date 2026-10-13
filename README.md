@@ -17,6 +17,8 @@ Belgian tap billiards in the browser, set in a smoky low-poly café with a PS2 l
 - Plays on a phone, upright or on its side: the controls move beside the table, and the camera frames the table in the room they leave
 - Rumour has it an old arcade poster on the wall knows a code
 
+**Play it:** https://darkoboesmans.github.io/BumperPool/ (always the latest version on `main`)
+
 ## Run it
 
 Needs Bun 1.2 or newer.
@@ -28,16 +30,15 @@ bun run dev          # builds to dist/, rebuilds on save, serves http://localhos
 
 | Script | Does |
 | --- | --- |
-| `bun run dev` | Build, watch `src/`, `styles/` and `index.html`, serve `dist/` |
+| `bun run dev` | Build, watch `src/`, `styles/`, `html/` and the pages, serve `dist/` |
 | `bun run build` | Minified build to `dist/` (`main.js`, `style.css`, `index.html`, `legal.html`, `fonts/`, `licenses/`) |
 | `bun run check` | TypeScript type check (`tsc --noEmit`, strict) |
 | `bun run test` | Referee, physics, CPU brain and profile tests (`bun test`) |
-| `bun run format` | Prettier over `src/`, `styles/`, `test/`, `tools/` and the two pages |
+| `bun run format` | Prettier over `src/`, `styles/`, `html/`, `test/`, `tools/` and the two pages |
 
-## Put it on GitHub Pages
+## GitHub Pages
 
-The workflow in `.github/workflows/pages.yml` builds `dist/` and publishes it on every push to `main`.
-Once, in the repo: Settings, Pages, Source: **GitHub Actions**.
+`.github/workflows/pages.yml` checks every pull request (types, tests, build) and publishes `dist/` on every push to `main`. Repo setting: Settings, Pages, Source: **GitHub Actions**. Dependabot (`.github/dependabot.yml`) opens one update PR a month for the actions and one for the dev tools.
 
 Online play uses Claude's shared artifact storage (`window.claude`), so it only works in the version published inside Claude. Everywhere else the online menu says so and offline play works as usual.
 
@@ -129,12 +130,14 @@ TypeScript in `src/`, one job per file, no file much over 300 lines.
 | `src/audio/` | Mixer, sound effects, jukebox |
 | `src/ui/` | Menus, story, freeplay, maker, shop, HUD, banners, end card, tutorial, settings |
 | `src/game/` | Input, game flow, the goal and foul show, the opponent's turn, the frame loop |
+| `src/net/` | Online play and the check on every table update |
 | `src/main.ts` | Boot and wiring |
+| `index.html`, `html/` | The page, put together from parts at build time (`<!-- include: html/hud.html -->`) |
 | `styles/` | SCSS in ITCSS layers |
 | `test/` | `bun test` suites |
 | `tools/` | Build and dev server |
 
-In the browser console, `golfbiljart` gives you the app state, the scene, your profile and the live game (`golfbiljart.G`).
+On a local build (`localhost`), the browser console has `golfbiljart`: the app state, the scene, your profile and the live game (`golfbiljart.G`). The published game leaves it out.
 
 ### Styles: ITCSS and BEM
 
@@ -159,6 +162,10 @@ Class names are BEM: `c-block__element--modifier`. States are `is-` classes (`is
 - Online play (claude.ai copy only) keeps the table, the names typed and the game in the artifact's shared storage
 - Menus are keyboard and screen-reader friendly and pass an axe-core audit; aiming works from the keyboard too (`B`, `A` `D`, `W` `S`, `Space`)
 - Meant for players aged 16 and over: the café has cigars and whisky
+
+## Security
+
+See [SECURITY.md](SECURITY.md): how to report a problem privately and what is in place (Content Security Policy, checked online updates, pinned actions).
 
 ## Licences
 
