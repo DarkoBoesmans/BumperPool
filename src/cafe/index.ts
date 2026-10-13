@@ -18,6 +18,7 @@ import { buildProp, animateVenue, paintBanners } from "./venue-props";
 import { tintMoreProps } from "./more-props";
 import { C, rnd } from "./state";
 import type { Color, Game } from "../types";
+import { t } from "../i18n";
 
 export { C } from "./state";
 export { emote, type Emote } from "./emote";
@@ -92,7 +93,7 @@ export function updateCafe(dt: number, now: number, ctx: CafeCtx): void {
       if (P.refillAt && now > P.refillAt) {
         P.refillAt = 0;
         refill(c, 1);
-        ctx.say("Marcel", `Another one for ${G.names[G.colorOf.indexOf(c)]}, on the house.`);
+        ctx.say("Marcel", t("Another one for {name}, on the house.", { name: G.names[G.colorOf.indexOf(c)] }));
       }
     }
   if (C.groups.booths?.visible)

@@ -1,10 +1,10 @@
-# Golfbiljart
+# Tjoepbiljart
 
-Belgian tap billiards in browser. Rules: GZV spelreglement 2026-2027 + standaardnormen, NLGB line drawing. Low-poly PS2 café, San Andreas-style people. All in-game text English. Not affiliated with GZV/NLGB: no federation or real brand names in game.
+Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-2027 + standaardnormen, NLGB line drawing. Low-poly PS2 café, San Andreas-style people. Source text English, shown in Vlaams, English, Oilsjters. Game name Tjoepbiljart never translated (`translate="no"`). Not affiliated with GZV/NLGB: no federation or real brand names in game.
 
 ## Stack
 - TypeScript strict, three.js 0.128.0 from npm, Dart Sass, bun. Only open source, local tools.
-- `bun run dev` watch server, `bun run build` to `dist/` (index.html, legal.html, licenses/), `bun run check` tsc, `bun test`, `bun run format` prettier.
+- `bun run dev` watch server, `bun run build` to `dist/` (index.html, legal.html + legal.js, licenses/), `bun run check` tsc, `bun test`, `bun run format` prettier.
 - Page markup in `html/` partials, pulled into `index.html` by `<!-- include: html/x.html -->` at build. No inline styles except data-driven CSS vars.
 - GitHub Pages via `.github/workflows/pages.yml` (Source: GitHub Actions): https://darkoboesmans.github.io/BumperPool/. PRs run check/test/build; deploy only from `main`. Actions pinned to SHA + tag comment.
 
@@ -14,9 +14,11 @@ Belgian tap billiards in browser. Rules: GZV spelreglement 2026-2027 + standaard
 - Units: mm, mm/s, s; three.js scene in metres (`M`, `V()`).
 - Power = ball speed, four equal meter quarters (`src/core/power.ts`). Hard = over 1.5 m/s. Pull measured on screen.
 - House rules: `G.rules` (`src/core/rules.ts`). Story always `REGLEMENT`. House-rule games = friendly, no record.
-- Every regular has own bar (`src/data/venue-list.ts`) and own table.
+- Every regular has own bar (`src/data/venues-street.ts`, `venues-grand.ts`), own table, own trophy (`src/data/trophies.ts`).
+- Story needs a made player first (`me.made`, gate in `src/ui/menu.ts`). Online play off ("Coming soon") until finished.
 - Deliberate shortcut or calibration guess: `ponytail:` comment with ceiling + upgrade path.
 - Every rule or physics change: one test in `test/`.
+- Text: every shown string through `t("English {name}", vars)` (`src/i18n`). Referee log stores key + `v`, HUD translates (`tLog`). Lines in `src/i18n/sheets/*.txt` (`=` en, `v` Vlaams, `a` Oilsjters, `a ~` same). Legal sheet Vlaams only. `bun tools/i18n-keys.ts` prints missing lines; `test/i18n.test.ts` checks. Dynamic text: redraw on `onLang`.
 - Phone: HUD sits beside table, camera frames table in free room (`src/ui/room.ts`). New fixed HUD block: add to `BLOCKS`. Upright phone = `upright` mixin.
 
 ## Styles
@@ -24,9 +26,9 @@ Belgian tap billiards in browser. Rules: GZV spelreglement 2026-2027 + standaard
 - BEM: `c-block__element--modifier`. State: `is-` classes.
 
 ## Privacy, a11y
-- No cookies, analytics, ads, third-party scripts or embeds. Only `golfbiljart.*` localStorage (strictly necessary). New storage or tracking: update `legal.html` first, ask consent if not strictly necessary.
+- No cookies, analytics, ads, third-party scripts or embeds. Only `tjoepbiljart.*` localStorage via `src/profile/store.ts` (strictly necessary; old `golfbiljart.*` moved once). New storage or tracking: update `legal.html` first, ask consent if not strictly necessary.
 - Keep menus keyboard + screen-reader friendly; run axe-core on every view after UI changes. Text contrast AA.
-- Security: build adds CSP meta (artifact build `NO_CSP=1`, host injects its own script). Escape every value put in `innerHTML` (`esc`). Online updates pass `src/net/sane.ts`. Console handle localhost only.
+- Security: build adds CSP meta (artifact build `NO_CSP=1`, host injects its own script). Escape every value put in `innerHTML` (`esc`), translations too. Online updates pass `src/net/sane.ts`. Console handle localhost only.
 
 ## Release
 - Every version: bump `package.json` version, `bun run check && bun test && bun run build`, branch + PR, green CI, user merges (Pages deploys). Artifact: `NO_CSP=1 bun run build`, publish `dist/`. Local `Documents/Bumper Pool` is a git clone: user runs `git pull` (Windows Controlled Folder Access blocks overwrites from the device shell). Version shows under main menu (`v%VERSION%` filled by build).

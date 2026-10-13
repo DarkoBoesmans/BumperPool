@@ -1,6 +1,7 @@
 // Every frame while you play: the power meter, the foul warning while you aim, the shot clock, the whisky and smoke
 // meters, and the speech bubble's position.
 import { G } from "../core/state";
+import { t } from "../i18n";
 import { aimsAtGoal, cornerBall, flyer } from "../core/table";
 import { bandOf, isHard, rollDistance, speedOf } from "../core/power";
 import type { Ball, Shot } from "../types";
@@ -16,8 +17,8 @@ let lastWarn: string | null = null,
 function hardFoul(b: Ball, s: Shot): string {
   const d = { x: s.dx, y: s.dy };
   if (cornerBall(b.c, b) && aimsAtGoal(b.c, b, d))
-    return "Below the shooting line: a hard shot straight at the goal is a foul";
-  if (flyer(b, d)) return "On the cushion strip: hard along the cushion is a flyer";
+    return t("Below the shooting line: a hard shot straight at the goal is a foul");
+  if (flyer(b, d)) return t("On the cushion strip: hard along the cushion is a flyer");
   return "";
 }
 
@@ -43,20 +44,22 @@ export function liveUI(s: Shot | null, b: Ball | null): void {
       pw.dataset.band = bandOf(s.p).id;
       pw.classList.toggle("is-hard", isHard(s.p));
       pw.classList.toggle("is-foul", !!foulHere && warnHelp);
-      $(".c-power__band", pw).textContent = bandOf(s.p).label;
+      $(".c-power__band", pw).textContent = t(bandOf(s.p).label);
       $(".c-power__speed", pw).textContent = `${(v / 1000).toFixed(1)} m/s`;
-      $(".c-power__reach", pw).textContent = `rolls ${run < 10 ? run.toFixed(1) : Math.round(run)} m on its own`;
+      $(".c-power__reach", pw).textContent = t("rolls {m} m on its own", {
+        m: run < 10 ? run.toFixed(1) : Math.round(run),
+      });
     }
   }
   const chip = $("#clockChip");
   chip.hidden = !app.set.clock;
   if (app.set.clock) {
-    const t = G.phase === "aim" ? Math.max(0, Math.ceil(G.timeLeft)) : 60,
-      c = `${Math.floor(t / 60)}:${String(t % 60).padStart(2, "0")}`;
+    const left = G.phase === "aim" ? Math.max(0, Math.ceil(G.timeLeft)) : 60,
+      c = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, "0")}`;
     if (c !== lastClock) {
       lastClock = c;
       $("#clock").textContent = c;
-      chip.classList.toggle("is-low", t <= 15);
+      chip.classList.toggle("is-low", left <= 15);
     }
   }
   placeBubble();

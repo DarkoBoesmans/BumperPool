@@ -1,9 +1,12 @@
-// The shop: buy with tokens, equip what you own. Freeplay rewards have a gold edge and say what earns them.
+// The shop: buy with tokens, equip what you own. Rewards (freeplay goals and the trophies of regulars you beat)
+// have a gold edge and say what earns them. Items of the hidden legends show up after the old arcade code.
 import { SLOTS, ITEMS, type Item, type Slot } from "../data/shop";
 import { venueById } from "../data/venues";
+import { findOpponent } from "../data/regulars";
+import { t } from "../i18n";
 import { me, buy, canBuy, equip, equipped } from "../profile/profile";
 import { sfx } from "../audio/sfx";
-import { $, esc } from "./dom";
+import { $, $$, esc } from "./dom";
 import { initTabs } from "./tabs";
 import { views } from "./menu";
 
@@ -28,24 +31,29 @@ function swatch(i: Item): string {
   return "#ccc";
 }
 
+/** what earns a reward: a freeplay goal, or beating the regular it belongs to */
+const goal = (i: Item): string =>
+  i.from ? t("Beat {name}", { name: findOpponent(i.from).name }) : t(i.free?.goal || "");
+
 function card(i: Item): string {
   const own = !!me.owned[i.id],
     on = own && equipped(i.id),
-    locked = !!i.venue && !me.seen[i.venue] && !i.free;
+    reward = !!(i.free || i.from),
+    locked = !!i.venue && !me.seen[i.venue] && !reward;
   const act = on
-    ? `<button class="c-btn c-btn--small" type="button" disabled>Equipped</button>`
+    ? `<button class="c-btn c-btn--small" type="button" disabled>${esc(t("Equipped"))}</button>`
     : own
-      ? `<button class="c-btn c-btn--small" type="button" data-equip="${i.id}">Equip</button>`
-      : i.free
-        ? `<button class="c-btn c-btn--small" type="button" data-buy="${i.id}" ${canBuy(i) ? "" : "disabled"}>${canBuy(i) ? "Collect" : "Freeplay reward"}</button>`
+      ? `<button class="c-btn c-btn--small" type="button" data-equip="${i.id}">${esc(t("Equip"))}</button>`
+      : reward
+        ? `<button class="c-btn c-btn--small" type="button" data-buy="${i.id}" ${canBuy(i) ? "" : "disabled"}>${esc(t(canBuy(i) ? "Collect" : i.from ? "Trophy" : "Freeplay reward"))}</button>`
         : locked
-          ? `<button class="c-btn c-btn--small" type="button" disabled>Play there first</button>`
-          : `<button class="c-btn c-btn--small" type="button" data-buy="${i.id}" ${canBuy(i) ? "" : "disabled"}>${i.price ? `Buy · ${i.price}` : "Free"}</button>`;
-  return `<div class="c-item${i.free ? " c-item--free" : ""}${on ? " is-equipped" : ""}" role="listitem">
+          ? `<button class="c-btn c-btn--small" type="button" disabled>${esc(t("Play there first"))}</button>`
+          : `<button class="c-btn c-btn--small" type="button" data-buy="${i.id}" ${canBuy(i) ? "" : "disabled"}>${i.price ? t("Buy · {price}", { price: i.price }) : t("Free")}</button>`;
+  return `<div class="c-item${reward ? " c-item--free" : ""}${on ? " is-equipped" : ""}" role="listitem">
     <span class="c-item__swatch" style="--c:${swatch(i)}"></span>
-    <b class="c-item__name">${esc(i.name)}</b>
-    <span class="c-item__desc">${esc(i.desc)}</span>
-    ${i.free && !own ? `<span class="c-item__goal">${esc(i.free.goal)}</span>` : "<span></span>"}
+    <b class="c-item__name">${esc(t(i.name))}</b>
+    <span class="c-item__desc">${esc(t(i.desc))}</span>
+    ${reward && !own ? `<span class="c-item__goal">${esc(goal(i))}</span>` : "<span></span>"}
     <span class="c-item__act">${act}</span></div>`;
 }
 
@@ -55,7 +63,7 @@ function renderShop(): void {
     const tabs = $("#shopTabs");
     tabs.innerHTML = SLOTS.map(
       (s) =>
-        `<button class="c-tabs__tab" type="button" role="tab" data-slot="${s.id}" aria-selected="${s.id === slot}">${s.label}</button>`,
+        `<button class="c-tabs__tab" type="button" role="tab" data-slot="${s.id}" aria-selected="${s.id === slot}">${esc(t(s.label))}</button>`,
     ).join("");
     initTabs(tabs, (t) => {
       slot = t.dataset.slot as Slot;
@@ -70,12 +78,24 @@ function renderShop(): void {
       renderShop();
     });
   }
+  for (const b of $$("#shopTabs [data-slot]")) b.textContent = t(SLOTS.find((s) => s.id === b.dataset.slot)!.label);
   $("#walletNum").textContent = String(me.tokens);
   grid();
 }
 function grid(): void {
-  $("#shopGrid").innerHTML = ITEMS.filter((i) => i.slot === slot && (!i.secret || me.pearl))
+  const shelf = ITEMS.filter((i) => i.slot === slot),
+    hidden = me.pearl ? 0 : shelf.filter((i) => i.secret).length;
+  $("#shopGrid").innerHTML = shelf
+    .filter((i) => !i.secret || me.pearl)
     .map(card)
     .join("");
+  const note = $("#shopSecret");
+  note.hidden = !hidden;
+  note.textContent = t(
+    "{n} more on this shelf, after the old arcade code: up, up, down, down, left, right, left, right, B, A.",
+    {
+      n: hidden,
+    },
+  );
 }
 views.shop = renderShop;

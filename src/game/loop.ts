@@ -1,5 +1,5 @@
 // One frame: step the physics at 600 Hz, the shot clock, the opponent, replays, then draw everything.
-import { G, ball, nameOf, log, step, trackTri, allStill, timeout } from "../core";
+import { G, ball, nameOf, log, step, track, allStill, timeout } from "../core";
 import { S, render } from "../render/renderer";
 import { camS, updateCamera } from "../render/camera";
 import { updateBalls } from "../render/balls";
@@ -40,7 +40,7 @@ export function frame(now: number): void {
       acc -= H;
       n++;
     }
-    trackTri();
+    track();
     if (allStill()) {
       acc = 0;
       recStop();
@@ -50,7 +50,7 @@ export function frame(now: number): void {
     G.timeLeft -= dt;
     if (G.timeLeft <= 15 && !G.warned) {
       G.warned = true;
-      log(G.turn, "info", `15 seconds left for ${nameOf(G.turn)}.`);
+      log(G.turn, "info", "15 seconds left for {name}.", "", { name: nameOf(G.turn) });
       changed();
     }
     if (G.timeLeft <= 0) timeout();

@@ -138,12 +138,20 @@ export function hatMesh(L: Look, head: THREE.Object3D): void {
       add(head, new THREE.OctahedronGeometry(0.014), basic(0xd23a4a), 0, y + 0.025, 0.1);
       break;
     }
-    case "viking":
-      add(head, half(0.122, 8), m, 0, 0.02, 0);
-      add(head, new THREE.CylinderGeometry(0.124, 0.124, 0.025, 8), lam(0x6a5a3a), 0, 0.025, 0);
-      for (const s of [-1, 1])
-        add(head, facet(new THREE.ConeGeometry(0.025, 0.14, 5)), lam(0xefe6cf), s * 0.15, 0.1, 0).rotation.z =
-          -s * 0.75;
+    case "helmet": // Minerva's: a crested helmet with cheek guards
+      add(head, half(0.124, 8), m, 0, 0.02, 0);
+      add(head, new THREE.BoxGeometry(0.022, 0.08, 0.24), lam(0xb8322a), 0, 0.16, -0.01);
+      for (const s of [-1, 1]) add(head, new THREE.BoxGeometry(0.018, 0.08, 0.07), m, s * 0.117, -0.03, 0.04);
+      break;
+    case "laurel": // Jupiter's: a wreath of leaves, open at the front
+      for (let i = 1; i < 14; i++) {
+        const a = (i / 14) * Math.PI * 2;
+        add(head, new THREE.OctahedronGeometry(0.02), m, Math.sin(a) * 0.113, 0.05, Math.cos(a) * 0.113).scale.set(
+          0.6,
+          0.45,
+          1.5,
+        );
+      }
       break;
     case "snakes":
       for (let i = 0; i < 9; i++) {

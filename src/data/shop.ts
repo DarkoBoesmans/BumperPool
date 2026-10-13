@@ -2,8 +2,9 @@
 // Tokens come from matches. Freeplay items can't be bought: you earn them in freeplay (rematches against regulars you beat).
 import type { Look } from "../types";
 import { VENUES } from "./venues";
+import { TROPHIES } from "./trophies";
 
-const LEGEND_HALLS = ["deep", "temple", "mead"];
+const LEGEND_HALLS = ["deep", "temple", "sky"];
 
 export type Slot = "cue" | "outfit" | "hat" | "extra" | "table" | "bar";
 export const SLOTS: { id: Slot; label: string }[] = [
@@ -35,6 +36,8 @@ export interface Item {
   price: number;
   /** freeplay reward instead of a price */
   free?: { goal: string; ok: (f: FreeStats) => boolean };
+  /** a trophy: yours once you have beaten this regular (an opponent id), see trophies.ts */
+  from?: string;
   /** a bar you have to have played in first (its venue id) */
   venue?: string;
   /** belongs to the hidden legends: not on the shelf until they have walked in */
@@ -102,7 +105,7 @@ export const ITEMS: Item[] = [
     desc: "Sea green and pearl, it smells faintly of salt.",
     price: 0,
     secret: true,
-    free: { goal: "Beat Poseidon in freeplay", ok: (f) => !!f.beat.poseidon },
+    free: { goal: "Beat Neptune in freeplay", ok: (f) => !!f.beat.neptune },
     cue: { shaft: "#c6f1ff", butt: "#1e6f8a", ring: "#f2c84a", glow: "#4ae0ff" },
   },
   // clothes
@@ -180,8 +183,8 @@ export const ITEMS: Item[] = [
     price: 0,
     secret: true,
     free: {
-      goal: "Beat Poseidon, Medusa and Thor in freeplay",
-      ok: (f) => !!(f.beat.poseidon && f.beat.medusa && f.beat.thor),
+      goal: "Beat Neptune, Minerva and Jupiter in freeplay",
+      ok: (f) => !!(f.beat.neptune && f.beat.minerva && f.beat.jupiter),
     },
     look: { hat: "crown", hatColor: "#f2c84a" },
   },
@@ -251,32 +254,33 @@ export const ITEMS: Item[] = [
     id: "bar-deep",
     slot: "bar",
     name: "The Sunken Tavern",
-    desc: "Poseidon's shipwreck.",
+    desc: "Neptune's shipwreck.",
     price: 0,
     venue: "deep",
     secret: true,
-    free: { goal: "Beat Poseidon in freeplay", ok: (f) => !!f.beat.poseidon },
+    free: { goal: "Beat Neptune in freeplay", ok: (f) => !!f.beat.neptune },
   },
   {
     id: "bar-temple",
     slot: "bar",
     name: "The Stone Garden",
-    desc: "Medusa's marble garden.",
+    desc: "Minerva's marble garden.",
     price: 0,
     venue: "temple",
     secret: true,
-    free: { goal: "Beat Medusa in freeplay", ok: (f) => !!f.beat.medusa },
+    free: { goal: "Beat Minerva in freeplay", ok: (f) => !!f.beat.minerva },
   },
   {
-    id: "bar-mead",
+    id: "bar-sky",
     slot: "bar",
-    name: "The Mead Hall",
-    desc: "Thor's hall, fire included.",
+    name: "The Storm Hall",
+    desc: "Jupiter's hall, lightning included.",
     price: 0,
-    venue: "mead",
+    venue: "sky",
     secret: true,
-    free: { goal: "Beat Thor in freeplay", ok: (f) => !!f.beat.thor },
+    free: { goal: "Beat Jupiter in freeplay", ok: (f) => !!f.beat.jupiter },
   },
 ];
+ITEMS.push(...TROPHIES);
 export const itemById = (id: string): Item | undefined => ITEMS.find((i) => i.id === id);
 export const STARTER = ["cue-house", "tbl-mahogany", "bar-golden"];

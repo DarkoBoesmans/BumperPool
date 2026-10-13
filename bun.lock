@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "golfbiljart",
+      "name": "tjoepbiljart",
       "dependencies": {
         "three": "0.128.0",
       },

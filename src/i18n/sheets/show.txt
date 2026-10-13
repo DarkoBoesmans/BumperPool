@@ -1,0 +1,210 @@
+# sheet: show. After a shot: the banners, the replays, knocking on the table and the end card.
+# Same words as the table sheet.
+
+= TIME!
+v TIJD!
+a TIJD, MANNEKE!
+
+= FOUL!
+v FOUT!
+a ~
+
+= GOAL!
+v GOAL!
+a ~
+
+= {n} in one shot!
+v {n} in één stoot!
+a {n} in ene sjtoot!
+
+= One to go
+v Nog één
+a Nog ene
+
+= {n} to go
+v Nog {n}
+a ~
+
+= GIFT!
+v CADEAU!
+a KADOOKE!
+
+= {a} scored for {b}
+v {a} scoorde voor {b}
+a {a} scoort veur {b}
+
+= MATCH!
+v MATCH!
+a ~
+
+= GAME!
+v MANCHE!
+a ~
+
+= Wins {a}-{b}
+v Wint met {a}-{b}
+a Pakt 't mee {a}-{b}
+
+= Game {n} · {a}-{b}
+v Manche {n} · {a}-{b}
+a ~
+
+= {name} crawled under the table.
+v {name} kroop onder de tafel.
+a {name} es onder de tafel gekropen.
+
+= House rules: a friendly, nothing on your record.
+v Huisregels: een vriendschappelijke, niets op je palmares.
+a Huisregels: e vriendschappelijk partijke, niks ip ou palmares.
+
+= +{n} tokens
+v +{n} jetons
+a ~
+
+= unlocked: {items}, collect it in the shop
+v vrijgespeeld: {items}, haal het op in de winkel
+a vrijgesjpeeld: {items}, hoal 't af in de winkel
+
+= The legends are in.
+v De legenden zijn binnen.
+a De legenden zen binnen.
+
+= {bar} is open: a new bar and three new regulars.
+v {bar} is open: een nieuw café en drie nieuwe stamgasten.
+a {bar} es open: e nieuw cafeeke en drie nieuwe sjtamgasten.
+
+= That's fifteen. Or is it? The barman says the old arcade code opens the back room: up, up, down, down, left, right, left, right, B, A.
+v Dat zijn er vijftien. Of toch niet? De barman zegt dat de oude arcadecode het achterzaaltje opent: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A.
+a Da zen er vijftien. Of toch nie? De baas zegt da den ouden arcadecode 't achterzoaltje opent: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A.
+
+= UNDER THE TABLE!
+v ONDER DE TAFEL!
+a ~
+
+= 5-0. Onto the Wall of Shame.
+v 5-0. Op de Muur van Schaamte.
+a 5-0. Ip de Muur van Schande.
+
+= Miscue! A dry tip slips off the ball. Chalk up first (3).
+v Ketser! Een droge pomerans glijdt van de bal. Eerst krijten (3).
+a Ketser! Ne droge pomerans schuift van de bol. Eerst krijten (3).
+
+= Miscue! That tip was dry.
+v Ketser! Die pomerans was droog.
+a Ketser! Die pomerans was kurkdroog.
+
+= Lucky! Knock twice on the table (4).
+v Geluk! Klop twee keer op de tafel (4).
+a Chance! Klop twee kier ip tafel (4).
+
+= That one had luck in it. Tradition says you thank the table: knock on it twice (4).
+v Daar zat geluk in. De traditie wil dat je de tafel bedankt: klop er twee keer op (4).
+a Doar zat chance in. Den traditie wil da ge de tafel bedankt: klop er twee kier ip (4).
+
+= No knock for the table? It remembers, you know.
+v Geen klopje voor de tafel? Ze onthoudt dat, weet je.
+a Gene klop veur de tafel? Ze vergeet da nie, zenne.
+
+= Easy. Your glass is on its way.
+v Rustig. Je glas komt eraan.
+a Kalm. Ou glas komt eraan.
+
+= The table heard you.
+v De tafel heeft je gehoord.
+a De tafel heeft ou geheurd.
+
+= takes the match
+v wint de match
+a pakt de match
+
+= wins game {n}
+v wint manche {n}
+a pakt manche {n}
+
+= {n} of 5 in · 1 foul
+v {n} van 5 erin · 1 fout
+a ~
+
+= {n} of 5 in · {f} fouls
+v {n} van 5 erin · {f} fouten
+a ~
+
+= {name} buys the next round. Fancy another go?
+v {name} trakteert de volgende ronde. Nog eentje?
+a {name} geeft den toer. Nog ne kier?
+
+= {name} keeps the table. Rematch?
+v {name} houdt de tafel. Revanche?
+a {name} blijft aan tafel. Revanche?
+
+= Final score {a}:{b} in games.
+v Eindstand {a}:{b} in manches.
+a ~
+
+= Colours swap: you play {colour} in game {n}.
+v Kleuren wisselen: jij speelt met {colour} in manche {n}.
+a Kleuren wisselen: gij speelt mee {colour} in manche {n}.
+
+= Colours swap: {name} plays {colour} in game {n}.
+v Kleuren wisselen: {name} speelt met {colour} in manche {n}.
+a Kleuren wisselen: {name} speelt mee {colour} in manche {n}.
+
+= Rematch
+v Revanche
+a ~
+
+= Play game {n}
+v Speel manche {n}
+a Sjpeel manche {n}
+
+= Freeplay
+v Vrij spel
+a Vrij sjpel
+
+= Back to the story
+v Terug naar het verhaal
+a Terug noar 't verhoal
+
+= WINNING GOAL CAM
+v WINNENDE GOAL CAM
+a ~
+
+= FOUL CAM
+v FOUTENCAM
+a ~
+
+= GOAL CAM
+v GOALCAM
+a ~
+
+= Player
+v Speler
+a ~
+
+= wins game 1
+v wint manche 1
+a pakt manche 1
+
+= Main menu
+v Hoofdmenu
+a ~
+
+= Next game
+v Volgende manche
+a ~
+
+= REPLAY
+v HERHALING
+a ~
+
+= FREEZE FRAME
+v STILSTAAND BEELD
+a SJTILSJTOAND BEELD
+
+= Skip replay
+v Herhaling overslaan
+a Herhaling oversloan
+
+= Knock on the table
+v Klop op de tafel
+a Klop ip tafel

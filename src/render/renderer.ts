@@ -55,7 +55,7 @@ export function initScene(stage: HTMLElement): boolean {
   S.renderer = renderer;
   renderer.setPixelRatio(1);
   stage.appendChild(renderer.domElement);
-  renderer.domElement.setAttribute("aria-label", "Golfbiljart table in a café");
+  renderer.domElement.setAttribute("aria-label", "Tjoepbiljart table in a café");
   const scene = (S.scene = new THREE.Scene());
   scene.background = new THREE.Color(0x120a07);
   scene.fog = new THREE.Fog(0x120a07, 4.5, 12);

@@ -1,5 +1,6 @@
 // The app's own state: what is on screen, the opponent, your settings. Settings are kept in localStorage.
 import type { Color, Opponent, Rules, Shot } from "../types";
+import { load, save } from "../profile/store";
 import { REGLEMENT } from "../core/rules";
 import { G } from "../core/state";
 import { FX_DEFAULTS, type Fx } from "../render/post";
@@ -45,7 +46,6 @@ export interface CpuJob extends Partial<Job> {
   act?: () => void;
 }
 
-const SKEY = "golfbiljart.settings";
 export const app = {
   inGame: false,
   /** the goal / foul show is running */
@@ -69,23 +69,17 @@ export const app = {
     lines: true,
     cloth: true,
     mine: "fade",
-    opp: "kevin",
+    opp: "jens",
     fx: { ...FX_DEFAULTS },
   } as Settings,
 };
 try {
-  const saved = JSON.parse(globalThis.localStorage?.getItem(SKEY) || "{}");
+  const saved = JSON.parse(load("settings") || "{}");
   Object.assign(app.set, saved, { fx: { ...FX_DEFAULTS, ...saved.fx }, house: { ...REGLEMENT, ...saved.house } });
 } catch {
   /* defaults */
 }
-export const saveSettings = (): void => {
-  try {
-    localStorage.setItem(SKEY, JSON.stringify(app.set));
-  } catch {
-    /* fine */
-  }
-};
+export const saveSettings = (): void => save("settings", JSON.stringify(app.set));
 
 /** what the game shows you: against a regular it depends on their grade, the better they are the less help */
 export const help = () => (G?.mode === "cpu" && app.opp ? gradeOf(app.opp).help : FULL_HELP);

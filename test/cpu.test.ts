@@ -4,6 +4,7 @@ import * as g from "../src/core";
 import { planCpu, thinkAll } from "../src/cpu/brain";
 import { OPPONENTS, findOpponent } from "../src/data/regulars";
 import { GRADES } from "../src/data/grades";
+import { VENUES } from "../src/data/venues";
 import { setup } from "./helpers";
 
 describe("cpu", () => {
@@ -14,7 +15,7 @@ describe("cpu", () => {
       { c: "R", x: 500, y: 200 },
     ]);
     Object.assign(g.G, { mode: "cpu", turn: "R", colorOf: ["W", "R"] });
-    const job = thinkAll(planCpu("R", findOpponent("baron").ai));
+    const job = thinkAll(planCpu("R", findOpponent("kevin").ai));
     expect(job.bestS).toBeGreaterThan(50);
     expect(g.G.phase).toBe("aim");
     expect(g.ball(1).x).toBe(-600);
@@ -87,8 +88,12 @@ describe("roster", () => {
         expect(o.quips[k].length).toBeGreaterThan(0);
     }
     const ai = (id: string) => findOpponent(id).ai;
-    expect(ai("cas").angle).toBeLessThan(ai("baron").angle);
+    expect(ai("cas").angle).toBeLessThan(ai("kevin").angle);
     expect(ai("matthis").triangle).toBeGreaterThan(0);
     expect(OPPONENTS.filter((o) => o.power).map((o) => o.power)).toEqual(["tide", "stone", "thunder"]);
+    // every regular, so every grade, has a bar of their own
+    const bars = OPPONENTS.map((o) => o.venue);
+    expect(new Set(bars).size).toBe(OPPONENTS.length);
+    for (const v of bars) expect(VENUES.some((x) => x.id === v)).toBe(true);
   });
 });

@@ -1,5 +1,6 @@
-// Story mode: one chapter per bar, three regulars each. The counter counts all eighteen, legends included,
-// so whoever beats the fifteen knows a few are still out there.
+// Story mode: one chapter per part of town, three regulars each in a bar of their own. Pick a regular to read their
+// strengths and weaknesses, then play the next one or rematch one you beat. The counter counts all eighteen, legends
+// included, so whoever beats the fifteen knows a few are still out there.
 import { CHAPTERS, RUMOUR } from "../data/story";
 import { GRADES } from "../data/grades";
 import { OPPONENTS, findOpponent, gradeOf } from "../data/regulars";
@@ -7,11 +8,21 @@ import { me, unlocked, beatenCount, TOTAL, nextInStory, allRegularsBeaten } from
 import { paintPortrait } from "../people/portrait";
 import type { GradeId, Opponent } from "../types";
 import { $, esc, first } from "./dom";
+import { scoutHtml } from "./scout";
+import { t } from "../i18n";
 import { views } from "./menu";
 
-let shown: GradeId | null = null;
-/** what happens when you pick someone: play the next one, rematch a beaten one */
-export const story = { play: (_id: string): void => {}, rematch: (_id: string): void => {} };
+let shown: GradeId | null = null,
+  picked: string | null = null;
+/** what the big button does with the regular you picked: play the next one, rematch a beaten one */
+export const story = {
+  play: (_id: string): void => {},
+  rematch: (_id: string): void => {},
+  go(): void {
+    if (picked && me.beaten[picked]) story.rematch(picked);
+    else if (picked && picked === nextInStory()) story.play(picked);
+  },
+};
 
 const chapterState = (g: GradeId): "done" | "open" | "locked" =>
   !unlocked(g) ? "locked" : OPPONENTS.filter((o) => o.grade === g).every((o) => me.beaten[o.id]) ? "done" : "open";
@@ -26,19 +37,49 @@ export function renderStory(): void {
     const g = GRADES.find((x) => x.id === ch.grade)!,
       st = chapterState(ch.grade),
       hidden = ch.secret && !me.pearl;
-    return `<button class="c-chapter-tab c-chapter-tab--${g.id}${st === "done" ? " is-done" : ""}${st === "locked" ? " is-locked" : ""}" type="button" role="tab" data-grade="${g.id}" aria-selected="${g.id === shown}" style="--g:${g.color}"><i class="c-chapter-tab__gem"></i>${hidden ? "?" : `Ch. ${i + 1}`}</button>`;
+    return `<button class="c-chapter-tab c-chapter-tab--${g.id}${st === "done" ? " is-done" : ""}${st === "locked" ? " is-locked" : ""}" type="button" role="tab" data-grade="${g.id}" aria-selected="${g.id === shown}" style="--g:${g.color}"><i class="c-chapter-tab__gem"></i>${hidden ? "?" : esc(t("Ch. {n}", { n: i + 1 }))}</button>`;
   }).join("");
   for (const b of tabs.querySelectorAll<HTMLElement>("[data-grade]"))
     b.addEventListener("click", () => {
       shown = b.dataset.grade as GradeId;
+      picked = null;
       renderStory();
     });
+  const people = OPPONENTS.filter((o) => o.grade === shown),
+    open = chapterState(shown!) !== "locked" && !(shown === "pearl" && !me.pearl);
+  if (!picked || !people.some((o) => o.id === picked))
+    picked = open ? (people.find((o) => o.id === next) || people.find((o) => me.beaten[o.id]) || people[0]).id : null;
   chapter(shown!, next);
   counter();
   stats();
-  const btn = $<HTMLButtonElement>("#btnStory");
-  btn.disabled = !next;
-  $(".c-btn__label", btn).textContent = next ? `Play ${first(findOpponent(next).name)}` : "Everyone beaten";
+  const btn = $<HTMLButtonElement>("#btnStory"),
+    o = picked ? findOpponent(picked) : null,
+    beaten = !!o && !!me.beaten[o.id];
+  btn.disabled = !o || (!beaten && o.id !== next);
+  $(".c-btn__label", btn).textContent = !o
+    ? next
+      ? t("Play")
+      : t("Everyone beaten")
+    : beaten
+      ? t("Rematch {name}", { name: first(o.name) })
+      : o.id === next
+        ? t("Play {name}", { name: first(o.name) })
+        : t("Beat {name} first", { name: first(findOpponent(next!).name) });
+}
+
+/** a chapter's title, part of town and lines of story; locked ones keep their secret */
+function chapterText(gid: GradeId): { title: string; place: string; text: string } {
+  const ch = CHAPTERS.find((c) => c.grade === gid)!;
+  if (!(ch.secret && !me.pearl)) return { title: t(ch.title), place: t(ch.place), text: t(ch.text) };
+  return {
+    title: "???",
+    place: t("Somewhere"),
+    text: allRegularsBeaten()
+      ? t(RUMOUR)
+      : t(
+          "Three seats at the back stay empty. Beat everyone else in town, or enter the old arcade code: up, up, down, down, left, right, left, right, B, A. On a touch screen, swipe the arrows and tap twice.",
+        ),
+  };
 }
 
 function chapter(gid: GradeId, next: string | null): void {
@@ -48,35 +89,37 @@ function chapter(gid: GradeId, next: string | null): void {
     el = $("#chapter"),
     secret = ch.secret && !me.pearl;
   el.style.setProperty("--g", g.color);
-  const people = OPPONENTS.filter((o) => o.grade === gid);
-  let text = ch.text;
-  if (secret)
-    text = allRegularsBeaten()
-      ? RUMOUR
-      : "Three seats at the back stay empty. Beat everyone else in town and listen to the barman.";
-  el.innerHTML = `<div class="c-chapter__head"><h3 class="c-chapter__title">${esc(secret ? "???" : ch.title)}</h3><span class="c-chapter__venue">${esc(secret ? "Somewhere" : ch.place)}</span></div>
-    <p class="c-chapter__text">${esc(text)}</p>
-    <div class="c-chapter__people">${people.map((o) => person(o, st, next, !!secret)).join("")}</div>`;
+  const people = OPPONENTS.filter((o) => o.grade === gid),
+    o = picked && !secret && st !== "locked" ? findOpponent(picked) : null;
+  // every chapter's text sits in the same spot and the longest sets the height, so switching chapters never jumps
+  const intro = CHAPTERS.map((c) => {
+    const t = chapterText(c.grade);
+    return `<div class="c-chapter__intro"${c.grade === gid ? "" : ' aria-hidden="true" data-ghost'}><div class="c-chapter__head"><h3 class="c-chapter__title">${esc(t.title)}</h3><span class="c-chapter__venue">${esc(t.place)}</span></div><p class="c-chapter__text">${esc(t.text)}</p></div>`;
+  }).join("");
+  el.innerHTML = `<div class="c-chapter__intros">${intro}</div>
+    <div class="c-chapter__people">${people.map((p) => person(p, st, next, !!secret)).join("")}</div>
+    <div class="c-chapter__scout"><p class="c-chapter__who">${o ? `<b>${esc(o.name)}</b> · ${esc(t(o.nick))} · <i>${esc(t(o.style))}</i>` : esc(t("Beat the chapter before this one to meet them."))}</p>${scoutHtml(o)}</div>`;
   el.querySelectorAll<HTMLCanvasElement>("canvas[data-opp]").forEach((cv) => {
     const o = findOpponent(cv.dataset.opp);
     if (st === "locked" || secret) silhouette(cv, gradeOf(o).bg, gradeOf(o).color);
     else paintPortrait(cv, o);
   });
-  el.querySelectorAll<HTMLElement>("[data-pick]").forEach((b) =>
+  el.querySelectorAll<HTMLElement>("[data-pick]").forEach((b) => {
     b.addEventListener("click", () => {
-      const id = b.dataset.pick!;
-      if (me.beaten[id]) story.rematch(id);
-      else if (id === next) story.play(id);
-    }),
-  );
+      picked = b.dataset.pick!;
+      renderStory();
+      $<HTMLElement>(`#chapter [data-pick="${picked}"]`).focus();
+    });
+    b.addEventListener("dblclick", () => story.go());
+  });
 }
 
 function person(o: Opponent, st: string, next: string | null, secret: boolean): string {
   const beaten = !!me.beaten[o.id],
     isNext = o.id === next,
     hide = st === "locked" || secret;
-  const state = beaten ? "Beaten" : isNext ? "Next up" : hide ? "Locked" : "Waiting";
-  return `<button class="c-chapter__person${beaten ? " is-beaten" : ""}${isNext ? " is-next" : ""}${hide ? " is-locked" : ""}" type="button" data-pick="${o.id}" ${hide ? "disabled" : ""} title="${beaten ? "Rematch in freeplay" : ""}">
+  const state = t(beaten ? "Beaten" : isNext ? "Next up" : hide ? "Locked" : "Waiting");
+  return `<button class="c-chapter__person${beaten ? " is-beaten" : ""}${isNext ? " is-next" : ""}${hide ? " is-locked" : ""}" type="button" data-pick="${o.id}" aria-pressed="${o.id === picked}" ${hide ? "disabled" : ""}>
     <canvas class="c-chapter__face" width="64" height="64" data-opp="${o.id}"></canvas>
     <b class="c-chapter__name">${esc(hide ? "???" : first(o.name))}</b><span class="c-chapter__state">${state}</span></button>`;
 }
@@ -114,17 +157,17 @@ function counter(): void {
 
 function stats(): void {
   const cells: [number | string, string][] = [
-    [me.wins, "won"],
-    [me.losses, "lost"],
-    [me.best, "best streak"],
-    [me.crawled, "times under the table"],
-    [me.sentUnder, "sent under the table"],
-    [me.tokens, "tokens"],
+    [me.wins, t("won")],
+    [me.losses, t("lost")],
+    [me.best, t("best streak")],
+    [me.crawled, t("times under the table")],
+    [me.sentUnder, t("sent under the table")],
+    [me.tokens, t("tokens")],
   ];
   $("#stats").innerHTML = cells
     .map(
       ([n, l]) =>
-        `<div class="c-stats__cell"><b class="c-stats__num">${n}</b><span class="c-stats__label">${l}</span></div>`,
+        `<div class="c-stats__cell"><b class="c-stats__num">${n}</b><span class="c-stats__label">${esc(l)}</span></div>`,
     )
     .join("");
 }

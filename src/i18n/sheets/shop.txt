@@ -1,0 +1,401 @@
+# sheet: shop. The shop's shelves and the trophies you win from the regulars.
+
+= Cues
+v Keuen
+a ~
+
+= Clothes
+v Kleren
+a ~
+
+= Hats
+v Hoeden
+a Hoeden en petten
+
+= Accessories
+v Accessoires
+a Prullekes
+
+= Tables
+v Tafels
+a ~
+
+= Bars
+v Cafés
+a Cafeekes
+
+= House Cue
+v Huiskeu
+a Keu van 't hoeis
+
+= Maple shaft, dark butt. It has seen things.
+v Esdoorn schacht, donker handvat. Die heeft al wat meegemaakt.
+a Esdoorn schacht, donker handvat. Die heeft al veel gezien, zenne.
+
+= Redwood
+v Roodhout
+a ~
+
+= Warm red grain from butt to tip.
+v Warme rode nerf van handvat tot pomerans.
+a Worme rooi nerf van handvat tot pomerans.
+
+= Ebony & Brass
+v Ebben & Koper
+a ~
+
+= Black butt with a heavy brass joint.
+v Zwart handvat met een zware koperen verbinding.
+a Zwart handvat mee ne zware koperen verbinding.
+
+= Ivory Inlay
+v Ivoren Inleg
+a ~
+
+= Cream butt, gold rings, very old money.
+v Crème handvat, gouden ringen, heel oud geld.
+a ~
+
+= Neon
+v Neon
+a ~
+
+= Glows in a smoky room. Looks fast.
+v Licht op in een rokerige zaal. Ziet er snel uit.
+a Geeft licht in ne rokerige zoal. Ziet er rap uit.
+
+= Champion's Cue
+v Kampioenskeu
+a ~
+
+= Gold butt, black shaft. Only for people who keep coming back.
+v Gouden handvat, zwarte schacht. Alleen voor wie blijft terugkomen.
+a Gouden handvat, zwarte schacht. Alleen veur wie blijft terugkomen.
+
+= Win 10 freeplay matches
+v Win 10 matchen in vrij spel
+a Win 10 matchen in vrij sjpel
+
+= Trident
+v Drietand
+a ~
+
+= Sea green and pearl, it smells faintly of salt.
+v Zeegroen en parel, het ruikt vaag naar zout.
+a Zeegroen en parel, 't ruikt e bitteke noar zout.
+
+= Beat Neptune in freeplay
+v Versla Neptune in vrij spel
+a Klop Neptune in vrij sjpel
+
+= Lumberjack
+v Houthakker
+a ~
+
+= Red check flannel.
+v Rood geruite flanel.
+a ~
+
+= Bowling Shirt
+v Bowlinghemd
+a ~
+
+= Two-tone with a racing stripe.
+v Tweekleurig met een racestreep.
+a Twee kleuren mee ne racesjtreep.
+
+= Hawaiian Shirt
+v Hawaïhemd
+a ~
+
+= Loud flowers for loud shots.
+v Luide bloemen voor luide stoten.
+a Luide bloemen veur luide sjtoten.
+
+= Tuxedo
+v Smoking
+a ~
+
+= Black tie, for the championship.
+v Zwart strikje, voor het kampioenschap.
+a Zwart sjtrikske, veur 't kampioenschap.
+
+= Golden Jacket
+v Gouden Vest
+a ~
+
+= For beating a legend without dropping a game.
+v Om een legende te verslaan zonder een manche te verliezen.
+a Veur ne legende te kloppen zonder ene manche te verliezen.
+
+= Win 2-0 against a Legendary in freeplay
+v Win met 2-0 tegen een Legendarische in vrij spel
+a Win mee 2-0 tegen ne Legendarische in vrij sjpel
+
+= Headband
+v Hoofdband
+a Zweetband
+
+= Sweat is for winners.
+v Zweet is voor winnaars.
+a Zweet es veur winnaars.
+
+= Bandana
+v Bandana
+a ~
+
+= Red, tied at the back.
+v Rood, vanachter geknoopt.
+a ~
+
+= Top Hat
+v Hoge Hoed
+a ~
+
+= Raise the stakes, literally.
+v Leg de lat hoger, letterlijk.
+a Leg de lat hoger, letterlijk.
+
+= Golden Crown
+v Gouden Kroon
+a ~
+
+= For the one who beat all three legends at their own tables.
+v Voor wie alle drie de legenden aan hun eigen tafel versloeg.
+a Veur wie de drie legenden aan hun eigen tafel geklopt heeft.
+
+= Beat Neptune, Minerva and Jupiter in freeplay
+v Versla Neptune, Minerva en Jupiter in vrij spel
+a Klop Neptune, Minerva en Jupiter in vrij sjpel
+
+= Sunglasses
+v Zonnebril
+a ~
+
+= Nobody can read your aim.
+v Niemand kan je mikken lezen.
+a Niemand ziet woar ge noar mikt.
+
+= Gold Chain
+v Gouden Ketting
+a ~
+
+= Heavier than your cue. For sending someone under the table.
+v Zwaarder dan je keu. Om iemand onder de tafel te sturen.
+a Zwoarder dan ou keu. Veur iemand onder de tafel te sjturen.
+
+= Send a regular under the table in freeplay
+v Stuur een stamgast onder de tafel in vrij spel
+a Sjtuur ne sjtamgast onder de tafel in vrij sjpel
+
+= Mahogany
+v Mahonie
+a ~
+
+= The classic café table.
+v De klassieke cafétafel.
+a ~
+
+= Light Oak
+v Licht Eiken
+a ~
+
+= Pale oak rails and a teal cloth, like the new tables.
+v Bleke eiken banden en een blauwgroen laken, zoals de nieuwe tafels.
+a Bleke eiken banden en e blauwgroen laken, gelijk de nieuwe tafels.
+
+= Black Ebony
+v Zwart Ebben
+a ~
+
+= Black rails, deep red cloth.
+v Zwarte banden, dieprood laken.
+a ~
+
+= Gold Leaf
+v Bladgoud
+a ~
+
+= Gold rails and royal blue cloth. Earned under the table.
+v Gouden banden en koningsblauw laken. Verdiend onder de tafel.
+a ~
+
+= Send 3 regulars under the table in freeplay
+v Stuur 3 stamgasten onder de tafel in vrij spel
+a Sjtuur 3 sjtamgasten onder de tafel in vrij sjpel
+
+= The Sunken Tavern
+v De Gezonken Taverne
+a ~
+
+= Neptune's shipwreck.
+v Het scheepswrak van Neptune.
+a Neptune zijn scheepswrak.
+
+= The Stone Garden
+v De Stenen Tuin
+a De Sjtenen Hof
+
+= Minerva's marble garden.
+v De marmeren tuin van Minerva.
+a Minerva heur marmeren hof.
+
+= Beat Minerva in freeplay
+v Versla Minerva in vrij spel
+a Klop Minerva in vrij sjpel
+
+= The Storm Hall
+v De Stormzaal
+a De Sjtormzoal
+
+= Jupiter's hall, lightning included.
+v De zaal van Jupiter, bliksem inbegrepen.
+a Jupiter zijn zoal, bliksem inbegrepen.
+
+= Beat Jupiter in freeplay
+v Versla Jupiter in vrij spel
+a Klop Jupiter in vrij sjpel
+
+= Rookie Beanie
+v Groentjesmuts
+a ~
+
+= Jens left it on the stool. He won't be back for it.
+v Jens liet hem op de kruk liggen. Hij komt hem niet meer halen.
+a Jens heeft hem ip de kruk laten liggen. Hij komt hem nie meer hoalen.
+
+= Monique's Pearls
+v De Parels van Monique
+a Monique heur parels
+
+= Since 1974. She insisted.
+v Sinds 1974. Ze stond erop.
+a Sinds 1974. Ze sjtond erip.
+
+= Wim's Flat Cap
+v De Pet van Wim
+a Wim zijn klak
+
+= Smells faintly of the last round.
+v Ruikt vaag naar de laatste ronde.
+a Ruikt e bitteke noar den lesten toer.
+
+= Trucker Cap
+v Truckerspet
+a Truckersklak
+
+= From the truck stop, with a coffee stain.
+v Van de truckstop, met een koffievlek.
+a Van de truckstop, mee ne koffievlek.
+
+= Carom Cue
+v Carambolekeu
+a ~
+
+= Bart's old carom cue. It only knows cushions.
+v De oude carambolekeu van Bart. Ze kent alleen banden.
+a Bart zijn ouw carambolekeu. Ze kent alleen banden.
+
+= Bullseye Cue
+v Rooskeu
+a ~
+
+= Red, white and dead straight.
+v Rood, wit en kaarsrecht.
+a ~
+
+= Night Shift Shades
+v Nachtdienstbril
+a ~
+
+= For the walk home at sunrise.
+v Voor de wandeling naar huis bij zonsopgang.
+a Veur noar hoeis te wandelen as de zon opkomt.
+
+= Postman's Jacket
+v Postbodevest
+a ~
+
+= Thirty years of letters, one jacket.
+v Dertig jaar brieven, één vest.
+a Dertig joar brieven, ene vest.
+
+= Lawyer's Suit
+v Advocatenpak
+a ~
+
+= Dark, sharp and never fouls.
+v Donker, scherp en nooit een fout.
+a Donker, scherp en noait ne fout.
+
+= Velvet Table
+v Fluwelen Tafel
+a ~
+
+= The landlady's purple cloth, for your own bar.
+v Het paarse laken van de cafébazin, voor je eigen café.
+a 't Paars laken van de bazin, veur ou eigen cafeeke.
+
+= Professor's Bow Tie
+v Strikje van de Professor
+a Strikske van de Professor
+
+= Comes with a short lecture on spin.
+v Met een korte les over effect erbij.
+a Mee e kort lesje over effect derbij.
+
+= Lucky Seven Cue
+v Geluksnummer Zeven Keu
+a ~
+
+= Black and red, with a bet on every shot.
+v Zwart en rood, met een weddenschap op elke stoot.
+a Zwart en rood, mee ne weddenschap ip elke sjtoot.
+
+= Prodigy Cap
+v Wonderkindpet
+a Wonderkindklak
+
+= Gold, like the trophies he keeps filming.
+v Goud, zoals de trofeeën die hij blijft filmen.
+a Goud, gelijk de trofeeën die hij altijd moar filmt.
+
+= The Closer
+v De Afmaker
+a ~
+
+= Silver rings. It has never lost a decider.
+v Zilveren ringen. Heeft nog nooit een beslissende manche verloren.
+a Zilveren ringen. Heeft nog noait ne beslissende manche verloren.
+
+= Studio Table
+v Studiotafel
+a ~
+
+= TV blue, for trick shots in front of the cameras.
+v Tv-blauw, voor trickshots voor de camera's.
+a Tv-blauw, veur trickshots veur de camera's.
+
+= Tide Table
+v Getijdentafel
+a ~
+
+= Sea green cloth that never quite dries.
+v Zeegroen laken dat nooit helemaal droogt.
+a Zeegroen laken da noait helemoal droog wordt.
+
+= Minerva's Helmet
+v De Helm van Minerva
+a Minerva heur helm
+
+= Crested bronze. The gorgon stays on her shield.
+v Brons met een kam. De gorgo blijft op haar schild.
+a Brons mee ne kam. De gorgo blijft ip heur schild.
+
+= Laurel Wreath
+v Lauwerkrans
+a ~
+
+= Jupiter's own. A little singed.
+v Van Jupiter zelf. Een beetje geschroeid.
+a Van Jupiter zelf. E bitteke verschroeid.

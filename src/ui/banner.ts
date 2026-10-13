@@ -1,5 +1,6 @@
 // The big comic banner: GOAL!, FOUL!, GAME!, THUNDER! and friends, with confetti for the good ones.
 import { $ } from "./dom";
+import { t } from "../i18n";
 
 const CONFETTI = ["#ffd24a", "#ff3d2e", "#f7edd9", "#c6ff4d", "#ff7a1a", "#9b6bff"];
 export type BannerKind = "goal" | "gift" | "foul" | "time" | "game" | "match" | "crawl" | "pearl" | "power";
@@ -8,9 +9,10 @@ export function banner(kind: BannerKind, word: string, who = "", sub = "", ms = 
   const el = $("#banner");
   el.className = "c-banner";
   el.hidden = false;
-  $("#bWord").textContent = word;
+  // the word and the line under it are English keys, or already translated with names filled in
+  $("#bWord").textContent = t(word);
   $("#bWho").textContent = who;
-  $("#bSub").textContent = sub;
+  $("#bSub").textContent = t(sub);
   const conf = $("#confetti");
   conf.innerHTML = "";
   if (["goal", "game", "match", "gift", "pearl"].includes(kind)) {

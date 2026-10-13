@@ -1,0 +1,213 @@
+# sheet: settings. The settings dialog: sound and the jukebox, the picture effects, the game options.
+
+= {style} · {bpm} BPM · record {n} of {total}
+v {style} · {bpm} BPM · plaat {n} van {total}
+a ~
+
+= PS2 filter
+v PS2-filter
+a ~
+
+= Low resolution, dithered colour, scanlines
+v Lage resolutie, gerasterde kleuren, scanlijnen
+a ~
+
+= Bloom
+v Gloed
+a ~
+
+= Glow around lamps and bright spots
+v Gloed rond lampen en felle plekken
+a Gloed rond de lampen en felle plekskes
+
+= Lens flare
+v Lensflits
+a ~
+
+= Streaks and rings when a lamp is in view
+v Strepen en ringen als er een lamp in beeld is
+a Sjtrepen en ringen as er ne lamp in beeld es
+
+= Film grain
+v Filmkorrel
+a ~
+
+= Moving noise like an old camera
+v Bewegende ruis zoals een oude camera
+a Bewegende ruis gelijk ne ouwe camera
+
+= Vignette
+v Vignet
+a ~
+
+= Darker corners
+v Donkerdere hoeken
+a ~
+
+= Motion blur
+v Bewegingsonscherpte
+a ~
+
+= Smears fast camera moves
+v Vervaagt snelle camerabewegingen
+a ~
+
+= Chromatic aberration
+v Kleurschifting
+a ~
+
+= Colour fringes towards the edges
+v Kleurranden naar de randen toe
+a Kleurranden noar de kanten toe
+
+= Press again to delete everything
+v Druk nog eens om alles te wissen
+a Duw nog ne kier om alles te wissen
+
+= Delete my data
+v Wis mijn gegevens
+a Wis mijn gegevens
+
+= Jukebox
+v Jukebox
+a ~
+
+= Starts with your first tap or click
+v Start bij je eerste tik of klik
+a Begint bij ou eerste tik of klik
+
+= Sound
+v Geluid
+a ~
+
+= Picture
+v Beeld
+a ~
+
+= Game
+v Spel
+a Sjpel
+
+= Master
+v Algemeen
+a Alles
+
+= Balls and referee
+v Ballen en scheidsrechter
+a Bollen en scheids
+
+= Café ambience
+v Cafésfeer
+a Sfeer in 't café
+
+= Next record
+v Volgende plaat
+a ~
+
+= Records the jukebox plays
+v Platen die de jukebox speelt
+a Platen die de jukebox opleit
+
+= All
+v Alle
+a Allemoal
+
+= Swing
+v Swing
+a ~
+
+= Bossa
+v Bossa
+a ~
+
+= Waltz
+v Wals
+a ~
+
+= Ballad
+v Ballade
+a ~
+
+= Look
+v Uitzicht
+a ~
+
+= Clean
+v Strak
+a Proper
+
+= Cinema
+v Cinema
+a ~
+
+= Replays
+v Herhalingen
+a ~
+
+= Every goal and foul
+v Elk doelpunt en elke fout
+a Elke goal en elke fout
+
+= Fouls and wins
+v Fouten en overwinningen
+a Fouten en gewonnen manches
+
+= Off
+v Uit
+a ~
+
+= Table
+v Tafel
+a ~
+
+= Shot clock
+v Stootklok
+a Sjtootklok
+
+= One minute per shot (SP/3.2)
+v Eén minuut per stoot (SP/3.2)
+a Ene minuut per sjtoot (SP/3.2)
+
+= Table lines
+v Lijnen op de tafel
+a Lijnen ip tafel
+
+= Shooting lines and triangles on the cloth, when the grade allows them
+v Schietlijnen en driehoeken op het laken, als de graad ze toelaat
+a Schietlijnen en driehoeken ip 't laken, as de groad 't toelaat
+
+= Your player while you play
+v Je speler tijdens het spel
+a Ou mannetje tijdens 't sjpel
+
+= Show
+v Tonen
+a Loaten zien
+
+= See-through
+v Doorzichtig
+a ~
+
+= Hide
+v Verbergen
+a Wegsteken
+
+= Cloth in the grade colour
+v Laken in de kleur van de graad
+a Laken in de kleur van de groad
+
+= Off: the cloth of the regular's own table
+v Uit: het laken van de eigen tafel van de stamgast
+a Uit: 't laken van de sjtamgast zijn eigen tafel
+
+= Your data
+v Je gegevens
+a Ou gegevens
+
+= Your player, record, tokens, items and settings live only in this browser.
+v Je speler, palmares, jetons, spullen en instellingen staan alleen in deze browser.
+a Ou mannetje, palmares, jetons, gerief en instellingen sjtoan alleen in deze browser.
+
+= Privacy
+v Privacy
+a ~

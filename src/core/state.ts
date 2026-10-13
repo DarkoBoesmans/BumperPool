@@ -34,8 +34,9 @@ export const nameOf = (c: Color): string => G.names[G.colorOf.indexOf(c)];
 export const remaining = (c: Color): number =>
   G.balls.filter((b) => b.c === c && (b.on || G.queue.includes(b.id))).length;
 export const fouls = (c: Color): number => G.log.filter((e) => e.kind === "fout" && e.c === c).length;
-export function log(c: Color | null, kind: LogKind, text: string, why = ""): void {
-  G.log.push({ n: G.strokeNo, c, kind, text, why });
+/** a line for the referee's log: English text and why, with {placeholders} filled from v when it is shown */
+export function log(c: Color | null, kind: LogKind, text: string, why = "", v?: Record<string, string | number>): void {
+  G.log.push({ n: G.strokeNo, c, kind, text, why, ...(v && { v }) });
   if (G.log.length > 120) G.log.shift();
 }
 export const clone = (a: Ball[]): Ball[] => a.map((b) => ({ ...b }));
@@ -52,7 +53,7 @@ export function withCopy<T>(fn: () => T): T {
   }
 }
 
-/** balls the player at the table may shoot: Medusa's stone ball sits this turn out, unless it is all they have */
+/** balls the player at the table may shoot: Minerva's stone ball sits this turn out, unless it is all they have */
 export function shootable(c: Color): Ball[] {
   const mine = G.balls.filter((b) => b.on && b.c === c);
   const free = mine.filter((b) => !b.stone);

@@ -1,0 +1,252 @@
+# sheet: regulars, common: the market square. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Jens Janssens, The Rookie
+
+= The Rookie
+v Het Groentje
+a 't Groentje
+
+= Full power, no plan
+v Volle kracht, geen plan
+a Vol gas, gin plan
+
+= Fearless
+v Zonder schrik
+a Kent gin schrik
+
+= Shoots fast
+v Stoot snel
+a Sjtoot rap
+
+= Hits everything too hard
+v Speelt alles te hard
+a Sjpeelt alles te hard
+
+= Never plans ahead
+v Denkt nooit vooruit
+a Denkt noait vooruit
+
+= Started coming here last week, after he saw Kevin Kracht win on TV. Plays every ball at full power and checks his phone between shots.
+v Komt hier sinds vorige week, nadat hij Kevin Kracht op tv zag winnen. Speelt elke bal op volle kracht en kijkt op zijn gsm tussen de stoten door.
+a Komt hier sinds vorige week, nadat hij Kevin Kracht ip de tv zag winnen. Sjpeelt elke bol vol gas en zit ip zijn gsm tussen de sjtoten.
+
+= I watched Kevin Kracht on TV. How hard can it be?
+v Ik heb Kevin Kracht op tv gezien. Hoe moeilijk kan het zijn?
+a Kik heb Kevin Kracht ip de tv gezien. Hoe moeilijk kan da zijn?
+
+= Let's gooo!
+v Komaan!
+a Allei, komaan!
+
+= Did you see that?!
+v Hebt ge dat gezien?!
+a Hedde da gezien?!
+
+= Too easy.
+v Te gemakkelijk.
+a Veel te gemakkelijk.
+
+= Clip it, clip it!
+v Erin, erin!
+a ~
+
+= Wait, that counts as a foul?
+v Wacht, is dat een fout?
+a Wacht, es da ne fout?
+
+= My bad, my bad.
+v Mijn fout, mijn fout.
+a ~
+
+= The table is crooked.
+v De tafel staat scheef.
+a De tafel sjtoat scheef.
+
+= Lucky.
+v Chance.
+a Chance gehad.
+
+= Okay, okay.
+v Oké, oké.
+a ~
+
+= Haha! Rookie mistake!
+v Haha! Beginnersfout!
+a ~
+
+= Even I know that one.
+v Zelfs ik weet dat.
+a Zelfs kik weet da.
+
+= Rookie of the year, baby!
+v Groentje van het jaar, baby!
+a Groentje van 't joar, baby!
+
+= Best of five?
+v Drie winnende manches?
+a ~
+
+= I was warming up.
+v Ik was aan het opwarmen.
+a Kik was nog aan 't opwarmen.
+
+# Monique Moens, Since 1974
+
+= Since 1974
+v Sinds 1974
+a ~
+
+= Gentle little taps
+v Zachte tikjes
+a Zachte tikskes
+
+= Soft touch near the goal
+v Zacht gevoel bij het doel
+a Zacht gevoel bij 't doel
+
+= Uses the cushions
+v Gebruikt de banden
+a ~
+
+= Shaky aim
+v Bibberig mikwerk
+a Mikt e bitteke bibberig
+
+= Too soft from far away
+v Te zacht van ver
+a ~
+
+= Has had the same stool since 1974. Plays gentle little shots and tells you about her grandchildren while you aim.
+v Zit sinds 1974 op dezelfde kruk. Speelt zachte tikjes en vertelt over haar kleinkinderen terwijl jij mikt.
+a Zit sinds 1974 ip dezelfde kruk. Sjpeelt zachte tikskes en vertelt over heur kleinkinders terwijl gij mikt.
+
+= Oh, a new face! Sit, sit.
+v Oh, een nieuw gezicht! Zet u, zet u.
+a Oh, e nieuw gezichte! Zet ou, zet ou.
+
+= My late husband loved this table.
+v Mijn zaliger man zag deze tafel zo graag.
+a Mijne zaliger zag deze tafel zo geiren.
+
+= Oh! Would you look at that.
+v Oh! Kijk nu eens.
+a Oh! Kijk nu ne kier.
+
+= Still got it, dear.
+v Ik kan het nog altijd, schat.
+a Kik kan 't nog altijd, schatteke.
+
+= Oh dear. My glasses.
+v Och here. Mijn bril.
+a Och Here. Mijne bril.
+
+= That one slipped.
+v Die is uitgeschoten.
+a ~
+
+= Well done, sweetheart.
+v Goed gedaan, schat.
+a Goe gedoan, schatteke.
+
+= Very nice, very nice.
+v Heel schoon, heel schoon.
+a Schoon, schoên.
+
+= Tut tut.
+v Tss tss.
+a ~
+
+= Ooh, the referee saw that.
+v Oei, de scheidsrechter heeft dat gezien.
+a Oei, de scheids heeft da gezien.
+
+= Another round for everyone!
+v Nog een toertje voor iedereen!
+a Nog nen toer veur iedereen!
+
+= You remind me of my grandson.
+v Ge doet me denken aan mijn kleinzoon.
+a Ge doet mij peizen aan mijne kleinzoon.
+
+# Wim Wuyts, The Wobbler
+
+= The Wobbler
+v De Wiebelaar
+a ~
+
+= Steady, until the third sip
+v Stabiel, tot de derde slok
+a Sjtabiel, tot den derde slok
+
+= Steady hand, at first
+v Vaste hand, in het begin
+a Vaste hand, in 't begin
+
+= Lucky streaks
+v Gelukkige reeksen
+a Chance in reeks
+
+= Shakier with every sip
+v Beviger met elke slok
+a Bibberiger mee elke slok
+
+= Forgets to defend
+v Vergeet te verdedigen
+a ~
+
+= Comes in for one beer and stays until closing. His first game is decent. After a few sips his hand starts to wander, and sometimes that is exactly what the shot needed.
+v Komt binnen voor één pint en blijft tot sluitingstijd. Zijn eerste partij is degelijk. Na een paar slokken begint zijn hand te dwalen, en soms is dat net wat de stoot nodig had.
+a Komt binnen veur ene pint en blijft tot den toog toe goat. Zijn eerste partij es nie slecht. Na e poar slokken begint zijn hand te zwalpen, en soms es da zjuust wa de sjtoot nodig had.
+
+= One game. Then I'm going home. Probably.
+v Eén partijtje. Dan ga ik naar huis. Waarschijnlijk.
+a Ene partij. Dan goa 'k noar hoeis. Woarschijnlijk.
+
+= Marcel! Another one!
+v Marcel! Nog eentje!
+a Marcel! Nog ene!
+
+= I meant that. Mostly.
+v Dat was gemeend. Grotendeels.
+a Da was gemeend. Toch half.
+
+= Who needs to aim anyway?
+v Wie moet er nu mikken?
+a Wie moet er nu nog mikken?
+
+= Ha! Hic.
+v Ha! Hik.
+a ~
+
+= The floor moved.
+v De vloer bewoog.
+a De vloer es verschoven.
+
+= Did somebody tilt the table?
+v Heeft er iemand aan de tafel gedraaid?
+a Hee't er iemand aan de tafel gedroaid?
+
+= Nice. You buying?
+v Schoon. Trakteert gij?
+a Schoon. Geefde gij nen toer?
+
+= Ooh, smooth.
+v Oei, soepel.
+a ~
+
+= Welcome to my world!
+v Welkom in mijn wereld!
+a ~
+
+= Haha, cheers to that.
+v Haha, santé daarop.
+a Haha, santé doarip.
+
+= Drinks are on... someone!
+v De pinten zijn voor... iemand!
+a De pinten zen veur... iemand!
+
+= I'll get you next round. Which round is it?
+v Volgende ronde heb ik u. Welke ronde is het?
+a Volgenden toer hem 'k ou. Welken toer es 't?

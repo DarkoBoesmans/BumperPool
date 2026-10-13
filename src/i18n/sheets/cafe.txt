@@ -1,0 +1,125 @@
+# sheet: cafe. The boards, posters and signs on the café walls.
+
+= Another one for {name}, on the house.
+v Nog eentje voor {name}, van het huis.
+a Nog ene veur {name}, van 't hoeis.
+
+= {a} vs {b}
+v {a} tegen {b}
+a ~
+
+= REGULAR OF THE MONTH
+v STAMGAST VAN DE MAAND
+a SJTAMGAST VAN DE MOAND
+
+= TONIGHT · GAME {n}
+v VANAVOND · MANCHE {n}
+a VANOAVOND · MANCHE {n}
+
+= ON THE CUE
+v AAN DE KEU
+a ~
+
+= best of three · first to sink five
+v twee winnende manches · eerst vijf erin
+a twee winnende manches · eerst vijf erin, en rap
+
+= FOUL BOOK
+v FOUTENBOEK
+a ~
+
+= clean
+v proper
+a ~
+
+= Last: {text}
+v Laatste: {text}
+a Leste: {text}
+
+= HOUSE RULES
+v HUISREGELS
+a REGELS VAN 'T HOEIS
+
+= TAP BILLIARDS · SINCE 1932
+v TAFELBILJART · SINDS 1932
+a ~
+
+= MARCEL'S
+v MARCEL ZIJN
+a MARCEL ZIJNE
+
+= RESERVE
+v RESERVE
+a ~
+
+= THE HOUSE WHISKY
+v DE WHISKY VAN HET HUIS
+a DE WHISKY VAN 'T HOEIS
+
+= as smooth as a soft shot
+v zo zacht als een zachte stoot
+a zo zacht as ne zachte sjtoot
+
+= SLOW BURN
+v TRAAG VUUR
+a ~
+
+= ROLLED IN THE BACK ROOM
+v GEROLD IN HET ACHTERZAALTJE
+a GEROLD IN 'T ACHTERZOALTJE
+
+= FOR THE LONG GAME
+v VOOR DE LANGE PARTIJ
+a VEUR DE LANGE PARTIJ
+
+= LEGENDS
+v LEGENDEN
+a ~
+
+= NIGHT
+v AVOND
+a OAVOND
+
+= THEY ARE IN TONIGHT
+v ZE ZIJN ER VANAVOND
+a ZE ZEN ER VANOAVOND
+
+= ONLY FOR THOSE WHO
+v ALLEEN VOOR WIE
+a ALLEEN VEUR WIE
+
+= PEARLESCENT TABLE OPEN
+v PARELMOEREN TAFEL OPEN
+a ~
+
+= KNOW THE OLD CODE
+v DE OUDE CODE KENT
+a DEN OUDE CODE KENT
+
+= WALL OF
+v MUUR VAN
+a ~
+
+= SHAME
+v SCHAAMTE
+a SCHANDE
+
+= crawled under the table
+v kroop onder de tafel
+a es onder de tafel gekropen
+
+= Nobody yet.
+v Nog niemand.
+a Nog niemand, zenne.
+
+= Keep it that way.
+v Houden zo.
+a Hou da zo.
+
+= 5-0 by {name}
+v 5-0 door {name}
+a 5-0 door {name}, oei
+
+= Tjoepbiljart table in a café
+v Tjoepbiljarttafel in een café
+a Tjoepbiljarttafel in e cafeeke

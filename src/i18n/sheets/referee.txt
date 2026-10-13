@@ -1,0 +1,366 @@
+# sheet: referee. What the referee writes in the log, the fouls, the house rules and the legends' powers.
+# Same words as the table sheet. {placeholders} are filled in by the code: keep them, in any order.
+
+= Touch
+v Tik
+a Tikske
+
+= Soft
+v Zacht
+a Zachtjes
+
+= Medium
+v Middel
+a ~
+
+= Hard
+v Hard
+a ~
+
+= Foul by {name}: {foul}.
+v Fout van {name}: {foul}.
+a ~
+
+= Goal for {name}. Shoot again.
+v Doelpunt voor {name}. Nog eens spelen.
+a Goal veur {name}. Nog ne kier!
+
+= {n} goals in one shot for {name}. Shoot again.
+v {n} doelpunten in één stoot voor {name}. Nog eens spelen.
+a {n} goals in ene sjtoot veur {name}. Nog ne kier!
+
+= A ball of {name} went into a goal.
+v Een bal van {name} ging in een doel.
+a Ne bol van {name} es erin gegaan.
+
+= {n} balls of {name} went into a goal.
+v {n} ballen van {name} gingen in een doel.
+a {n} bollen van {name} zen erin gegaan.
+
+= Knocking an opponent's ball into any goal scores it for them. (SP/7.2)
+v Wie een bal van de tegenstander in een doel speelt, scoort voor die tegenstander. (SP/7.2)
+a Speelde ne bol van den andere erin, dan telt da veur hem. (SP/7.2)
+
+= Foul: {name}'s ball went into the wrong goal.
+v Fout: de bal van {name} ging in het verkeerde doel.
+a Fout: de bol van {name} es in 't verkeerd doel gegaan.
+
+= Your balls only count in the goal at the far end. It goes to a penalty spot, but you also scored, so you keep shooting. (SP/7.3)
+v Je ballen tellen alleen in het doel aan de overkant. Die bal gaat naar een strafplek, maar je scoorde ook, dus je blijft spelen. (SP/7.3)
+a Ou bollen tellen alleen in 't doel aan den overkant. Die bol moet ip ne sjtrafplek, mor ge hebt ook gescoord, dus ge meugt blijven spelen. (SP/7.3)
+
+= Your balls only count in the goal at the far end. It goes to a penalty spot and your turn ends. (SP/7.2)
+v Je ballen tellen alleen in het doel aan de overkant. Die bal gaat naar een strafplek en je beurt is voorbij. (SP/7.2)
+a Ou bollen tellen alleen in 't doel aan den overkant. Die bol moet ip ne sjtrafplek en ou beurt es gedaan. (SP/7.2)
+
+= Golden goal: {name} wins the game.
+v Gouden goal: {name} wint de manche.
+a Gouden goal: {name} pakt de manche.
+
+= No goal. {name} to play.
+v Geen doelpunt. {name} is aan de beurt.
+a Niks. {name} es aan de beurt.
+
+= Foul: {name}'s ball stopped in front of a guarded goal.
+v Fout: de bal van {name} bleef liggen voor een bewaakt doel.
+a Fout: de bol van {name} ligt veur e bewaakt doel.
+
+= {why} {next} (SP/9.5)
+v {why} {next} (SP/9.5)
+a ~
+
+= Foul: {name} left a ball parked in the big triangle.
+v Fout: {name} liet een bal staan in de grote driehoek.
+a Fout: {name} heeft ne bol laten liggen in de grote driehoek.
+
+= Foul: {name} ran out of time.
+v Fout: de tijd van {name} is op.
+a Fout: {name} was te loat. Den tijd es om.
+
+= You have one minute per shot. Your turn ends. (SP/3.2)
+v Je hebt één minuut per stoot. Je beurt is voorbij. (SP/3.2)
+a Ge hebt ene minuut per sjtoot. Ou beurt es gedaan. (SP/3.2)
+
+= {name}'s last ball goes to a penalty spot.
+v De laatste bal van {name} gaat naar een strafplek.
+a Den leste bol van {name} moet ip ne sjtrafplek.
+
+= Out of time with the last ball in the attack triangle. (SP/8.2.3)
+v Tijd op met de laatste bal in de aanvalsdriehoek. (SP/8.2.3)
+a Den tijd om mee den leste bol in de aanvalsdriehoek. (SP/8.2.3)
+
+= {name}'s ball nearest the goal goes to a penalty spot.
+v De bal van {name} die het dichtst bij het doel ligt, gaat naar een strafplek.
+a De bol van {name} die 't dichtst bij 't doel ligt, moet ip ne sjtrafplek.
+
+= Out of time in frame play. (SP/3.2)
+v Tijd op tijdens het kaderspel. (SP/3.2)
+a Den tijd om in 't kaderspel. (SP/3.2)
+
+= white
+v wit
+a ~
+
+= red
+v rood
+a ~
+
+= Foul: second faulty opening shot by {name}.
+v Fout: tweede foute openingsstoot van {name}.
+a Fout: twee kier mis bij den opening veur {name}.
+
+= The opening ball must hit your left cushion first. Turn over and the ball goes to a penalty spot. (SP/5.1)
+v De openingsbal moet eerst je linkerband raken. Beurt voorbij en de bal gaat naar een strafplek. (SP/5.1)
+a Den openingsbol moet eerst ou linkse band raken. Beurt gedaan en de bol moet ip ne sjtrafplek. (SP/5.1)
+
+= {name}'s opening shot missed the left cushion. Set up again.
+v De openingsstoot van {name} miste de linkerband. Opnieuw opstellen.
+a {name} heeft de linkse band gemist bij den opening. Nog ne kier opsjtellen.
+
+= Play the middle ball softly off your left cushion first. (SP/5.1)
+v Speel de middelste bal zacht, eerst tegen je linkerband. (SP/5.1)
+a Speel de middelste bol zachtjes, eerst tegen ou linkse band. (SP/5.1)
+
+= Both opening balls went in and both count.
+v Beide openingsballen gingen erin en ze tellen allebei.
+a De twee openingsbollen zen erin en ze tellen alle twee.
+
+= Shoot the opening again with another ball. (SP/5.1)
+v Speel de opening opnieuw met een andere bal. (SP/5.1)
+a Speel den opening nog ne kier mee nen andere bol. (SP/5.1)
+
+= {name}'s opening ball went straight in. {name} starts.
+v De openingsbal van {name} ging er meteen in. {name} begint.
+a Den openingsbol van {name} es er direct in. {name} begint.
+
+= {name} starts.
+v {name} begint.
+a ~
+
+= White stopped {w} mm from its goal, red {r} mm. Closest starts. (SP/5.1)
+v Wit lag {w} mm van zijn doel, rood {r} mm. Wie het dichtst ligt, begint. (SP/5.1)
+a Wit lag {w} mm van zijn doel, rood {r} mm. Wie 't dichtst ligt, begint. (SP/5.1)
+
+= Game {n}: {w} plays white, {r} plays red.
+v Manche {n}: {w} speelt met wit, {r} met rood.
+a Manche {n}: {w} speelt mee wit, {r} mee rood.
+
+= Deciding game. Colours as in game 1.
+v Beslissende manche. Kleuren zoals in manche 1.
+a De beslissende manche. Kleuren gelijk in manche 1.
+
+= Reminder: {name}'s ringed ball must leave the big triangle this turn.
+v Let op: de bal met de ring van {name} moet deze beurt uit de grote driehoek.
+a Oppassen: de bol mee de ring van {name} moet deze beurt uit de grote driehoek.
+
+= Reminder: one of {name}'s {n} ringed balls must leave the big triangle this turn.
+v Let op: één van de {n} ballen met een ring van {name} moet deze beurt uit de grote driehoek.
+a Oppassen: ene van de {n} bollen mee nen ring van {name} moet deze beurt uit de grote driehoek.
+
+= Play it out or score it, directly or off another ball. Only a ball your last shot of a turn put there may stay until your next turn. (SP/9.1)
+v Speel hem eruit of scoor hem, rechtstreeks of via een andere bal. Alleen een bal die je laatste stoot van een beurt daar legde, mag blijven tot je volgende beurt. (SP/9.1)
+a Speel hem eruit of scoor hem, rechtstreeks of via nen andere bol. Alleen ne bol die ou leste sjtoot daar gelegd heeft, mag blijven liggen tot ou volgende beurt. (SP/9.1)
+
+= Frame play: every shot must now send a ball out of its frame.
+v Kaderspel: elke stoot moet nu een bal uit zijn kader spelen.
+a Kaderspel: elke sjtoot moet nu ne bol uit zijn kader sjtampen.
+
+= A player is down to one ball. The lines on the cloth mark the frames; from the attack triangle you need not change frames. (SP/10)
+v Een speler heeft nog maar één bal. De lijnen op het laken tonen de kaders; vanuit de aanvalsdriehoek hoef je niet van kader te wisselen. (SP/10)
+a Ene speler heeft nog mor enen bol. De lijnen ip 't laken zijn de kaders; vanuit de aanvalsdriehoek moette nie van kader veranderen. (SP/10)
+
+= {name}'s ball placed on penalty spot {n}.
+v De bal van {name} ligt op strafplek {n}.
+a De bol van {name} ligt ip sjtrafplek {n}.
+
+= {a} put {b}'s ball on penalty spot {n}.
+v {a} legde de bal van {b} op strafplek {n}.
+a {a} legt de bol van {b} ip sjtrafplek {n}.
+
+= {name} wins game {n}. Match won {a}-{b}.
+v {name} wint manche {n}. Match gewonnen met {a}-{b}.
+a {name} pakt manche {n}. De match es binnen mee {a}-{b}.
+
+= {name} wins game {n}.
+v {name} wint manche {n}.
+a {name} pakt manche {n}.
+
+= Own ball first is a foul
+v Eerst je eigen bal raken is fout
+a Eerst ou eigen bol raken es fout
+
+= Hit one of your own balls first and the turn passes. (SP/8.1)
+v Raak je eerst een van je eigen ballen, dan gaat de beurt over. (SP/8.1)
+a Raakte eerst ene van ou eigen bollen, dan es ou beurt gedaan. (SP/8.1)
+
+= No hard shots at goal from the corners
+v Geen harde stoten op doel vanuit de hoeken
+a Gene harde sjtoten ip 't doel vanuit de hoeken
+
+= Below the shooting line, a shot straight at the goal must be soft. (SP/7.4)
+v Onder de schietlijn moet een stoot recht op doel zacht zijn. (SP/7.4)
+a Onder de schietlijn moet ne sjtoot recht ip 't doel zachtjes zijn. (SP/7.4)
+
+= No hard flyers
+v Geen harde vliegers
+a Gene harde vliegers
+
+= No hard shot from the strip along the long cushions. (SP/6.7)
+v Geen harde stoot vanuit de strook langs de lange banden. (SP/6.7)
+a Gene harde sjtoot vanuit de sjtrook langs de lange banden. (SP/6.7)
+
+= Leave the big triangle
+v Uit de grote driehoek
+a Weg uit de grote driehoek
+
+= A ball that starts your turn in the big triangle must leave it. (SP/9)
+v Een bal die je beurt begint in de grote driehoek, moet eruit. (SP/9)
+a Ne bol die in de grote driehoek ligt als ou beurt begint, moet eruit. (SP/9)
+
+= Frame play
+v Kaderspel
+a ~
+
+= Once a player is down to one ball, every shot must send a ball out of its frame. (SP/10)
+v Zodra een speler nog één bal heeft, moet elke stoot een bal uit zijn kader spelen. (SP/10)
+a Van zohaast ene speler nog mor enen bol heeft, moet elke sjtoot ne bol uit zijn kader sjpelen. (SP/10)
+
+= Spin allowed
+v Effect toegestaan
+a Effect meug
+
+= Off: everybody plays centre ball, no draw, follow or side.
+v Uit: iedereen speelt de bal in het midden, geen trek-, door- of zijeffect.
+a Uit: iedereen speelt in 't midden van de bol, gene trek, gene doorloop, gene zijkant.
+
+= Golden goal
+v Gouden goal
+a ~
+
+= The first goal of a game wins that game.
+v Het eerste doelpunt van een manche wint die manche.
+a Den eerste goal van ne manche pakt die manche.
+
+= high tide
+v springtij
+a 't hoog water
+
+= HIGH TIDE!
+v SPRINGTIJ!
+a HOOG WATER!
+
+= A wave carries Neptune's balls closer to his goal
+v Een golf duwt de ballen van Neptune dichter bij zijn doel
+a Ne golf sleurt de bollen van Neptune dichter bij zijn doel
+
+= Once per game the Lord of the Sea sends a wave across the cloth.
+v Eén keer per manche stuurt de Heer van de Zee een golf over het laken.
+a Ene kier per manche sjtuurt de Baas van de Zee ne golf over 't laken.
+
+= stone shield
+v stenen schild
+a ~
+
+= STONE SHIELD!
+v STENEN SCHILD!
+a ~
+
+= Your ball nearest your goal is stone until your turn ends
+v Je bal het dichtst bij je doel is van steen tot je beurt voorbij is
+a Ou bol 't dichtst bij ou doel es van sjteen tot ou beurt gedaan es
+
+= Once per game Minerva turns the gorgon on her shield to one of your balls. It can't be played and doesn't budge when hit.
+v Eén keer per manche richt Minerva de gorgo op haar schild naar een van je ballen. Die kun je niet spelen en hij verroert niet als hij geraakt wordt.
+a Ene kier per manche draait Minerva de gorgo ip heur schild noar ene van ou bollen. Die kunde nie sjpelen en hij verroert nie as ge hem raakt.
+
+= thunder
+v donder
+a ~
+
+= THUNDER!
+v DONDER!
+a DONDER EN BLIKSEM!
+
+= Lightning clears the balls in front of Jupiter's goal
+v De bliksem veegt de ballen voor het doel van Jupiter weg
+a De bliksem kuist de bollen veur 't doel van Jupiter weg
+
+= Once per game a bolt comes down in front of his goal.
+v Eén keer per manche slaat de bliksem in voor zijn doel.
+a Ene kier per manche sloat de bliksem in veur zijn doel.
+
+= {name} used a legend's power: {power}.
+v {name} gebruikte de kracht van een legende: {power}.
+a {name} haalt zijn legendekracht boven: {power}.
+
+= Own ball first
+v Eigen bal eerst
+a Eigen bol eerst
+
+= Your cue ball touched one of your own balls before anything else. You must bounce off a cushion, a post or an opponent's ball first, otherwise you could simply push your own balls to the goal.
+v Je speelbal raakte eerst een van je eigen ballen. Je moet eerst een band, een dop of een bal van de tegenstander raken, anders kun je je eigen ballen gewoon naar het doel duwen.
+a Ou speelbol raakte eerst ene van ou eigen bollen. Ge moet eerst ne band, nen dop of ne bol van den andere raken, anders kunde ou bollen gewoon noar 't doel duwen.
+
+= Hard shot at goal from the corner
+v Harde stoot op doel vanuit de hoek
+a Harde sjtoot ip 't doel vanuit den hoek
+
+= This ball lay below the shooting line, clear of it, in the corner next to the goal, and went straight for the goal hard. From there a direct goal attempt must be soft. Hard means faster than 1.5 m/s, enough to run more than three table lengths. Playing it hard at a ball or off a cushion is fine, and the small triangle right in front of the goal allows a hard shot at goal.
+v Deze bal lag onder de schietlijn, er helemaal onder, in de hoek naast het doel, en ging hard recht op doel. Van daaruit moet een rechtstreekse poging zacht zijn. Hard is sneller dan 1,5 m/s, genoeg om meer dan drie tafellengtes te rollen. Hard op een bal of via een band mag wel, en vanuit de kleine driehoek vlak voor het doel mag je hard op doel spelen.
+a Deze bol lag onder de schietlijn, er helemoal onder, in den hoek naast 't doel, en ging hard recht ip 't doel af. Van doar moet ne rechtstreekse poging zachtjes zijn. Hard es rapper dan 1,5 m/s, genoeg om meer dan drie keer de tafel over te rollen. Hard ip nen bol of via ne band meug wel, en vanuit de kleine driehoek vlak veur 't doel meugde hard ip doel sjpelen.
+
+= Flying along the cushion
+v Vliegen langs de band
+a ~
+
+= This ball lay in the 92 mm strip along a long cushion (touching the line counts) and was played hard (faster than 1.5 m/s, enough to run more than three table lengths) into or along that cushion. That is a flyer, and flyers are not allowed. Hard away from the cushion, into the table, is fine.
+v Deze bal lag in de strook van 92 mm langs een lange band (op de lijn telt mee) en werd hard (sneller dan 1,5 m/s, genoeg om meer dan drie tafellengtes te rollen) tegen of langs die band gespeeld. Dat is een vlieger, en vliegers mogen niet. Hard van de band weg, de tafel in, mag wel.
+a Deze bol lag in de sjtrook van 92 mm langs ne lange band (ip de lijn telt mee) en ge hebt hem hard (rapper dan 1,5 m/s, genoeg om meer dan drie keer de tafel over te rollen) tegen of langs die band gesjpeeld. Da es ne vlieger, en vliegers meugen nie. Hard van de band weg, de tafel in, da meug wel.
+
+= Parked in the triangle
+v Geparkeerd in de driehoek
+a ~
+
+= This ball lay in the big triangle in front of the goal when the turn began, and it never left during the turn. A ball may only stay there until your next turn if the last shot of a turn put it there. On the line counts as inside.
+v Deze bal lag in de grote driehoek voor het doel toen de beurt begon, en is er de hele beurt niet uit geweest. Een bal mag daar alleen blijven tot je volgende beurt als de laatste stoot van een beurt hem daar legde. Op de lijn telt als binnen.
+a Deze bol lag in de grote driehoek veur 't doel as de beurt begost, en es er heel de beurt nie uit geweest. Ne bol meug doar alleen blijven liggen tot ou volgende beurt as de leste sjtoot van ne beurt hem doar gelegd heeft. Ip de lijn telt as binnen.
+
+= Parked in front of a guarded goal
+v Geparkeerd voor een bewaakt doel
+a Geparkeerd veur e bewaakt doel
+
+= Your opponent guards this goal with a ball in the small triangle. While it stays there after your shot, your ball may not end up in the big triangle. On the line counts as inside.
+v Je tegenstander bewaakt dit doel met een bal in de kleine driehoek. Zolang die daar na je stoot blijft liggen, mag je bal niet in de grote driehoek eindigen. Op de lijn telt als binnen.
+a Den andere bewaakt dit doel mee ne bol in de kleine driehoek. Zolang die doar na ou sjtoot blijft liggen, meug ou bol nie in de grote driehoek blijven sjtoan. Ip de lijn telt as binnen.
+
+= No ball left its frame
+v Geen bal verliet zijn kader
+a Gene bol es uit zijn kader gegaan
+
+= Frame play: a player is down to one ball, so every shot must send at least one ball out of the frame it lay in. The lines on the cloth mark the 15 frames. A ball on a line leaves its frame by leaving the line, and a ball that drops into a goal has left too. From the attack triangle you need not change frames.
+v Kaderspel: een speler heeft nog maar één bal, dus elke stoot moet minstens één bal uit het kader spelen waarin hij lag. De lijnen op het laken tonen de 15 kaders. Een bal op een lijn verlaat zijn kader door van de lijn te gaan, en een bal die in een doel valt, heeft zijn kader ook verlaten. Vanuit de aanvalsdriehoek hoef je niet van kader te wisselen.
+a Kaderspel: ene speler heeft nog mor enen bol, dus elke sjtoot moet minstens ene bol uit zijn kader sjpelen. De lijnen ip 't laken zijn de 15 kaders. Ne bol ip ne lijn es uit zijn kader as hij van de lijn af es, en ne bol die in 't doel valt, es er ook uit. Vanuit de aanvalsdriehoek moette nie van kader veranderen.
+
+= Wrong goal
+v Verkeerd doel
+a Verkeerd doel, manneke
+
+= Your balls only count in the goal at the far end, the one with the ring in your colour. This one dropped into the goal behind you.
+v Je ballen tellen alleen in het doel aan de overkant, dat met de ring in jouw kleur. Deze viel in het doel achter je.
+a Ou bollen tellen alleen in 't doel aan den overkant, da mee de ring in ou kleur. Deze es in 't doel achter ou gevallen.
+
+= Bad opening shot
+v Foute openingsstoot
+a Mislukten opening
+
+= The opening ball has to hit your own left cushion first, before anything else.
+v De openingsbal moet eerst je eigen linkerband raken, voor al de rest.
+a Den openingsbol moet eerst ou eigen linkse band raken, veur al de rest.
+
+= Out of time
+v Tijd op
+a Den tijd es om
+
+= You get one minute per shot. The clock ran out.
+v Je krijgt één minuut per stoot. De klok is afgelopen.
+a Ge krijgt ene minuut per sjtoot. De klok es af.

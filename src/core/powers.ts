@@ -1,6 +1,7 @@
 // The Pearlescent legends bend the table once per game, just before one of their own shots.
-// Tide (Poseidon): a wave carries their balls towards their goal. Stone (Medusa): your ball nearest your goal turns
-// to stone for your next turn. Thunder (Thor): lightning in front of their goal throws your blockers clear.
+// Tide (Neptune): a wave carries their balls towards their goal. Stone (Minerva's gorgon shield): your ball nearest
+// your goal turns to stone for your next turn. Thunder (Jupiter): lightning in front of their goal throws your
+// blockers clear.
 // The moves are worked out here and animated by the renderer; the referee never sees them.
 import type { Ball, Color } from "../types";
 import { GOAL_X, att, loc, other } from "./table";
@@ -13,21 +14,24 @@ export interface Move {
   from: { x: number; y: number };
   to: { x: number; y: number };
 }
-export const POWER_INFO: Record<Power, { word: string; sub: string; why: string }> = {
+export const POWER_INFO: Record<Power, { name: string; word: string; sub: string; why: string }> = {
   tide: {
+    name: "high tide",
     word: "HIGH TIDE!",
-    sub: "A wave carries Poseidon's balls closer to his goal",
-    why: "Once per game the Lord of the Deep sends a wave across the cloth.",
+    sub: "A wave carries Neptune's balls closer to his goal",
+    why: "Once per game the Lord of the Sea sends a wave across the cloth.",
   },
   stone: {
-    word: "STONE STARE!",
+    name: "stone shield",
+    word: "STONE SHIELD!",
     sub: "Your ball nearest your goal is stone until your turn ends",
-    why: "Once per game Medusa looks at one of your balls. It can't be played and doesn't budge when hit.",
+    why: "Once per game Minerva turns the gorgon on her shield to one of your balls. It can't be played and doesn't budge when hit.",
   },
   thunder: {
+    name: "thunder",
     word: "THUNDER!",
-    sub: "Lightning clears the balls in front of Thor's goal",
-    why: "Once per game the hammer comes down in front of his goal.",
+    sub: "Lightning clears the balls in front of Jupiter's goal",
+    why: "Once per game a bolt comes down in front of his goal.",
   },
 };
 
@@ -90,11 +94,9 @@ export function usePower(kind: Power, c: Color): Move[] {
       if (m) moves.push(m);
     }
   }
-  log(
-    c,
-    "info",
-    `${nameOf(c)} used a legend's power: ${POWER_INFO[kind].word.replace("!", "").toLowerCase()}.`,
-    POWER_INFO[kind].why,
-  );
+  log(c, "info", "{name} used a legend's power: {power}.", POWER_INFO[kind].why, {
+    name: nameOf(c),
+    power: POWER_INFO[kind].name,
+  });
   return moves;
 }

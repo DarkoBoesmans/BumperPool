@@ -21,4 +21,4 @@ Bun.serve({
     return (await file.exists()) ? new Response(file) : new Response("not found", { status: 404 });
   },
 });
-console.log(`golfbiljart on http://localhost:${PORT}`);
+console.log(`tjoepbiljart on http://localhost:${PORT}`);

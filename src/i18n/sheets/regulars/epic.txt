@@ -1,0 +1,220 @@
+# sheet: regulars, epic: up the hill. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Rosa Raes, The Landlady
+
+= The Landlady
+v De Cafébazin
+a De Bazin
+
+= Ice-cold aim
+v IJskoud mikwerk
+a Mikt ijskoud
+
+= Plays for blocks, not goals
+v Speelt om te blokkeren, niet om te scoren
+a Sjpeelt om te blokkeren, nie om te scoren
+
+= Little spin
+v Weinig effect
+a ~
+
+= Owns the place. Hides her balls behind the posts and blocks your goal until you lose your nerve.
+v De zaak is van haar. Ze verstopt haar ballen achter de doppen en blokkeert je doel tot je je zenuwen verliest.
+a 't Cafeeke es van heur. Ze sjteekt heur bollen weg achter de doppen en blokkeert ou doel tot ge ou zenuwen kwijt zijt.
+
+= House rules. My house.
+v Huisregels. Mijn huis.
+a Huisregels. Mijn hoeis.
+
+= Wipe your feet.
+v Voeten vegen.
+a ~
+
+= Mm.
+v Mm.
+a ~
+
+= That will not happen again.
+v Dat gebeurt geen tweede keer.
+a Da gebeurt gin twee kier.
+
+= Hm.
+v Hm.
+a ~
+
+= Enjoy it.
+v Geniet er maar van.
+a Geniet er mor van.
+
+= Cute.
+v Schattig.
+a ~
+
+= In my bar? Penalty spot.
+v In mijn café? Strafplek.
+a In mijn cafeeke? Sjtrafplek.
+
+= Rules are rules, darling.
+v Regels zijn regels, schat.
+a Regels zen regels, schatteke.
+
+= Last orders.
+v Laatste ronde.
+a Lesten toer.
+
+= Fine. Your drink is on the house.
+v Goed. Je drankje is van het huis.
+a Goe. Ou pint es van 't hoeis.
+
+# Pieter Peeters, The Professor
+
+= The Professor
+v De Professor
+a ~
+
+= Spin on every ball
+v Effect op elke bal
+a Effect ip elke bol
+
+= Calculates every angle
+v Berekent elke hoek
+a ~
+
+= Slow
+v Traag
+a Troag
+
+= Overthinks the easy ones
+v Denkt te lang na over de makkelijke
+a Peist te lang over de gemakkelijke
+
+= Taught physics for forty years. Every shot comes with draw, follow or side spin, and a short lecture.
+v Gaf veertig jaar les in fysica. Bij elke stoot hoort trek-, door- of zijeffect, en een korte les.
+a Heeft veertig joar fysica gegeven. Bij elke sjtoot hoort trek, deurloop of zijeffect, en e kort lesje.
+
+= Shall we discuss angular momentum?
+v Zullen we het over impulsmoment hebben?
+a Zulle we 't ne kier over impulsmoment hebben?
+
+= Two sevenths. Remember that.
+v Twee zevende. Onthoud dat.
+a Twee zevende. Onthoud da.
+
+= Elementary.
+v Elementair.
+a ~
+
+= Conservation of momentum, my friend.
+v Behoud van impuls, mijn vriend.
+a Behoud van impuls, mijne vriend.
+
+= An experimental error.
+v Een meetfout.
+a Ne meetfout.
+
+= Fascinating.
+v Fascinerend.
+a ~
+
+= Acceptable trajectory.
+v Aanvaardbare baan.
+a ~
+
+= Hm, beginner's physics.
+v Hm, fysica voor beginners.
+a Hm, fysica veur beginners.
+
+= Newton weeps.
+v Newton weent.
+a Newton zit te bleiten.
+
+= Read the rules, son.
+v Lees de regels, jongen.
+a Lees de regels, manneke.
+
+= I shall recalculate.
+v Ik reken het opnieuw uit.
+a Kik reken 't opnieuw uit.
+
+# Gust Goossens, The Gambler
+
+= The Gambler
+v De Gokker
+a ~
+
+= Wild combos off your balls
+v Wilde combinaties via jouw ballen
+a Wilde combinaties via ou bollen
+
+= Wild combinations
+v Wilde combinaties
+a ~
+
+= Afraid of nothing
+v Bang van niets
+a Bang van niks
+
+= Risks fouls
+v Riskeert fouten
+a ~
+
+= Leaves his goal wide open
+v Laat zijn doel wagenwijd open
+a Loat zijn doel wagenwijd open
+
+= Bets a round on every shot. Loves smashing your ball into his so both go flying. When it works it is spectacular. When it does not, the drinks are on him.
+v Wedt een toer op elke stoot. Knalt graag jouw bal tegen de zijne zodat ze allebei wegvliegen. Lukt het, dan is het spectaculair. Lukt het niet, dan trakteert hij.
+a Wedt nen toer ip elke sjtoot. Knalt geiren ou bol tegen den zijne zodat ze alle twee wegvliegen. Lukt 't, dan es 't sjpectaculair. Lukt 't nie, dan geeft hij nen toer.
+
+= A round says I win.
+v Een toer dat ik win.
+a Nen toer da 'k win.
+
+= Double or nothing?
+v Dubbel of niets?
+a Dubbel of niks?
+
+= Jackpot!
+v Jackpot!
+a ~
+
+= House always wins. I am the house.
+v Het huis wint altijd. Ik ben het huis.
+a 't Hoeis wint altijd. Kik ben 't hoeis.
+
+= Cha-ching.
+v Kassa.
+a Kassa kassa.
+
+= Worth the risk.
+v Het risico waard.
+a 't Risico weird.
+
+= Ah well, easy come.
+v Ach ja, zo gewonnen, zo geronnen.
+a Och, zo gewonnen, zo geronnen.
+
+= Beginner's luck. Bet on it.
+v Beginnersgeluk. Daar wed ik op.
+a Beginnerschance. Doar wed 'k ip.
+
+= Odds were against you.
+v De kansen zaten tegen.
+a ~
+
+= Pay up, friend.
+v Betalen, vriend.
+a Betoalen, vriend.
+
+= I'll take that bet.
+v Die weddenschap neem ik aan.
+a Die weddenschap pak 'k aan.
+
+= Drinks on you. Rules of the house.
+v De pinten zijn voor u. Regels van het huis.
+a De pinten zen veur ou. Regels van 't hoeis.
+
+= Let it ride. Again!
+v Alles laten staan. Nog eens!
+a Alles loaten sjtoan. Nog ne kier!

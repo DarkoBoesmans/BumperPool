@@ -1,0 +1,244 @@
+# sheet: regulars, uncommon: Station Street. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Fred Feys, The Trucker
+
+= The Trucker
+v De Camionneur
+a ~
+
+= Heavy cue, heavy smoke
+v Zware keu, zware rook
+a ~
+
+= Big power shots
+v Dikke krachtstoten
+a Dikke sjtoten vol gas
+
+= Decent straight aim
+v Degelijk recht mikwerk
+a Mikt recht, en nie slecht
+
+= Loses touch on soft shots
+v Verliest gevoel bij zachte stoten
+a Kwijt zijn gevoel bij zachte sjtoten
+
+= Rarely defends
+v Verdedigt zelden
+a ~
+
+= Drives a truck to Antwerp and back every day. Plays like he drives: fast, heavy and with a cigar in his mouth.
+v Rijdt elke dag met zijn camion naar Antwerpen en terug. Speelt zoals hij rijdt: snel, zwaar en met een sigaar in zijn mond.
+a Rijdt elken dag mee zijnen camion noar Antwerpen en terug. Sjpeelt gelijk hij rijdt: rap, zwoar en mee ne sigoar in zijne mond.
+
+= Rack 'em. I'm double parked.
+v Leg ze klaar. Ik sta dubbel geparkeerd.
+a Leg ze kloar. Kik sjtoa dubbel geparkeerd.
+
+= You break, I smoke.
+v Gij begint, ik rook.
+a Gij begint, kik rook.
+
+= BOOM!
+v BOEM!
+a ~
+
+= Like a truck through a toll gate.
+v Als een camion door een tolpoort.
+a Gelijk ne camion deur ne tolpoort.
+
+= Hah!
+v Ha!
+a ~
+
+= Ah, come on!
+v Allee, komaan!
+a Allei zeg!
+
+= That cushion moved.
+v Die band is verschoven.
+a ~
+
+= Hmpf.
+v Pff.
+a ~
+
+= Not bad, kid.
+v Niet slecht, manneke.
+a Nie slecht, manneke.
+
+= HA! Pay up!
+v HA! Betalen!
+a HA! Betoalen!
+
+= Referee, you saw that!
+v Scheids, ge hebt dat gezien!
+a Scheids, ge hebt da gezien!
+
+= Next round is on you!
+v De volgende toer is voor u!
+a Den volgenden toer es veur ou!
+
+= I need a bigger cigar.
+v Ik heb een dikkere sigaar nodig.
+a Kik heb ne dikkere sigoar nodig.
+
+# Bart Bauwens, Cushion King
+
+= Cushion King
+v Bandenkoning
+a ~
+
+= Everything off a cushion
+v Alles via de band
+a ~
+
+= Every cushion angle
+v Elke bandhoek
+a ~
+
+= Banks nobody else sees
+v Banden die niemand anders ziet
+a ~
+
+= Never plays straight
+v Speelt nooit recht
+a Sjpeelt noait recht
+
+= Takes his time
+v Neemt zijn tijd
+a Pakt zijnen tijd
+
+= Old carom player who refuses to hit a ball straight. Every shot goes off one cushion, preferably two, and he will explain the angle afterwards.
+v Oude carambolespeler die weigert een bal recht te spelen. Elke stoot gaat via één band, liefst twee, en achteraf legt hij de hoek uit.
+a Ouwen carambolespeler die weigert ne bol recht te sjpelen. Elke sjtoot goat via ene band, liefst twee, en achteraf legt hij den hoek uit.
+
+= Straight shots are for amateurs.
+v Rechte stoten zijn voor amateurs.
+a Rechte sjtoten zen veur amateurs.
+
+= Angle in, angle out.
+v Hoek erin, hoek eruit.
+a ~
+
+= Off the cushion, as always.
+v Via de band, zoals altijd.
+a Via de band, gelijk altijd.
+
+= Pure geometry.
+v Pure meetkunde.
+a ~
+
+= The cushion is dead on this side.
+v De band is dood aan deze kant.
+a ~
+
+= Hm. Wrong diamond.
+v Hm. Verkeerde diamant.
+a ~
+
+= Straight in? How boring.
+v Recht erin? Hoe saai.
+a Recht erin? Wa saai.
+
+= Lucky line.
+v Gelukkige lijn.
+a Chance mee die lijn.
+
+= You should have used the cushion.
+v Ge had de band moeten gebruiken.
+a ~
+
+= Tsk.
+v Tss.
+a ~
+
+= The cushion never lies.
+v De band liegt nooit.
+a De band liegt noait.
+
+= Next time I'll use three cushions.
+v Volgende keer gebruik ik drie banden.
+a Volgende kier pak 'k drie banden.
+
+# Sofie Segers, The Sniper
+
+= The Sniper
+v De Scherpschutter
+a ~
+
+= Dead straight, every time
+v Kaarsrecht, elke keer
+a Kaarsrecht, elke kier
+
+= Dead straight aim
+v Kaarsrecht mikwerk
+a Mikt kaarsrecht
+
+= Perfect pace
+v Perfecte snelheid
+a ~
+
+= Never banks off a cushion
+v Speelt nooit via de band
+a Sjpeelt noait via de band
+
+= No defence at all
+v Helemaal geen verdediging
+a Gin verdediging, niks
+
+= Darts champion of the street, three years running. Lines up every ball straight at the goal and rarely misses one. Ask her to play off a cushion and she just shrugs.
+v Dartskampioen van de straat, drie jaar op rij. Mikt elke bal recht op doel en mist er zelden een. Vraag haar om via een band te spelen en ze haalt gewoon haar schouders op.
+a Dartskampioen van de sjtroat, drie joar ip rij. Mikt elke bol recht ip 't doel en mist er zelden ene. Vroag heur om via de band te sjpelen en ze trekt gewoon heur schouders op.
+
+= Bullseye or nothing.
+v De roos of niets.
+a De roos of niks.
+
+= Let's keep it simple.
+v Laten we het simpel houden.
+a Simpel houden, hé.
+
+= Bullseye.
+v In de roos.
+a ~
+
+= Straight in.
+v Recht erin.
+a ~
+
+= Click.
+v Klik.
+a ~
+
+= Ugh.
+v Bah.
+a ~
+
+= That never happens.
+v Dat gebeurt nooit.
+a Da gebeurt noait.
+
+= Fine shot.
+v Schone stoot.
+a Schoon sjtoot.
+
+= Hm, okay.
+v Hm, oké.
+a ~
+
+= Should have aimed straight.
+v Ge had recht moeten mikken.
+a ~
+
+= Too fancy.
+v Te veel franjes.
+a ~
+
+= Straight to the point.
+v Recht naar het doel.
+a Recht noar 't doel.
+
+= Rematch. Now.
+v Revanche. Nu.
+a Revanche. Direct.

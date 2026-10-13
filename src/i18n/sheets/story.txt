@@ -1,0 +1,413 @@
+# sheet: story. The chapters, the grades and their table help, the regulars' cards, the tutorial and your record.
+
+= Common
+v Gewoon
+a ~
+
+= Uncommon
+v Ongewoon
+a ~
+
+= Rare
+v Zeldzaam
+a ~
+
+= Epic
+v Episch
+a ~
+
+= Legendary
+v Legendarisch
+a ~
+
+= Pearlescent
+v Parelmoer
+a ~
+
+= No help: no lines on the cloth, no aim line, no warnings
+v Geen hulp: geen lijnen op het laken, geen richtlijn, geen waarschuwingen
+a Gene hulp: gene lijnen ip 't laken, gene mikleiding, gene verwittigingen
+
+= lines on the cloth
+v lijnen op het laken
+a lijnen ip 't laken
+
+= full aim line
+v volledige richtlijn
+a hele mikleiding
+
+= short aim line
+v korte richtlijn
+a korte mikleiding
+
+= ghost ball
+v spookbal
+a spookbol
+
+= where the hit ball goes
+v waar de geraakte bal heen gaat
+a woar de geroakte bol noartoe goat
+
+= foul warnings
+v foutwaarschuwingen
+a verwittigingen veur fouten
+
+= The New Face
+v Het Nieuwe Gezicht
+a Den Nieuwen
+
+= The market square
+v De Markt
+a De Grote Merkt
+
+= Three pubs round the market square, each with a tjoepbiljart table and a regular who thinks it is theirs. Nobody here has heard of you. Yet.
+v Drie cafés rond de Markt, elk met een tjoepbiljarttafel en een stamgast die denkt dat ze van hem is. Niemand hier heeft al van je gehoord. Nog niet.
+a Drie cafeekes rond de Grote Merkt, elk mee ne tjoepbiljarttafel en ne sjtamgast die denkt da ze van hem es. Niemand hier kent ou. Nog nie.
+
+= Station Street
+v Statiestraat
+a ~
+
+= Word travels. Down Station Street a trucker waits at the truck stop, a carom veteran at the Golden Cue and the street's darts champion at the Bullseye.
+v Het nieuws gaat rond. In de Statiestraat wacht een vrachtwagenchauffeur in de truckstop, een caramboleveteraan in De Gouden Keu en de dartskampioen van de straat in De Roos.
+a 't Es al rondgegoan. In de Statiestraat zit ne camionchauffeur te wachten in de truckstop, nen ouden carambolespeler in De Gouden Keu en de dartskampioen van de sjtroat in De Roos.
+
+= After Midnight
+v Na Middernacht
+a ~
+
+= The night district
+v De uitgaansbuurt
+a 't Uitgoansbuurtje
+
+= When the market closes, the late crowd takes over: Club Midnight, the old sorting office and the lawyers' club. They play fast, they play smart, and one of them knows the rulebook by heart.
+v Als de markt sluit, neemt het late volk het over: Club Middernacht, het oude sorteercentrum en de advocatenclub. Ze spelen snel, ze spelen slim, en één van hen kent het reglement uit het hoofd.
+a As de merkt toe goat, pakt 't late volk 't over: Club Middernacht, 't oud sorteercentrum en de club van de advocaten. Ze sjpelen rap, ze sjpelen slim, en ene van hen kent 't reglement van buiten.
+
+= High Stakes
+v Hoge Inzet
+a ~
+
+= Up the hill
+v Boven op de heuvel
+a Boven ip den berg
+
+= Up the hill the tables get better and so do the players: the landlady's Velvet Room, the professor's faculty club and a casino where every shot has a bet on it.
+v Boven op de heuvel worden de tafels beter, en de spelers ook: De Fluwelen Kamer van de cafébazin, de faculteitsclub van de professor en een casino waar op elke stoot gewed wordt.
+a Boven ip den berg worden de tafels beter, en de spelers ook: De Fluwelen Kamer van de bazin, de faculteitsclub van de professor en e casino woar ip elke sjtoot gewed wordt.
+
+= The Final
+v De Finale
+a ~
+
+= On television
+v Op televisie
+a Ip de tv
+
+= The championship hall, the World Open and a live TV studio. Cameras, referees in white gloves, and three names everybody in town knows.
+v De kampioenschapszaal, de World Open en een live tv-studio. Camera's, scheidsrechters met witte handschoenen en drie namen die iedereen in de stad kent.
+a De kampioenschapszoal, de World Open en e live tv-studio. Camera's, scheidsen mee witte handschoenen en drie noamen die heel Oilsjt kent.
+
+= Legends
+v Legenden
+a ~
+
+= Three halls of their own
+v Drie eigen zalen
+a Drie zoalen van hun eigen
+
+= Three strangers sit at the back. Nobody saw them come in. The sea, a stone garden and a storm, all at one table.
+v Achteraan zitten drie vreemden. Niemand zag hen binnenkomen. De zee, een stenen tuin en een storm, allemaal aan één tafel.
+a Achteroan zitten drie vreemde gasten. Niemand heeft ze zien binnenkomen. De zee, ne sjtenen hof en ne sjtorm, allemoal aan ene tafel.
+
+= Five balls, one goal
+v Vijf ballen, één doel
+a Vijf bollen, één doel
+
+= Each player has five balls, white or red. Sink all five into the goal at the far end before your opponent does. Your goal has a ring in your colour.
+v Elke speler heeft vijf ballen, wit of rood. Speel ze alle vijf in het doel aan de overkant voor je tegenstander dat doet. Jouw doel heeft een ring in jouw kleur.
+a Elke speler heeft vijf bollen, wit of rood. Sjpeel ze alle vijf in 't doel aan den overkant veur den andere da doet. Ou doel heeft ne ring in ou kleur.
+
+= Taking a shot
+v Een stoot spelen
+a Ne sjtoot geven
+
+= Press one of your own balls, pull back and let go. The further you pull on screen, the harder. The meter on the right has four equal bands: touch, soft, medium and hard, and the aim line takes the colour of the band you are in.
+v Druk op een van je eigen ballen, trek terug en laat los. Hoe verder je over het scherm trekt, hoe harder. De meter rechts heeft vier gelijke stukken: tik, zacht, middel en hard, en de richtlijn krijgt de kleur van het stuk waarin je zit.
+a Duw ip ene van ou eigen bollen, trek achteruit en loat los. Hoe verder ge over 't scherm trekt, hoe harder. De meter rechts heeft vier gelijke sjtukken: tikske, zachtjes, middel en hard, en de mikleiding krijgt de kleur van 't sjtuk woar ge in zit.
+
+= Hard means faster than 1.5 m/s: enough to run more than three table lengths. That is the top quarter of the meter, in red.
+v Hard is sneller dan 1,5 m/s: genoeg om meer dan drie tafellengtes te rollen. Dat is het bovenste kwart van de meter, in het rood.
+a Hard es rapper dan 1,5 m/s: genoeg om meer dan drie keer de tafel over te rollen. Da es 't bovenste kwart van de meter, in 't rood.
+
+= Look around
+v Rondkijken
+a ~
+
+= Drag a finger over the cloth to turn the table. Pinch to zoom, slide two fingers to move along the table, and once you have turned it, tap a spot to look at it. The eye and top buttons put the camera back.
+v Sleep een vinger over het laken om de tafel te draaien. Knijp om te zoomen, schuif met twee vingers langs de tafel, en tik op een plek om ernaar te kijken zodra je gedraaid hebt. De knoppen met het oog en van boven zetten de camera terug.
+a Sleur ne vinger over 't laken om de tafel te draaien. Knijp om te zoomen, schuif mee twee vingers langs de tafel, en tik ip ne plek om ernoar te kijken van zohaast ge gedraaid hebt. De knoppen mee 't oog en van boven zetten de camera terug.
+
+= Right-drag turns the table round the point you look at. Right-click a ball to look at it, so a ball against the cushion is easy to check. Scroll zooms towards the pointer. Shift and right-drag slides along the table. T is the top view, P puts you back behind your end.
+v Rechts slepen draait de tafel rond het punt waar je naar kijkt. Rechtsklik op een bal om ernaar te kijken, zo controleer je makkelijk een bal tegen de band. Scrollen zoomt naar de muis. Shift en rechts slepen schuift langs de tafel. T is het bovenaanzicht, P zet je terug achter je eigen kant.
+a Rechts sleuren draait de tafel rond 't punt woar ge noar kijkt. Rechtsklik ip ne bol om ernoar te kijken, zo zieden gemakkelijk ne bol tegen de band. Scrollen zoomt noar de muis. Shift en rechts sleuren schuift langs de tafel. T es van boven, P zet ou terug achter ou eigen kant.
+
+= No mouse? B picks one of your balls, A and D turn the aim, W and S set the power and Space shoots.
+v Geen muis? B kiest een van je ballen, A en D draaien het mikpunt, W en S zetten de kracht en Spatie stoot.
+a Gene muis? B kiest ene van ou bollen, A en D draaien 't mikpunt, W en S zetten de kracht en Spatie sjtoot.
+
+= Put some spin on it
+v Geef er wat effect op
+a Geef er e bitteke effect ip
+
+= The cue ball in the corner shows where your tip hits. Low makes your ball come back after it hits another ball, high makes it run on, left or right bends the bounce off a cushion.
+v De speelbal in de hoek toont waar je pomerans raakt. Laag laat je bal terugkomen na een andere bal, hoog laat hem doorlopen, links of rechts buigt de terugkaatsing van een band.
+a De speelbol in den hoek toont woar ou pomerans raakt. Leeg doet ou bol terugkomen na nen andere bol, hoog doet hem deurlopen, links of rechts buigt hem af van de band.
+
+= A ball hit dead centre slides first, then starts rolling. Spin changes what it does after the first contact.
+v Een bal die je pal in het midden raakt, schuift eerst en begint dan te rollen. Effect verandert wat hij doet na het eerste contact.
+a Ne bol die ge pal in 't midden raakt, schuift eerst en begint dan te rollen. Effect verandert wa hij doet na 't eerste contact.
+
+= The opening shot
+v De openingsstoot
+a Den opening
+
+= Both players play their middle ball, the one where the shooting lines cross, at the same time, softly off their own left cushion. Whoever stops closest to their goal takes the first turn.
+v Beide spelers spelen tegelijk hun middelste bal, die waar de schietlijnen kruisen, zacht tegen hun eigen linkerband. Wie het dichtst bij zijn doel blijft liggen, mag beginnen.
+a De twee spelers sjpelen tegelijk hun middelste bol, die woar de schietlijnen kruisen, zachtjes tegen hun eigen linkse band. Wie 't dichtst bij zijn doel blijft liggen, meug beginnen.
+
+= Keep shooting
+v Blijven spelen
+a Blijven sjpelen
+
+= Score and you shoot again. No goal and the turn passes. Knock an opponent's ball into a goal and it counts for them.
+v Scoor je, dan speel je opnieuw. Geen doelpunt, dan gaat de beurt over. Speel je een bal van de tegenstander in een doel, dan telt die voor hem.
+a Scoorde, dan meugde nog ne kier. Gene goal, dan es 't aan den andere. Sjpeelde ne bol van den andere erin, dan telt die veur hem.
+
+= Put your own ball into the goal behind you and it goes to a penalty spot.
+v Speel je je eigen bal in het doel achter je, dan gaat hij naar een strafplek.
+a Sjpeelde ou eigen bol in 't doel achter ou, dan moet hij ip ne sjtrafplek.
+
+= The lip behind the goal
+v De rand achter het doel
+a Den boord achter 't doel
+
+= A curved lip behind each hole catches hard balls, so a firm shot straight at the goal drops in. A ball that crosses the hole sideways too fast skims over it and carries on.
+v Een gebogen rand achter elk gat vangt harde ballen op, dus een stevige stoot recht op doel valt erin. Een bal die te snel schuin over het gat gaat, scheert erover en rolt verder.
+a Ne gebogen boord achter elk gat vangt harde bollen op, dus ne sjtevige sjtoot recht ip 't doel valt erin. Ne bol die te rap schuin over 't gat goat, scheert erover en rolt voort.
+
+= Foul: your own ball first
+v Fout: eerst je eigen bal
+a Fout: eerst ou eigen bol
+
+= You may never hit one of your own balls directly.
+v Je mag nooit rechtstreeks een van je eigen ballen raken.
+a Ge meugt noait rechtstreeks ene van ou eigen bollen raken.
+
+= Bounce off a cushion, a post or an opponent's ball first. Otherwise you could simply push your own balls to the goal.
+v Eerst een band, een dop of een bal van de tegenstander. Anders kun je je eigen ballen gewoon naar het doel duwen.
+a Eerst ne band, nen dop of ne bol van den andere. Anders kunde ou bollen gewoon noar 't doel duwen.
+
+= Foul: hard at goal from the corner
+v Fout: hard op doel vanuit de hoek
+a Fout: hard ip 't doel vanuit den hoek
+
+= The shooting lines run from the middle of each long cushion to the tip of the small triangle. From the red corners a shot straight at the goal must be soft. Hard at a ball or off a cushion is fine, and from the small green triangle a hard shot at goal is fine too.
+v De schietlijnen lopen van het midden van elke lange band naar de punt van de kleine driehoek. Vanuit de rode hoeken moet een stoot recht op doel zacht zijn. Hard op een bal of via een band mag, en vanuit de kleine groene driehoek mag je ook hard op doel.
+a De schietlijnen lopen van 't midden van elke lange band noar de punt van de kleine driehoek. Vanuit de rooie hoeken moet ne sjtoot recht ip 't doel zachtjes zijn. Hard ip nen bol of via ne band meug, en vanuit de kleine groene driehoek meugde ook hard ip 't doel.
+
+= Close to the goal the game rewards touch, not force. While you aim at the goal from a red corner, the hard part of the meter is striped.
+v Dicht bij het doel beloont het spel gevoel, geen kracht. Zolang je vanuit een rode hoek op doel mikt, is het harde deel van de meter gestreept.
+a Dicht bij 't doel beloont 't sjpel gevoel, gene kracht. Zolang ge vanuit ne rooie hoek ip 't doel mikt, es 't hard sjtuk van de meter gesjtreept.
+
+= Foul: flying along the cushion
+v Fout: vliegen langs de band
+a ~
+
+= A ball in the strip within 92 mm of a long cushion may not be hit hard. Play it softly.
+v Een bal in de strook tot 92 mm van een lange band mag je niet hard spelen. Speel hem zacht.
+a Ne bol in de sjtrook tot 92 mm van ne lange band meugde nie hard sjpelen. Sjpeel hem zachtjes.
+
+= A hard shot along the rail makes scoring too easy, so it is called a flyer.
+v Een harde stoot langs de band maakt scoren te makkelijk, daarom heet dat een vlieger.
+a Ne harde sjtoot langs de band maakt scoren te gemakkelijk, doarom heet da ne vlieger.
+
+= Don't park in the big triangle
+v Niet parkeren in de grote driehoek
+a Nie parkeren in de grote driehoek
+
+= If one of your balls starts your turn inside the big triangle in front of your goal, move it out or score it before your turn ends.
+v Ligt een van je ballen bij het begin van je beurt in de grote driehoek voor je doel, speel hem er dan uit of scoor hem voor je beurt voorbij is.
+a Ligt ene van ou bollen in de grote driehoek veur ou doel as ou beurt begint, sjpeel hem er dan uit of scoor hem veur ou beurt gedaan es.
+
+= You can't leave a ball in front of the goal just to block it.
+v Je mag geen bal voor het doel laten liggen alleen om het te blokkeren.
+a Ge meugt gene bol veur 't doel loaten liggen gewoon om 't te blokkeren.
+
+= Down to one ball: frame play
+v Nog één bal: kaderspel
+a Nog mor enen bol: kaderspel
+
+= Once a player has one ball left, every shot must send at least one ball out of its frame: the boxes drawn on the cloth. From the attack triangle you need not change frames.
+v Zodra een speler nog één bal heeft, moet elke stoot minstens één bal uit zijn kader spelen: de vakken op het laken. Vanuit de aanvalsdriehoek hoef je niet van kader te wisselen.
+a Van zohaast ene speler nog mor enen bol heeft, moet elke sjtoot minstens enen bol uit zijn kader sjpelen: de vakskes ip 't laken. Vanuit de aanvalsdriehoek moette nie van kader veranderen.
+
+= A ball on a line leaves its frame by leaving the line, and a ball that drops into a goal has left too. No ball out of its frame: the cue ball goes to a penalty spot.
+v Een bal op een lijn verlaat zijn kader door van de lijn te gaan, en een bal die in een doel valt, is ook weg. Geen bal uit zijn kader: de speelbal gaat naar een strafplek.
+a Ne bol ip ne lijn es uit zijn kader as hij van de lijn af es, en ne bol die in 't doel valt, es ook weg. Gene bol uit zijn kader: de speelbol moet ip ne sjtrafplek.
+
+= Penalty spots
+v Strafplekken
+a Sjtrafplekken
+
+= After a foul your turn ends, any balls that moved go back, and the ball that fouled goes on a penalty spot. Your opponent picks spot 1 or 2 beside the goal posts.
+v Na een fout is je beurt voorbij, gaan verschoven ballen terug en gaat de bal van de fout naar een strafplek. Je tegenstander kiest plek 1 of 2 naast de doelpalen.
+a Na ne fout es ou beurt gedaan, goan verschoven bollen terug en moet de bol van de fout ip ne sjtrafplek. Den andere kiest plek 1 of 2 naast de doelpoalen.
+
+= A ball tucked beside the posts is hard to score, so a foul really costs you.
+v Een bal weggestopt naast de palen is moeilijk te scoren, dus een fout kost je echt iets.
+a Ne bol weggesjtoken naast de poalen es lastig om te scoren, dus ne fout kost ou echt.
+
+= Winning the match
+v De match winnen
+a De match pakken
+
+= First to sink all five wins the game. A match is best of three and colours swap each game. Every goal and foul gets a replay, so you see exactly what happened.
+v Wie eerst alle vijf erin speelt, wint de manche. Een match gaat tot twee winnende manches en de kleuren wisselen elke manche. Elk doelpunt en elke fout krijgt een herhaling, zodat je precies ziet wat er gebeurde.
+a Wie eerst alle vijf erin sjpeelt, pakt de manche. Ne match es twee winnende manches en de kleuren wisselen elke manche. Elke goal en elke fout krijgt ne herhaling, zodat ge zjuust ziet wa er gebeurd es.
+
+= Make yourself at home
+v Doe maar alsof je thuis bent
+a Doe gelijk of ge thuis zijt
+
+= The buttons top left: a cigar (1) fills the room with smoke, so the regulars aim worse and you see less. Whisky (2) blurs your view but stretches your aim line. Chalk (3) gives full spin without a miscue, but the dust makes your ball cling to the first ball it hits.
+v De knoppen linksboven: een sigaar (1) vult de zaal met rook, zodat de stamgasten slechter mikken en jij minder ziet. Whisky (2) maakt je zicht wazig maar verlengt je richtlijn. Krijt (3) geeft vol effect zonder ketser, maar door het stof plakt je bal aan de eerste bal die hij raakt.
+a De knoppen linksboven: ne sigoar (1) vult de zoal mee rook, zodat de sjtamgasten slechter mikken en gij minder ziet. Whisky (2) maakt ou zicht wazig mor verlengt ou mikleiding. Krijt (3) geeft vol effect zonder ketser, mor door 't sjtof plakt ou bol aan den eersten bol die hij raakt.
+
+= Score with a bit of luck and you thank the table: knock twice (4). Lose a game 5-0 and you crawl under the table, onto the Wall of Shame. House rules.
+v Scoor je met wat geluk, dan bedank je de tafel: klop twee keer (4). Verlies je een manche met 5-0, dan kruip je onder de tafel, op de Muur van Schaamte. Huisregels.
+a Scoorde mee e bitteke chance, dan bedankte de tafel: klop twee kier (4). Verliesde ne manche mee 5-0, dan kruipte onder de tafel, ip de Muur van Schande. Huisregels.
+
+= Done
+v Klaar
+a Kloar
+
+= Next
+v Volgende
+a ~
+
+= Beaten
+v Verslagen
+a Geklopt
+
+= Beat them in the story
+v Versla hen in het verhaal
+a Klop ze in 't verhoal
+
+= At {bar}
+v In {bar}
+a ~
+
+= Beaten · freeplay pays half
+v Verslagen · vrij spel betaalt de helft
+a Geklopt · vrij sjpel betoalt de helft
+
+= Beaten · freeplay pays half · house rules pay nothing
+v Verslagen · vrij spel betaalt de helft · huisregels betalen niets
+a Geklopt · vrij sjpel betoalt de helft · huisregels betoalen niks
+
+= Not beaten yet
+v Nog niet verslagen
+a Nog nie geklopt
+
+= Freeplay is for rematches. Beat this regular in the story first, then come back here as often as you like. Some shop items can only be won in freeplay.
+v Vrij spel is voor revanches. Versla deze stamgast eerst in het verhaal en kom daarna zo vaak terug als je wilt. Sommige spullen uit de winkel win je alleen in vrij spel.
+a Vrij sjpel es veur revanches. Klop deze sjtamgast eerst in 't verhoal en kom dan zo dikwijls terug as ge wilt. Sommige dingen uit de winkel kunde alleen in vrij sjpel winnen.
+
+= Table help
+v Hulp aan tafel
+a Hulp aan tafel
+
+= Rematch {name}
+v Revanche tegen {name}
+a Revanche tegen {name}
+
+= Playing as
+v Je speelt als
+a Ge sjpeelt as
+
+= Ch. {n}
+v Hfst. {n}
+a ~
+
+= Play
+v Spelen
+a Sjpelen
+
+= Everyone beaten
+v Iedereen verslagen
+a Iedereen geklopt
+
+= Play {name}
+v Speel tegen {name}
+a Sjpeel tegen {name}
+
+= Beat {name} first
+v Versla eerst {name}
+a Klop eerst {name}
+
+= Somewhere
+v Ergens
+a Ergens, zenne
+
+= Three seats at the back stay empty. Beat everyone else in town, or enter the old arcade code: up, up, down, down, left, right, left, right, B, A. On a touch screen, swipe the arrows and tap twice.
+v Drie stoelen achteraan blijven leeg. Versla alle anderen in de stad, of geef de oude arcadecode in: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A. Op een aanraakscherm veeg je de pijlen en tik je twee keer.
+a Drie sjtoelen achteroan blijven leeg. Klop al de rest in Oilsjt, of geef den ouden arcadecode in: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A. Ip ne gsm veegde de pijlen en tikte twee kier.
+
+= Beat the chapter before this one to meet them.
+v Win eerst het vorige hoofdstuk om hen te ontmoeten.
+a Win eerst 't vorig hoofdsjtuk om ze te leren kennen.
+
+= Next up
+v Volgende
+a Wie es de volgende
+
+= Locked
+v Op slot
+a ~
+
+= Waiting
+v Wacht nog
+a Zit te wachten
+
+= won
+v gewonnen
+a ~
+
+= lost
+v verloren
+a ~
+
+= best streak
+v beste reeks
+a ~
+
+= times under the table
+v keer onder de tafel
+a kier onder de tafel
+
+= sent under the table
+v onder de tafel gestuurd
+a onder de tafel gesjtuurd
+
+= tokens
+v jetons
+a ~
+
+= Strengths
+v Sterktes
+a Sjterktes
+
+= Weaknesses
+v Zwaktes
+a Zwakke plekken

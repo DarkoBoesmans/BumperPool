@@ -125,3 +125,13 @@
     }
   }
 }
+
+// shown the first time: the story waits until you made your player
+.c-maker__first {
+  margin: 0 0 $s3;
+  padding: $s2 $s3;
+  border-left: 4px solid $poster-red;
+  background: rgba(255, 255, 255, 0.35);
+  font: 600 14px/1.4 $f-ui;
+  color: $poster-ink;
+}
