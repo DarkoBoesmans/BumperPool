@@ -9,8 +9,10 @@ import { $, esc, replay } from "./dom";
 import { app, canAct } from "./app";
 import { statusText } from "./status";
 import { endcard } from "./endcard";
+import { lang, t, tLog } from "../i18n";
 
-let lastTick = "";
+let lastTick = "",
+  tickLang = "";
 
 export function renderUI(): void {
   if (!G) return;
@@ -31,7 +33,7 @@ export function renderUI(): void {
       (_, i) => `<i class="c-scoreboard__pip${i < inn ? " is-in" : ""}"></i>`,
     ).join("");
     const fl = $(".c-scoreboard__fouls", plate);
-    fl.textContent = f ? `${f} foul${f > 1 ? "s" : ""}` : "clean";
+    fl.textContent = f > 1 ? t("{n} fouls", { n: f }) : f ? t("1 foul") : t("clean");
     fl.classList.toggle("is-bad", f > 0);
     $(".c-scoreboard__wins", plate).innerHTML = [0, 1]
       .map((i) => `<i class="c-scoreboard__win${G.wins[p] > i ? " is-on" : ""}"></i>`)
@@ -39,7 +41,13 @@ export function renderUI(): void {
     $(".c-scoreboard__points", plate).textContent = String(inn);
     plate.setAttribute(
       "aria-label",
-      `${G.names[p]}, ${COL[c]}: ${inn} of 5 balls in, ${G.wins[p]} games won, ${f} fouls`,
+      t("{name}, {colour}: {n} of 5 balls in, {wins} games won, {fouls} fouls", {
+        name: G.names[p],
+        colour: t(COL[c]),
+        n: inn,
+        wins: G.wins[p],
+        fouls: f,
+      }),
     );
     const inp = $<HTMLInputElement>("#name" + p);
     if (document.activeElement !== inp) inp.value = G.names[p];
@@ -47,27 +55,27 @@ export function renderUI(): void {
     const s = G.seats[p];
     $(".c-player-row__seat", row).innerHTML =
       G.mode === "cpu" && p === 1 && app.opp
-        ? `${esc(app.opp.nick)} · <span class="c-gtag" style="--g:${gradeOf(app.opp).color}">${gradeOf(app.opp).label}</span>`
+        ? `${esc(t(app.opp.nick))} · <span class="c-gtag" style="--g:${gradeOf(app.opp).color}">${esc(t(gradeOf(app.opp).label))}</span>`
         : G.mode !== "online" || !net.ready
           ? ""
           : !s
             ? net.canWrite
-              ? `<button class="c-link" type="button" data-seat="${p}">Take this seat</button>`
-              : "Free seat"
+              ? `<button class="c-link" type="button" data-seat="${p}">${esc(t("Take this seat"))}</button>`
+              : t("Free seat")
             : s === net.uid
-              ? `You <button class="c-link" type="button" data-leave="${p}">Leave seat</button>`
-              : "Opponent";
+              ? `${esc(t("You"))} <button class="c-link" type="button" data-leave="${p}">${esc(t("Leave seat"))}</button>`
+              : t("Opponent");
   }
   $("#netNote").textContent =
     G.mode === "cpu"
-      ? `You play white in game 1 and red in game 2. ${app.opp?.name} takes the other colour.`
+      ? t("You play white in game 1 and red in game 2. {name} takes the other colour.", { name: app.opp?.name || "" })
       : G.mode === "local"
-        ? "Two players on this screen. The camera moves to whoever is up."
+        ? t("Two players on this screen. The camera moves to whoever is up.")
         : net.canWrite
-          ? "Online table. Your opponent joins the same table name from their device."
-          : "You are watching. Ask the owner for edit access to play.";
-  $("#gameLbl").textContent = `GAME ${G.manche}`;
-  $("#venueLbl").textContent = C.venue ? venueById(C.venue.id).name : "best of 3";
+          ? t("Online table. Your opponent joins the same table name from their device.")
+          : t("You are watching. Ask the owner for edit access to play.");
+  $("#gameLbl").textContent = t("GAME {n}", { n: G.manche });
+  $("#venueLbl").textContent = C.venue ? t(venueById(C.venue.id).name) : t("best of 3");
   const [m, h] = statusText();
   $("#stMain").textContent = m;
   $("#stHint").textContent = h;
@@ -78,17 +86,18 @@ export function renderUI(): void {
     .reverse()
     .map(
       (e) =>
-        `<li class="c-log__item"><span class="c-log__n">#${esc(e.n)}</span><span class="c-log__dot" data-c="${esc(e.c || "")}"></span><span class="c-log__text c-log__text--${esc(e.kind)}">${esc(e.text)}${e.why ? `<span class="c-log__why">${esc(e.why)}</span>` : ""}</span></li>`,
+        `<li class="c-log__item"><span class="c-log__n">#${esc(e.n)}</span><span class="c-log__dot" data-c="${esc(e.c || "")}"></span><span class="c-log__text c-log__text--${esc(e.kind)}">${esc(tLog(e.text, e.v))}${e.why ? `<span class="c-log__why">${esc(tLog(e.why, e.v))}</span>` : ""}</span></li>`,
     )
     .join("");
   const e = G.log[G.log.length - 1],
-    key = e ? e.n + e.text : "";
-  if (e && key !== lastTick) {
+    key = e ? JSON.stringify([e.n, e.text, e.v]) : "";
+  if (e && (key !== lastTick || lang !== tickLang)) {
+    const tk = $("#ticker");
+    $(".c-ticker__tag", tk).textContent = t(e.kind === "fout" ? "Foul" : e.kind === "doel" ? "Goal" : "Referee");
+    $(".c-ticker__text", tk).textContent = tLog(e.text, e.v);
+    $(".c-ticker__why", tk).textContent = e.why ? tLog(e.why, e.v) : "";
+    if (key !== lastTick) replay(tk, "is-shown"); // a new line pops up; a language switch only rewrites it
     lastTick = key;
-    const t = $("#ticker");
-    $(".c-ticker__tag", t).textContent = e.kind === "fout" ? "Foul" : e.kind === "doel" ? "Goal" : "Referee";
-    $(".c-ticker__text", t).textContent = e.text;
-    $(".c-ticker__why", t).textContent = e.why || "";
-    replay(t, "is-shown");
+    tickLang = lang;
   }
 }

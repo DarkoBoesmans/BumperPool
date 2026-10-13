@@ -1,4 +1,4 @@
-// Golfbiljart: a smoky low-poly café with a loud menu screen from 2002, and menus printed like an old billiard poster.
+// Tjoepbiljart: a smoky low-poly café with a loud menu screen from 2002, and menus printed like an old billiard poster.
 // ITCSS: settings and tools make no CSS, then generic, elements, objects, components, utilities, from broad to specific.
 // Class names are BEM with namespaces: o- objects, c- components, u- utilities, is- states.
 
@@ -35,6 +35,7 @@
 @use "components/log";
 @use "components/rules";
 @use "components/banner";
+@use "components/banner-motion";
 @use "components/replay";
 @use "components/whycard";
 @use "components/endcard";
@@ -47,9 +48,11 @@
 @use "components/menu-opt";
 @use "components/minis";
 @use "components/story";
+@use "components/scout";
 @use "components/pick";
 @use "components/house";
 @use "components/legal";
+@use "components/legal-text";
 @use "components/knock";
 @use "components/card";
 @use "components/bio";

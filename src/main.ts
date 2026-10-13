@@ -15,7 +15,7 @@ import { play } from "./replay/replay";
 import { sfx } from "./audio/sfx";
 import { initAudio } from "./audio/mixer";
 import { net, available, netHooks, push, takeSeat, leaveSeat } from "./net/online";
-import { me, saveMe, nextInStory } from "./profile/profile";
+import { me, saveMe } from "./profile/profile";
 import { $, $$ } from "./ui/dom";
 import { app, viewColor } from "./ui/app";
 import { say } from "./ui/bubble";
@@ -26,7 +26,8 @@ import { initSettings } from "./ui/settings";
 import { initHouse } from "./ui/house";
 import { initTutorial } from "./ui/tutorial";
 import { initKonami } from "./ui/konami";
-import { showView, type View } from "./ui/menu";
+import { showView, redrawView, type View } from "./ui/menu";
+import { initLang } from "./ui/lang";
 import { story, renderStory } from "./ui/story";
 import { roster, renderRoster, pickedOpponent, pickOpponent } from "./ui/roster";
 import { onMeSaved } from "./ui/maker";
@@ -38,6 +39,7 @@ import { openStart, enterGame, startCpu, startLocal, startOnline, nextGame, setV
 import { skipReplay } from "./game/show";
 import { frame } from "./game/loop";
 import { itemById } from "./data/shop";
+import { t } from "./i18n";
 
 hooks.changed = changed;
 hooks.push = () => push();
@@ -53,10 +55,7 @@ function wireMenus(): void {
     showView("pick");
   };
   roster.challenge = () => startCpu(pickedOpponent().id, true);
-  $("#btnStory").addEventListener("click", () => {
-    const id = nextInStory();
-    if (id) startCpu(id, false);
-  });
+  $("#btnStory").addEventListener("click", () => story.go());
   $("#btnChallenge").addEventListener("click", roster.challenge);
   $("#btnPlayLocal").addEventListener("click", startLocal);
   $("#btnJoin").addEventListener("click", () => void startOnline());
@@ -132,7 +131,7 @@ function wireGame(): void {
   for (const p of [0, 1]) {
     const inp = $<HTMLInputElement>("#name" + p);
     inp.addEventListener("input", () => {
-      G.names[p] = inp.value.trim() || `Player ${p + 1}`;
+      G.names[p] = inp.value.trim() || t("Player {n}", { n: p + 1 });
       refresh();
     });
     inp.addEventListener("change", () => push());
@@ -178,7 +177,13 @@ function wireGame(): void {
     saveMe();
     initAudio();
     sfx("win");
-    void banner("pearl", "PEARLESCENT!", "Three legends walked in", "Poseidon, Medusa and Thor want a game", 3400);
+    void banner(
+      "pearl",
+      "PEARLESCENT!",
+      t("Three legends walked in"),
+      "Neptune, Minerva and Jupiter want a game",
+      3400,
+    );
     if (!$("#start").hidden) {
       const v = $("#panel").dataset.view;
       if (v === "story") renderStory();
@@ -189,9 +194,13 @@ function wireGame(): void {
 }
 
 function boot(): void {
-  newMatch("local");
+  newMatch("local", { names: [t("Player {n}", { n: 1 }), t("Player {n}", { n: 2 })] });
   if (!initScene($("#stage"))) {
-    $("#stage").innerHTML = '<p class="c-stage__nogl">This device does not support WebGL, which the 3D café needs.</p>';
+    const p = Object.assign(document.createElement("p"), {
+      className: "c-stage__nogl",
+      textContent: t("This device does not support WebGL, which the 3D café needs."),
+    });
+    $("#stage").replaceChildren(p);
     return;
   }
   S.lines = app.set.lines;
@@ -214,9 +223,15 @@ function boot(): void {
   });
   openStart("home");
   refresh();
+  initLang(() => {
+    redrawView();
+    fontsChanged();
+    replaqueAll();
+    refresh();
+  });
   // handy in the console of a local build only: the published game keeps its state out of reach
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname))
-    (window as unknown as Record<string, unknown>).golfbiljart = {
+    (window as unknown as Record<string, unknown>).tjoepbiljart = {
       app,
       S,
       C,

@@ -16,6 +16,7 @@ import { showView, type View } from "../ui/menu";
 import { renderUI } from "../ui/hud";
 import { pickOpponent } from "../ui/roster";
 import { resetBuzz } from "./buzz";
+import { t } from "../i18n";
 import { applyLooks, refresh } from "./refresh";
 
 const portrait = () => S.w < S.h;
@@ -84,8 +85,8 @@ export function startLocal(): void {
   setG(null);
   newMatch("local", {
     names: [
-      $<HTMLInputElement>("#n0").value.trim() || "Player 1",
-      $<HTMLInputElement>("#n1").value.trim() || "Player 2",
+      $<HTMLInputElement>("#n0").value.trim() || t("Player {n}", { n: 1 }),
+      $<HTMLInputElement>("#n1").value.trim() || t("Player {n}", { n: 2 }),
     ],
   });
   fresh();

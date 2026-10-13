@@ -1,7 +1,8 @@
-// Posters: the golfbiljart print, whisky and cigar ads, a small arcade poster that knows the old code,
+// Posters: the tjoepbiljart print, whisky and cigar ads, a small arcade poster that knows the old code,
 // and the Wall of Shame for everyone who crawled under the table.
 import type { BoardCtx } from "./boards-draw";
 import { CHALK, POSTER, LABEL, chalkBg, fit } from "./boards-draw";
+import { t } from "../i18n";
 
 type Ctx = CanvasRenderingContext2D | null;
 
@@ -34,11 +35,11 @@ export function drawArtPoster(c: Ctx): string | void {
   c.fillStyle = "#e6d8b8";
   c.font = `40px ${POSTER}`;
   c.textAlign = "left";
-  c.fillText("GOLF", 26, 60);
+  c.fillText("TJOEP", 26, 60); // the game's name: never translated
   c.fillText("BILJART", 26, 100);
   c.fillStyle = "#c8452c";
   c.font = `600 13px ${LABEL}`;
-  c.fillText("TAP BILLIARDS · SINCE 1932", 28, 122);
+  c.fillText(t("TAP BILLIARDS · SINCE 1932"), 28, 122);
   c.strokeStyle = "#c8452c";
   c.lineWidth = 2;
   c.strokeRect(26, h - 58, 92, 32);
@@ -65,12 +66,12 @@ export function drawWhisky(c: Ctx): string | void {
   c.fillStyle = "#f2c86a";
   c.font = `34px ${POSTER}`;
   c.textAlign = "center";
-  c.fillText("MARCEL'S", w / 2, 52);
-  c.fillText("RESERVE", w / 2, 88);
+  c.fillText(t("MARCEL'S"), w / 2, 52);
+  c.fillText(t("RESERVE"), w / 2, 88);
   c.fillStyle = "#e6d8b8";
   c.font = `600 13px ${LABEL}`;
-  c.fillText("THE HOUSE WHISKY", w / 2, h - 46);
-  c.fillText("as smooth as a soft shot", w / 2, h - 26);
+  c.fillText(t("THE HOUSE WHISKY"), w / 2, h - 46);
+  c.fillText(t("as smooth as a soft shot"), w / 2, h - 26);
 }
 
 export function drawCigarAd(c: Ctx): string | void {
@@ -101,11 +102,11 @@ export function drawCigarAd(c: Ctx): string | void {
   c.fillStyle = "#f2c86a";
   c.font = `42px ${POSTER}`;
   c.textAlign = "center";
-  c.fillText("SLOW BURN", w / 2, 70);
+  c.fillText(t("SLOW BURN"), w / 2, 70);
   c.fillStyle = "#f6ead0";
   c.font = `600 14px ${LABEL}`;
-  c.fillText("ROLLED IN THE BACK ROOM", w / 2, 96);
-  c.fillText("FOR THE LONG GAME", w / 2, h - 30);
+  c.fillText(t("ROLLED IN THE BACK ROOM"), w / 2, 96);
+  c.fillText(t("FOR THE LONG GAME"), w / 2, h - 30);
 }
 
 /** a pixel arrow pointing up, rotated by `a` quarter turns */
@@ -140,9 +141,9 @@ export function drawKonami(c: Ctx, { pearl }: BoardCtx): string | void {
   c.textAlign = "center";
   c.fillStyle = "#ffd6f0";
   c.font = `24px ${POSTER}`;
-  c.fillText("LEGENDS", w / 2, 34);
-  c.fillText("NIGHT", w / 2, 60);
-  // three figures: a crown, snakes, horns
+  c.fillText(t("LEGENDS"), w / 2, 34);
+  c.fillText(t("NIGHT"), w / 2, 60);
+  // three figures: Neptune's crown, Minerva's crested helmet, Jupiter's laurel
   const cols = pearl ? ["#6af0ff", "#9aff6a", "#ffb04a"] : ["#2a2a3a", "#2a2a3a", "#2a2a3a"];
   [w * 0.25, w * 0.5, w * 0.75].forEach((x, i) => {
     c.fillStyle = cols[i];
@@ -151,16 +152,13 @@ export function drawKonami(c: Ctx, { pearl }: BoardCtx): string | void {
     c.arc(x, 98, 11, 0, 7);
     c.fill();
     if (i === 0) for (const d of [-8, 0, 8]) c.fillRect(x + d - 2, 80, 4, 8);
-    if (i === 1) for (const d of [-12, -5, 5, 12]) c.fillRect(x + d - 2, 82 + Math.abs(d) / 2, 3, 9);
-    if (i === 2) {
-      c.fillRect(x - 17, 84, 5, 10);
-      c.fillRect(x + 12, 84, 5, 10);
-    }
+    if (i === 1) c.fillRect(x - 2, 74, 4, 18); // the crest
+    if (i === 2) for (const d of [-13, -9, 9, 13]) c.fillRect(x + d - 2, 88 + Math.abs(d) / 3, 4, 3); // the wreath
   });
   c.fillStyle = "rgba(255,240,220,.7)";
   c.font = `600 11px ${LABEL}`;
-  c.fillText(pearl ? "THEY ARE IN TONIGHT" : "ONLY FOR THOSE WHO", w / 2, 166);
-  c.fillText(pearl ? "PEARLESCENT TABLE OPEN" : "KNOW THE OLD CODE", w / 2, 180);
+  c.fillText(t(pearl ? "THEY ARE IN TONIGHT" : "ONLY FOR THOSE WHO"), w / 2, 166);
+  c.fillText(t(pearl ? "PEARLESCENT TABLE OPEN" : "KNOW THE OLD CODE"), w / 2, 180);
   // the code, in small print at the bottom
   c.fillStyle = pearl ? "#ffd6f0" : "rgba(255,214,240,.55)";
   const s = 12,
@@ -179,11 +177,11 @@ export function drawShame(c: Ctx, { shame }: BoardCtx): string | void {
   c.textAlign = "center";
   c.fillStyle = "#ff8c7a";
   c.font = `30px ${CHALK}`;
-  c.fillText("WALL OF", w / 2, 40);
-  c.fillText("SHAME", w / 2, 72);
+  c.fillText(t("WALL OF"), w / 2, 40);
+  c.fillText(t("SHAME"), w / 2, 72);
   c.fillStyle = "rgba(244,240,228,.7)";
   c.font = `13px ${CHALK}`;
-  c.fillText("crawled under the table", w / 2, 92);
+  c.fillText(t("crawled under the table"), w / 2, 92);
   c.strokeStyle = "rgba(244,240,228,.6)";
   c.lineWidth = 2;
   c.beginPath();
@@ -193,8 +191,8 @@ export function drawShame(c: Ctx, { shame }: BoardCtx): string | void {
   if (!shame.length) {
     c.fillStyle = "rgba(244,240,228,.8)";
     c.font = `17px ${CHALK}`;
-    c.fillText("Nobody yet.", w / 2, 150);
-    c.fillText("Keep it that way.", w / 2, 174);
+    c.fillText(t("Nobody yet."), w / 2, 150);
+    c.fillText(t("Keep it that way."), w / 2, 174);
     return;
   }
   c.textAlign = "left";
@@ -205,6 +203,6 @@ export function drawShame(c: Ctx, { shame }: BoardCtx): string | void {
     c.fillText(e.who.toUpperCase(), 18, y);
     c.fillStyle = "rgba(244,240,228,.55)";
     c.font = `11px ${CHALK}`;
-    c.fillText(`5-0 by ${e.by}`, 18, y + 12);
+    c.fillText(t("5-0 by {name}", { name: e.by }), 18, y + 12);
   });
 }

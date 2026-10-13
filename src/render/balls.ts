@@ -1,4 +1,4 @@
-// The ten balls: live positions, a short drop into the goal, a place in the return tray, Medusa's stone look,
+// The ten balls: live positions, a short drop into the goal, a place in the return tray, Minerva's stone look,
 // and the slide when a legend's power moves them.
 import { THREE, M, add, basic, phong, canvasTex } from "./three";
 import { TBL } from "./table";

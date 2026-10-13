@@ -1,9 +1,9 @@
 {
-  "name": "golfbiljart",
-  "version": "0.12.1",
+  "name": "tjoepbiljart",
+  "version": "0.13.0",
   "private": true,
   "type": "module",
-  "description": "Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
+  "description": "Tjoepbiljart: Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
   "scripts": {
     "dev": "bun tools/dev.ts",
     "build": "bun tools/build.ts",

@@ -9,7 +9,8 @@ export const EPIC: Opponent[] = [
     name: "Rosa Raes",
     nick: "The Landlady",
     style: "Blocks every goal",
-    traits: ["Defensive", "Ice cold", "Never drinks on duty"],
+    strong: ["Blocks every goal", "Ice-cold aim"],
+    weak: ["Plays for blocks, not goals", "Little spin"],
     bio: "Owns the place. Hides her balls behind the posts and blocks your goal until you lose your nerve.",
     look: {
       skin: "#e3ad8c",
@@ -54,7 +55,8 @@ export const EPIC: Opponent[] = [
     name: "Pieter Peeters",
     nick: "The Professor",
     style: "Spin on every ball",
-    traits: ["Spin master", "Calculating", "Slow"],
+    strong: ["Spin on every ball", "Calculates every angle"],
+    weak: ["Slow", "Overthinks the easy ones"],
     bio: "Taught physics for forty years. Every shot comes with draw, follow or side spin, and a short lecture.",
     look: {
       skin: "#eebd9c",
@@ -98,7 +100,8 @@ export const EPIC: Opponent[] = [
     name: "Gust Goossens",
     nick: "The Gambler",
     style: "Wild combos off your balls",
-    traits: ["All-in combos", "Bets on every shot", "Not scared of fouls"],
+    strong: ["Wild combinations", "Afraid of nothing"],
+    weak: ["Risks fouls", "Leaves his goal wide open"],
     bio: "Bets a round on every shot. Loves smashing your ball into his so both go flying. When it works it is spectacular. When it does not, the drinks are on him.",
     look: {
       skin: "#d9a07c",

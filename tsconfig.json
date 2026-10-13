@@ -11,6 +11,7 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": false,
     "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": ["src", "test", "tools"]

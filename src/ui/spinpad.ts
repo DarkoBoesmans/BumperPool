@@ -1,12 +1,23 @@
 // The spin pad: drag the dot to where the tip should hit the cue ball. Arrow keys work too, 0 resets.
-import { $, cap } from "./dom";
+import { $ } from "./dom";
+import { t } from "../i18n";
 import { app } from "./app";
 
+const LABEL: Record<string, string> = {
+  "1,0": "Follow",
+  "-1,0": "Draw",
+  "0,1": "Right english",
+  "0,-1": "Left english",
+  "1,1": "Follow, right english",
+  "1,-1": "Follow, left english",
+  "-1,1": "Draw, right english",
+  "-1,-1": "Draw, left english",
+};
 function spinLabel(x: number, y: number): string {
-  const v = y > 0.25 ? "Follow" : y < -0.25 ? "Draw" : "",
-    h = x > 0.25 ? "right" : x < -0.25 ? "left" : "";
-  if (!v && !h) return Math.hypot(x, y) < 0.15 ? "Centre ball" : "A touch off centre";
-  return v && h ? `${v}, ${h} english` : v || `${cap(h)} english`;
+  const v = y > 0.25 ? 1 : y < -0.25 ? -1 : 0,
+    h = x > 0.25 ? 1 : x < -0.25 ? -1 : 0;
+  if (!v && !h) return t(Math.hypot(x, y) < 0.15 ? "Centre ball" : "A touch off centre");
+  return t(LABEL[`${v},${h}`]);
 }
 export function setSpin(x: number, y: number): void {
   const d = Math.hypot(x, y);

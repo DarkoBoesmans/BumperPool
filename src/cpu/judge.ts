@@ -6,7 +6,7 @@ import {
   withCopy,
   fire,
   step,
-  trackTri,
+  track,
   allStill,
   onSettled,
   strike,
@@ -53,7 +53,7 @@ export function simShot(cc: Color, c: Cand, ai: AI, dt = SIM_DT): number {
     const max = SIM_SECONDS / dt;
     while (G.phase === "moving" && n++ < max) {
       step(dt);
-      trackTri();
+      track();
       if (allStill()) onSettled();
     }
     const scored = mine - remaining(cc),

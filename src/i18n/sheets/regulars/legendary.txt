@@ -1,0 +1,222 @@
+# sheet: regulars, legendary: on television. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Kevin Kracht, The Prodigy
+
+= The Prodigy
+v Het Wonderkind
+a 't Wonderkind
+
+= Full power, perfect aim
+v Volle kracht, perfect gemikt
+a Vol gas, perfect gemikt
+
+= Hard and dead straight
+v Hard en kaarsrecht
+a ~
+
+= Ten thousand hours of practice
+v Tienduizend uur oefening
+a Tienduizend uur geoefend
+
+= Little patience for defence
+v Weinig geduld om te verdedigen
+a ~
+
+= Distracted by his phone
+v Afgeleid door zijn gsm
+a Zit altijd ip zijn gsm
+
+= Once the rookie of the old brown café, the one who hit every ball at full power. Ten thousand hours later he still does, only now every one goes in. Between games he films his best shots for his followers.
+v Ooit het groentje van het oude bruine café, die elke bal op volle kracht speelde. Tienduizend uur later doet hij dat nog altijd, alleen gaan ze nu allemaal binnen. Tussen de partijen filmt hij zijn beste stoten voor zijn volgers.
+a Ooit 't groentje van 't oud bruin cafeeke, die elke bol vol gas sjpeelde. Tienduizend uur later doet hij da nog altijd, alleen goan ze nu allemoal binnen. Tussen de partijen filmt hij zijn beste sjtoten veur zijn volgers.
+
+= Remember me? I got better.
+v Kent ge mij nog? Ik ben beter geworden.
+a Kende mij nog? Kik ben beter geworden.
+
+= Let's gooo! The camera is rolling.
+v Komaan! De camera draait.
+a Allei, komaan! De camera droait.
+
+= That one goes online.
+v Die gaat online.
+a Die goat online.
+
+= My phone buzzed.
+v Mijn gsm trilde.
+a Mijne gsm trilde.
+
+= Edit that out.
+v Knip dat eruit.
+a Knip da eruit.
+
+= Okay, okay. Respect.
+v Oké, oké. Respect.
+a ~
+
+= Nice one. That's a like.
+v Schone. Dat is een like.
+a Schoon. Da es ne like.
+
+= Rookie mistake! I would know.
+v Beginnersfout! Ik kan het weten.
+a Beginnersfout! Kik kan 't weten.
+
+= Even I stopped doing that.
+v Zelfs ik doe dat niet meer.
+a Zelfs kik doe da nie meer.
+
+= From rookie to legend, baby!
+v Van groentje tot legende, baby!
+a ~
+
+= Best of five? For the followers?
+v Drie winnende manches? Voor de volgers?
+a Drie winnende manches? Veur de volgers?
+
+= Checks everything twice
+v Controleert alles twee keer
+a Bekijkt alles twee kier
+
+= Checks every option twice
+v Bekijkt elke mogelijkheid twee keer
+a Bekijkt elke mogelijkheid twee kier
+
+= Never loses a deciding game
+v Verliest nooit een beslissende manche
+a Verliest noait ne beslissende manche
+
+= Few trick shots
+v Weinig trickshots
+a ~
+
+= Plays it safe when ahead
+v Speelt op veilig als hij voorstaat
+a Sjpeelt ip veilig as hij voorsjtoat
+
+= Twenty-three, no expression, never lost a deciding game. Kevin Kracht stopped playing him after one evening. Cas checks every option twice and then plays the one you did not see.
+v Drieëntwintig, geen uitdrukking, nooit een beslissende manche verloren. Kevin Kracht stopte na één avond met tegen hem te spelen. Cas bekijkt elke mogelijkheid twee keer en speelt dan die jij niet zag.
+a Drieëntwintig, gin uitdrukking ip zijn gezichte, noait ne beslissende manche verloren. Kevin Kracht es na ene oavond gesjtopt mee tegen hem te sjpelen. Cas bekijkt elke mogelijkheid twee kier en sjpeelt dan die gij nie zag.
+
+= Let's get this done.
+v Laten we dit afwerken.
+a Allei, afwerken.
+
+= Okay buddy.
+v Oké, maat.
+a Oké, manneke.
+
+= CMON!
+v KOMAAN!
+a ~
+
+= Expected.
+v Verwacht.
+a ~
+
+= That's tilted.
+v Dat helt over.
+a Da hangt scheef.
+
+= Noted.
+v Genoteerd.
+a ~
+
+= Doesn't matter.
+v Maakt niet uit.
+a Moakt nie uit.
+
+= Thanks.
+v Merci.
+a ~
+
+= That's the game.
+v Dat is de partij.
+a Da es de partij.
+
+= Closed.
+v Gesloten.
+a Toe.
+
+= Huh. Again. Right now.
+v Hm. Nog eens. Nu meteen.
+a Hm. Nog ne kier. Direct.
+
+# Matthis Maes, Master of the Triangle
+
+= Master of the Triangle
+v Meester van de Driehoek
+a ~
+
+= Trick shots into the small triangle
+v Trickshots in de kleine driehoek
+a ~
+
+= Trick shots off two cushions
+v Trickshots via twee banden
+a ~
+
+= Lives in the small triangle
+v Woont in de kleine driehoek
+a ~
+
+= Picks the flashy shot over the easy one
+v Kiest de spectaculaire stoot boven de makkelijke
+a Kiest de sjpectaculaire sjtoot boven de gemakkelijke
+
+= Only some defence
+v Maar een beetje verdediging
+a Mor e bitteke verdediging
+
+= Learned the game behind his back and blindfolded. Matthis bends balls off posts and two cushions into the small triangle, then calmly knocks them in. Nobody plays the triangle like him.
+v Leerde het spel achter zijn rug en geblinddoekt. Matthis buigt ballen via doppen en twee banden de kleine driehoek in en tikt ze daarna rustig binnen. Niemand speelt de driehoek zoals hij.
+a Heeft 't sjpel geleerd achter zijne rug en geblinddoekt. Matthis buigt bollen via doppen en twee banden de kleine driehoek in en tikt ze dan kalmpjes binnen. Niemand sjpeelt de driehoek gelijk hij.
+
+= Watch the triangle.
+v Let op de driehoek.
+a Kijk noar de driehoek.
+
+= Ever seen a ball turn left twice?
+v Al eens een bal twee keer naar links zien draaien?
+a Al ne kier ne bol twee kier noar links zien droaien?
+
+= Two cushions and a post. Easy.
+v Twee banden en een dop. Simpel.
+a Twee banden en nen dop. Simpel.
+
+= Told you. The triangle.
+v Zei ik toch. De driehoek.
+a Zei 'k toch. De driehoek.
+
+= Ta-daa.
+v Tadaa.
+a ~
+
+= Too much style, not enough rules.
+v Te veel stijl, te weinig regels.
+a ~
+
+= The post had other plans.
+v De dop had andere plannen.
+a Den dop had andere plannen.
+
+= Straight? No style points.
+v Recht? Geen stijlpunten.
+a Recht? Gin sjtijlpunten.
+
+= Now watch how it's done.
+v Kijk nu hoe het moet.
+a Kijk nu hoe 't moet.
+
+= Tricky table, huh?
+v Lastige tafel, hé?
+a ~
+
+= Triangle never lies.
+v De driehoek liegt nooit.
+a De driehoek liegt noait.
+
+= That was a trick shot too, right?
+v Dat was ook een trickshot, toch?
+a Da was ook ne trickshot, zeker?

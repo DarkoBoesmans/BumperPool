@@ -106,3 +106,13 @@
     }
   }
 }
+
+// how many hidden items wait behind the arcade code
+.c-shop__secret {
+  margin: 0;
+  padding: 6px $s3;
+  border: 1.5px dashed $poster-ink;
+  font: italic 400 13px/1.4 $f-serif;
+  color: var(--ink-2);
+  text-align: center;
+}

@@ -2,7 +2,7 @@
 import type { Ball, Color, Spot } from "../types";
 import { DOPS, DOP_R, HX, HY, R, other, spots } from "./table";
 import { G, ball, changed, log, nameOf, push, remaining } from "./state";
-import { beginTurn, resetTimer, startOpening } from "./match";
+import { beginTurn, checkFramePlay, resetTimer, startOpening } from "./match";
 import { winsNeeded } from "./rules";
 
 /** is there room for a ball here? */
@@ -31,8 +31,9 @@ export function processQueue(): void {
     const b = ball(G.queue[0]);
     b.on = false;
     b.vx = b.vy = 0;
-    const sp = spots(b.c);
-    if (free(sp[0].x, sp[0].y) && free(sp[1].x, sp[1].y)) {
+    // in frame play a spot a foul was shot from is used no more (SP/12.3)
+    const sp = spots(b.c).filter((q) => !G.framePlay || !G.spotFouls?.includes(b.c + q.n));
+    if (sp.length > 1 && sp[0].n === "1" && sp[1].n === "2" && free(sp[0].x, sp[0].y) && free(sp[1].x, sp[1].y)) {
       G.phase = "penalty";
       G.penChoice = { id: b.id, opts: [sp[0], sp[1]] };
       changed();
@@ -40,7 +41,7 @@ export function processQueue(): void {
     }
     const p = sp.find((q) => free(q.x, q.y)) || spiral(b.c);
     place(b, p);
-    log(b.c, "info", `${nameOf(b.c)}'s ball placed on penalty spot ${p.n}.`);
+    log(b.c, "info", "{name}'s ball placed on penalty spot {n}.", "", { name: nameOf(b.c), n: p.n });
     G.queue.shift();
   }
   afterQueue();
@@ -52,7 +53,11 @@ export function choosePen(i: number): void {
   const b = ball(pc.id),
     p = pc.opts[i];
   place(b, p);
-  log(other(b.c), "info", `${nameOf(other(b.c))} put ${nameOf(b.c)}'s ball on penalty spot ${p.n}.`);
+  log(other(b.c), "info", "{a} put {b}'s ball on penalty spot {n}.", "", {
+    a: nameOf(other(b.c)),
+    b: nameOf(b.c),
+    n: p.n,
+  });
   G.queue.shift();
   G.penChoice = null;
   processQueue();
@@ -80,6 +85,7 @@ function afterQueue(): void {
     changed();
     return;
   }
+  checkFramePlay();
   if (G.nextMode === "continue") {
     G.phase = "aim";
     resetTimer();
@@ -98,10 +104,10 @@ function mancheEnd(wc: Color): void {
     G.lastShot.end = G.phase === "matchEnd" ? "match" : "game";
     G.lastShot.winner = wc;
   }
-  log(
-    wc,
-    "doel",
-    `${G.names[p]} wins game ${G.manche}.` +
-      (G.phase === "matchEnd" ? ` Match won ${G.wins[p]}-${G.wins[1 - p]}.` : ""),
-  );
+  log(wc, "doel", G.phase === "matchEnd" ? "{name} wins game {n}. Match won {a}-{b}." : "{name} wins game {n}.", "", {
+    name: G.names[p],
+    n: G.manche,
+    a: G.wins[p],
+    b: G.wins[1 - p],
+  });
 }

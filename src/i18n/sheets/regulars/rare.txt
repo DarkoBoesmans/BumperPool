@@ -1,0 +1,240 @@
+# sheet: regulars, rare: after midnight. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Nina Nuyts, The Night Owl
+
+= The Night Owl
+v De Nachtuil
+a ~
+
+= Shoots before you sit down
+v Stoot al voor je zit
+a Sjtoot al veur da ge zit
+
+= Shoots fast, keeps the pressure on
+v Speelt snel, houdt de druk erop
+a Sjpeelt rap, houdt de druk erip
+
+= Sharp aim
+v Scherp mikwerk
+a Mikt scherp
+
+= Hardly any spin
+v Amper effect
+a Bijna gin effect
+
+= Rushes the tricky ones
+v Haast zich bij de lastige
+a Jaagt zich bij de lastige
+
+= Nurse on the night shift who pops in on her break. She lines up, shoots and is chalking the next ball before yours stops rolling. Fast does not mean sloppy.
+v Verpleegster van de nachtdienst die in haar pauze binnenwipt. Ze mikt, stoot en krijt al voor de volgende bal terwijl de jouwe nog rolt. Snel is niet slordig.
+a Verpleegster van de nachtdienst die in heur pauze efkes binnenwipt. Ze mikt, sjtoot en krijt al veur den volgenden bol terwijl den ouwe nog rolt. Rap es nie slordig.
+
+= Quick game? My break ends in ten minutes.
+v Rap een partijtje? Mijn pauze is binnen tien minuten gedaan.
+a Rap e partijke? Mijn pauze es binnen tien minuten gedaan.
+
+= Blink and you miss it.
+v Even knipperen en ge zijt het kwijt.
+a Efkes knippen mee ou ogen en 't es al gebeurd.
+
+= Next.
+v Volgende.
+a ~
+
+= Too slow, too slow.
+v Te traag, te traag.
+a Te trage, te trage.
+
+= Rushed it.
+v Te rap.
+a Te rap gegoan.
+
+= Okay, okay. Slower.
+v Oké, oké. Trager.
+a Oké, oké. Wa troager.
+
+= Took your time, huh?
+v Ge hebt uw tijd genomen, hé?
+a Ge hebt ou tijd gepakt, hé?
+
+= Nice. Finally.
+v Schoon. Eindelijk.
+a Schoon. Eindelijk.
+
+= Haste makes fouls. Yours, this time.
+v Haast maakt fouten. De uwe, deze keer.
+a Hoast moakt fouten. Den ouwe, deze kier.
+
+= Oops. For you.
+v Oeps. Voor u.
+a Oeps. Veur ou.
+
+= Back to work. Thanks for the game.
+v Terug aan het werk. Merci voor de partij.
+a Terug noar 't werk. Merci veur de partij.
+
+= Fine. Coffee, then rematch.
+v Goed. Koffie, en dan revanche.
+a Goe. Ne koffie, en dan revanche.
+
+# Dirk Dewaele, The Postman
+
+= The Postman
+v De Postbode
+a De Facteur
+
+= Everything goes through a post
+v Alles via een dop
+a Alles via nen dop
+
+= Shots off the posts
+v Stoten via de doppen
+a Sjtoten via de doppen
+
+= Reliable aim
+v Betrouwbaar mikwerk
+a Mikt zoals 't moet
+
+= Rarely plays straight
+v Speelt zelden recht
+a Sjpeelt zelden recht
+
+= Light on defence
+v Weinig verdediging
+a Verdedigt nie veel
+
+= Has delivered the mail in this street for thirty years. He sends every ball via a post, like a letter through the sorting office, and it usually arrives.
+v Bezorgt al dertig jaar de post in deze straat. Hij stuurt elke bal via een dop, zoals een brief via het sorteercentrum, en meestal komt hij aan.
+a Brengt al dertig joar de post in deze sjtroat. Hij sjtuurt elke bol via nen dop, gelijk ne brief via 't sorteercentrum, en meestal komt hij aan.
+
+= Special delivery.
+v Speciale levering.
+a ~
+
+= Sign here, please.
+v Hier tekenen, alstublieft.
+a Hier tekenen, astemblieft.
+
+= Delivered.
+v Afgeleverd.
+a Afgegeven.
+
+= First class.
+v Eerste klas.
+a ~
+
+= Right on time.
+v Precies op tijd.
+a Zjuust ip tijd.
+
+= Wrong address.
+v Verkeerd adres.
+a ~
+
+= Lost in the post.
+v Verloren gegaan bij de post.
+a Kwijtgespeeld bij de post.
+
+= Express, was it?
+v Express, was het?
+a Express, zeker?
+
+= Hm. Stamped and sent.
+v Hm. Gestempeld en verstuurd.
+a Hm. Gesjtempeld en versjtuurd.
+
+= Return to sender.
+v Terug naar afzender.
+a Terug noar den afzender.
+
+= Not enough postage.
+v Te weinig postzegels.
+a Te weinig zegels erip.
+
+= Signed, sealed, delivered.
+v Getekend, verzegeld, afgeleverd.
+a Getekend, toegeplakt, afgegeven.
+
+= Same time tomorrow. I always am.
+v Morgen zelfde uur. Ik ben er altijd.
+a Morgen zelfden uur. Kik ben er altijd.
+
+# Lotte Lemmens, The Lawyer
+
+= The Lawyer
+v De Advocate
+a ~
+
+= Never fouls, waits for yours
+v Maakt nooit een fout, wacht op de jouwe
+a Moakt noait ne fout, wacht ip den ouwe
+
+= Never takes a risk
+v Neemt nooit een risico
+a Pakt noait e risico
+
+= Blocks well
+v Blokkeert goed
+a ~
+
+= Soft shots fall short
+v Zachte stoten komen te kort
+a Zachte sjtoten komen te kort
+
+= Too careful to attack
+v Te voorzichtig om aan te vallen
+a ~
+
+= Lawyer by day, referee by habit. She has read the rulebook more often than you have played. She takes no risks, never fouls and calmly waits for your mistake.
+v Overdag advocate, uit gewoonte scheidsrechter. Ze las het reglement vaker dan jij hebt gespeeld. Ze neemt geen risico's, maakt nooit een fout en wacht rustig op jouw vergissing.
+a Overdag advocate, uit gewoonte scheids. Ze heeft 't reglement meer gelezen dan gij gesjpeeld hebt. Ze pakt gin risico's, moakt noait ne fout en wacht kalm ip ou mistake.
+
+= Shall we agree on the rules first?
+v Zullen we eerst de regels afspreken?
+a Zulle we eerst de regels afsjpreken?
+
+= Article 8.1. Remember it.
+v Artikel 8.1. Onthoud het.
+a Artikel 8.1. Onthoud da.
+
+= Case closed.
+v Zaak gesloten.
+a ~
+
+= Sustained.
+v Toegewezen.
+a ~
+
+= I object. To myself.
+v Bezwaar. Tegen mezelf.
+a Bezwoar. Tegen mijn eigen.
+
+= Mitigating circumstances.
+v Verzachtende omstandigheden.
+a ~
+
+= Noted for the record.
+v Genoteerd voor het verslag.
+a Genoteerd veur 't verslag.
+
+= Allowed.
+v Toegestaan.
+a ~
+
+= SP/8.1. Penalty spot, please.
+v SP/8.1. Strafplek, alstublieft.
+a SP/8.1. Sjtrafplek, astemblieft.
+
+= Objection sustained.
+v Bezwaar toegewezen.
+a Bezwoar toegewezen.
+
+= The court rules in my favour.
+v De rechtbank oordeelt in mijn voordeel.
+a De rechtbank geeft mij gelijk.
+
+= I will appeal.
+v Ik ga in beroep.
+a Kik goa in beroep.

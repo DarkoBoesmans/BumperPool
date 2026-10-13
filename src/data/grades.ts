@@ -2,6 +2,7 @@
 // help.lines = lines on the cloth, aim = aim line length in mm, ghost = ghost ball, obj = where a hit ball goes, warn = foul warnings.
 // felt: the cloth colour against this grade. prize: tokens for beating one of them.
 import type { Grade } from "../types";
+import { t } from "../i18n";
 
 export const GRADES: Grade[] = [
   {
@@ -63,13 +64,13 @@ export const GRADES: Grade[] = [
 export const FULL_HELP = GRADES[0].help;
 export function helpText(g: Grade): string {
   const h = g.help;
-  if (!h.aim && !h.lines) return "No help: no lines on the cloth, no aim line, no warnings";
+  if (!h.aim && !h.lines) return t("No help: no lines on the cloth, no aim line, no warnings");
   return [
-    h.lines && "lines on the cloth",
-    h.aim === Infinity ? "full aim line" : h.aim ? "short aim line" : "",
-    h.ghost && "ghost ball",
-    h.obj && "where the hit ball goes",
-    h.warn && "foul warnings",
+    h.lines && t("lines on the cloth"),
+    h.aim === Infinity ? t("full aim line") : h.aim ? t("short aim line") : "",
+    h.ghost && t("ghost ball"),
+    h.obj && t("where the hit ball goes"),
+    h.warn && t("foul warnings"),
   ]
     .filter(Boolean)
     .join(", ")

@@ -1,8 +1,8 @@
-// The live boards: tonight's score, the foul book, the house rules, the neon marquee, the regular of the month, the clock.
+// The live boards: tonight's score, the foul book and the house rules. The signs are in boards-signs.ts.
 import type { Game, Opponent } from "../types";
 import type { Venue } from "../data/venues";
 import type { Shame } from "../profile/profile";
-import { paintPortrait } from "../people/portrait";
+import { t, tLog } from "../i18n";
 import { rnd } from "./state";
 
 export interface BoardCtx {
@@ -46,12 +46,12 @@ export function fit(
 function wrap(c: CanvasRenderingContext2D, text: string, x: number, y: number, maxW: number, lh: number): void {
   let line = "";
   for (const wd of text.split(" ")) {
-    const t = line ? line + " " + wd : wd;
-    if (c.measureText(t).width > maxW && line) {
+    const next = line ? line + " " + wd : wd;
+    if (c.measureText(next).width > maxW && line) {
       c.fillText(line, x, y);
       y += lh;
       line = wd;
-    } else line = t;
+    } else line = next;
   }
   c.fillText(line, x, y);
 }
@@ -71,7 +71,7 @@ export function drawScore(c: CanvasRenderingContext2D | null, { G, turnName }: B
   if (!G) return;
   c.font = `46px ${CHALK}`;
   c.textAlign = "center";
-  c.fillText(`TONIGHT · GAME ${G.manche}`, w / 2, 62);
+  c.fillText(t("TONIGHT · GAME {n}", { n: G.manche }), w / 2, 62);
   c.lineWidth = 3;
   c.beginPath();
   c.moveTo(60, 80);
@@ -102,13 +102,13 @@ export function drawScore(c: CanvasRenderingContext2D | null, { G, turnName }: B
     if (G.turn === col && !/End/.test(G.phase)) {
       c.textAlign = "right";
       c.fillStyle = "#ffd46a";
-      c.fillText("← ON THE CUE", w - 30, y + 40);
+      c.fillText("← " + t("ON THE CUE"), w - 30, y + 40);
     }
   }
   c.textAlign = "center";
   c.font = `26px ${CHALK}`;
   c.fillStyle = "rgba(244,240,228,.7)";
-  c.fillText("best of three · first to sink five", w / 2, h - 24);
+  c.fillText(t("best of three · first to sink five"), w / 2, h - 24);
 }
 
 export function drawFoulBook(c: CanvasRenderingContext2D | null, { G }: BoardCtx): string | void {
@@ -135,7 +135,7 @@ export function drawFoulBook(c: CanvasRenderingContext2D | null, { G }: BoardCtx
   c.fillStyle = "#1d140c";
   c.font = `46px ${POSTER}`;
   c.textAlign = "center";
-  c.fillText("FOUL BOOK", w / 2, 56);
+  c.fillText(t("FOUL BOOK"), w / 2, 56);
   if (!G) return;
   for (const p of [0, 1]) {
     const col = G.colorOf[p],
@@ -163,14 +163,14 @@ export function drawFoulBook(c: CanvasRenderingContext2D | null, { G }: BoardCtx
     if (!f) {
       c.fillStyle = "#5a7a3a";
       c.font = `24px ${CHALK}`;
-      c.fillText("clean", 48, y + 42);
+      c.fillText(t("clean"), 48, y + 42);
     }
   }
   if (lf) {
     c.fillStyle = "#a3261d";
     c.font = `21px ${CHALK}`;
     c.textAlign = "left";
-    wrap(c, "Last: " + lf.text.replace(/^Foul: /, ""), 44, h - 82, w - 60, 26);
+    wrap(c, t("Last: {text}", { text: tLog(lf.text, lf.v) }), 44, h - 82, w - 60, 26);
   }
 }
 
@@ -179,7 +179,8 @@ const RULES: [string, string][] = [
   ["own", "Never your own ball first"],
   ["hard", "No hard shots at goal from the corners"],
   ["fly", "No flyers along the cushion"],
-  ["tri", "No parking in the big triangle"],
+  ["tri small", "No parking in the big triangle"],
+  ["frame", "Last ball? Leave your frame"],
   ["wrong", "Wrong goal never counts"],
   ["time", "One minute per shot"],
   ["", "The landlady is always right"],
@@ -195,17 +196,18 @@ export function drawRules(c: CanvasRenderingContext2D | null, { G }: BoardCtx): 
   c.fillStyle = "#efe4c8";
   c.font = `44px ${POSTER}`;
   c.textAlign = "center";
-  c.fillText("HOUSE RULES", w / 2, 62);
+  c.fillText(t("HOUSE RULES"), w / 2, 62);
   c.textAlign = "left";
-  RULES.forEach(([k, t], i) => {
-    const y = 110 + i * 34;
+  RULES.forEach(([k, en], i) => {
+    const line = t(en);
+    const y = 108 + i * 31;
     c.fillStyle = "#c8452c";
     c.font = `26px ${POSTER}`;
     c.fillText(String(i + 1), 18, y);
     c.fillStyle = "#1d140c";
-    fit(c, t, (s) => `600 ${s}px ${LABEL}`, 19, w - 60);
-    c.fillText(t, 44, y);
-    if (k && k === lf) {
+    fit(c, line, (s) => `600 ${s}px ${LABEL}`, 19, w - 60);
+    c.fillText(line, 44, y);
+    if (k && k.split(" ").includes(lf)) {
       c.strokeStyle = "#d0201a";
       c.lineWidth = 4;
       c.beginPath();
@@ -216,83 +218,4 @@ export function drawRules(c: CanvasRenderingContext2D | null, { G }: BoardCtx): 
       c.fillText("!!", w - 34, y - 14);
     }
   });
-}
-
-export function drawMarquee(c: CanvasRenderingContext2D | null, { G, venue }: BoardCtx): string | void {
-  if (!c) return (G ? G.names.join("|") + G.manche : "none") + venue.id;
-  const w = c.canvas.width;
-  c.fillStyle = "#0a0605";
-  c.fillRect(0, 0, w, c.canvas.height);
-  const neon = (t: string, y: number, size: number, col: string) => {
-    c.font = `${size}px ${POSTER}`;
-    c.textAlign = "center";
-    c.shadowColor = col;
-    c.shadowBlur = 18;
-    c.fillStyle = col;
-    c.fillText(t, w / 2, y);
-    c.shadowBlur = 0;
-    c.fillStyle = "#fff4e0";
-    c.globalAlpha = 0.55;
-    c.fillText(t, w / 2, y);
-    c.globalAlpha = 1;
-  };
-  fit(c, venue.marquee, (s) => `${s}px ${POSTER}`, 34, w - 40);
-  neon(venue.marquee, 40, parseInt(c.font), venue.neon);
-  if (G) {
-    const t = `${G.names[0]}  vs  ${G.names[1]}`.toUpperCase();
-    fit(c, t, (s) => `${s}px ${POSTER}`, 44, w - 40);
-    neon(t, 92, parseInt(c.font), "#ff4a6a");
-  }
-}
-
-export function drawRegular(c: CanvasRenderingContext2D | null, { opp }: BoardCtx): string | void {
-  if (!c) return opp ? opp.id : "none";
-  const w = c.canvas.width,
-    h = c.canvas.height;
-  c.fillStyle = "#1a120c";
-  c.fillRect(0, 0, w, h);
-  c.fillStyle = "#c9a35b";
-  c.font = `17px ${POSTER}`;
-  c.textAlign = "center";
-  c.fillText("REGULAR OF THE MONTH", w / 2, 24);
-  if (!opp) return;
-  const p = document.createElement("canvas");
-  p.width = p.height = 64;
-  paintPortrait(p, opp);
-  c.imageSmoothingEnabled = false;
-  c.drawImage(p, 16, 34, w - 32, w - 32);
-  c.fillStyle = "#efe4c8";
-  fit(c, opp.name.toUpperCase(), (s) => `${s}px ${POSTER}`, 26, w - 16);
-  c.fillText(opp.name.toUpperCase(), w / 2, h - 18);
-}
-
-export function drawClock(c: CanvasRenderingContext2D | null): string | void {
-  const d = new Date(),
-    key = d.getHours() + ":" + d.getMinutes();
-  if (!c) return key;
-  const w = c.canvas.width,
-    r = w / 2 - 6;
-  c.fillStyle = "#efe4c8";
-  c.beginPath();
-  c.arc(w / 2, w / 2, r, 0, 7);
-  c.fill();
-  c.strokeStyle = "#1d140c";
-  c.lineWidth = 6;
-  c.stroke();
-  c.save();
-  c.translate(w / 2, w / 2);
-  for (let i = 0; i < 12; i++) {
-    c.rotate(Math.PI / 6);
-    c.fillStyle = "#1d140c";
-    c.fillRect(-2, -r + 8, 4, 12);
-  }
-  const hand = (a: number, len: number, wd: number) => {
-    c.save();
-    c.rotate(a);
-    c.fillRect(-wd / 2, -len, wd, len + 8);
-    c.restore();
-  };
-  hand((((d.getHours() % 12) + d.getMinutes() / 60) * Math.PI) / 6, r * 0.5, 7);
-  hand((d.getMinutes() * Math.PI) / 30, r * 0.78, 4);
-  c.restore();
 }

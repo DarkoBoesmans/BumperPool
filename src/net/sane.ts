@@ -44,7 +44,12 @@ export function saneGame(g: unknown): g is Game {
         (e.c === null || color(e.c)) &&
         KINDS.includes(e.kind) &&
         text(e.text, 400) &&
-        text(e.why, 600),
+        text(e.why, 600) &&
+        (e.v === undefined ||
+          (!!e.v &&
+            typeof e.v === "object" &&
+            Object.keys(e.v).length <= 8 &&
+            Object.values(e.v).every((x) => text(x, 600) || num(x)))),
     )
   );
 }

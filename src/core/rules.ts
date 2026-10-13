@@ -1,7 +1,16 @@
 // House rules for freeplay. The story always plays by the book (the GZV rulebook): REGLEMENT.
 import type { Rules } from "../types";
 
-export const REGLEMENT: Rules = { games: 3, own: true, hard: true, fly: true, tri: true, spin: true, golden: false };
+export const REGLEMENT: Rules = {
+  games: 3,
+  own: true,
+  hard: true,
+  fly: true,
+  tri: true,
+  frames: true,
+  spin: true,
+  golden: false,
+};
 
 /** the switches on the house rules page, in order: the book's fouls first, then the custom rules */
 export const RULE_SWITCHES: { key: Exclude<keyof Rules, "games">; title: string; desc: string; custom?: true }[] = [
@@ -20,6 +29,11 @@ export const RULE_SWITCHES: { key: Exclude<keyof Rules, "games">; title: string;
     key: "tri",
     title: "Leave the big triangle",
     desc: "A ball that starts your turn in the big triangle must leave it. (SP/9)",
+  },
+  {
+    key: "frames",
+    title: "Frame play",
+    desc: "Once a player is down to one ball, every shot must send a ball out of its frame. (SP/10)",
   },
   {
     key: "spin",

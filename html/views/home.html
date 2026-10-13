@@ -32,14 +32,15 @@
     >
     <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
   </button>
-  <button class="c-menu-opt" type="button" data-go="online">
+  <!-- online play is switched off until it is finished: the view and src/net stay in place -->
+  <button class="c-menu-opt" type="button" data-go="online" disabled>
     <span class="c-menu-opt__icon"
       ><svg class="o-icon"><use href="#i-globe" /></svg
     ></span>
     <span class="c-menu-opt__text"
       ><b class="c-menu-opt__title">Play online</b><small class="c-menu-opt__desc">Two devices, one table</small></span
     >
-    <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+    <span class="c-menu-opt__badge">Coming soon</span>
   </button>
   <div class="c-minis">
     <button class="c-minis__btn" type="button" data-go="me">
@@ -54,6 +55,12 @@
     <button class="c-minis__btn" type="button" id="btnSettings2">
       <svg class="o-icon"><use href="#i-gear" /></svg><span>Settings</span>
     </button>
+  </div>
+  <!-- each language in its own name, never translated -->
+  <div class="c-seg c-seg--3 c-seg--lang" role="radiogroup" aria-label="Language">
+    <button class="c-seg__opt" type="button" role="radio" data-lang="vls" lang="nl-BE" translate="no">Vlaams</button>
+    <button class="c-seg__opt" type="button" role="radio" data-lang="en" lang="en" translate="no">English</button>
+    <button class="c-seg__opt" type="button" role="radio" data-lang="aal" lang="nl-BE" translate="no">Oilsjters</button>
   </div>
   <p class="c-record" id="homeRecord"></p>
   <p class="c-legal-links">

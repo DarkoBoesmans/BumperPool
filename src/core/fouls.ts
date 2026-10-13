@@ -24,6 +24,16 @@ export const FOULS: Record<FoulKey, { code: string; title: string; why: string }
     title: "Parked in the triangle",
     why: "This ball lay in the big triangle in front of the goal when the turn began, and it never left during the turn. A ball may only stay there until your next turn if the last shot of a turn put it there. On the line counts as inside.",
   },
+  small: {
+    code: "SP/9.5",
+    title: "Parked in front of a guarded goal",
+    why: "Your opponent guards this goal with a ball in the small triangle. While it stays there after your shot, your ball may not end up in the big triangle. On the line counts as inside.",
+  },
+  frame: {
+    code: "SP/10",
+    title: "No ball left its frame",
+    why: "Frame play: a player is down to one ball, so every shot must send at least one ball out of the frame it lay in. The lines on the cloth mark the 15 frames. A ball on a line leaves its frame by leaving the line, and a ball that drops into a goal has left too. From the attack triangle you need not change frames.",
+  },
   wrong: {
     code: "SP/7.2",
     title: "Wrong goal",

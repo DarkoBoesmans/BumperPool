@@ -11,6 +11,7 @@ import {
   buy,
   canBuy,
   migrateLook,
+  migrateIds,
   resetMe,
 } from "../src/profile/profile";
 import { itemById } from "../src/data/shop";
@@ -19,8 +20,8 @@ describe("profile", () => {
   test("beating all three regulars of a grade opens the next one", () => {
     resetMe();
     expect(unlocked("common") && !unlocked("uncommon") && !unlocked("pearl")).toBe(true);
-    expect(nextInStory()).toBe("kevin");
-    expect(recordMatch("kevin", true).opened).toBeNull();
+    expect(nextInStory()).toBe("jens");
+    expect(recordMatch("jens", true).opened).toBeNull();
     recordMatch("monique", false);
     expect(unlocked("uncommon")).toBe(false);
     recordMatch("monique", true);
@@ -49,7 +50,7 @@ describe("profile", () => {
 
   test("freeplay wins count for the freeplay rewards", () => {
     resetMe();
-    const r = recordMatch("poseidon", true, { freeplay: true, games: [2, 1] });
+    const r = recordMatch("neptune", true, { freeplay: true, games: [2, 1] });
     expect(r.items.map((i) => i.id)).toContain("cue-trident");
     expect(r.tokens).toBe(75);
   });
@@ -67,5 +68,32 @@ describe("profile", () => {
     expect(l.hat).toBe("none");
     expect(l.facial).toBe("beard");
     expect(l.glasses).toBe("round");
+  });
+
+  test("a profile from before the renames keeps its progress", () => {
+    const s = {
+      beaten: { kevin: true, baron: true, thor: true },
+      free: { wins: 1, sentUnder: 0, beat: { poseidon: true }, legendSweep: false },
+      owned: { "bar-mead": true },
+      equip: { cue: "cue-house", table: "tbl-mahogany", bar: "bar-mead" },
+      seen: { mead: true },
+    } as never as Parameters<typeof migrateIds>[0];
+    migrateIds(s);
+    expect(s.beaten).toEqual({ jens: true, kevin: true, jupiter: true });
+    expect(s.free!.beat).toEqual({ neptune: true });
+    expect(s.equip!.bar).toBe("bar-sky");
+    expect(s.made).toBe(true);
+    migrateIds(s); // a second run changes nothing
+    expect(s.beaten).toEqual({ jens: true, kevin: true, jupiter: true });
+  });
+
+  test("beating a regular unlocks their trophy, free to collect", () => {
+    resetMe();
+    const r = recordMatch("jens", true);
+    expect(r.items.map((i) => i.id)).toContain("tr-jens");
+    const tokens = me.tokens;
+    expect(buy("tr-jens")).toBe(true);
+    expect(me.tokens).toBe(tokens);
+    expect(buy("tr-monique")).toBe(false); // not beaten yet
   });
 });

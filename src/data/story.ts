@@ -15,7 +15,7 @@ export const CHAPTERS: Chapter[] = [
     grade: "common",
     title: "The New Face",
     place: "The market square",
-    text: "Three pubs round the market square, each with a golfbiljart table and a regular who thinks it is theirs. Nobody here has heard of you. Yet.",
+    text: "Three pubs round the market square, each with a tjoepbiljart table and a regular who thinks it is theirs. Nobody here has heard of you. Yet.",
   },
   {
     grade: "uncommon",

@@ -83,7 +83,7 @@ export function startReplay(m: Moment): void {
     p.freezeFor = 4.2;
     p.hold = 2.4;
     p.slow = [tf - 0.5, tf + 0.05, 0.3];
-    p.high = f.key === "tri" || f.key === "hard" || f.key === "fly";
+    p.high = ["tri", "small", "frame", "hard", "fly"].includes(f.key);
   } else {
     const pot = m.pot!,
       tp = pot.t;
