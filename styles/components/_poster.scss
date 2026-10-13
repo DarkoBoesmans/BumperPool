@@ -1,0 +1,68 @@
+// The poster theme: cream paper, black ink, red print, a double rule and two red diamonds.
+// It redefines the theme properties, so every control inside prints like the poster.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-poster {
+  --ink: #{$poster-ink};
+  --ink-2: #4b3826;
+  --ink-3: #574230; // 4.5:1 on the darkest paper
+  --line: rgba(31, 21, 14, 0.3);
+  --accent: #{$poster-red};
+  --gold: #8a5a12;
+  --btn-ink: #{$poster-ink};
+  --btn-face: transparent;
+  --btn-face-hover: rgba(165, 42, 30, 0.08);
+  --btn-edge: #{$poster-ink};
+  --btn-edge-hover: #{$poster-ink};
+  --btn-drop: 3px 3px 0 #{$poster-ink};
+  --cta-ink: #f6ecd4;
+  --cta-face: linear-gradient(180deg, #{$poster-red-2}, #{$poster-red});
+  --cta-face-hover: linear-gradient(180deg, #d4473a, #b12e22);
+  --cta-edge: #{$poster-ink};
+  --cta-drop: 4px 4px 0 #{$poster-ink};
+  --seg-bg: rgba(31, 21, 14, 0.06);
+  --seg-edge: #{$poster-ink};
+  --seg-hover: rgba(165, 42, 30, 0.08);
+  --seg-on: #{$poster-ink};
+  --seg-on-ink: #{$paper};
+  --toggle-bg: rgba(255, 255, 255, 0.25);
+  --toggle-edge: #{$poster-ink};
+  --toggle-on: #{$poster-red};
+  --field-bg: rgba(255, 255, 255, 0.4);
+  --field-edge: #{$poster-ink};
+  --field-font: #{$f-serif};
+  position: relative;
+  color: var(--ink);
+  border: 2px solid $poster-ink;
+  border-radius: 2px;
+  @include paper;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: calc(50% - 6.5px);
+    width: 13px;
+    height: 13px;
+    background: $poster-red;
+    transform: rotate(45deg);
+    pointer-events: none;
+    box-shadow:
+      0 0 0 2px $paper,
+      0 0 0 4px $poster-ink;
+  }
+  &::before {
+    top: -8px;
+  }
+  &::after {
+    bottom: -8px;
+  }
+  p,
+  small {
+    font-family: $f-serif;
+  }
+  .c-subhead {
+    font: 400 13px $f-display;
+    letter-spacing: 0.18em;
+  }
+}

@@ -1,0 +1,127 @@
+// Your player: the portrait and your name on the left, four tabs of choices on the right.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-maker {
+  display: grid;
+  grid-template-columns: 1fr 1.618fr;
+  gap: $s5;
+  align-items: start;
+  &__face {
+    display: grid;
+    justify-items: center;
+    gap: $s3;
+  }
+  &__canvas {
+    width: min(100%, 233px);
+    height: auto;
+    aspect-ratio: 1;
+    image-rendering: pixelated;
+    border: 3px solid $poster-ink;
+    box-shadow: 6px 6px 0 $poster-ink;
+  }
+  &__form {
+    display: grid;
+    gap: $s2;
+  }
+  &__panel {
+    gap: $s1 !important;
+  }
+  &__row {
+    display: grid;
+    grid-template-columns: 89px 1fr;
+    align-items: center;
+    gap: $s3;
+    padding-top: $s2;
+    border-top: 1px solid var(--line);
+    @include below($bp-phone) {
+      grid-template-columns: 55px 1fr;
+    }
+    @include short {
+      padding-top: 3px;
+    }
+  }
+  &__label {
+    font: 400 13px $f-display;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $poster-red;
+  }
+  @include below($bp-tablet) {
+    grid-template-columns: 1fr;
+    gap: $s3;
+    &__face {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      justify-items: start;
+    }
+    &__canvas {
+      width: 89px;
+    }
+  }
+  @include short {
+    grid-template-columns: auto 1fr;
+    &__face {
+      display: block;
+    }
+    &__canvas {
+      width: 89px;
+    }
+  }
+}
+// colour swatches
+.c-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $s2;
+  &__swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid $poster-ink;
+    background: var(--c);
+    cursor: pointer;
+    transition: transform 0.12s;
+    &:hover {
+      transform: scale(1.1);
+    }
+    &--none {
+      background: repeating-linear-gradient(45deg, #fff 0 4px, #d8c8a8 4px 8px);
+    }
+    &[aria-checked="true"] {
+      box-shadow:
+        0 0 0 3px $paper,
+        0 0 0 5px $poster-red;
+    }
+    @include short {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+// word chips: one choice or a few
+.c-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $s1;
+  &__chip {
+    min-height: 30px;
+    padding: 0 10px;
+    border: 2px solid $poster-ink;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    color: $poster-ink;
+    font: 400 12.5px $f-display;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    &[aria-checked="true"],
+    &[aria-pressed="true"] {
+      background: $poster-ink;
+      color: $paper;
+    }
+    @include short {
+      min-height: 26px;
+    }
+  }
+}

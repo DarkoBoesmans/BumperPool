@@ -1,0 +1,81 @@
+// Who is up and what to do, under the scoreboard. Foul warnings appear here while you aim.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-ribbon {
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 0px) + 96px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(620px, calc(100% - 24px));
+  padding: 9px 22px 10px;
+  text-align: center;
+  pointer-events: none;
+  @include skew-plate($glass, 1.5px solid var(--line), $position: null);
+  &::before {
+    -webkit-backdrop-filter: $blur;
+    backdrop-filter: $blur;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+  }
+  &__main {
+    display: block;
+    @include label(15px, 0.04em);
+  }
+  &__hint {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-2);
+    text-wrap: balance;
+  }
+  &__warn {
+    display: block;
+    margin-top: 3px;
+    @include label(12px, 0.06em);
+    color: $warn;
+  }
+  &__acts {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    pointer-events: auto;
+  }
+  .is-ending & {
+    visibility: hidden;
+  }
+  @include below($bp-tablet) {
+    left: 66px;
+    right: 10px;
+    width: auto;
+    transform: none;
+  }
+  @include below($bp-phone) {
+    top: calc(env(safe-area-inset-top, 0px) + 70px);
+  }
+  @include upright {
+    left: 10px;
+    padding: 6px 16px 7px;
+    &__main {
+      font-size: 13.5px;
+    }
+    &__hint {
+      font-size: 12.5px;
+    }
+  }
+  // a phone on its side: right of the controls, as low as it can be
+  @include short {
+    top: calc(env(safe-area-inset-top, 0px) + 50px);
+    left: calc(env(safe-area-inset-left, 0px) + 122px);
+    right: 14px;
+    width: auto;
+    transform: none;
+    padding: 5px 18px 6px;
+    &__main {
+      font-size: 13px;
+    }
+    &__hint {
+      font-size: 12px;
+    }
+  }
+}

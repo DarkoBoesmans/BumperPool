@@ -1,0 +1,55 @@
+// A labelled range slider with its value; the effects sliders carry a line of explanation.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-slider {
+  display: grid;
+  grid-template-columns: minmax(0, 230px) 1fr 40px;
+  align-items: center;
+  gap: 12px;
+  min-height: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  &__desc {
+    display: block;
+    font: 500 11.5px $f-ui;
+    color: var(--ink-3);
+    @include below($bp-phone) {
+      display: none;
+    }
+    @media (max-height: $bp-low) {
+      display: none;
+    }
+  }
+  &__value {
+    font: 400 18px $f-display;
+    text-align: right;
+    color: var(--accent);
+  }
+  @include below($bp-phone) {
+    grid-template-columns: 1fr 1.2fr 36px;
+  }
+  @media (max-height: $bp-low) {
+    min-height: 32px;
+  }
+  @include short {
+    min-height: 30px;
+    font-size: 12.5px;
+    &__value {
+      font-size: 15px;
+    }
+  }
+}
+// the picture tab: a slider per effect, two columns on a short screen
+.c-fx {
+  display: grid;
+  gap: 2px;
+  @include short {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+    .c-slider {
+      grid-template-columns: minmax(0, 1fr) 1fr 28px;
+      gap: 6px;
+    }
+  }
+}

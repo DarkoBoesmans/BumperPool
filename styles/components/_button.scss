@@ -1,0 +1,114 @@
+// Chunky slanted buttons with a glossy split. The colours come from the theme (settings/tokens, components/poster).
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-btn {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 24px;
+  border: 0;
+  background: none;
+  color: var(--btn-ink);
+  font: 700 14.5px/1 $f-ui;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    color 0.15s;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: skewX(-12deg);
+    background: var(--btn-face);
+    border: 2px solid var(--btn-edge);
+    box-shadow: var(--btn-drop);
+    transition:
+      border-color 0.15s,
+      box-shadow 0.12s,
+      background 0.15s;
+  }
+  &:hover::before {
+    border-color: var(--btn-edge-hover);
+    background: var(--btn-face-hover);
+  }
+  &:active {
+    transform: translateY(3px);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  &--cta {
+    color: var(--cta-ink);
+    &::before {
+      background: var(--cta-face);
+      border-color: var(--cta-edge);
+      box-shadow: var(--cta-drop);
+    }
+    &:hover::before {
+      background: var(--cta-face-hover);
+      border-color: var(--cta-edge);
+    }
+  }
+  &--ghost::before {
+    background: transparent;
+    box-shadow: none;
+  }
+  // deletes something for good: red edge, asks twice (is-armed after the first press)
+  &--danger {
+    margin: $s1 12px 10px; // room for the slant and the shadow at the bottom of a scrolling panel
+    justify-self: start;
+    color: $poster-red;
+    &::before {
+      background: transparent;
+      border-color: $poster-red;
+      box-shadow: none;
+    }
+    &.is-armed {
+      color: #fff;
+      &::before {
+        background: $poster-red;
+      }
+    }
+  }
+  // a small square button: Reset, Next record, Buy
+  &--small {
+    min-height: 28px;
+    padding: 0 10px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--ink-2);
+    &::before {
+      transform: none;
+      border-width: 1px;
+      border-radius: 3px;
+      background: var(--seg-bg);
+      box-shadow: none;
+    }
+    &:hover {
+      color: var(--ink);
+    }
+  }
+  @media (pointer: coarse) {
+    min-height: 44px;
+  }
+  @include short {
+    min-height: 40px;
+    &--small {
+      min-height: 28px;
+    }
+  }
+  @include calm {
+    transition: none;
+  }
+}

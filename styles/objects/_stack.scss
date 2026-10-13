@@ -1,0 +1,17 @@
+// Tab panels share one grid cell, so switching tabs never changes the size of the box.
+.o-stack {
+  display: grid;
+  min-height: 0;
+  &__item {
+    grid-area: 1 / 1;
+    display: grid;
+    gap: 10px;
+    align-content: start;
+    min-height: 0;
+    overflow: hidden;
+    &.is-off {
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+}

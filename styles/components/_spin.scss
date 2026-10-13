@@ -1,0 +1,95 @@
+// The spin pad: where the tip hits the cue ball. Fixed size, so the label never makes it jump.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-spin {
+  position: fixed;
+  right: 18px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  width: 156px;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 10px 12px 12px;
+  @include glass;
+  border: 2px solid var(--line);
+  box-shadow: $shadow;
+  border-radius: 4px;
+  &__label {
+    font: 400 15px $f-display;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+  }
+  &__ball {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    border-radius: 50%;
+    cursor: crosshair;
+    touch-action: none;
+    background: radial-gradient(circle at 36% 30%, #fff 0%, #f2ead6 40%, #bcae8e 85%, #8f846b 100%);
+    box-shadow:
+      inset -6px -8px 14px rgba(0, 0, 0, 0.25),
+      0 4px 0 rgba(0, 0, 0, 0.5);
+  }
+  &__cross {
+    position: absolute;
+    inset: 14%;
+    border-radius: 50%;
+    border: 1px dashed rgba(60, 40, 20, 0.35);
+    background:
+      linear-gradient(rgba(60, 40, 20, 0.3), rgba(60, 40, 20, 0.3)) center/1px 100% no-repeat,
+      linear-gradient(rgba(60, 40, 20, 0.3), rgba(60, 40, 20, 0.3)) center/100% 1px no-repeat;
+  }
+  &__dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin: -9px 0 0 -9px;
+    border-radius: 50%;
+    background: #2c6fd1;
+    border: 3px solid #fff;
+    box-shadow:
+      0 0 0 2px #0d2a55,
+      0 2px 6px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    transition:
+      left 0.08s,
+      top 0.08s;
+  }
+  &__read {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 2.6em;
+    font: 700 11.5px/1.25 $f-ui;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    text-align: center;
+    overflow: hidden;
+  }
+  .is-ending & {
+    visibility: hidden;
+  }
+  @include below($bp-narrow) {
+    right: 10px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+    width: 96px;
+    padding: 6px 8px 8px;
+    gap: 4px;
+    &__read {
+      display: none;
+    }
+    &__label {
+      font-size: 12px;
+      line-height: 1;
+    }
+    &__ball {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}

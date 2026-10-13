@@ -1,0 +1,37 @@
+// Range inputs: an amber-to-oxblood track with a diamond thumb.
+@use "../settings/tokens" as *;
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  &::-webkit-slider-runnable-track {
+    height: 8px;
+    background: linear-gradient(90deg, var(--accent), $ox);
+    border: 1px solid var(--line);
+  }
+  &::-moz-range-track {
+    height: 8px;
+    background: linear-gradient(90deg, var(--accent), $ox);
+    border: 1px solid var(--line);
+  }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    margin-top: -8px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, #fff0c8, $amber);
+    border: 2px solid #2a1204;
+  }
+  &::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, #fff0c8, $amber);
+    border: 2px solid #2a1204;
+    border-radius: 0;
+  }
+}

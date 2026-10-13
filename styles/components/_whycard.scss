@@ -1,0 +1,55 @@
+// The foul explained during the replay freeze.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-whycard {
+  position: fixed;
+  left: 24px;
+  bottom: calc(9vh + 20px);
+  width: min(520px, calc(100% - 48px));
+  padding: 16px 20px 18px;
+  background: rgba(14, 6, 4, 0.9);
+  border: 3px solid $red;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.6);
+  animation: c-whycard-in 0.45s cubic-bezier(0.2, 1.3, 0.4, 1) both 0.15s;
+  &__title {
+    display: block;
+    @include display(34px, 0.03em);
+    color: #fff;
+  }
+  &__by {
+    display: block;
+    @include label(12px, 0.14em);
+    color: var(--ink-3);
+    margin-top: 4px;
+  }
+  &__text {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+  &__next {
+    margin: 10px 0 0;
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 700;
+    &:empty {
+      display: none;
+    }
+  }
+  &__ref {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    @include label(12px, 0.1em);
+    color: var(--gold);
+    border: 1.5px solid var(--gold);
+    padding: 3px 8px;
+  }
+}
+@keyframes c-whycard-in {
+  from {
+    transform: translateX(-120%);
+  }
+}

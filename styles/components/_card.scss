@@ -1,0 +1,121 @@
+// A regular's card: a square pixel portrait, the name in poster caps, the nickname, a BEATEN stamp.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-card {
+  --g: #b6bcb4;
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  justify-items: center;
+  align-content: stretch;
+  gap: 3px;
+  min-width: 0;
+  min-height: 0;
+  padding: $s2 $s2 $s3;
+  border: 2px solid $poster-ink;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--g) 22%, #{$paper});
+  color: $poster-ink;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s;
+  // the portrait keeps a 1:1 ratio whatever shape the card has: as big as fits, never stretched
+  &__face {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+    container-type: size;
+  }
+  &__canvas {
+    display: block;
+    width: calc(min(100cqw, 100cqh) - 10px); // minus the border and the ring
+    height: auto;
+    aspect-ratio: 1 / 1;
+    image-rendering: pixelated;
+    border: 2px solid $poster-ink;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--g) 60%, #{$paper});
+  }
+  &__name {
+    margin-top: 6px;
+    max-width: 100%;
+    font: 400 clamp(15px, 2.3vh, 19px) / 1.05 $f-display;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    @include ellipsis;
+  }
+  &__last {
+    @include below($bp-phone) {
+      display: none;
+    }
+  }
+  &__nick {
+    max-width: 100%;
+    font: italic 400 12px/1.3 $f-serif;
+    color: var(--ink-2);
+    @include ellipsis;
+    @include below($bp-phone) {
+      display: none;
+    }
+  }
+  &__stamp {
+    position: absolute;
+    right: 6px;
+    top: 30%;
+    padding: 2px 8px;
+    font: 400 15px $f-display;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $poster-red;
+    background: rgba(241, 229, 200, 0.92);
+    border: 3px solid $poster-red;
+    border-radius: 3px;
+    transform: rotate(-14deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+  &:hover {
+    transform: translateY(-3px);
+  }
+  &[aria-checked="true"] {
+    transform: translateY(-4px);
+    box-shadow: 5px 5px 0 $poster-ink;
+    background: color-mix(in srgb, var(--g) 48%, #{$paper});
+    &::before {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      z-index: 1;
+      border: 15px solid $poster-red;
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+    }
+  }
+  &.is-locked {
+    border-style: dashed;
+    background: #e3d3ac;
+    color: var(--ink-3);
+  }
+  &.is-beaten &__stamp {
+    opacity: 1;
+  }
+  &--pearl:not(.is-locked) {
+    background: $pearl-gradient;
+    background-size: 300% 100%;
+    animation: c-pearl 6s linear infinite;
+  }
+  @include below($bp-phone) {
+    padding: 6px;
+  }
+  @include calm {
+    transition: none;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,38 @@
+// The settings dialog.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  padding: 16px;
+  overflow-y: auto; // a phone on its side is shorter than the dialog
+  overscroll-behavior: contain;
+  background: rgba(5, 2, 1, 0.55);
+  &__dialog {
+    margin: auto;
+    width: min(600px, 100%);
+    padding: 22px 24px 24px;
+    display: grid;
+    gap: 14px;
+    .o-stack__item {
+      gap: 9px;
+    }
+    @media (max-height: $bp-low) {
+      padding: 14px 18px 16px;
+      gap: 10px;
+    }
+    @include short {
+      padding: 8px 16px 10px;
+      gap: 6px;
+      .o-stack__item {
+        gap: 6px;
+      }
+    }
+  }
+  @include short {
+    padding: 4px;
+  }
+}

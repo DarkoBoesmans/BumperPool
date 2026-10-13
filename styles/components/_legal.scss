@@ -1,0 +1,70 @@
+// The privacy, terms and credits page: a readable column of paper, the one page in the game that scrolls.
+@use "../settings/tokens" as *;
+
+html:has(.c-legal),
+.c-legal {
+  overflow: auto;
+}
+.c-legal {
+  background: $paper;
+  color: $poster-ink;
+  font: 400 16px/1.65 $f-serif;
+  &__page {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: $s5 16px $s6;
+  }
+  &__title {
+    margin: 0 0 $s1;
+    font: 400 clamp(32px, 6vw, 48px) / 1.1 $f-display;
+    color: $poster-red;
+  }
+  &__meta {
+    margin: 0 0 $s4;
+    color: #5a4a3a;
+    font-style: italic;
+  }
+  &__toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $s1 $s3;
+    padding: $s3 0;
+    border-block: 2px solid $poster-ink;
+    font: 700 14px $f-ui;
+  }
+  &__back {
+    font: 700 14px $f-ui;
+  }
+  h2 {
+    margin: $s5 0 $s2;
+    font: 400 26px/1.2 $f-display;
+  }
+  h3 {
+    margin: $s4 0 $s1;
+    font: 700 15px $f-ui;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  ul {
+    padding-left: 1.2em;
+  }
+  li + li {
+    margin-top: $s1;
+  }
+  a {
+    color: #7a1414;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  code,
+  kbd {
+    padding: 1px 5px;
+    font: 600 0.88em $f-ui;
+    background: rgba(31, 21, 14, 0.08);
+    border: 1px solid rgba(31, 21, 14, 0.2);
+    border-radius: 3px;
+  }
+  :focus-visible {
+    outline-color: #7a1414;
+  }
+}

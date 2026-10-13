@@ -1,0 +1,52 @@
+// Tabs; their panels sit in an o-stack so the box keeps its size.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-tabs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 3px;
+  padding: 3px;
+  background: var(--seg-bg);
+  border: 2px solid var(--seg-edge);
+  border-radius: 3px;
+  // six tabs do not fit a phone in one row: two rows of three
+  &--many {
+    @include below($bp-phone) {
+      grid-auto-flow: row;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  &__tab {
+    min-height: 38px;
+    padding: 0 10px;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--ink-2);
+    font: 700 12.5px $f-ui;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+      color: var(--ink);
+      background: var(--seg-hover);
+    }
+    &[aria-selected="true"] {
+      background: var(--seg-on);
+      color: var(--seg-on-ink);
+    }
+    @include below($bp-phone) {
+      font-size: 11.5px;
+      padding: 0 6px;
+    }
+    @media (pointer: coarse) {
+      min-height: 44px;
+    }
+    @include short {
+      min-height: 32px;
+    }
+  }
+}

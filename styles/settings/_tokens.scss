@@ -1,0 +1,87 @@
+// Settings: colours, type, spacing. Spacing and type step by the golden ratio: 5, 8, 13, 21, 34, 55, 89.
+// Everything a component may restyle per theme is a custom property, so the poster theme (components/poster)
+// can repaint the controls inside it without reaching into them.
+
+$s1: 5px;
+$s2: 8px;
+$tab-lift: 3px; // how far a tab rises on hover or when picked
+$s3: 13px;
+$s4: 21px;
+$s5: 34px;
+$s6: 55px;
+$s7: 89px;
+
+$f-display: Anton, Impact, "Arial Narrow Bold", sans-serif;
+$f-ui:
+  "Chakra Petch",
+  system-ui,
+  -apple-system,
+  "Segoe UI",
+  sans-serif;
+$f-poster: "Abril Fatface", Georgia, "Times New Roman", serif;
+$f-serif: Merriweather, Georgia, serif;
+$f-chalk: "Permanent Marker", "Comic Sans MS", cursive;
+
+$ink: #0b0605;
+$paper: #f1e5c8;
+$poster-ink: #1f150e;
+$poster-red: #a52a1e;
+$poster-red-2: #c23a2a;
+$amber: #f0a830;
+$gold: #ecc66c;
+$ox: #7c1d18;
+$ox-2: #a3261d;
+$lime: #c6ff4d;
+$red: #ff3d2e;
+$white-ball: #efe7d4;
+$red-ball: #d9423f;
+$warn: #ff8a6a;
+$gold-gradient: linear-gradient(180deg, #ffe4a4, #f0a830 50%, #e08a1e 51%, #f5b84a);
+$pearl-gradient: linear-gradient(115deg, #ffd6f0, #c6f1ff, #e9ffd8, #fff1c6, #d8d2ff, #ffd6f0);
+$paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .24 0 0 0 0 .12 0 0 0 .2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+$glass: rgba(22, 13, 9, 0.66);
+$glass-strong: rgba(15, 9, 6, 0.88);
+$blur: blur(14px) saturate(140%);
+$shadow: 6px 6px 0 rgba(0, 0, 0, 0.55);
+
+// breakpoints
+$bp-rail: 1360px;
+$bp-wide: 1100px;
+$bp-tablet: 900px;
+$bp-narrow: 860px;
+$bp-phone: 640px;
+$bp-short: 520px;
+$bp-low: 640px;
+
+// the dark HUD theme; .c-poster redefines these
+@mixin dark-theme {
+  --ink: #f7edd9;
+  --ink-2: #dcc9a6;
+  --ink-3: #a8926e;
+  --line: rgba(255, 222, 160, 0.2);
+  --accent: #{$amber};
+  --gold: #{$gold};
+  --btn-ink: var(--ink);
+  --btn-face: linear-gradient(180deg, rgba(255, 240, 215, 0.16), rgba(255, 240, 215, 0.04));
+  --btn-face-hover: linear-gradient(180deg, rgba(255, 240, 215, 0.24), rgba(255, 240, 215, 0.06));
+  --btn-edge: var(--line);
+  --btn-edge-hover: var(--gold);
+  --btn-drop: 0 4px 0 rgba(0, 0, 0, 0.6);
+  --cta-ink: #2a1204;
+  --cta-face: linear-gradient(180deg, #ffe4a4 0%, #f5b84a 47%, #e08a1e 53%, #f7c060 100%);
+  --cta-face-hover: linear-gradient(180deg, #fff0c8 0%, #ffc85c 47%, #f09a28 53%, #ffd070 100%);
+  --cta-edge: #ffecc0;
+  --cta-drop: 0 4px 0 #6b3508, 0 0 26px rgba(240, 168, 48, 0.4);
+  --seg-bg: rgba(0, 0, 0, 0.35);
+  --seg-edge: var(--line);
+  --seg-hover: rgba(255, 240, 215, 0.08);
+  --seg-on: #{$gold-gradient};
+  --seg-on-ink: #2a1204;
+  --toggle-bg: rgba(255, 240, 215, 0.04);
+  --toggle-edge: var(--line);
+  --toggle-on: var(--accent);
+  --field-bg: rgba(0, 0, 0, 0.35);
+  --field-edge: var(--line);
+  --field-font: #{$f-ui};
+}

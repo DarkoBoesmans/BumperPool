@@ -1,0 +1,77 @@
+// Tools: mixins only, no CSS of their own.
+@use "../settings/tokens" as *;
+
+/** a skewed plate behind the content, the TV-graphics look of the HUD; $position: null keeps a fixed element fixed */
+@mixin skew-plate($bg: $glass, $edge: 2px solid var(--line), $skew: -14deg, $position: relative) {
+  position: $position;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: $bg;
+    transform: skewX($skew);
+    border: $edge;
+  }
+}
+
+/** frosted, smoky glass */
+@mixin glass($bg: $glass) {
+  background: $bg;
+  -webkit-backdrop-filter: $blur;
+  backdrop-filter: $blur;
+}
+
+/** cream poster paper with a double rule */
+@mixin paper {
+  background:
+    radial-gradient(130% 100% at 50% 30%, transparent 52%, rgba(122, 74, 22, 0.34) 100%), $paper-grain,
+    linear-gradient(180deg, #f4e9cf, #e8d6ac);
+  box-shadow:
+    inset 0 0 0 5px $paper,
+    inset 0 0 0 7px $poster-ink,
+    10px 10px 0 rgba(0, 0, 0, 0.55);
+}
+
+/** shouty display type */
+@mixin display($size, $spacing: 0.06em) {
+  font: 400 #{$size}/ 1 $f-display;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+}
+
+/** small uppercase labels */
+@mixin label($size: 11px, $spacing: 0.16em) {
+  font: 700 #{$size} $f-ui;
+  letter-spacing: $spacing;
+  text-transform: uppercase;
+}
+
+@mixin ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin below($w) {
+  @media (max-width: $w) {
+    @content;
+  }
+}
+@mixin short($h: $bp-short) {
+  @media (max-height: $h) {
+    @content;
+  }
+}
+/** a phone held upright: the game controls move to the bottom edge, under the table */
+@mixin upright {
+  @media (max-width: $bp-phone) and (orientation: portrait) {
+    @content;
+  }
+}
+@mixin calm {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

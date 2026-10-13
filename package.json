@@ -1,11 +1,24 @@
 {
   "name": "golfbiljart",
-  "version": "0.6.0",
+  "version": "0.12.0",
   "private": true,
   "type": "module",
   "description": "Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
   "scripts": {
-    "dev": "bun tools/serve.mjs",
-    "test": "bun test/selftest.mjs"
+    "dev": "bun tools/dev.ts",
+    "build": "bun tools/build.ts",
+    "check": "tsc --noEmit",
+    "test": "bun test",
+    "format": "prettier --write src styles test tools index.html legal.html"
+  },
+  "dependencies": {
+    "three": "0.128.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/three": "0.128.0",
+    "prettier": "^3.9.9",
+    "sass": "^1.93.0",
+    "typescript": "^5.9.0"
   }
 }

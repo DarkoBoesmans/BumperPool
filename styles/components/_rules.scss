@@ -1,0 +1,41 @@
+// The rules in the match drawer: one line each, the rule number in small print.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-rules {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 9px;
+  &__item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 8px;
+    font: 400 13.5px $f-serif;
+    color: var(--ink-2);
+    b {
+      color: var(--ink);
+    }
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 6px;
+      transform: rotate(45deg);
+      background: var(--accent);
+    }
+    @include short {
+      font-size: 12.5px;
+    }
+  }
+  &__code {
+    font: 700 10.5px $f-ui;
+    color: var(--ink-3);
+  }
+  @include short {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 16px;
+    gap: 4px;
+  }
+}

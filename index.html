@@ -2,59 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
     <title>Golfbiljart</title>
     <meta
       name="description"
-      content="Belgian tap billiards in a smoky low-poly café. Five balls each, one goal, twelve regulars from common to legendary."
+      content="Belgian tap billiards in a smoky low-poly café. Beat every regular in town, from the old brown café to the championship hall."
     />
     <meta name="theme-color" content="#0b0605" />
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Ccircle cx=%2216%22 cy=%2216%22 r=%2214%22 fill=%22%23c8232d%22/%3E%3Ccircle cx=%2211%22 cy=%2211%22 r=%224%22 fill=%22%23ff8a7c%22/%3E%3C/svg%3E"
     />
-    <link
-      rel="preload"
-      href="fonts/anton.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="fonts/chakra-petch-700.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
+    <link rel="preload" href="fonts/anton.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/chakra-petch-700.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/abril-fatface.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="style.css" />
-    <script type="module" src="src/main.js"></script>
+    <script type="module" src="main.js"></script>
   </head>
   <body>
     <svg width="0" height="0" style="position: absolute" aria-hidden="true">
       <symbol id="i-cigar" viewBox="0 0 24 24">
         <path d="M2 14h15v4H2z" />
         <path d="M13 14v4" />
-        <path
-          d="M17 14h3v4h-3"
-          fill="currentColor"
-          stroke="none"
-          opacity=".55"
-        />
+        <path d="M17 14h3v4h-3" fill="currentColor" stroke="none" opacity=".55" />
         <path d="M19 11c0-2 2-2 2-4s-2-2-2-4" />
       </symbol>
       <symbol id="i-glass" viewBox="0 0 24 24">
         <path d="M5 4h14l-1.6 15a2 2 0 0 1-2 1.8H8.6a2 2 0 0 1-2-1.8z" />
-        <path
-          d="M6 11h12l-.9 8H6.9z"
-          fill="currentColor"
-          stroke="none"
-          opacity=".45"
-        />
+        <path d="M6 11h12l-.9 8H6.9z" fill="currentColor" stroke="none" opacity=".45" />
         <path d="M9 8l2 2M13 7l1.5 1.5" />
+      </symbol>
+      <symbol id="i-chalk" viewBox="0 0 24 24">
+        <path d="M7 9l5-3 5 3v6l-5 3-5-3z" />
+        <path d="M7 9l5 3 5-3M12 12v6" />
+        <path d="M10 4.5c1-1 3-1 4 0" />
+      </symbol>
+      <symbol id="i-knock" viewBox="0 0 24 24">
+        <path
+          d="M8 13V8a1.5 1.5 0 0 1 3 0v4M11 12V7a1.5 1.5 0 0 1 3 0v5M14 12V8a1.5 1.5 0 0 1 3 0v6c0 3-2 5-5 5h-1a4 4 0 0 1-4-4v-2"
+        />
+        <path d="M3 21h18M5 18l-2-1M19 18l2-1" />
       </symbol>
       <symbol id="i-lines" viewBox="0 0 24 24">
         <rect x="3" y="5" width="18" height="14" rx="1" />
@@ -62,17 +49,13 @@
       </symbol>
       <symbol id="i-gear" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="3.2" />
-        <path
-          d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1"
-        />
+        <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1 7 17M17 7l2.1-2.1" />
       </symbol>
       <symbol id="i-book" viewBox="0 0 24 24">
         <path d="M5 4h11l3 3v13H5z" />
         <path d="M9 10h7M9 14h7M9 18h4" />
       </symbol>
-      <symbol id="i-menu" viewBox="0 0 24 24">
-        <path d="M4 7h16M4 12h16M4 17h16" />
-      </symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" /></symbol>
       <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6" /></symbol>
       <symbol id="i-pool" viewBox="0 0 24 24">
         <rect x="2" y="6" width="20" height="12" rx="2" />
@@ -84,10 +67,12 @@
         <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
       </symbol>
       <symbol id="i-hat" viewBox="0 0 24 24">
-        <path
-          d="M3 17c3 1.5 15 1.5 18 0M6 16.5 7.5 8c.3-1.6 2-2.2 3.3-1.4L12 7.3l1.2-.7c1.3-.8 3-.2 3.3 1.4l1.5 8.5"
-        />
+        <path d="M3 17c3 1.5 15 1.5 18 0M6 16.5 7.5 8c.3-1.6 2-2.2 3.3-1.4L12 7.3l1.2-.7c1.3-.8 3-.2 3.3 1.4l1.5 8.5" />
         <path d="M6.6 13c3.4 1 7.4 1 10.8 0" />
+      </symbol>
+      <symbol id="i-door" viewBox="0 0 24 24">
+        <path d="M6 21V4h10v17M4 21h16" />
+        <circle cx="13" cy="13" r="1" fill="currentColor" />
       </symbol>
       <symbol id="i-eye" viewBox="0 0 24 24">
         <path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" />
@@ -103,648 +88,886 @@
         <path d="M5 5l10 7-10 7z" />
         <path d="M19 5v14" />
       </symbol>
+      <symbol id="i-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 21c1-4.5 4.4-7 8-7s7 2.5 8 7" />
+      </symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24">
+        <rect x="5" y="11" width="14" height="10" rx="1" />
+        <path d="M8 11V8a4 4 0 0 1 8 0v3" />
+      </symbol>
       <symbol id="i-trophy" viewBox="0 0 24 24">
         <path d="M7 4h10v5a5 5 0 0 1-10 0z" />
-        <path
-          d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8M9 18h6"
-        />
+        <path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4M12 14v4M8 21h8M9 18h6" />
       </symbol>
       <symbol id="i-cap" viewBox="0 0 24 24">
-        <path
-          d="M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"
-        />
+        <path d="M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z" />
+      </symbol>
+      <symbol id="i-coin" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8.5" />
+        <circle cx="12" cy="12" r="5" />
+        <path d="M12 9.5v5" />
+      </symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24">
+        <path d="M5 8h14l-1 13H6z" />
+        <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+      </symbol>
+      <symbol id="i-redo" viewBox="0 0 24 24">
+        <path d="M19 12a7 7 0 1 1-2-4.9" />
+        <path d="M19 4v4h-4" />
       </symbol>
     </svg>
 
-    <div id="stage"></div>
-
-    <!-- ======================= HUD ======================= -->
-    <div id="hud" hidden>
-      <header class="board" aria-label="Scoreboard">
-        <div class="plate" id="s0">
-          <span class="ball"></span>
-          <div class="who">
-            <b class="nm">Player 1</b
-            ><span class="row"
-              ><span class="pips"></span><span class="fl">clean</span></span
-            >
-          </div>
-          <span class="wins"><i></i><i></i></span><span class="pts">0</span>
-        </div>
-        <div class="mid">
-          <span class="game" id="gameLbl">GAME 1</span
-          ><span class="bo">best of 3</span
-          ><span class="clock" id="clockChip" hidden
-            ><b id="clock">1:00</b></span
-          >
-        </div>
-        <div class="plate r" id="s1">
-          <span class="ball"></span>
-          <div class="who">
-            <b class="nm">Player 2</b
-            ><span class="row"
-              ><span class="pips"></span><span class="fl">clean</span></span
-            >
-          </div>
-          <span class="wins"><i></i><i></i></span><span class="pts">0</span>
-        </div>
-      </header>
-      <div class="ribbon" id="ribbon" aria-live="polite">
-        <b id="stMain">Loading</b><span id="stHint"></span
-        ><span id="stLive" class="warn" hidden></span>
-        <div class="acts" id="penBox" hidden>
-          <button class="btn cta" type="button" id="pen1">
-            <span>Penalty spot 1</span></button
-          ><button class="btn cta" type="button" id="pen2">
-            <span>Penalty spot 2</span>
-          </button>
-        </div>
-      </div>
-      <div class="ticker" id="ticker" role="status">
-        <span class="tag">Referee</span><span class="tt"></span
-        ><span class="why"></span>
-      </div>
-
-      <div class="power" id="power" hidden aria-hidden="true">
-        <span class="lbl">POWER</span>
-        <div class="track">
-          <div class="fill"></div>
-          <div class="mark"></div>
-        </div>
-        <span class="val">0</span>
-      </div>
-
-      <div class="spinpad" aria-label="Cue ball spin">
-        <span class="lbl">SPIN</span>
-        <div
-          class="cueball"
-          id="cueball"
-          role="slider"
-          tabindex="0"
-          aria-label="Where the cue tip hits the ball. Arrow keys also work, 0 resets."
-          aria-valuetext="Centre ball"
-        >
-          <i class="cross"></i><i class="dot" id="spinDot"></i>
-        </div>
-        <span class="read" id="spinRead">Centre ball</span>
-        <button class="mini" type="button" id="spinReset">Reset</button>
-      </div>
-
-      <p class="hint" id="orbitHint">
-        Right-drag to look around · Scroll to zoom · Arrows set spin · T for top
-        view
-      </p>
-
-      <nav class="rail" aria-label="Game controls">
-        <button class="rb" type="button" id="btnMenu">
-          <svg class="i"><use href="#i-menu" /></svg><span>Menu</span>
-        </button>
-        <button
-          class="rb"
-          type="button"
-          id="btnSheet"
-          aria-expanded="false"
-          aria-controls="sheet"
-        >
-          <svg class="i"><use href="#i-book" /></svg><span>Match</span>
-        </button>
-        <button class="rb" type="button" id="btnSettings">
-          <svg class="i"><use href="#i-gear" /></svg><span>Settings</span>
-        </button>
-        <span class="sep"></span>
-        <button class="rb" type="button" id="vPlayer" aria-pressed="true">
-          <svg class="i"><use href="#i-eye" /></svg><span>Player view</span
-          ><kbd>P</kbd>
-        </button>
-        <button class="rb" type="button" id="vTop" aria-pressed="false">
-          <svg class="i"><use href="#i-top" /></svg><span>Top view</span
-          ><kbd>T</kbd>
-        </button>
-        <button class="rb" type="button" id="optLines" aria-pressed="true">
-          <svg class="i"><use href="#i-lines" /></svg><span>Lines</span>
-        </button>
-        <span class="sep"></span>
-        <button class="rb hot" type="button" id="btnCigar">
-          <svg class="i"><use href="#i-cigar" /></svg><span>Cigar</span
-          ><kbd>1</kbd>
-        </button>
-        <button class="rb hot" type="button" id="btnWhisky">
-          <svg class="i"><use href="#i-glass" /></svg><span>Whisky</span
-          ><kbd>2</kbd>
-        </button>
-      </nav>
-
-      <div class="bubble" id="bubble" hidden aria-live="polite">
-        <b class="who"></b><span class="txt"></span>
-      </div>
-
-      <aside
-        class="sheet panelish"
-        id="sheet"
-        aria-label="Match and rules"
-        inert
-      >
-        <div class="sheet-head">
-          <h2>Match</h2>
-          <button class="btn ghost" type="button" id="btnClose">
-            <span>Close</span>
-          </button>
-        </div>
-        <div class="tabs" role="tablist" aria-label="Match">
-          <button
-            type="button"
-            role="tab"
-            id="tbPlayers"
-            aria-controls="tpPlayers"
-            aria-selected="true"
-          >
-            Players and log
-          </button>
-          <button
-            type="button"
-            role="tab"
-            id="tbRules"
-            aria-controls="tpRules"
-            aria-selected="false"
-          >
-            Rules
-          </button>
-        </div>
-        <div class="stack">
-          <section
-            class="tp"
-            id="tpPlayers"
-            role="tabpanel"
-            aria-labelledby="tbPlayers"
-          >
-            <div class="player" id="pl0">
-              <span class="ball"></span
-              ><input
-                id="name0"
-                value="Player 1"
-                aria-label="Name of player 1"
-                maxlength="20"
-              />
-              <div class="seat"></div>
-            </div>
-            <div class="player" id="pl1">
-              <span class="ball"></span
-              ><input
-                id="name1"
-                value="Player 2"
-                aria-label="Name of player 2"
-                maxlength="20"
-              />
-              <div class="seat"></div>
-            </div>
-            <p class="note" id="netNote"></p>
-            <h3>Last shots</h3>
-            <ol class="log" id="log"></ol>
-          </section>
-          <section
-            class="tp off"
-            id="tpRules"
-            role="tabpanel"
-            aria-labelledby="tbRules"
-          >
-            <ul class="rules">
-              <li>
-                <span
-                  ><b>Sink your five balls</b> into the goal at the far end.
-                  Your goal has a ring in your colour.</span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>Score and you shoot again.</b> No goal and the turn
-                  passes.</span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>Never hit your own ball first.</b> Bounce off a cushion, a
-                  post or an opponent's ball. <code>SP/8.1</code></span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>No hard shots from the corners</b> near the goal, outside
-                  the shooting lines. The small triangle is the exception.
-                  <code>SP/7.4</code></span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>No hard shots along a long cushion</b> from the 92 mm
-                  strip. <code>SP/6.7</code></span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>Don't park in the big triangle.</b> A ball that starts
-                  your turn there must leave it that turn.
-                  <code>SP/9</code></span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>Wrong goal doesn't count.</b> Your ball goes to a penalty
-                  spot. <code>SP/7.2</code></span
-                >
-              </li>
-              <li>
-                <span
-                  ><b>After a foul</b> your turn ends, moved balls go back and
-                  your ball goes to a penalty spot your opponent picks.
-                  <code>SP/12</code></span
-                >
-              </li>
-              <li>
-                <span><b>Best of three games,</b> colours swap each game.</span>
-              </li>
-            </ul>
-            <div class="row">
-              <button class="btn" type="button" id="btnTut2">
-                <span>Open the tutorial</span>
-              </button>
-            </div>
-          </section>
-        </div>
-      </aside>
-    </div>
-
-    <!-- ======================= End of a game ======================= -->
-    <div class="endcard" id="endcard" hidden>
-      <div class="ec-rays" aria-hidden="true"></div>
+    <main class="o-app">
       <div
-        class="ec-card"
-        role="dialog"
-        aria-labelledby="ecTitle"
-        aria-describedby="ecNote"
-      >
-        <div class="ec-medal" id="ecMedal" aria-hidden="true">
-          <canvas id="ecFace" width="64" height="64"></canvas
-          ><svg class="i"><use href="#i-trophy" /></svg>
-        </div>
-        <h2 class="ec-title" id="ecTitle">
-          <span class="nm" id="ecName">Player</span
-          ><span class="what" id="ecWhat">wins game 1</span>
-        </h2>
-        <div class="ec-score">
-          <div class="ec-side" id="ec0">
-            <span class="ball"></span><b class="nm"></b><span class="st"></span>
+        class="c-stage"
+        id="stage"
+        role="img"
+        aria-label="The golfbiljart table in the café, in 3D. The referee's messages below describe every shot."
+      ></div>
+
+      <!-- ======================= HUD ======================= -->
+      <div class="c-hud" id="hud" hidden>
+        <header class="c-scoreboard" aria-label="Scoreboard">
+          <div class="c-scoreboard__plate" id="s0">
+            <span class="c-ball"></span>
+            <div class="c-scoreboard__who">
+              <b class="c-scoreboard__name">Player 1</b>
+              <span class="c-scoreboard__row"
+                ><span class="c-scoreboard__pips"></span><span class="c-scoreboard__fouls">clean</span></span
+              >
+            </div>
+            <span class="c-scoreboard__wins"><i class="c-scoreboard__win"></i><i class="c-scoreboard__win"></i></span
+            ><span class="c-scoreboard__points">0</span>
           </div>
-          <div class="ec-num"><b id="ecS0">1</b><i>:</i><b id="ecS1">0</b></div>
-          <div class="ec-side r" id="ec1">
-            <span class="ball"></span><b class="nm"></b><span class="st"></span>
+          <div class="c-scoreboard__mid">
+            <span class="c-scoreboard__game" id="gameLbl">GAME 1</span
+            ><span class="c-scoreboard__bo" id="venueLbl">best of 3</span>
+            <span class="c-scoreboard__clock" id="clockChip" hidden><b id="clock">1:00</b></span>
+          </div>
+          <div class="c-scoreboard__plate c-scoreboard__plate--right" id="s1">
+            <span class="c-ball"></span>
+            <div class="c-scoreboard__who">
+              <b class="c-scoreboard__name">Player 2</b>
+              <span class="c-scoreboard__row"
+                ><span class="c-scoreboard__pips"></span><span class="c-scoreboard__fouls">clean</span></span
+              >
+            </div>
+            <span class="c-scoreboard__wins"><i class="c-scoreboard__win"></i><i class="c-scoreboard__win"></i></span
+            ><span class="c-scoreboard__points">0</span>
+          </div>
+        </header>
+        <div class="c-ribbon" aria-live="polite">
+          <b class="c-ribbon__main" id="stMain">Loading</b><span class="c-ribbon__hint" id="stHint"></span
+          ><span class="c-ribbon__warn" id="stLive" hidden></span>
+          <div class="c-ribbon__acts" id="penBox" hidden>
+            <button class="c-btn c-btn--cta" type="button" id="pen1">
+              <span class="c-btn__label">Penalty spot 1</span>
+            </button>
+            <button class="c-btn c-btn--cta" type="button" id="pen2">
+              <span class="c-btn__label">Penalty spot 2</span>
+            </button>
           </div>
         </div>
-        <p class="ec-note" id="ecNote"></p>
-        <div class="ec-acts">
-          <button class="btn ghost" type="button" id="ecMenu">
-            <span>Main menu</span>
-          </button>
-          <button class="btn ghost" type="button" id="ecPick" hidden>
-            <span>New opponent</span>
-          </button>
-          <button class="btn cta" type="button" id="btnNext">
-            <span>Next game</span>
-          </button>
+        <div class="c-ticker" id="ticker" role="status">
+          <span class="c-ticker__tag">Referee</span><span class="c-ticker__text"></span
+          ><span class="c-ticker__why"></span>
         </div>
-      </div>
-    </div>
 
-    <!-- ======================= Goal / foul show ======================= -->
-    <div class="banner" id="banner" hidden aria-live="assertive">
-      <div class="burst"></div>
-      <div class="stripes"></div>
-      <div class="card-y" aria-hidden="true"></div>
-      <div class="word" id="bWord" data-text="GOAL!">GOAL!</div>
-      <div class="who" id="bWho"></div>
-      <div class="sub" id="bSub"></div>
-      <div class="confetti" id="confetti" aria-hidden="true"></div>
-    </div>
-    <div class="replay" id="replay" hidden>
-      <div class="bars" aria-hidden="true"><i></i><i></i></div>
-      <div class="rtag">
-        <span class="rec"></span>REPLAY<b id="rLabel">GOAL CAM</b>
-      </div>
-      <div class="freeze" aria-hidden="true">FREEZE FRAME</div>
-      <div class="whycard" id="rWhy" hidden>
-        <b id="rTitle"></b><span class="by" id="rWho"></span>
-        <p id="rText"></p>
-        <p class="next" id="rNext"></p>
-        <span class="ref" id="rRef"></span>
-      </div>
-      <button class="btn skip" type="button" id="rSkip">
-        <span>Skip replay</span>
-      </button>
-    </div>
+        <div class="c-power" id="power" hidden aria-hidden="true">
+          <span class="c-power__label">POWER</span>
+          <div class="c-power__meter">
+            <ol class="c-power__bands">
+              <li class="c-power__name c-power__name--hard">Hard</li>
+              <li class="c-power__name c-power__name--medium">Medium</li>
+              <li class="c-power__name c-power__name--soft">Soft</li>
+              <li class="c-power__name c-power__name--touch">Touch</li>
+            </ol>
+            <div class="c-power__track"><div class="c-power__fill"></div></div>
+          </div>
+          <b class="c-power__band">SOFT</b>
+          <span class="c-power__speed">0.0 m/s</span>
+          <span class="c-power__reach"></span>
+        </div>
 
-    <!-- ======================= Settings ======================= -->
-    <div class="modal" id="settings" hidden>
-      <div
-        class="panelish dialog"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="setTitle"
-      >
-        <div class="sheet-head">
-          <h2 id="setTitle">Settings</h2>
-          <button class="btn ghost" type="button" id="setClose">
-            <span>Done</span>
-          </button>
+        <div class="c-spin" aria-label="Cue ball spin">
+          <span class="c-spin__label">SPIN</span>
+          <div
+            class="c-spin__ball"
+            id="cueball"
+            role="slider"
+            tabindex="0"
+            aria-label="Where the cue tip hits the ball. Arrow keys also work, 0 resets."
+            aria-valuetext="Centre ball"
+          >
+            <i class="c-spin__cross"></i><i class="c-spin__dot" id="spinDot"></i>
+          </div>
+          <span class="c-spin__read" id="spinRead">Centre ball</span>
+          <button class="c-btn c-btn--small" type="button" id="spinReset">Reset</button>
         </div>
-        <div class="tabs" role="tablist" aria-label="Settings">
-          <button
-            type="button"
-            role="tab"
-            id="tbSound"
-            aria-controls="tpSound"
-            aria-selected="true"
-          >
-            Sound
-          </button>
-          <button
-            type="button"
-            role="tab"
-            id="tbPicture"
-            aria-controls="tpPicture"
-            aria-selected="false"
-          >
-            Picture
-          </button>
-          <button
-            type="button"
-            role="tab"
-            id="tbGame"
-            aria-controls="tpGame"
-            aria-selected="false"
-          >
-            Game
-          </button>
-        </div>
-        <div class="stack">
-          <section
-            class="tp"
-            id="tpSound"
-            role="tabpanel"
-            aria-labelledby="tbSound"
-          >
-            <label class="slider"
-              ><span>Master</span
-              ><input type="range" id="vol_master" min="0" max="100" /><output
-                id="vol_master_v"
-                >90</output
-              ></label
-            >
-            <label class="slider"
-              ><span>Balls and referee</span
-              ><input type="range" id="vol_fx" min="0" max="100" /><output
-                id="vol_fx_v"
-                >90</output
-              ></label
-            >
-            <label class="slider"
-              ><span>Café ambience</span
-              ><input type="range" id="vol_amb" min="0" max="100" /><output
-                id="vol_amb_v"
-                >50</output
-              ></label
-            >
-            <label class="slider"
-              ><span>Jukebox</span
-              ><input type="range" id="vol_music" min="0" max="100" /><output
-                id="vol_music_v"
-                >40</output
-              ></label
-            >
-            <div class="jukebox">
-              <span class="disc" aria-hidden="true"></span
-              ><span class="np"
-                ><b id="songTitle">Jukebox</b
-                ><small id="songInfo">Starts with your first click</small></span
-              ><button class="mini" type="button" id="songNext">
-                <svg class="i"><use href="#i-skip" /></svg
-                ><span>Next record</span>
-              </button>
-            </div>
-          </section>
-          <section
-            class="tp off"
-            id="tpPicture"
-            role="tabpanel"
-            aria-labelledby="tbPicture"
-          >
-            <div class="seg wide3" role="radiogroup" aria-label="Look">
-              <button type="button" role="radio" data-look="clean">
-                Clean
-              </button>
-              <button type="button" role="radio" data-look="ps2">PS2</button>
-              <button type="button" role="radio" data-look="cinema">
-                Cinema
-              </button>
-            </div>
-            <div class="fx" id="fxSliders"></div>
-          </section>
-          <section
-            class="tp off"
-            id="tpGame"
-            role="tabpanel"
-            aria-labelledby="tbGame"
-          >
-            <h3>Replays</h3>
-            <div class="seg wide3" role="radiogroup" aria-label="Replays">
-              <button type="button" role="radio" data-replays="all">
-                Every goal and foul
-              </button>
-              <button type="button" role="radio" data-replays="key">
-                Fouls and wins
-              </button>
-              <button type="button" role="radio" data-replays="off">Off</button>
-            </div>
-            <h3>Table</h3>
-            <button class="toggle" type="button" role="switch" id="optClock">
-              <span
-                ><b>Shot clock</b
-                ><small>One minute per shot (SP/3.2)</small></span
-              ><i></i>
-            </button>
-            <button class="toggle" type="button" role="switch" id="optLines2">
-              <span
-                ><b>Table lines</b
-                ><small>Shooting lines and triangles on the cloth</small></span
-              ><i></i>
-            </button>
-          </section>
-        </div>
-      </div>
-    </div>
 
-    <!-- ======================= Start menu ======================= -->
-    <div class="start" id="start">
-      <div class="panel panelish" data-view="home">
-        <h1 class="logo" aria-label="Golfbiljart">
-          <span class="l1">GOLF</span><span class="l2">BILJART</span>
-        </h1>
-        <p class="lede">
-          Five balls each, eight rubber posts, one goal. Cigars optional.
+        <p class="c-hint" id="orbitHint">
+          <span class="c-hint__mouse"
+            >Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T
+            top view</span
+          ><span class="c-hint__touch"
+            >Drag the cloth to turn · Pinch to zoom · Two fingers slide · Tap to look there</span
+          >
         </p>
 
-        <div class="view" data-view="home">
-          <button class="btn cta" type="button" id="btnResume" hidden>
-            <span>Resume game</span>
+        <nav class="c-rail" aria-label="Game controls">
+          <button class="c-rail__btn" type="button" id="btnMenu">
+            <svg class="o-icon"><use href="#i-menu" /></svg><span class="c-rail__label">Menu</span>
           </button>
-          <button class="opt" type="button" data-go="pick">
-            <span class="ico"
-              ><svg class="i"><use href="#i-hat" /></svg></span
-            ><span
-              ><b>Challenge a regular</b
-              ><small>Twelve characters, common to legendary</small></span
-            ><svg class="i chev"><use href="#i-chev" /></svg>
+          <button class="c-rail__btn" type="button" id="btnSheet" aria-expanded="false" aria-controls="sheet">
+            <svg class="o-icon"><use href="#i-book" /></svg><span class="c-rail__label">Match</span>
           </button>
-          <button class="opt" type="button" data-go="local">
-            <span class="ico"
-              ><svg class="i"><use href="#i-pool" /></svg></span
-            ><span
-              ><b>Two players, one screen</b><small>Pass the cue</small></span
-            ><svg class="i chev"><use href="#i-chev" /></svg>
+          <button class="c-rail__btn" type="button" id="btnSettings">
+            <svg class="o-icon"><use href="#i-gear" /></svg><span class="c-rail__label">Settings</span>
           </button>
-          <button class="opt" type="button" data-go="online">
-            <span class="ico"
-              ><svg class="i"><use href="#i-globe" /></svg></span
-            ><span><b>Play online</b><small>Two devices, one table</small></span
-            ><svg class="i chev"><use href="#i-chev" /></svg>
+          <span class="c-rail__sep"></span>
+          <button class="c-rail__btn" type="button" id="vPlayer" aria-pressed="true">
+            <svg class="o-icon"><use href="#i-eye" /></svg><span class="c-rail__label">Player view</span
+            ><kbd class="c-rail__key">P</kbd>
           </button>
-          <button class="opt" type="button" data-go="tutorial">
-            <span class="ico"
-              ><svg class="i"><use href="#i-cap" /></svg></span
-            ><span
-              ><b>How to play</b
-              ><small>The rules in plain words, with pictures</small></span
-            ><svg class="i chev"><use href="#i-chev" /></svg>
+          <button class="c-rail__btn" type="button" id="vTop" aria-pressed="false">
+            <svg class="o-icon"><use href="#i-top" /></svg><span class="c-rail__label">Top view</span
+            ><kbd class="c-rail__key">T</kbd>
           </button>
-          <button class="opt small" type="button" id="btnSettings2">
-            <span class="ico"
-              ><svg class="i"><use href="#i-gear" /></svg></span
-            ><span
-              ><b>Settings</b
-              ><small>Sound, jukebox, picture, replays</small></span
-            ><svg class="i chev"><use href="#i-chev" /></svg>
+          <button class="c-rail__btn" type="button" id="optLines" aria-pressed="true">
+            <svg class="o-icon"><use href="#i-lines" /></svg><span class="c-rail__label">Lines</span>
           </button>
+          <span class="c-rail__sep"></span>
+          <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnCigar" aria-describedby="lvCigar">
+            <svg class="o-icon"><use href="#i-cigar" /></svg><span class="c-rail__label">Cigar</span
+            ><kbd class="c-rail__key">1</kbd>
+            <i class="c-rail__meter c-rail__meter--smoke" id="lvCigar" aria-label="Smoke in the room"
+              ><b></b><b></b><b></b><b></b
+            ></i>
+          </button>
+          <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnWhisky" aria-describedby="lvWhisky">
+            <svg class="o-icon"><use href="#i-glass" /></svg><span class="c-rail__label">Whisky</span
+            ><kbd class="c-rail__key">2</kbd>
+            <i class="c-rail__meter c-rail__meter--whisky" id="lvWhisky" aria-label="Whisky level"
+              ><b></b><b></b><b></b><b></b
+            ></i>
+          </button>
+          <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnChalk" aria-describedby="lvChalk">
+            <svg class="o-icon"><use href="#i-chalk" /></svg><span class="c-rail__label">Chalk</span
+            ><kbd class="c-rail__key">3</kbd>
+            <i class="c-rail__meter c-rail__meter--chalk" id="lvChalk" aria-label="Chalk on your tip"
+              ><b></b><b></b><b></b><b></b
+            ></i>
+          </button>
+          <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnKnock">
+            <svg class="o-icon"><use href="#i-knock" /></svg><span class="c-rail__label">Knock</span
+            ><kbd class="c-rail__key">4</kbd>
+          </button>
+        </nav>
+
+        <div class="c-bubble" id="bubble" hidden aria-live="polite">
+          <b class="c-bubble__who"></b><span class="c-bubble__text"></span>
         </div>
 
-        <div class="view" data-view="pick" hidden>
-          <h2>Pick your opponent</h2>
-          <div
-            class="grades"
-            id="gradeTabs"
-            role="tablist"
-            aria-label="Grade"
-          ></div>
-          <div
-            class="roster"
-            id="roster"
-            role="radiogroup"
-            aria-label="Opponent"
-          ></div>
-          <div class="bio" id="oppBio"></div>
-          <div class="row foot">
-            <label class="field grow"
-              ><span>Your name</span
-              ><input
-                id="nMe"
-                value="Darko"
-                maxlength="20"
-                autocomplete="nickname"
-            /></label>
-            <button class="btn ghost" type="button" data-go="home">
-              <span>Back</span>
-            </button>
-            <button class="btn cta" type="button" id="btnChallenge">
-              <span>Challenge</span>
+        <aside class="c-sheet c-poster" id="sheet" aria-label="Match and rules" inert>
+          <div class="c-sheet__head">
+            <h2 class="c-sheet__title">Match</h2>
+            <button class="c-btn c-btn--ghost" type="button" id="btnClose">
+              <span class="c-btn__label">Close</span>
             </button>
           </div>
-        </div>
+          <div class="c-tabs" role="tablist" aria-label="Match">
+            <button
+              class="c-tabs__tab"
+              type="button"
+              role="tab"
+              id="tbPlayers"
+              aria-controls="tpPlayers"
+              aria-selected="true"
+            >
+              Players and log
+            </button>
+            <button
+              class="c-tabs__tab"
+              type="button"
+              role="tab"
+              id="tbRules"
+              aria-controls="tpRules"
+              aria-selected="false"
+            >
+              Rules
+            </button>
+          </div>
+          <div class="o-stack">
+            <section class="o-stack__item c-sheet__players" id="tpPlayers" role="tabpanel" aria-labelledby="tbPlayers">
+              <div class="c-player-row" id="pl0">
+                <span class="c-ball"></span
+                ><input
+                  class="c-player-row__name"
+                  id="name0"
+                  placeholder="Player 1"
+                  aria-label="Name of player 1"
+                  maxlength="20"
+                />
+                <div class="c-player-row__seat"></div>
+              </div>
+              <div class="c-player-row" id="pl1">
+                <span class="c-ball"></span
+                ><input
+                  class="c-player-row__name"
+                  id="name1"
+                  placeholder="Player 2"
+                  aria-label="Name of player 2"
+                  maxlength="20"
+                />
+                <div class="c-player-row__seat"></div>
+              </div>
+              <p class="c-note" id="netNote"></p>
+              <h3 class="c-subhead">Last shots</h3>
+              <ol class="c-log" id="log"></ol>
+            </section>
+            <section class="o-stack__item" id="tpRules" role="tabpanel" aria-labelledby="tbRules">
+              <ul class="c-rules">
+                <li class="c-rules__item">
+                  <span
+                    ><b>Sink your five balls</b> into the goal at the far end. Your goal has a ring in your
+                    colour.</span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span><b>Score and you shoot again.</b> No goal and the turn passes.</span>
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>Never hit your own ball first.</b> Bounce off a cushion, a post or an opponent's ball.
+                    <code class="c-rules__code">SP/8.1</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>No hard shots from the corners</b> near the goal, outside the shooting lines. Hard means over
+                    1.5 m/s: the red part of the power meter. <code class="c-rules__code">SP/7.4</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>No hard shots along a long cushion</b> from the 92 mm strip.
+                    <code class="c-rules__code">SP/6.7</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>Don't park in the big triangle.</b> A ball that starts your turn there must leave it that turn.
+                    <code class="c-rules__code">SP/9</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>Wrong goal doesn't count.</b> Your ball goes to a penalty spot.
+                    <code class="c-rules__code">SP/7.2</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span
+                    ><b>After a foul</b> your turn ends, moved balls go back and your ball goes to a penalty spot your
+                    opponent picks. <code class="c-rules__code">SP/12</code></span
+                  >
+                </li>
+                <li class="c-rules__item">
+                  <span><b>Best of three games,</b> colours swap each game.</span>
+                </li>
+              </ul>
+              <div class="o-row">
+                <button class="c-btn" type="button" id="btnTut2">
+                  <span class="c-btn__label">Open the tutorial</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </aside>
+      </div>
 
-        <div class="view" data-view="local" hidden>
-          <h2>Two players</h2>
-          <label class="field"
-            ><span>Player 1 · white in game 1</span
-            ><input id="n0" value="Player 1" maxlength="20"
-          /></label>
-          <label class="field"
-            ><span>Player 2 · red in game 1</span
-            ><input id="n1" value="Player 2" maxlength="20"
-          /></label>
-          <div class="row">
-            <button class="btn ghost" type="button" data-go="home">
-              <span>Back</span></button
-            ><span class="grow"></span
-            ><button class="btn cta" type="button" id="btnPlayLocal">
-              <span>Rack them up</span>
+      <!-- ======================= End of a game ======================= -->
+      <div class="c-endcard" id="endcard" hidden>
+        <div class="c-endcard__rays" aria-hidden="true"></div>
+        <div class="c-endcard__card c-poster" role="dialog" aria-labelledby="ecTitle" aria-describedby="ecNote">
+          <div class="c-endcard__medal" id="ecMedal" aria-hidden="true">
+            <canvas class="c-endcard__face" id="ecFace" width="64" height="64"></canvas
+            ><svg class="o-icon c-endcard__trophy"><use href="#i-trophy" /></svg>
+          </div>
+          <h2 class="c-endcard__title" id="ecTitle">
+            <span class="c-endcard__name" id="ecName">Player</span
+            ><span class="c-endcard__what" id="ecWhat">wins game 1</span>
+          </h2>
+          <div class="c-endcard__score">
+            <div class="c-endcard__side" id="ec0">
+              <span class="c-ball"></span><b class="c-endcard__side-name"></b><span class="c-endcard__side-stat"></span>
+            </div>
+            <div class="c-endcard__num"><b id="ecS0">1</b><i>:</i><b id="ecS1">0</b></div>
+            <div class="c-endcard__side c-endcard__side--right" id="ec1">
+              <span class="c-ball"></span><b class="c-endcard__side-name"></b><span class="c-endcard__side-stat"></span>
+            </div>
+          </div>
+          <p class="c-endcard__note" id="ecNote"></p>
+          <p class="c-endcard__reward" id="ecReward" hidden></p>
+          <div class="c-endcard__acts">
+            <button class="c-btn c-btn--ghost" type="button" id="ecMenu">
+              <span class="c-btn__label">Main menu</span>
             </button>
-          </div>
-        </div>
-
-        <div class="view" data-view="online" hidden>
-          <h2>Play online</h2>
-          <p class="small" id="onlineOff" hidden>
-            Online play runs inside Claude, where this game is published. In
-            this copy you can play offline.
-          </p>
-          <p class="small">
-            You and your opponent open the game and join the same table name.
-          </p>
-          <label class="field"
-            ><span>Table name</span
-            ><input
-              id="tableName"
-              value="cafe"
-              maxlength="24"
-              autocomplete="off"
-          /></label>
-          <label class="field"
-            ><span>Your name</span
-            ><input id="nOnline" value="Player" maxlength="20"
-          /></label>
-          <p class="err" id="onlineErr" hidden></p>
-          <div class="row">
-            <button class="btn ghost" type="button" data-go="home">
-              <span>Back</span></button
-            ><span class="grow"></span
-            ><button class="btn cta" type="button" id="btnJoin">
-              <span>Join table</span>
+            <button class="c-btn c-btn--ghost" type="button" id="ecPick" hidden>
+              <span class="c-btn__label">Back to the story</span>
             </button>
-          </div>
-        </div>
-
-        <div class="view" data-view="tutorial" hidden>
-          <h2 id="tutTitle">How to play</h2>
-          <canvas
-            id="tutCanvas"
-            width="920"
-            height="520"
-            aria-hidden="true"
-          ></canvas>
-          <p id="tutText"></p>
-          <p class="why" id="tutWhy"></p>
-          <div class="tut-prog">
-            <span class="tdots" id="tutDots"></span
-            ><span class="step" id="tutStep">1 / 12</span>
-          </div>
-          <div class="row">
-            <button class="btn ghost" type="button" id="tutSkip">
-              <span>Skip</span></button
-            ><span class="grow"></span
-            ><button class="btn" type="button" id="tutBack">
-              <span>Back</span></button
-            ><button class="btn cta" type="button" id="tutNext">
-              <span>Next</span>
+            <button class="c-btn c-btn--cta" type="button" id="btnNext">
+              <span class="c-btn__label">Next game</span>
             </button>
           </div>
         </div>
       </div>
-    </div>
+
+      <!-- ======================= Goal / foul show ======================= -->
+      <div class="c-banner" id="banner" hidden aria-live="assertive">
+        <div class="c-banner__burst"></div>
+        <div class="c-banner__stripes"></div>
+        <div class="c-banner__card" aria-hidden="true"></div>
+        <div class="c-banner__word" id="bWord">GOAL!</div>
+        <div class="c-banner__who" id="bWho"></div>
+        <div class="c-banner__sub" id="bSub"></div>
+        <div class="c-banner__confetti" id="confetti" aria-hidden="true"></div>
+      </div>
+      <div class="c-replay" id="replay" hidden>
+        <div class="c-replay__bars" aria-hidden="true">
+          <i class="c-replay__bar"></i><i class="c-replay__bar c-replay__bar--bottom"></i>
+        </div>
+        <div class="c-replay__tag">
+          <span class="c-replay__rec"></span>REPLAY<b class="c-replay__label" id="rLabel">GOAL CAM</b>
+        </div>
+        <div class="c-replay__freeze" aria-hidden="true">FREEZE FRAME</div>
+        <div class="c-whycard" id="rWhy" hidden>
+          <b class="c-whycard__title" id="rTitle"></b><span class="c-whycard__by" id="rWho"></span>
+          <p class="c-whycard__text" id="rText"></p>
+          <p class="c-whycard__next" id="rNext"></p>
+          <span class="c-whycard__ref" id="rRef"></span>
+        </div>
+        <button class="c-btn c-replay__skip" type="button" id="rSkip">
+          <span class="c-btn__label">Skip replay</span>
+        </button>
+      </div>
+
+      <!-- right after one of your goals: knock twice on the table, also over the banner and the replay -->
+      <button class="c-knock" type="button" id="knockNow" hidden>
+        <svg class="o-icon" aria-hidden="true"><use href="#i-knock" /></svg
+        ><span class="c-knock__label">Knock on the table</span><kbd class="c-knock__key">4</kbd>
+      </button>
+
+      <!-- ======================= Settings ======================= -->
+      <div class="c-modal" id="settings" hidden>
+        <div class="c-modal__dialog c-poster" role="dialog" aria-modal="true" aria-labelledby="setTitle">
+          <div class="c-sheet__head">
+            <h2 class="c-sheet__title" id="setTitle">Settings</h2>
+            <button class="c-btn c-btn--ghost" type="button" id="setClose">
+              <span class="c-btn__label">Done</span>
+            </button>
+          </div>
+          <div class="c-tabs" role="tablist" aria-label="Settings">
+            <button
+              class="c-tabs__tab"
+              type="button"
+              role="tab"
+              id="tbSound"
+              aria-controls="tpSound"
+              aria-selected="true"
+            >
+              Sound
+            </button>
+            <button
+              class="c-tabs__tab"
+              type="button"
+              role="tab"
+              id="tbPicture"
+              aria-controls="tpPicture"
+              aria-selected="false"
+            >
+              Picture
+            </button>
+            <button
+              class="c-tabs__tab"
+              type="button"
+              role="tab"
+              id="tbGame"
+              aria-controls="tpGame"
+              aria-selected="false"
+            >
+              Game
+            </button>
+          </div>
+          <div class="o-stack">
+            <section class="o-stack__item" id="tpSound" role="tabpanel" aria-labelledby="tbSound">
+              <label class="c-slider"
+                ><span class="c-slider__label">Master</span
+                ><input class="c-slider__input" type="range" id="vol_master" min="0" max="100" /><output
+                  class="c-slider__value"
+                  id="vol_master_v"
+                  >90</output
+                ></label
+              >
+              <label class="c-slider"
+                ><span class="c-slider__label">Balls and referee</span
+                ><input class="c-slider__input" type="range" id="vol_fx" min="0" max="100" /><output
+                  class="c-slider__value"
+                  id="vol_fx_v"
+                  >90</output
+                ></label
+              >
+              <label class="c-slider"
+                ><span class="c-slider__label">Café ambience</span
+                ><input class="c-slider__input" type="range" id="vol_amb" min="0" max="100" /><output
+                  class="c-slider__value"
+                  id="vol_amb_v"
+                  >50</output
+                ></label
+              >
+              <label class="c-slider"
+                ><span class="c-slider__label">Jukebox</span
+                ><input class="c-slider__input" type="range" id="vol_music" min="0" max="100" /><output
+                  class="c-slider__value"
+                  id="vol_music_v"
+                  >40</output
+                ></label
+              >
+              <div class="c-jukebox" id="jukebox">
+                <span class="c-jukebox__disc" aria-hidden="true"></span>
+                <span class="c-jukebox__now"
+                  ><b class="c-jukebox__title" id="songTitle">Jukebox</b
+                  ><small class="c-jukebox__info" id="songInfo">Starts with your first tap or click</small></span
+                >
+                <button class="c-btn c-btn--small" type="button" id="songNext" aria-label="Next record">
+                  <svg class="o-icon o-icon--small"><use href="#i-skip" /></svg
+                  ><span class="c-btn__label">Next record</span>
+                </button>
+              </div>
+              <div class="c-seg c-seg--5" role="radiogroup" aria-label="Records the jukebox plays">
+                <button class="c-seg__opt" type="button" role="radio" data-jstyle="all">All</button>
+                <button class="c-seg__opt" type="button" role="radio" data-jstyle="swing">Swing</button>
+                <button class="c-seg__opt" type="button" role="radio" data-jstyle="bossa">Bossa</button>
+                <button class="c-seg__opt" type="button" role="radio" data-jstyle="waltz">Waltz</button>
+                <button class="c-seg__opt" type="button" role="radio" data-jstyle="ballad">Ballad</button>
+              </div>
+            </section>
+            <section class="o-stack__item" id="tpPicture" role="tabpanel" aria-labelledby="tbPicture">
+              <div class="c-seg c-seg--3" role="radiogroup" aria-label="Look">
+                <button class="c-seg__opt" type="button" role="radio" data-look="clean">Clean</button>
+                <button class="c-seg__opt" type="button" role="radio" data-look="ps2">PS2</button>
+                <button class="c-seg__opt" type="button" role="radio" data-look="cinema">Cinema</button>
+              </div>
+              <div class="c-fx" id="fxSliders"></div>
+            </section>
+            <section class="o-stack__item" id="tpGame" role="tabpanel" aria-labelledby="tbGame">
+              <h3 class="c-subhead c-subhead--optional">Replays</h3>
+              <div class="c-seg c-seg--3" role="radiogroup" aria-label="Replays">
+                <button class="c-seg__opt" type="button" role="radio" data-replays="all">Every goal and foul</button>
+                <button class="c-seg__opt" type="button" role="radio" data-replays="key">Fouls and wins</button>
+                <button class="c-seg__opt" type="button" role="radio" data-replays="off">Off</button>
+              </div>
+              <h3 class="c-subhead c-subhead--optional">Table</h3>
+              <button class="c-toggle" type="button" role="switch" id="optClock">
+                <span class="c-toggle__text"
+                  ><b class="c-toggle__title">Shot clock</b
+                  ><small class="c-toggle__desc">One minute per shot (SP/3.2)</small></span
+                ><i class="c-toggle__switch"></i>
+              </button>
+              <button class="c-toggle" type="button" role="switch" id="optLines2">
+                <span class="c-toggle__text"
+                  ><b class="c-toggle__title">Table lines</b
+                  ><small class="c-toggle__desc"
+                    >Shooting lines and triangles on the cloth, when the grade allows them</small
+                  ></span
+                ><i class="c-toggle__switch"></i>
+              </button>
+              <h3 class="c-subhead">Your player while you play</h3>
+              <div class="c-seg c-seg--3" role="radiogroup" aria-label="Your player while you play">
+                <button class="c-seg__opt" type="button" role="radio" data-mine="show">Show</button>
+                <button class="c-seg__opt" type="button" role="radio" data-mine="fade">See-through</button>
+                <button class="c-seg__opt" type="button" role="radio" data-mine="hide">Hide</button>
+              </div>
+              <button class="c-toggle" type="button" role="switch" id="optCloth">
+                <span class="c-toggle__text"
+                  ><b class="c-toggle__title">Cloth in the grade colour</b
+                  ><small class="c-toggle__desc">Off: the cloth of the regular's own table</small></span
+                ><i class="c-toggle__switch"></i>
+              </button>
+              <h3 class="c-subhead c-subhead--optional">Your data</h3>
+              <p class="c-note">
+                Your player, record, tokens, items and settings live only in this browser.
+                <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a>
+              </p>
+              <button class="c-btn c-btn--danger" type="button" id="btnWipe">
+                <span class="c-btn__label">Delete my data</span>
+              </button>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================= Start menu ======================= -->
+      <div class="c-start" id="start">
+        <div class="c-start__panel c-poster" id="panel" data-view="home">
+          <header class="c-masthead">
+            <h1 class="c-masthead__logo">Golfbiljart</h1>
+            <p class="c-masthead__ribbon">The Golden Cue Championship</p>
+            <p class="c-masthead__lede">Five balls, eight posts, one goal. Bring your own cigar.</p>
+          </header>
+
+          <div class="c-view" data-view="home">
+            <button class="c-btn c-btn--cta" type="button" id="btnResume" hidden>
+              <span class="c-btn__label">Resume game</span>
+            </button>
+            <button class="c-menu-opt" type="button" data-go="story">
+              <span class="c-menu-opt__icon"
+                ><svg class="o-icon"><use href="#i-door" /></svg
+              ></span>
+              <span class="c-menu-opt__text"
+                ><b class="c-menu-opt__title">The Newcomer</b
+                ><small class="c-menu-opt__desc">Story: beat every regular in town</small></span
+              >
+              <span class="c-menu-opt__badge" id="storyBadge">0 / 18</span>
+            </button>
+            <button class="c-menu-opt" type="button" data-go="pick" id="btnFreeplay">
+              <span class="c-menu-opt__icon"
+                ><svg class="o-icon"><use href="#i-redo" /></svg
+              ></span>
+              <span class="c-menu-opt__text"
+                ><b class="c-menu-opt__title">Freeplay</b
+                ><small class="c-menu-opt__desc" id="freeDesc">Rematch the regulars you beat</small></span
+              >
+              <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+            </button>
+            <button class="c-menu-opt" type="button" data-go="local">
+              <span class="c-menu-opt__icon"
+                ><svg class="o-icon"><use href="#i-pool" /></svg
+              ></span>
+              <span class="c-menu-opt__text"
+                ><b class="c-menu-opt__title">Two players, one screen</b
+                ><small class="c-menu-opt__desc">Pass the cue</small></span
+              >
+              <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+            </button>
+            <button class="c-menu-opt" type="button" data-go="online">
+              <span class="c-menu-opt__icon"
+                ><svg class="o-icon"><use href="#i-globe" /></svg
+              ></span>
+              <span class="c-menu-opt__text"
+                ><b class="c-menu-opt__title">Play online</b
+                ><small class="c-menu-opt__desc">Two devices, one table</small></span
+              >
+              <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+            </button>
+            <div class="c-minis">
+              <button class="c-minis__btn" type="button" data-go="me">
+                <svg class="o-icon"><use href="#i-user" /></svg><span>Your player</span>
+              </button>
+              <button class="c-minis__btn" type="button" data-go="shop">
+                <svg class="o-icon"><use href="#i-bag" /></svg><span>Shop</span>
+              </button>
+              <button class="c-minis__btn" type="button" data-go="tutorial">
+                <svg class="o-icon"><use href="#i-cap" /></svg><span>How to play</span>
+              </button>
+              <button class="c-minis__btn" type="button" id="btnSettings2">
+                <svg class="o-icon"><use href="#i-gear" /></svg><span>Settings</span>
+              </button>
+            </div>
+            <p class="c-record" id="homeRecord"></p>
+            <p class="c-legal-links">
+              <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a> ·
+              <a href="legal.html#terms" target="_blank" rel="noopener">Terms</a> ·
+              <a href="legal.html#accessibility" target="_blank" rel="noopener">Accessibility</a> ·
+              <a href="legal.html#credits" target="_blank" rel="noopener">Credits</a> ·
+              <span title="This build's version, the same as in package.json">v%VERSION%</span>
+            </p>
+          </div>
+
+          <div class="c-view" data-view="story" hidden>
+            <h2 class="c-view__title">The Newcomer</h2>
+            <div class="c-story c-view__body">
+              <div class="c-story__main">
+                <div class="c-story__chapters" id="chapters" role="tablist" aria-label="Chapters"></div>
+                <article class="c-chapter" id="chapter" aria-live="polite"></article>
+              </div>
+              <aside class="c-story__side">
+                <div class="c-counter">
+                  <span class="c-counter__num"><b id="beatenNum">0</b><i>/</i><span id="beatenTotal">18</span></span>
+                  <span class="c-counter__label">regulars beaten</span>
+                  <span class="c-counter__pips" id="beatenPips"></span>
+                </div>
+                <div class="c-stats" id="stats"></div>
+              </aside>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--cta" type="button" id="btnStory">
+                <span class="c-btn__label">Play</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="pick" hidden>
+            <h2 class="c-view__title">Freeplay</h2>
+            <div class="c-pick c-view__body">
+              <div class="c-pick__left">
+                <div class="c-grade-tabs" id="gradeTabs" role="tablist" aria-label="Grade"></div>
+                <div class="c-roster" id="roster" role="radiogroup" aria-label="Opponent"></div>
+              </div>
+              <aside class="c-bio" id="oppBio" aria-live="polite"></aside>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-as" type="button" data-go="me" id="playingAs"></button>
+              <button class="c-btn c-btn--ghost" type="button" data-go="rules" id="btnRules">
+                <span class="c-btn__label">House rules</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+              <button class="c-btn c-btn--cta" type="button" id="btnChallenge">
+                <span class="c-btn__label">Rematch</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="rules" hidden>
+            <h2 class="c-view__title">House rules</h2>
+            <div class="c-house c-view__body">
+              <p class="c-house__note">
+                Freeplay only: the story always plays by the GZV rulebook. A match with house rules is a friendly: no
+                tokens, nothing on your record.
+              </p>
+              <div class="c-seg c-seg--3" role="radiogroup" aria-label="Match length" id="ruleGames">
+                <button class="c-seg__opt" type="button" role="radio" data-games="1">One game</button>
+                <button class="c-seg__opt" type="button" role="radio" data-games="3">Best of three</button>
+                <button class="c-seg__opt" type="button" role="radio" data-games="5">Best of five</button>
+              </div>
+              <div class="c-house__list" id="ruleList"></div>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" id="ruleBook">
+                <span class="c-btn__label">Back to the book</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--cta" type="button" data-go="pick">
+                <span class="c-btn__label">Done</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="me" hidden>
+            <h2 class="c-view__title">Your player</h2>
+            <div class="c-maker c-view__body">
+              <div class="c-maker__face">
+                <canvas class="c-maker__canvas" id="meFace" width="64" height="64" aria-hidden="true"></canvas>
+                <label class="c-field"
+                  ><span class="c-field__label">Name</span
+                  ><input
+                    class="c-field__input"
+                    id="meName"
+                    placeholder="Your name"
+                    maxlength="20"
+                    autocomplete="nickname"
+                    data-enter="#meDone"
+                /></label>
+              </div>
+              <div class="c-maker__form">
+                <div class="c-tabs" role="tablist" aria-label="Your player">
+                  <button
+                    class="c-tabs__tab"
+                    type="button"
+                    role="tab"
+                    id="tbBody"
+                    aria-controls="tpBody"
+                    aria-selected="true"
+                  >
+                    Body
+                  </button>
+                  <button
+                    class="c-tabs__tab"
+                    type="button"
+                    role="tab"
+                    id="tbHair"
+                    aria-controls="tpHair"
+                    aria-selected="false"
+                  >
+                    Hair
+                  </button>
+                  <button
+                    class="c-tabs__tab"
+                    type="button"
+                    role="tab"
+                    id="tbFace"
+                    aria-controls="tpFace"
+                    aria-selected="false"
+                  >
+                    Face
+                  </button>
+                  <button
+                    class="c-tabs__tab"
+                    type="button"
+                    role="tab"
+                    id="tbStyle"
+                    aria-controls="tpStyle"
+                    aria-selected="false"
+                  >
+                    Style
+                  </button>
+                </div>
+                <div class="o-stack" id="meForm">
+                  <section
+                    class="o-stack__item c-maker__panel"
+                    id="tpBody"
+                    role="tabpanel"
+                    aria-labelledby="tbBody"
+                  ></section>
+                  <section
+                    class="o-stack__item c-maker__panel"
+                    id="tpHair"
+                    role="tabpanel"
+                    aria-labelledby="tbHair"
+                  ></section>
+                  <section
+                    class="o-stack__item c-maker__panel"
+                    id="tpFace"
+                    role="tabpanel"
+                    aria-labelledby="tbFace"
+                  ></section>
+                  <section
+                    class="o-stack__item c-maker__panel"
+                    id="tpStyle"
+                    role="tabpanel"
+                    aria-labelledby="tbStyle"
+                  ></section>
+                </div>
+              </div>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--cta" type="button" id="meDone">
+                <span class="c-btn__label">Save player</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="shop" hidden>
+            <h2 class="c-view__title">The Shop</h2>
+            <div class="c-shop c-view__body">
+              <div class="c-shop__head">
+                <div class="c-tabs c-tabs--many c-shop__tabs" role="tablist" aria-label="Shop" id="shopTabs"></div>
+                <span class="c-wallet" id="wallet"
+                  ><svg class="o-icon"><use href="#i-coin" /></svg><b id="walletNum">0</b><span>tokens</span></span
+                >
+              </div>
+              <div class="c-shop__grid" id="shopGrid" role="list"></div>
+              <p class="c-shop__note">
+                Looks only: nothing here changes how the balls roll. Win matches for tokens. Gold-edged items can't be
+                bought: earn them in freeplay. Your table and bar are your home: the start screen, two-player and online
+                games. Regulars play in their own bar, on their own table.
+              </p>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="local" hidden>
+            <h2 class="c-view__title">Two players</h2>
+            <label class="c-field"
+              ><span class="c-field__label">Player 1 · white in game 1</span
+              ><input class="c-field__input" id="n0" placeholder="Player 1" maxlength="20" data-enter="#btnPlayLocal"
+            /></label>
+            <label class="c-field"
+              ><span class="c-field__label">Player 2 · red in game 1</span
+              ><input class="c-field__input" id="n1" placeholder="Player 2" maxlength="20" data-enter="#btnPlayLocal"
+            /></label>
+            <p class="c-note c-note--center" id="homeBarNote"></p>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--cta" type="button" id="btnPlayLocal">
+                <span class="c-btn__label">Rack them up</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="online" hidden>
+            <h2 class="c-view__title">Play online</h2>
+            <p class="c-note" id="onlineOff" hidden>
+              Online play runs inside Claude, where this game is published. In this copy you can play offline.
+            </p>
+            <p class="c-note">You and your opponent open the game and join the same table name.</p>
+            <p class="c-note">
+              The table name, both names and the game are saved in this page's shared storage so you both see the same
+              table. Use a nickname. <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a>
+            </p>
+            <label class="c-field"
+              ><span class="c-field__label">Table name</span
+              ><input
+                class="c-field__input"
+                id="tableName"
+                placeholder="cafe"
+                maxlength="24"
+                autocomplete="off"
+                data-enter="#btnJoin"
+            /></label>
+            <label class="c-field"
+              ><span class="c-field__label">Your nickname</span
+              ><input
+                class="c-field__input"
+                id="nOnline"
+                placeholder="Your nickname"
+                maxlength="20"
+                autocomplete="nickname"
+                data-enter="#btnJoin"
+            /></label>
+            <p class="c-error" id="onlineErr" hidden></p>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" data-go="home">
+                <span class="c-btn__label">Back</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn c-btn--cta" type="button" id="btnJoin">
+                <span class="c-btn__label">Join table</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="c-view" data-view="tutorial" hidden>
+            <h2 class="c-view__title" id="tutTitle">How to play</h2>
+            <canvas class="c-tutorial__canvas" id="tutCanvas" width="920" height="520" aria-hidden="true"></canvas>
+            <p class="c-tutorial__text" id="tutText"></p>
+            <p class="c-tutorial__why" id="tutWhy"></p>
+            <div class="c-tutorial__progress">
+              <span class="c-tutorial__dots" id="tutDots"></span
+              ><span class="c-tutorial__step" id="tutStep">1 / 12</span>
+            </div>
+            <div class="o-row o-row--foot">
+              <button class="c-btn c-btn--ghost" type="button" id="tutSkip">
+                <span class="c-btn__label">Skip</span>
+              </button>
+              <span class="u-grow"></span>
+              <button class="c-btn" type="button" id="tutBack"><span class="c-btn__label">Back</span></button>
+              <button class="c-btn c-btn--cta" type="button" id="tutNext">
+                <span class="c-btn__label">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

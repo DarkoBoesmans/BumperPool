@@ -1,0 +1,53 @@
+// The small buttons under the menu: your player, the shop, how to play, settings.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-minis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $s2;
+  padding-top: $s2;
+  border-top: 2px solid $poster-ink;
+  &__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-height: 55px;
+    padding: $s2 4px;
+    border: 2px solid $poster-ink;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.25);
+    color: $poster-ink;
+    font: 400 12px $f-display;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 $poster-ink;
+    transition:
+      transform 0.12s,
+      box-shadow 0.12s;
+    &:hover {
+      background: rgba(165, 42, 30, 0.08);
+    }
+    &:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 $poster-ink;
+    }
+    .o-icon {
+      color: $poster-red;
+    }
+    @include short {
+      min-height: 34px;
+      flex-direction: row;
+    }
+    @include calm {
+      transition: none;
+    }
+  }
+  @include below($bp-phone) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

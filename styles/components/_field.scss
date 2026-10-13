@@ -1,0 +1,60 @@
+// A labelled text input, plus the small notes and error lines that go with forms.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-field {
+  display: grid;
+  gap: 5px;
+  &__label {
+    font: 400 13px $f-display;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  &__input {
+    height: 46px;
+    width: 100%;
+    min-width: 0;
+    padding: 0 $s3;
+    border: 2px solid var(--field-edge);
+    border-radius: 2px;
+    background: var(--field-bg);
+    color: var(--ink);
+    font: 400 16px var(--field-font);
+    &::placeholder {
+      color: var(--ink-3);
+      opacity: 1;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: 3px 3px 0 var(--field-edge);
+    }
+    @include short {
+      height: 38px;
+    }
+  }
+}
+.c-note {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-3);
+  &--center {
+    text-align: center;
+  }
+}
+.c-error {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+}
+.c-subhead {
+  margin: 6px 0 0;
+  @include label(11px, 0.2em);
+  color: var(--accent);
+  &--optional {
+    @include short {
+      display: none;
+    }
+  }
+}

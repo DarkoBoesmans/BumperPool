@@ -1,0 +1,341 @@
+// The big comic banner for goals, fouls, wins and the 5-0 crawl: rays, a slammed word, the name, a tag.
+@use "sass:list";
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+// per kind: the word's fill, its drop shadow, the rays, the tag under the name
+
+$kinds: (
+  goal: (
+    linear-gradient(180deg, #fffbe0 0%, #ffe08a 38%, #f0a830 50%, #c86a10 62%, #ffd070 100%),
+    #7c1d18,
+    rgba(240, 168, 48, 0.5),
+    linear-gradient(180deg, #c6ff4d, #8fd12a),
+  ),
+  gift: (
+    linear-gradient(180deg, #f3e8ff 0%, #c6a6ff 40%, #8a5cf0 52%, #5a2fc4 64%, #b996ff 100%),
+    #1d0f3a,
+    rgba(155, 107, 255, 0.45),
+    linear-gradient(180deg, #e9dcff, #b99bff),
+  ),
+  foul: (
+    linear-gradient(180deg, #fff0ea 0%, #ffb0a0 36%, #ff3d2e 50%, #a3140a 64%, #ff7a6a 100%),
+    #140904,
+    rgba(255, 61, 46, 0.4),
+    linear-gradient(180deg, #fff6ea, #ffd9c8),
+  ),
+  time: (
+    linear-gradient(180deg, #fff7e0, #ffd24a 45%, #e08a1e 55%, #ffcf6a),
+    #140904,
+    rgba(255, 210, 74, 0.4),
+    linear-gradient(180deg, #fff6ea, #ffe6a8),
+  ),
+  crawl: (
+    linear-gradient(180deg, #fff4dd 0%, #e8c08a 40%, #8a5420 52%, #5a3410 62%, #d9a868 100%),
+    #140904,
+    rgba(150, 90, 40, 0.45),
+    linear-gradient(180deg, #fff6ea, #e8d0a8),
+  ),
+  pearl: (
+    linear-gradient(180deg, #fff 0%, #ffd6f0 22%, #c6f1ff 42%, #e9ffd8 58%, #fff1c6 76%, #d8d2ff 100%),
+    #1a2a3a,
+    rgba(168, 230, 255, 0.5),
+    linear-gradient(180deg, #f0fbff, #a8e6ff),
+  ),
+  power: (
+    linear-gradient(180deg, #fff 0%, #c6f1ff 30%, #4ab0ff 52%, #1a4a8a 64%, #a8e6ff 100%),
+    #08142a,
+    rgba(120, 200, 255, 0.5),
+    linear-gradient(180deg, #f0fbff, #a8e6ff),
+  ),
+  game: (
+    linear-gradient(180deg, #ffffff 0%, #fff1b8 22%, #e8b64a 44%, #8a5a12 50%, #f5d27a 58%, #fff6d0 80%, #d9a13c 100%),
+    #3a1d04,
+    rgba(255, 220, 120, 0.55),
+    linear-gradient(180deg, #fff4cf, #ecc66c),
+  ),
+  match: (
+    linear-gradient(180deg, #ffffff 0%, #fff1b8 22%, #e8b64a 44%, #8a5a12 50%, #f5d27a 58%, #fff6d0 80%, #d9a13c 100%),
+    #3a1d04,
+    rgba(255, 220, 120, 0.55),
+    linear-gradient(180deg, #fff4cf, #ecc66c),
+  ),
+);
+
+.c-banner {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  pointer-events: none;
+  overflow: hidden;
+  @each $k, $v in $kinds {
+    &--#{$k} {
+      --fill: #{list.nth($v, 1)};
+      --drop: #{list.nth($v, 2)};
+      --ray: #{list.nth($v, 3)};
+      --tag: #{list.nth($v, 4)};
+    }
+  }
+
+  &__burst {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 200vmax;
+    height: 200vmax;
+    margin: -100vmax 0 0 -100vmax;
+    opacity: 0;
+    background: repeating-conic-gradient(from 0deg, var(--ray) 0deg 7deg, transparent 7deg 18deg);
+    -webkit-mask: radial-gradient(circle, #000 0, #000 8%, transparent 42%);
+    mask: radial-gradient(circle, #000 0, #000 8%, transparent 42%);
+    .is-go & {
+      animation: c-banner-burst 2.4s ease-out forwards;
+    }
+  }
+  &__word {
+    position: relative;
+    font: 400 clamp(96px, 17vw, 240px) / 0.9 $f-display;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    background: var(--fill);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 5px #140904;
+    paint-order: stroke fill;
+    filter: drop-shadow(9px 9px 0 var(--drop)) drop-shadow(0 0 40px rgba(0, 0, 0, 0.6));
+    transform: skewX(-10deg) rotate(-4deg);
+    text-align: center;
+    .is-go & {
+      animation: c-banner-slam 2.2s cubic-bezier(0.2, 1.5, 0.4, 1) forwards;
+    }
+    .is-go.c-banner--foul &,
+    .is-go.c-banner--time & {
+      animation:
+        c-banner-slam 2.3s cubic-bezier(0.2, 1.5, 0.4, 1) forwards,
+        c-banner-shake 0.09s linear 6 0.25s;
+    }
+  }
+  &__who,
+  &__sub {
+    opacity: 0;
+    .is-go & {
+      animation: c-banner-sub 2.2s ease forwards 0.18s;
+    }
+  }
+  &__who {
+    @include display(clamp(26px, 4vw, 46px));
+    color: #fff;
+    text-shadow: 4px 4px 0 #000;
+    &:empty {
+      display: none;
+    }
+  }
+  &__sub {
+    position: relative;
+    isolation: isolate;
+    max-width: min(760px, 92vw);
+    padding: 10px 26px;
+    font: 700 clamp(16px, 2vw, 22px) $f-ui;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1a0d05;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: var(--tag);
+      transform: skewX(-14deg);
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.6);
+    }
+  }
+  &__stripes {
+    position: absolute;
+    left: -10%;
+    right: -10%;
+    top: 50%;
+    height: clamp(150px, 24vw, 300px);
+    margin-top: calc(clamp(150px, 24vw, 300px) / -2 - 20px);
+    transform: rotate(-4deg) scaleY(0);
+    display: none;
+    background: repeating-linear-gradient(-45deg, #ffd21f 0 34px, #140904 34px 68px);
+    box-shadow: 0 0 0 8px #140904;
+  }
+  &__card {
+    position: absolute;
+    left: calc(50% + clamp(150px, 26vw, 380px));
+    top: calc(50% - 150px);
+    width: 90px;
+    height: 130px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffe95a, #f5c400);
+    border: 4px solid #140904;
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.6);
+    display: none;
+    opacity: 0;
+    @include below($bp-phone) {
+      display: none !important;
+    }
+  }
+  &--foul &__stripes,
+  &--time &__stripes,
+  &--foul &__card,
+  &--time &__card {
+    display: block;
+  }
+  &.is-go#{&}--foul &__stripes,
+  &.is-go#{&}--time &__stripes {
+    animation: c-banner-stripes 2.3s ease forwards;
+  }
+  &.is-go#{&}--foul &__card,
+  &.is-go#{&}--time &__card {
+    animation: c-banner-card 2.2s cubic-bezier(0.2, 1.4, 0.4, 1) forwards 0.1s;
+  }
+  &__bit {
+    position: absolute;
+    top: 44%;
+    width: 12px;
+    height: 18px;
+    opacity: 0;
+    animation: c-banner-confetti var(--d) cubic-bezier(0.2, 0.7, 0.4, 1) forwards 0.15s;
+  }
+  @include calm {
+    &__burst {
+      animation: none !important;
+      opacity: 0.5;
+    }
+    &__word,
+    &__who,
+    &__sub {
+      animation: none !important;
+      opacity: 1;
+    }
+    &__stripes {
+      animation: none !important;
+      transform: rotate(-4deg);
+    }
+    &__confetti {
+      display: none;
+    }
+  }
+}
+@keyframes c-banner-burst {
+  0% {
+    opacity: 0;
+    transform: rotate(0) scale(0.3);
+  }
+  10% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(40deg) scale(1.1);
+  }
+}
+@keyframes c-banner-slam {
+  0% {
+    opacity: 0;
+    transform: skewX(-10deg) rotate(-16deg) scale(3.4);
+  }
+  10% {
+    opacity: 1;
+    transform: skewX(-10deg) rotate(-3deg) scale(0.88);
+  }
+  16% {
+    transform: skewX(-10deg) rotate(-5deg) scale(1.08);
+  }
+  22% {
+    transform: skewX(-10deg) rotate(-4deg) scale(1);
+  }
+  86% {
+    opacity: 1;
+    transform: skewX(-10deg) rotate(-4deg) scale(1.04);
+  }
+  100% {
+    opacity: 0;
+    transform: skewX(-10deg) rotate(-4deg) scale(1.3);
+  }
+}
+@keyframes c-banner-sub {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  14% {
+    opacity: 1;
+    transform: none;
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes c-banner-shake {
+  25% {
+    translate: 6px -3px;
+  }
+  50% {
+    translate: -5px 4px;
+  }
+  75% {
+    translate: 4px 3px;
+  }
+}
+@keyframes c-banner-card {
+  0% {
+    opacity: 0;
+    transform: translateY(-60vh) rotate(-40deg);
+  }
+  14% {
+    opacity: 1;
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(8deg);
+  }
+  86% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(8deg) translateY(20px);
+  }
+}
+@keyframes c-banner-stripes {
+  0% {
+    transform: rotate(-4deg) scaleY(0);
+  }
+  8% {
+    transform: rotate(-4deg) scaleY(1.1);
+  }
+  12%,
+  88% {
+    transform: rotate(-4deg) scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-4deg) scaleY(0);
+    opacity: 0;
+  }
+}
+@keyframes c-banner-confetti {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+  }
+}

@@ -1,0 +1,194 @@
+// The power meter while you pull back: four equal bands (touch, soft, medium, hard) in the same colours as the aim
+// line, the band name, the speed in m/s and how far the ball runs on its own. The top quarter is "hard" in the
+// referee's book. Where a hard shot is a foul, that quarter is striped and says so.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+$band-touch: #8fd3ff;
+$band-soft: #ffffff;
+$band-medium: #ffd27a;
+$band-hard: #ff6a4a;
+
+.c-power {
+  --p: 0%;
+  position: fixed;
+  right: clamp(14px, 2.6vw, 34px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 112px;
+  height: min(300px, 44vh);
+  display: grid;
+  grid-template-rows: auto 1fr auto auto auto;
+  justify-items: center;
+  gap: 4px;
+  pointer-events: none;
+  text-shadow: 2px 2px 0 #000;
+
+  &__label {
+    @include label(10px, 0.2em);
+    color: var(--ink-2);
+  }
+  &__meter {
+    display: flex;
+    gap: 5px;
+    height: 100%;
+    min-height: 0;
+  }
+  &__bands {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: right;
+  }
+  &__name {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include label(9px, 0.12em);
+    color: var(--ink-2);
+    opacity: 0.75;
+  }
+  &__track {
+    position: relative;
+    width: 22px;
+    height: 100%;
+    background:
+      linear-gradient(
+        0deg,
+        transparent 24.6%,
+        var(--line) 24.6% 25.4%,
+        transparent 25.4% 49.6%,
+        var(--line) 49.6% 50.4%,
+        transparent 50.4% 74.6%,
+        #fff 74.6% 75.4%,
+        rgba(255, 61, 46, 0.22) 75.4%
+      ),
+      rgba(0, 0, 0, 0.55);
+    border: 2px solid var(--line);
+  }
+  &__fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, $band-touch 0 25%, $band-soft 25% 50%, $band-medium 50% 75%, $band-hard 75%);
+    clip-path: inset(calc(100% - var(--p)) 0 0 0);
+    -webkit-mask: repeating-linear-gradient(0deg, #000 0 7px, transparent 7px 9px);
+    mask: repeating-linear-gradient(0deg, #000 0 7px, transparent 7px 9px);
+  }
+  &__band {
+    @include display(18px, 0.06em);
+  }
+  &__speed {
+    font: 700 13px $f-ui;
+    font-variant-numeric: tabular-nums;
+  }
+  &__reach {
+    font: 600 11px/1.2 $f-ui;
+    color: var(--ink-2);
+    text-align: center;
+  }
+  // the band you are in lights up, in its own colour
+  @each $id, $c in (touch: $band-touch, soft: $band-soft, medium: $band-medium, hard: $band-hard) {
+    &[data-band="#{$id}"] &__name--#{$id} {
+      color: $c;
+      opacity: 1;
+    }
+    &[data-band="#{$id}"] &__band {
+      color: $c;
+    }
+  }
+  // hard is a foul from where this ball lies
+  &.is-foul &__track {
+    background:
+      repeating-linear-gradient(-45deg, rgba(255, 61, 46, 0.55) 0 6px, transparent 6px 12px) top / 100% 25% no-repeat,
+      rgba(0, 0, 0, 0.55);
+  }
+  &.is-foul &__name--hard::after {
+    content: " = foul";
+  }
+  &.is-foul.is-hard &__band {
+    color: #fff;
+    background: $red;
+    padding: 0 6px;
+  }
+  @include below($bp-narrow) {
+    right: 8px;
+    top: 42%;
+    height: min(230px, 34vh);
+    width: 96px;
+    &__reach {
+      display: none;
+    }
+  }
+  // a phone held upright: a level bar along the bottom edge, over the controls, so it never covers the table
+  @include upright {
+    top: auto;
+    right: auto;
+    left: calc(env(safe-area-inset-left, 0px) + 8px);
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+    z-index: 5;
+    transform: none;
+    width: 240px;
+    height: auto;
+    grid-template: "label band speed" auto "meter meter meter" auto / auto 1fr auto;
+    align-items: center;
+    gap: 4px 8px;
+    padding: 8px 10px;
+    background: $glass-strong;
+    border: 2px solid var(--line);
+    border-radius: 4px;
+    &__label {
+      grid-area: label;
+    }
+    &__band {
+      grid-area: band;
+      font-size: 16px;
+    }
+    &__speed {
+      grid-area: speed;
+    }
+    &__meter {
+      grid-area: meter;
+      flex-direction: column-reverse;
+      width: 100%;
+      gap: 3px;
+    }
+    &__bands {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    &__name {
+      flex: 1;
+      justify-content: center;
+    }
+    &__track {
+      width: 100%;
+      height: 18px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent 24.6%,
+          var(--line) 24.6% 25.4%,
+          transparent 25.4% 49.6%,
+          var(--line) 49.6% 50.4%,
+          transparent 50.4% 74.6%,
+          #fff 74.6% 75.4%,
+          rgba(255, 61, 46, 0.22) 75.4%
+        ),
+        rgba(0, 0, 0, 0.55);
+    }
+    &__fill {
+      background: linear-gradient(90deg, $band-touch 0 25%, $band-soft 25% 50%, $band-medium 50% 75%, $band-hard 75%);
+      clip-path: inset(0 calc(100% - var(--p)) 0 0);
+      -webkit-mask: repeating-linear-gradient(90deg, #000 0 7px, transparent 7px 9px);
+      mask: repeating-linear-gradient(90deg, #000 0 7px, transparent 7px 9px);
+    }
+    &.is-foul &__track {
+      background:
+        repeating-linear-gradient(-45deg, rgba(255, 61, 46, 0.55) 0 6px, transparent 6px 12px) right / 25% 100%
+          no-repeat,
+        rgba(0, 0, 0, 0.55);
+    }
+  }
+}

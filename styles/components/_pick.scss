@@ -1,0 +1,121 @@
+// Freeplay: grade tabs, three regulars per grade and their bio. The columns split 1.618 : 1 and keep their size.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-pick {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  gap: $s4;
+  height: clamp(300px, 50vh, 426px);
+  &__left {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: $s3;
+    min-height: 0;
+  }
+  @include below($bp-tablet) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    height: auto;
+    &__left {
+      grid-template-rows: auto clamp(150px, 26vh, 210px);
+    }
+  }
+  @include short {
+    grid-template-columns: 1.618fr 1fr;
+    height: calc(100vh - 150px);
+    &__left {
+      grid-template-rows: auto 1fr;
+    }
+  }
+}
+.c-grade-tabs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: $s1;
+  padding-top: $tab-lift; // room for the lifted tab, the scrolling panel would clip it
+  @include below($bp-phone) {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.c-grade-tab {
+  --g: #b6bcb4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 0 6px;
+  border: 2px solid $poster-ink;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--g) 26%, #{$paper});
+  color: $poster-ink;
+  font: 400 clamp(12px, 1.5vw, 15px) $f-display;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.12s;
+  &__gem {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: var(--g);
+    box-shadow: 0 0 0 1.5px $poster-ink;
+    @include below($bp-phone) {
+      display: none;
+    }
+  }
+  &__lock {
+    display: none;
+    width: 14px;
+    height: 14px;
+  }
+  &:hover {
+    transform: translateY(-$tab-lift);
+  }
+  &[aria-selected="true"] {
+    background: var(--g);
+    box-shadow: 3px 3px 0 $poster-ink;
+  }
+  &.is-locked {
+    background: repeating-linear-gradient(-45deg, rgba(31, 21, 14, 0.06) 0 6px, transparent 6px 12px), #e6d7b2;
+    color: var(--ink-3);
+    border-style: dashed;
+    &[aria-selected="true"] {
+      background: #d9c79c;
+    }
+  }
+  &.is-locked &__lock {
+    display: block;
+  }
+  &.is-locked &__gem {
+    display: none;
+  }
+  &--pearl:not(.is-locked) {
+    background: $pearl-gradient;
+    background-size: 300% 100%;
+    animation: c-pearl 6s linear infinite;
+  }
+  @include below($bp-tablet) {
+    font-size: 12px;
+  }
+  @include below($bp-phone) {
+    min-height: 34px;
+  }
+  @include short {
+    min-height: 30px;
+  }
+  @include calm {
+    transition: none;
+    animation: none !important;
+  }
+}
+.c-roster {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $s3;
+  min-height: 0;
+}

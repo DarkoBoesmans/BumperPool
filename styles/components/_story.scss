@@ -1,0 +1,264 @@
+// Story mode: the chapters on the left, the counter and your record on the right.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-story {
+  display: grid;
+  grid-template-columns: 1.618fr 1fr;
+  gap: $s4;
+  min-height: 0;
+  &__main {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: $s3;
+    min-width: 0;
+  }
+  &__chapters {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: $s1;
+    padding-top: $tab-lift; // room for the lifted tab, the scrolling panel would clip it
+  }
+  &__side {
+    display: grid;
+    align-content: start;
+    gap: $s3;
+  }
+  @include below($bp-tablet) {
+    grid-template-columns: 1fr;
+    &__side {
+      grid-template-columns: auto 1fr;
+      align-items: center;
+    }
+  }
+  @include below($bp-phone) {
+    &__side {
+      grid-template-columns: 1fr;
+    }
+  }
+  @include short {
+    grid-template-columns: 1.618fr 1fr;
+    &__side {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+// a chapter tab: the grade's gem and its number
+.c-chapter-tab {
+  --g: #b6bcb4;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  min-height: 44px;
+  padding: 4px;
+  border: 2px solid $poster-ink;
+  border-radius: 2px;
+  background: color-mix(in srgb, var(--g) 22%, #{$paper});
+  color: $poster-ink;
+  font: 400 12px $f-display;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  &__gem {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: var(--g);
+    box-shadow: 0 0 0 1.5px $poster-ink;
+  }
+  &.is-done {
+    background: var(--g);
+  }
+  &.is-locked {
+    border-style: dashed;
+    color: var(--ink-3);
+    background: repeating-linear-gradient(-45deg, rgba(31, 21, 14, 0.06) 0 6px, transparent 6px 12px), #e6d7b2;
+    .c-chapter-tab__gem {
+      background: transparent;
+    }
+  }
+  &[aria-selected="true"] {
+    box-shadow: 3px 3px 0 $poster-ink;
+    transform: translateY(-$tab-lift);
+  }
+  &--pearl.is-done,
+  &--pearl[aria-selected="true"]:not(.is-locked) {
+    background: $pearl-gradient;
+    background-size: 300% 100%;
+    animation: c-pearl 6s linear infinite;
+  }
+  @include below($bp-phone) {
+    font-size: 0;
+    min-height: 30px;
+  }
+}
+// the chapter: title, a few lines of story, the three regulars of that bar
+.c-chapter {
+  --g: #b6bcb4;
+  display: grid;
+  align-content: start;
+  gap: $s2;
+  padding: $s3 $s4;
+  border: 2px solid $poster-ink;
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: inset 0 5px 0 var(--g);
+  min-height: 0;
+  &__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: $s3;
+  }
+  &__title {
+    margin: 0;
+    font: 400 clamp(22px, 3.4vh, 30px) / 1.1 $f-poster;
+    color: $poster-ink;
+  }
+  &__venue {
+    font: italic 400 13px $f-serif;
+    color: $poster-red;
+    white-space: nowrap;
+  }
+  &__text {
+    margin: 0;
+    font: 400 13.5px/1.55 $f-serif;
+    color: var(--ink-2);
+    @include short {
+      display: none;
+    }
+  }
+  &__people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $s3;
+  }
+  &__person {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 3px;
+    padding: $s2 4px;
+    border: 2px solid $poster-ink;
+    background: color-mix(in srgb, var(--g) 18%, #{$paper});
+    color: $poster-ink;
+    font: inherit;
+    cursor: pointer;
+    &.is-next {
+      box-shadow: 4px 4px 0 $poster-ink;
+      background: color-mix(in srgb, var(--g) 45%, #{$paper});
+    }
+    &.is-locked {
+      border-style: dashed;
+      cursor: default;
+    }
+  }
+  &__face {
+    width: min(100%, 89px);
+    aspect-ratio: 1;
+    height: auto;
+    image-rendering: pixelated;
+    border: 2px solid $poster-ink;
+    @include short {
+      width: 55px;
+    }
+  }
+  &__name {
+    @include display(15px, 0.04em);
+    max-width: 100%;
+    @include ellipsis;
+  }
+  &__state {
+    font: italic 400 11.5px $f-serif;
+    color: var(--ink-3);
+    .is-beaten & {
+      color: $poster-red;
+      font-style: normal;
+      @include label(10.5px, 0.14em);
+    }
+  }
+  &__rumour {
+    margin: 0;
+    padding: $s2 $s3;
+    border-left: 3px solid $poster-red;
+    font: italic 400 13px/1.5 $f-serif;
+    color: var(--ink-2);
+  }
+}
+// "7 / 18 regulars beaten" with a pip per regular, coloured by grade
+.c-counter {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: $s3;
+  border: 2px solid $poster-ink;
+  background: $poster-ink;
+  color: $paper;
+  &__num {
+    font: 400 clamp(40px, 7vh, 55px) / 1 $f-display;
+    letter-spacing: 0.02em;
+    i {
+      font-style: normal;
+      color: #e8b64a;
+      margin: 0 4px;
+    }
+  }
+  &__label {
+    @include label(11px, 0.2em);
+    color: #e8d6ac;
+  }
+  &__pips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 8px;
+    margin-top: 8px;
+  }
+  &__group {
+    display: flex;
+    gap: 3px;
+  }
+  &__pip {
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    border: 1.5px solid var(--g);
+    &.is-on {
+      background: var(--g);
+    }
+    &.is-hidden {
+      border-style: dotted;
+      border-color: #8a7a5a;
+    }
+  }
+}
+// your track record as a small table of numbers
+.c-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin: 0;
+  border: 2px solid $poster-ink;
+  background: $poster-ink;
+  &__cell {
+    display: grid;
+    justify-items: center;
+    padding: 6px 4px;
+    background: #efe2c2;
+  }
+  &__num {
+    margin: 0;
+    font: 400 22px/1 $f-display;
+    color: $poster-ink;
+  }
+  &__label {
+    font: italic 400 11px/1.3 $f-serif;
+    color: var(--ink-2);
+    text-align: center;
+  }
+}
+@keyframes c-pearl {
+  to {
+    background-position: 300% 0;
+  }
+}

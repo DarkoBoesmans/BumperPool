@@ -1,0 +1,63 @@
+// A segmented radio group.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 3px;
+  background: var(--seg-bg);
+  border: 2px solid var(--seg-edge);
+  border-radius: 3px;
+  &--3,
+  &--5 {
+    display: grid;
+  }
+  &--3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &--5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &__opt {
+    min-height: 36px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 2px;
+    background: transparent;
+    color: var(--ink-2);
+    font: 700 13px $f-ui;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    &:hover {
+      color: var(--ink);
+      background: var(--seg-hover);
+    }
+    &[aria-pressed="true"],
+    &[aria-checked="true"] {
+      background: var(--seg-on);
+      color: var(--seg-on-ink);
+    }
+    .c-seg--3 & {
+      white-space: normal;
+      line-height: 1.15;
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+    .c-seg--5 & {
+      padding: 0 4px;
+      font-size: 12px;
+    }
+    @include below($bp-narrow) {
+      padding: 0 10px;
+    }
+    @media (pointer: coarse) {
+      min-height: 44px;
+    }
+    @include short {
+      min-height: 32px;
+    }
+  }
+}
