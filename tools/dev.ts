@@ -6,7 +6,7 @@ const PORT = Number(process.env.PORT) || 5173;
 await buildAll({ minify: false });
 
 let timer: ReturnType<typeof setTimeout> | undefined;
-for (const dir of ["src", "styles", "index.html"])
+for (const dir of ["src", "styles", "html", "index.html", "legal.html"])
   watch(dir, { recursive: true }, () => {
     clearTimeout(timer);
     timer = setTimeout(() => void buildAll({ minify: false }), 80);

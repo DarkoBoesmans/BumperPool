@@ -5,6 +5,7 @@ import type { Emote } from "../cafe/emote";
 import { G, setG, log, hooks } from "../core/state";
 import { newMatch } from "../core/match";
 import { onSettled } from "../core/referee";
+import { saneGame, saneEmote } from "./sane";
 
 interface Snap {
   exists: boolean;
@@ -89,7 +90,7 @@ export async function joinOnline(table: string, myName: string): Promise<string>
     (s) => {
       for (const d of s.docs) {
         const e = d.data();
-        if (!e || d.id === net.uid) continue;
+        if (!saneEmote(e) || d.id === net.uid) continue;
         if (net.seen[d.id] !== e.t) {
           const first = net.seen[d.id] === undefined;
           net.seen[d.id] = e.t;
@@ -124,7 +125,7 @@ function onRemote(snap: Snap): void {
   const first = !net.ready;
   net.ready = true;
   const d = snap.exists ? snap.data() : null;
-  if (d && d.G && d.rev > net.rev) {
+  if (d && Number.isInteger(d.rev) && d.rev > net.rev && saneGame(d.G)) {
     net.rev = d.rev;
     const g: Game = structuredClone(d.G);
     g.seats = g.seats || [null, null];

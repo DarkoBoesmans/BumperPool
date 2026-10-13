@@ -214,20 +214,21 @@ function boot(): void {
   });
   openStart("home");
   refresh();
-  // handy in the console
-  (window as unknown as Record<string, unknown>).golfbiljart = {
-    app,
-    S,
-    C,
-    camS,
-    me,
-    core,
-    PL,
-    startCpu,
-    get G() {
-      return G;
-    },
-  };
+  // handy in the console of a local build only: the published game keeps its state out of reach
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname))
+    (window as unknown as Record<string, unknown>).golfbiljart = {
+      app,
+      S,
+      C,
+      camS,
+      me,
+      core,
+      PL,
+      startCpu,
+      get G() {
+        return G;
+      },
+    };
   requestAnimationFrame(frame);
 }
 boot();

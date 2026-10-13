@@ -4,3 +4,6 @@ dist/
 .DS_Store
 .claude/
 _update/
+.env*
+*.pem
+*.key

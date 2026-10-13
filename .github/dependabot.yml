@@ -1,0 +1,20 @@
+# Once a month: one pull request for the GitHub Actions, one for the dev tools. three.js stays on r128 on purpose.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: bun
+    directory: /
+    schedule:
+      interval: monthly
+    ignore:
+      - dependency-name: three
+      - dependency-name: "@types/three"
+    groups:
+      dev-tools:
+        patterns: ["*"]

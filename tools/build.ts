@@ -5,6 +5,22 @@ import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
 export const OUT = "dist";
 
+/** `<!-- include: html/x.html -->` pulls in a part of the page, so no HTML file grows past a few hundred lines */
+const INCLUDE = /^[ \t]*<!-- include: (\S+) -->\n?/gm;
+async function page(file: string): Promise<string> {
+  const text = await readFile(file, "utf8"),
+    parts = await Promise.all([...text.matchAll(INCLUDE)].map((m) => page(m[1])));
+  let i = 0;
+  return text.replace(INCLUDE, () => parts[i++]);
+}
+
+/** only our own files may run or load; inline styles carry the data-driven colours. The copy published inside Claude
+ * skips it (NO_CSP=1), since that host adds its own script to the page for online play. */
+const CSP =
+  `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; ` +
+  `style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; ` +
+  `object-src 'none'; base-uri 'none'; form-action 'none'" />`;
+
 export async function buildAll({ minify = true } = {}): Promise<boolean> {
   const t0 = performance.now();
   await rm(OUT, { recursive: true, force: true });
@@ -39,8 +55,11 @@ export async function buildAll({ minify = true } = {}): Promise<boolean> {
   await cp("node_modules/three/LICENSE", `${OUT}/licenses/three.txt`);
   // the version from package.json goes on the page: the published game and your local build compare at a glance
   const { version } = JSON.parse(await readFile("package.json", "utf8"));
-  for (const page of ["index.html", "legal.html"])
-    await writeFile(`${OUT}/${page}`, (await readFile(page, "utf8")).replaceAll("%VERSION%", version));
+  for (const file of ["index.html", "legal.html"]) {
+    let html = (await page(file)).replaceAll("%VERSION%", version);
+    if (!process.env.NO_CSP) html = html.replace('<meta charset="utf-8" />', `<meta charset="utf-8" />\n    ${CSP}`);
+    await writeFile(`${OUT}/${file}`, html);
+  }
   await cp("fonts", `${OUT}/fonts`, { recursive: true });
   console.log(`built ${OUT}/ in ${Math.round(performance.now() - t0)} ms`);
   return true;

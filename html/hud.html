@@ -1,0 +1,247 @@
+<!-- ======================= HUD ======================= -->
+<div class="c-hud" id="hud" hidden>
+  <header class="c-scoreboard" aria-label="Scoreboard">
+    <div class="c-scoreboard__plate" id="s0">
+      <span class="c-ball"></span>
+      <div class="c-scoreboard__who">
+        <b class="c-scoreboard__name">Player 1</b>
+        <span class="c-scoreboard__row"
+          ><span class="c-scoreboard__pips"></span><span class="c-scoreboard__fouls">clean</span></span
+        >
+      </div>
+      <span class="c-scoreboard__wins"><i class="c-scoreboard__win"></i><i class="c-scoreboard__win"></i></span
+      ><span class="c-scoreboard__points">0</span>
+    </div>
+    <div class="c-scoreboard__mid">
+      <span class="c-scoreboard__game" id="gameLbl">GAME 1</span
+      ><span class="c-scoreboard__bo" id="venueLbl">best of 3</span>
+      <span class="c-scoreboard__clock" id="clockChip" hidden><b id="clock">1:00</b></span>
+    </div>
+    <div class="c-scoreboard__plate c-scoreboard__plate--right" id="s1">
+      <span class="c-ball"></span>
+      <div class="c-scoreboard__who">
+        <b class="c-scoreboard__name">Player 2</b>
+        <span class="c-scoreboard__row"
+          ><span class="c-scoreboard__pips"></span><span class="c-scoreboard__fouls">clean</span></span
+        >
+      </div>
+      <span class="c-scoreboard__wins"><i class="c-scoreboard__win"></i><i class="c-scoreboard__win"></i></span
+      ><span class="c-scoreboard__points">0</span>
+    </div>
+  </header>
+  <div class="c-ribbon" aria-live="polite">
+    <b class="c-ribbon__main" id="stMain">Loading</b><span class="c-ribbon__hint" id="stHint"></span
+    ><span class="c-ribbon__warn" id="stLive" hidden></span>
+    <div class="c-ribbon__acts" id="penBox" hidden>
+      <button class="c-btn c-btn--cta" type="button" id="pen1">
+        <span class="c-btn__label">Penalty spot 1</span>
+      </button>
+      <button class="c-btn c-btn--cta" type="button" id="pen2">
+        <span class="c-btn__label">Penalty spot 2</span>
+      </button>
+    </div>
+  </div>
+  <div class="c-ticker" id="ticker" role="status">
+    <span class="c-ticker__tag">Referee</span><span class="c-ticker__text"></span><span class="c-ticker__why"></span>
+  </div>
+
+  <div class="c-power" id="power" hidden aria-hidden="true">
+    <span class="c-power__label">POWER</span>
+    <div class="c-power__meter">
+      <ol class="c-power__bands">
+        <li class="c-power__name c-power__name--hard">Hard</li>
+        <li class="c-power__name c-power__name--medium">Medium</li>
+        <li class="c-power__name c-power__name--soft">Soft</li>
+        <li class="c-power__name c-power__name--touch">Touch</li>
+      </ol>
+      <div class="c-power__track"><div class="c-power__fill"></div></div>
+    </div>
+    <b class="c-power__band">SOFT</b>
+    <span class="c-power__speed">0.0 m/s</span>
+    <span class="c-power__reach"></span>
+  </div>
+
+  <div class="c-spin" aria-label="Cue ball spin">
+    <span class="c-spin__label">SPIN</span>
+    <div
+      class="c-spin__ball"
+      id="cueball"
+      role="slider"
+      tabindex="0"
+      aria-label="Where the cue tip hits the ball. Arrow keys also work, 0 resets."
+      aria-valuetext="Centre ball"
+    >
+      <i class="c-spin__cross"></i><i class="c-spin__dot" id="spinDot"></i>
+    </div>
+    <span class="c-spin__read" id="spinRead">Centre ball</span>
+    <button class="c-btn c-btn--small" type="button" id="spinReset">Reset</button>
+  </div>
+
+  <p class="c-hint" id="orbitHint">
+    <span class="c-hint__mouse"
+      >Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T top
+      view</span
+    ><span class="c-hint__touch">Drag the cloth to turn · Pinch to zoom · Two fingers slide · Tap to look there</span>
+  </p>
+
+  <nav class="c-rail" aria-label="Game controls">
+    <button class="c-rail__btn" type="button" id="btnMenu">
+      <svg class="o-icon"><use href="#i-menu" /></svg><span class="c-rail__label">Menu</span>
+    </button>
+    <button class="c-rail__btn" type="button" id="btnSheet" aria-expanded="false" aria-controls="sheet">
+      <svg class="o-icon"><use href="#i-book" /></svg><span class="c-rail__label">Match</span>
+    </button>
+    <button class="c-rail__btn" type="button" id="btnSettings">
+      <svg class="o-icon"><use href="#i-gear" /></svg><span class="c-rail__label">Settings</span>
+    </button>
+    <span class="c-rail__sep"></span>
+    <button class="c-rail__btn" type="button" id="vPlayer" aria-pressed="true">
+      <svg class="o-icon"><use href="#i-eye" /></svg><span class="c-rail__label">Player view</span
+      ><kbd class="c-rail__key">P</kbd>
+    </button>
+    <button class="c-rail__btn" type="button" id="vTop" aria-pressed="false">
+      <svg class="o-icon"><use href="#i-top" /></svg><span class="c-rail__label">Top view</span
+      ><kbd class="c-rail__key">T</kbd>
+    </button>
+    <button class="c-rail__btn" type="button" id="optLines" aria-pressed="true">
+      <svg class="o-icon"><use href="#i-lines" /></svg><span class="c-rail__label">Lines</span>
+    </button>
+    <span class="c-rail__sep"></span>
+    <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnCigar" aria-describedby="lvCigar">
+      <svg class="o-icon"><use href="#i-cigar" /></svg><span class="c-rail__label">Cigar</span
+      ><kbd class="c-rail__key">1</kbd>
+      <i class="c-rail__meter c-rail__meter--smoke" id="lvCigar" aria-label="Smoke in the room"
+        ><b></b><b></b><b></b><b></b
+      ></i>
+    </button>
+    <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnWhisky" aria-describedby="lvWhisky">
+      <svg class="o-icon"><use href="#i-glass" /></svg><span class="c-rail__label">Whisky</span
+      ><kbd class="c-rail__key">2</kbd>
+      <i class="c-rail__meter c-rail__meter--whisky" id="lvWhisky" aria-label="Whisky level"
+        ><b></b><b></b><b></b><b></b
+      ></i>
+    </button>
+    <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnChalk" aria-describedby="lvChalk">
+      <svg class="o-icon"><use href="#i-chalk" /></svg><span class="c-rail__label">Chalk</span
+      ><kbd class="c-rail__key">3</kbd>
+      <i class="c-rail__meter c-rail__meter--chalk" id="lvChalk" aria-label="Chalk on your tip"
+        ><b></b><b></b><b></b><b></b
+      ></i>
+    </button>
+    <button class="c-rail__btn c-rail__btn--hot" type="button" id="btnKnock">
+      <svg class="o-icon"><use href="#i-knock" /></svg><span class="c-rail__label">Knock</span
+      ><kbd class="c-rail__key">4</kbd>
+    </button>
+  </nav>
+
+  <div class="c-bubble" id="bubble" hidden aria-live="polite">
+    <b class="c-bubble__who"></b><span class="c-bubble__text"></span>
+  </div>
+
+  <aside class="c-sheet c-poster" id="sheet" aria-label="Match and rules" inert>
+    <div class="c-sheet__head">
+      <h2 class="c-sheet__title">Match</h2>
+      <button class="c-btn c-btn--ghost" type="button" id="btnClose">
+        <span class="c-btn__label">Close</span>
+      </button>
+    </div>
+    <div class="c-tabs" role="tablist" aria-label="Match">
+      <button
+        class="c-tabs__tab"
+        type="button"
+        role="tab"
+        id="tbPlayers"
+        aria-controls="tpPlayers"
+        aria-selected="true"
+      >
+        Players and log
+      </button>
+      <button class="c-tabs__tab" type="button" role="tab" id="tbRules" aria-controls="tpRules" aria-selected="false">
+        Rules
+      </button>
+    </div>
+    <div class="o-stack">
+      <section class="o-stack__item c-sheet__players" id="tpPlayers" role="tabpanel" aria-labelledby="tbPlayers">
+        <div class="c-player-row" id="pl0">
+          <span class="c-ball"></span
+          ><input
+            class="c-player-row__name"
+            id="name0"
+            placeholder="Player 1"
+            aria-label="Name of player 1"
+            maxlength="20"
+          />
+          <div class="c-player-row__seat"></div>
+        </div>
+        <div class="c-player-row" id="pl1">
+          <span class="c-ball"></span
+          ><input
+            class="c-player-row__name"
+            id="name1"
+            placeholder="Player 2"
+            aria-label="Name of player 2"
+            maxlength="20"
+          />
+          <div class="c-player-row__seat"></div>
+        </div>
+        <p class="c-note" id="netNote"></p>
+        <h3 class="c-subhead">Last shots</h3>
+        <ol class="c-log" id="log"></ol>
+      </section>
+      <section class="o-stack__item" id="tpRules" role="tabpanel" aria-labelledby="tbRules">
+        <ul class="c-rules">
+          <li class="c-rules__item">
+            <span><b>Sink your five balls</b> into the goal at the far end. Your goal has a ring in your colour.</span>
+          </li>
+          <li class="c-rules__item">
+            <span><b>Score and you shoot again.</b> No goal and the turn passes.</span>
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>Never hit your own ball first.</b> Bounce off a cushion, a post or an opponent's ball.
+              <code class="c-rules__code">SP/8.1</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>No hard shots from the corners</b> near the goal, outside the shooting lines. Hard means over 1.5 m/s:
+              the red part of the power meter. <code class="c-rules__code">SP/7.4</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>No hard shots along a long cushion</b> from the 92 mm strip.
+              <code class="c-rules__code">SP/6.7</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>Don't park in the big triangle.</b> A ball that starts your turn there must leave it that turn.
+              <code class="c-rules__code">SP/9</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>Wrong goal doesn't count.</b> Your ball goes to a penalty spot.
+              <code class="c-rules__code">SP/7.2</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span
+              ><b>After a foul</b> your turn ends, moved balls go back and your ball goes to a penalty spot your
+              opponent picks. <code class="c-rules__code">SP/12</code></span
+            >
+          </li>
+          <li class="c-rules__item">
+            <span><b>Best of three games,</b> colours swap each game.</span>
+          </li>
+        </ul>
+        <div class="o-row">
+          <button class="c-btn" type="button" id="btnTut2">
+            <span class="c-btn__label">Open the tutorial</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  </aside>
+</div>

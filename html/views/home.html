@@ -1,0 +1,66 @@
+<div class="c-view" data-view="home">
+  <button class="c-btn c-btn--cta" type="button" id="btnResume" hidden>
+    <span class="c-btn__label">Resume game</span>
+  </button>
+  <button class="c-menu-opt" type="button" data-go="story">
+    <span class="c-menu-opt__icon"
+      ><svg class="o-icon"><use href="#i-door" /></svg
+    ></span>
+    <span class="c-menu-opt__text"
+      ><b class="c-menu-opt__title">The Newcomer</b
+      ><small class="c-menu-opt__desc">Story: beat every regular in town</small></span
+    >
+    <span class="c-menu-opt__badge" id="storyBadge">0 / 18</span>
+  </button>
+  <button class="c-menu-opt" type="button" data-go="pick" id="btnFreeplay">
+    <span class="c-menu-opt__icon"
+      ><svg class="o-icon"><use href="#i-redo" /></svg
+    ></span>
+    <span class="c-menu-opt__text"
+      ><b class="c-menu-opt__title">Freeplay</b
+      ><small class="c-menu-opt__desc" id="freeDesc">Rematch the regulars you beat</small></span
+    >
+    <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+  </button>
+  <button class="c-menu-opt" type="button" data-go="local">
+    <span class="c-menu-opt__icon"
+      ><svg class="o-icon"><use href="#i-pool" /></svg
+    ></span>
+    <span class="c-menu-opt__text"
+      ><b class="c-menu-opt__title">Two players, one screen</b
+      ><small class="c-menu-opt__desc">Pass the cue</small></span
+    >
+    <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+  </button>
+  <button class="c-menu-opt" type="button" data-go="online">
+    <span class="c-menu-opt__icon"
+      ><svg class="o-icon"><use href="#i-globe" /></svg
+    ></span>
+    <span class="c-menu-opt__text"
+      ><b class="c-menu-opt__title">Play online</b><small class="c-menu-opt__desc">Two devices, one table</small></span
+    >
+    <svg class="o-icon c-menu-opt__chev"><use href="#i-chev" /></svg>
+  </button>
+  <div class="c-minis">
+    <button class="c-minis__btn" type="button" data-go="me">
+      <svg class="o-icon"><use href="#i-user" /></svg><span>Your player</span>
+    </button>
+    <button class="c-minis__btn" type="button" data-go="shop">
+      <svg class="o-icon"><use href="#i-bag" /></svg><span>Shop</span>
+    </button>
+    <button class="c-minis__btn" type="button" data-go="tutorial">
+      <svg class="o-icon"><use href="#i-cap" /></svg><span>How to play</span>
+    </button>
+    <button class="c-minis__btn" type="button" id="btnSettings2">
+      <svg class="o-icon"><use href="#i-gear" /></svg><span>Settings</span>
+    </button>
+  </div>
+  <p class="c-record" id="homeRecord"></p>
+  <p class="c-legal-links">
+    <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a> ·
+    <a href="legal.html#terms" target="_blank" rel="noopener">Terms</a> ·
+    <a href="legal.html#accessibility" target="_blank" rel="noopener">Accessibility</a> ·
+    <a href="legal.html#credits" target="_blank" rel="noopener">Credits</a> ·
+    <span title="This build's version, the same as in package.json">v%VERSION%</span>
+  </p>
+</div>
