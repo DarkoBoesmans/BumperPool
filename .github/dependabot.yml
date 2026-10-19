@@ -15,6 +15,9 @@ updates:
     ignore:
       - dependency-name: three
       - dependency-name: "@types/three"
+      # TypeScript 7 has no compiler API yet, and tools/i18n-keys.ts reads the code with it: stay on 5.x until it does
+      - dependency-name: typescript
+        update-types: ["version-update:semver-major"]
     groups:
       dev-tools:
         patterns: ["*"]
