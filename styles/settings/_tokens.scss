@@ -27,6 +27,9 @@ $paper: #f1e5c8;
 $poster-ink: #1f150e;
 $poster-red: #a52a1e;
 $poster-red-2: #c23a2a;
+$poster-red-ink: #8f2418; // poster red for small text: 6.4:1 on the paper
+$poster-rule: 2px solid $poster-ink;
+$poster-hair: 1px solid rgba(31, 21, 14, 0.28);
 $amber: #f0a830;
 $gold: #ecc66c;
 $ox: #7c1d18;
@@ -84,4 +87,36 @@ $bp-low: 640px;
   --field-bg: rgba(0, 0, 0, 0.35);
   --field-edge: var(--line);
   --field-font: #{$f-ui};
+}
+
+// the poster theme: cream paper, black ink, red print; .c-poster and the small-print page use it
+@mixin poster-theme {
+  --ink: #{$poster-ink};
+  --ink-2: #4b3826;
+  --ink-3: #574230; // 4.5:1 on the darkest paper
+  --line: rgba(31, 21, 14, 0.3);
+  --accent: #{$poster-red};
+  --gold: #8a5a12;
+  --btn-ink: #{$poster-ink};
+  --btn-face: transparent;
+  --btn-face-hover: rgba(165, 42, 30, 0.08);
+  --btn-edge: #{$poster-ink};
+  --btn-edge-hover: #{$poster-ink};
+  --btn-drop: 3px 3px 0 #{$poster-ink};
+  --cta-ink: #f6ecd4;
+  --cta-face: linear-gradient(180deg, #{$poster-red-2}, #{$poster-red});
+  --cta-face-hover: linear-gradient(180deg, #d4473a, #b12e22);
+  --cta-edge: #{$poster-ink};
+  --cta-drop: 4px 4px 0 #{$poster-ink};
+  --seg-bg: rgba(31, 21, 14, 0.06);
+  --seg-edge: #{$poster-ink};
+  --seg-hover: rgba(165, 42, 30, 0.08);
+  --seg-on: #{$poster-ink};
+  --seg-on-ink: #{$paper};
+  --toggle-bg: rgba(255, 255, 255, 0.25);
+  --toggle-edge: #{$poster-ink};
+  --toggle-on: #{$poster-red};
+  --field-bg: rgba(255, 255, 255, 0.4);
+  --field-edge: #{$poster-ink};
+  --field-font: #{$f-serif};
 }

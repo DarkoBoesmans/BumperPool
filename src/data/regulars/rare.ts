@@ -9,7 +9,8 @@ export const RARE: Opponent[] = [
     name: "Nina Nuyts",
     nick: "The Night Owl",
     style: "Shoots before you sit down",
-    traits: ["Shoots fast", "Night shift nurse", "Coffee, not whisky"],
+    strong: ["Shoots fast, keeps the pressure on", "Sharp aim"],
+    weak: ["Hardly any spin", "Rushes the tricky ones"],
     bio: "Nurse on the night shift who pops in on her break. She lines up, shoots and is chalking the next ball before yours stops rolling. Fast does not mean sloppy.",
     look: {
       skin: "#c98d6a",
@@ -53,7 +54,8 @@ export const RARE: Opponent[] = [
     name: "Dirk Dewaele",
     nick: "The Postman",
     style: "Everything goes through a post",
-    traits: ["Post glances", "Always on time", "Knows every address"],
+    strong: ["Shots off the posts", "Reliable aim"],
+    weak: ["Rarely plays straight", "Light on defence"],
     bio: "Has delivered the mail in this street for thirty years. He sends every ball via a post, like a letter through the sorting office, and it usually arrives.",
     look: {
       skin: "#e2a986",
@@ -96,7 +98,8 @@ export const RARE: Opponent[] = [
     name: "Lotte Lemmens",
     nick: "The Lawyer",
     style: "Never fouls, waits for yours",
-    traits: ["Never fouls", "Knows the rulebook", "Patient"],
+    strong: ["Never takes a risk", "Blocks well"],
+    weak: ["Soft shots fall short", "Too careful to attack"],
     bio: "Lawyer by day, referee by habit. She has read the rulebook more often than you have played. She takes no risks, never fouls and calmly waits for your mistake.",
     look: {
       skin: "#f3cbb0",

@@ -7,7 +7,7 @@ export const OUT = "dist";
 
 /** `<!-- include: html/x.html -->` pulls in a part of the page, so no HTML file grows past a few hundred lines */
 const INCLUDE = /^[ \t]*<!-- include: (\S+) -->\n?/gm;
-async function page(file: string): Promise<string> {
+export async function page(file: string): Promise<string> {
   const text = await readFile(file, "utf8"),
     parts = await Promise.all([...text.matchAll(INCLUDE)].map((m) => page(m[1])));
   let i = 0;
@@ -26,9 +26,9 @@ export async function buildAll({ minify = true } = {}): Promise<boolean> {
   await rm(OUT, { recursive: true, force: true });
   await mkdir(OUT, { recursive: true });
   const js = await Bun.build({
-    entrypoints: ["src/main.ts"],
+    entrypoints: ["src/main.ts", "src/legal.ts"], // the game, and the small-print page's language switch
     outdir: OUT,
-    naming: "main.js",
+    naming: "[name].js",
     target: "browser",
     minify,
     sourcemap: minify ? "none" : "linked",

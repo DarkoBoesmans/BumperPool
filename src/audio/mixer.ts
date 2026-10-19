@@ -1,8 +1,8 @@
 // Every sound is synthesised on the fly: no audio files. Four volume busses: master, fx (table and referee),
 // amb (the café) and music (the jukebox). The café itself is brown noise, a murmur and the odd glass on the bar.
 import { initJukebox } from "./jukebox";
+import { load, save } from "../profile/store";
 
-const KEY = "golfbiljart.volume";
 export const au = {} as {
   A: AudioContext | null;
   out: GainNode;
@@ -15,9 +15,9 @@ au.A = null;
 export type Bus = "master" | "fx" | "amb" | "music";
 export const vol: Record<Bus, number> = { master: 90, fx: 90, amb: 50, music: 40 };
 try {
-  Object.assign(vol, JSON.parse(globalThis.localStorage?.getItem(KEY) || "{}"));
+  Object.assign(vol, JSON.parse(load("volume") || "{}"));
 } catch {
-  /* private mode: defaults */
+  /* defaults */
 }
 
 export function initAudio(): void {
@@ -97,11 +97,7 @@ function applyVol(): void {
 export function setVol(k: Bus, v: number): void {
   vol[k] = v;
   applyVol();
-  try {
-    localStorage.setItem(KEY, JSON.stringify(vol));
-  } catch {
-    /* not saved, still applied */
-  }
+  save("volume", JSON.stringify(vol));
 }
 
 export function tone(

@@ -208,13 +208,24 @@ function hat(r: Rect, L: Look): void {
       for (const x of [10, 13, 16, 19, 21]) r(x, 2, 1, 2, h);
       r(15, 5, 2, 1, "#d23a4a");
       break;
-    case "viking":
+    case "helmet":
       r(9, 5, 14, 5, h);
-      r(9, 9, 14, 1, "rgba(0,0,0,.25)");
-      r(6, 4, 3, 2, "#efe6cf");
-      r(5, 2, 2, 2, "#efe6cf");
-      r(23, 4, 3, 2, "#efe6cf");
-      r(25, 2, 2, 2, "#efe6cf");
+      r(15, 1, 2, 5, "#b8322a");
+      r(8, 9, 2, 5, h);
+      r(22, 9, 2, 5, h);
+      break;
+    case "laurel":
+      for (const [x, y] of [
+        [8, 9],
+        [9, 7],
+        [11, 6],
+        [13, 5],
+        [18, 5],
+        [20, 6],
+        [22, 7],
+        [23, 9],
+      ])
+        r(x, y, 2, 1, h);
       break;
     case "snakes":
       for (const [x, y] of [

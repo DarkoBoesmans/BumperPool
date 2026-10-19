@@ -1,0 +1,322 @@
+# sheet: menu. The start menu, the views behind its buttons and the maker.
+# Vlaams speaks to you with "je"; Oilsjters with "ge" and "ou". The game's name, Tjoepbiljart, never changes.
+
+= Player {n}
+v Speler {n}
+a ~
+
+= PEARLESCENT!
+v PARELMOER!
+a ~
+
+= Neptune, Minerva and Jupiter want a game
+v Neptune, Minerva en Jupiter willen een partijtje
+a Neptune, Minerva en Jupiter willen e partijke
+
+= Three legends walked in
+v Drie legenden kwamen binnen
+a Doar zen drie legenden binnengekomen
+
+= This device does not support WebGL, which the 3D café needs.
+v Dit toestel ondersteunt geen WebGL, en dat heeft het 3D-café nodig.
+a Dit toestel kan gene WebGL, en da heeft 't 3D-cafeeke nodig.
+
+= Beat {name}
+v Versla {name}
+a Klop {name}
+
+= Equipped
+v Aan
+a Aangedoan
+
+= Equip
+v Aandoen
+a Aandoen
+
+= Collect
+v Ophalen
+a Afhoalen
+
+= Trophy
+v Trofee
+a ~
+
+= Freeplay reward
+v Beloning vrij spel
+a Beloning vrij sjpel
+
+= Play there first
+v Speel daar eerst
+a Sjpeel doar eerst
+
+= Buy · {price}
+v Kopen · {price}
+a ~
+
+= Free
+v Gratis
+a Veur niks
+
+= {n} more on this shelf, after the old arcade code: up, up, down, down, left, right, left, right, B, A.
+v Nog {n} op deze plank, na de oude arcadecode: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A.
+a Nog {n} ip deze plank, na den ouden arcadecode: omhoog, omhoog, omlaag, omlaag, links, rechts, links, rechts, B, A.
+
+= House rules: by the book
+v Huisregels: volgens het boekje
+a Huisregels: volgens 't boekske
+
+= House rules: {n} changed
+v Huisregels: {n} aangepast
+a Huisregels: {n} veranderd
+
+= Custom: {rule}
+v Eigen regel: {rule}
+a Ons regel: {rule}
+
+= Your player needs a name first.
+v Je speler heeft eerst een naam nodig.
+a Ou mannetje heeft eerst ne noam nodig.
+
+= No matches on the board yet. The regulars are waiting.
+v Nog geen matchen op het bord. De stamgasten wachten.
+a Nog gene matchen ip 't bord. De sjtamgasten zitten te wachten.
+
+= Your record: {won} won, {lost} lost
+v Je palmares: {won} gewonnen, {lost} verloren
+a Ou palmares: {won} gewonnen, {lost} verloren
+
+= , under the table {n}×
+v , {n}× onder de tafel
+a , {n}× onder de tafel gekropen
+
+= , sent {n} under it
+v , {n} eronder gestuurd
+a , {n} eronder gesjtuurd
+
+= Rematch the {n} regulars you beat
+v Revanche tegen de {n} stamgasten die je versloeg
+a Revanche tegen de {n} sjtamgasten die ge geklopt hebt
+
+= Rematch the regular you beat
+v Revanche tegen de stamgast die je versloeg
+a Revanche tegen de sjtamgast die ge geklopt hebt
+
+= Beat someone in the story first
+v Versla eerst iemand in het verhaal
+a Klop eerst iemand in 't verhoal
+
+= You play at your home bar: {bar}.
+v Je speelt in je eigen stamcafé: {bar}.
+a Ge sjpeelt in ou eigen sjtamcafé: {bar}.
+
+= The tjoepbiljart table in the café, in 3D. The referee's messages below describe every shot.
+v De tjoepbiljarttafel in het café, in 3D. De berichten van de scheidsrechter hieronder beschrijven elke stoot.
+a De tjoepbiljarttafel in 't cafeeke, in 3D. Wa de scheids hieronder zegt, beschrijft elke sjtoot.
+
+= The Golden Cue Championship
+v Het Kampioenschap van De Gouden Keu
+a 't Kampioenschap van De Gouden Keu
+
+= Five balls, eight posts, one goal. Bring your own cigar.
+v Vijf ballen, acht doppen, één doel. Breng je eigen sigaar mee.
+a Vijf bollen, acht doppen, één doel. Breng ou eigen sigoar mee.
+
+= Resume game
+v Verder spelen
+a Voort sjpelen
+
+= The Newcomer
+v De Nieuwkomer
+a Den Nieuwen
+
+= Story: beat every regular in town
+v Verhaal: versla elke stamgast in de stad
+a Verhoal: klop elke sjtamgast in Oilsjt
+
+= Rematch the regulars you beat
+v Revanche tegen de stamgasten die je versloeg
+a Revanche tegen de sjtamgasten die ge geklopt hebt
+
+= Two players, one screen
+v Twee spelers, één scherm
+a Twee spelers, ene scherm
+
+= Pass the cue
+v Geef de keu door
+a Geef de keu deur
+
+= Play online
+v Online spelen
+a Online sjpelen
+
+= Two devices, one table
+v Twee toestellen, één tafel
+a Twee toestellen, ene tafel
+
+= Coming soon
+v Binnenkort
+a Seffens
+
+= Your player
+v Je speler
+a Ou mannetje
+
+= Shop
+v Winkel
+a ~
+
+= How to play
+v Spelregels
+a Hoe moette sjpelen
+
+= Language
+v Taal
+a Toal
+
+= Terms
+v Voorwaarden
+a ~
+
+= Accessibility
+v Toegankelijkheid
+a ~
+
+= Credits
+v Met dank aan
+a ~
+
+= This build's version, the same as in package.json
+v De versie van deze build, dezelfde als in package.json
+a ~
+
+= Two players
+v Twee spelers
+a ~
+
+= Player 1 · white in game 1
+v Speler 1 · wit in manche 1
+a ~
+
+= Player 2 · red in game 1
+v Speler 2 · rood in manche 1
+a ~
+
+= Back
+v Terug
+a ~
+
+= Rack them up
+v Leg ze klaar
+a Leg ze kloar
+
+= Before the story starts, make your player: pick a name and a look, then press Done.
+v Maak eerst je speler voor het verhaal begint: kies een naam en een uiterlijk en druk dan op Klaar.
+a Moak eerst ou mannetje veur 't verhoal begint: kies ne noam en e kostuum en duw dan ip Klaar.
+
+= Name
+v Naam
+a Noam
+
+= Your name
+v Je naam
+a Ou noam
+
+= Body
+v Lichaam
+a Lijf
+
+= Hair
+v Haar
+a Hoar
+
+= Face
+v Gezicht
+a Gezichte
+
+= Style
+v Stijl
+a ~
+
+= Save player
+v Speler bewaren
+a Mannetje bewoaren
+
+= Online play runs inside Claude, where this game is published. In this copy you can play offline.
+v Online spelen werkt in Claude, waar dit spel gepubliceerd is. In deze versie speel je offline.
+a Online sjpelen werkt in Claude, woar dit sjpel opsjtoat. In deze versie sjpeelde offline.
+
+= You and your opponent open the game and join the same table name.
+v Jij en je tegenstander openen het spel en kiezen dezelfde tafelnaam.
+a Gij en den andere doen 't sjpel open en kiezen dezelfde tafelnoam.
+
+= The table name, both names and the game are saved in this page's shared storage so you both see the same table. Use a nickname.
+v De tafelnaam, beide namen en het spel worden bewaard in de gedeelde opslag van deze pagina, zodat jullie dezelfde tafel zien. Gebruik een bijnaam.
+a De tafelnoam, de twee noamen en 't sjpel worden bewoard in de gedeelde opslag van deze pagina, zodat ge alle twee dezelfde tafel ziet. Pak ne bijnoam.
+
+= Table name
+v Tafelnaam
+a Tafelnoam
+
+= cafe
+v cafe
+a ~
+
+= Your nickname
+v Je bijnaam
+a Ou bijnoam
+
+= Join table
+v Aan tafel
+a ~
+
+= Grade
+v Graad
+a Groad
+
+= House rules
+v Huisregels
+a ~
+
+= Freeplay only: the story always plays by the rulebook. A match with house rules is a friendly: no tokens, nothing on your record.
+v Alleen in vrij spel: het verhaal volgt altijd het reglement. Een match met huisregels is vriendschappelijk: geen jetons, niets op je palmares.
+a Alleen in vrij sjpel: 't verhoal volgt altijd 't reglement. Ne match mee huisregels es vriendschappelijk: gene jetons, niks ip ou palmares.
+
+= Match length
+v Lengte van de match
+a Hoe lang de match duurt
+
+= One game
+v Eén manche
+a Ene manche
+
+= Best of three
+v Twee winnende manches
+a ~
+
+= Best of five
+v Drie winnende manches
+a ~
+
+= Back to the book
+v Terug naar het reglement
+a Terug noar 't reglement
+
+= The Shop
+v De Winkel
+a ~
+
+= Looks only: nothing here changes how the balls roll. Win matches for tokens. Gold-edged items can't be bought: beat a regular for their trophy, or earn them in freeplay. Your table and bar are your home: the start screen and two-player games. Regulars play in their own bar, on their own table.
+v Alleen voor de looks: niets hier verandert hoe de ballen rollen. Win matchen voor jetons. Spullen met een gouden rand kun je niet kopen: versla een stamgast voor zijn trofee, of verdien ze in vrij spel. Je tafel en café zijn je thuis: het startscherm en de spelletjes met twee. Stamgasten spelen in hun eigen café, aan hun eigen tafel.
+a Alleen veur de schijn: niks hier verandert hoe de bollen rollen. Win matchen veur jetons. Gerief mee ne gouden rand kunde nie kopen: klop ne sjtamgast veur zijn trofee, of verdien 't in vrij sjpel. Ou tafel en cafeeke zijn ou thuis: 't sjtartscherm en de sjpelletjes mee twee. Sjtamgasten sjpelen in hun eigen café, aan hun eigen tafel.
+
+= Chapters
+v Hoofdstukken
+a ~
+
+= regulars beaten
+v stamgasten verslagen
+a sjtamgasten geklopt
+
+= Skip
+v Overslaan
+a Oversloan

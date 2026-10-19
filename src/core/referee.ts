@@ -1,11 +1,16 @@
-// Shots and the referee (GZV spelreglement 2026-2027): the opening (SP/5), fouls (SP/6.7, 7.2, 7.4, 8.1, 9, 3.2).
-import type { Ball, Color, Foul, FoulKey, Hit, LastShot, Shot, Stroke } from "../types";
-import { COLORS, DD_X, GOAL_X, R, aimsAtGoal, att, cornerBall, flyer, home, inGroot, other } from "./table";
+// Shots and the referee (spelreglement 2026-2027): fouls (SP/6.7, 7.2, 7.4, 8.1, 9, 10, 3.2) and goals.
+// The opening is in opening.ts, frames in frames.ts, penalty spots in penalty.ts; RULES.md maps every article to code.
+// Log lines are English with {placeholders}; the HUD translates them (core has no DOM).
+import type { Ball, Color, Foul, Shot, Stroke } from "../types";
+import { COLORS, GOAL_X, R, aimsAtGoal, att, cornerBall, flyer, inGroot, inKlein, other, spots } from "./table";
+import { framesOf } from "./frames";
 import { G, ball, changed, clone, log, nameOf, push, remaining, sfx, hooks } from "./state";
 import { strike } from "./physics";
 import { isHard } from "./power";
 import { FOULS, PENALTY } from "./fouls";
 import { processQueue } from "./penalty";
+import { evalOpening } from "./opening";
+import { foulInfo, shot } from "./verdict";
 
 export function fire(id: number, s: Shot): void {
   if (!G.rules.spin) s = { ...s, sx: 0, sy: 0 }; // house rule: centre ball only
@@ -54,7 +59,12 @@ export function fire(id: number, s: Shot): void {
     start: { x: b.x, y: b.y },
     aim: { x: s.dx, y: s.dy },
     touches: 0,
+    fromSpot: spots(b.c).find((q) => Math.hypot(q.x - b.x, q.y - b.y) < 1)?.n,
   };
+  if (G.framePlay) {
+    G.stroke.frames = Object.fromEntries(G.balls.filter((x) => x.on).map((x) => [x.id, framesOf(x)]));
+    G.stroke.moved = {};
+  }
   strike(b, s);
   G.phase = "moving";
   G.mover = hooks.me();
@@ -66,133 +76,6 @@ export function onSettled(): void {
   if (G.stroke?.opening) evalOpening();
   else evalStroke();
   changed();
-}
-
-function shot(extra: Partial<LastShot> = {}): void {
-  const s = G.stroke,
-    shooter = s && !s.opening ? ball(s.shooter).c : null,
-    own = s && shooter ? s.pots.filter((p) => p.c === shooter && p.h === att(shooter)) : [];
-  G.lastShot = {
-    n: G.strokeNo,
-    shooter,
-    pots: s ? s.pots.slice() : [],
-    foul: null,
-    end: null,
-    lucky: own.length > 0 && (own.some((p) => p.id !== s!.shooter) || s!.touches >= 3),
-    ...extra,
-  };
-}
-function foulInfo(
-  key: FoulKey,
-  c: Color,
-  b: Ball | null,
-  at: { t: number; x: number; y: number } | null,
-  extra: Partial<Foul> = {},
-): Foul {
-  return {
-    key,
-    ...FOULS[key],
-    c,
-    ball: b ? b.id : null,
-    t: at ? at.t : 0,
-    x: at ? at.x : (b?.x ?? 0),
-    y: at ? at.y : (b?.y ?? 0),
-    ...extra,
-  };
-}
-
-function evalOpening(): void {
-  const stroke = G.stroke!;
-  const r = {} as Record<Color, { ok: boolean; fc?: Hit; potted: boolean; d: number }>;
-  for (const c of COLORS) {
-    const id = G.open.ids[c],
-      b = ball(id),
-      fc = stroke.first[id];
-    r[c] = {
-      ok: !!fc && fc.type === "band" && fc.side === (c === "W" ? "y-" : "y+"),
-      fc,
-      potted: !b.on,
-      d: b.on ? Math.hypot(b.x - att(c) * GOAL_X, b.y) : 0,
-    };
-  }
-  G.queue = [];
-  shot({ opening: true });
-  const bad = COLORS.filter((c) => !r[c].ok);
-  if (bad.length) {
-    const c0 = bad[0],
-      b0 = ball(G.open.ids[c0]);
-    G.lastShot!.foul = foulInfo("open", c0, b0, r[c0].fc || { t: 0.4, x: b0.x, y: b0.y });
-    G.balls = clone(G.snap!);
-    const second = bad.filter((c) => ++G.open.strikes[c] >= 2);
-    if (second.length === 1) {
-      const c = second[0];
-      G.lastShot!.foul = foulInfo("open", c, ball(G.open.ids[c]), r[c].fc ?? null, {
-        next: "Second bad opening: turn over and the ball goes to a penalty spot.",
-      });
-      log(
-        c,
-        "fout",
-        `Foul: second faulty opening shot by ${nameOf(c)}.`,
-        "The opening ball must hit your left cushion first. Turn over and the ball goes to a penalty spot. (SP/5.1)",
-      );
-      G.queue = [G.open.ids[c]];
-      G.nextMode = "fresh";
-      G.nextColor = other(c);
-      G.openingBall = null;
-      G.turn = c;
-      processQueue();
-      return;
-    }
-    if (second.length === 2) G.open.strikes = { W: 0, R: 0 };
-    G.lastShot!.foul!.next = "Set up again and replay the opening.";
-    for (const c of bad)
-      log(
-        c,
-        "fout",
-        `${nameOf(c)}'s opening shot missed the left cushion. Set up again.`,
-        "Play the middle ball softly off your left cushion first. (SP/5.1)",
-      );
-    G.nextMode = "redoOpening";
-    processQueue();
-    return;
-  }
-  G.lastPots = stroke.pots;
-  if (r.W.potted && r.R.potted) {
-    log(
-      null,
-      "doel",
-      "Both opening balls went in and both count.",
-      "Shoot the opening again with another ball. (SP/5.1)",
-    );
-    for (const c of COLORS) {
-      const spot = { x: home(c) * DD_X, y: 0 };
-      const cand = G.balls
-        .filter((b) => b.on && b.c === c)
-        .sort((a, b) => Math.hypot(a.x - spot.x, a.y) - Math.hypot(b.x - spot.x, b.y))[0];
-      if (cand) G.open.ids[c] = cand.id;
-    }
-    G.nextMode = "redoOpening";
-    processQueue();
-    return;
-  }
-  let starter: Color;
-  if (r.W.potted || r.R.potted) {
-    starter = r.W.potted ? "W" : "R";
-    log(starter, "doel", `${nameOf(starter)}'s opening ball went straight in. ${nameOf(starter)} starts.`);
-  } else {
-    starter = r.W.d <= r.R.d ? "W" : "R";
-    log(
-      starter,
-      "info",
-      `${nameOf(starter)} starts.`,
-      `White stopped ${Math.round(r.W.d)} mm from its goal, red ${Math.round(r.R.d)} mm. Closest starts. (SP/5.1)`,
-    );
-  }
-  G.lastShot!.starter = starter;
-  G.nextMode = "fresh";
-  G.nextColor = starter;
-  G.openingBall = G.open.ids[starter];
-  processQueue();
 }
 
 /** SP/7.4 forbids only a direct goal attempt: aimed between the goal posts and not played off a ball or a cushion first */
@@ -209,19 +92,30 @@ function evalStroke(): void {
   const fc = s.first[s.shooter],
     hard = isHard(s.power),
     at0 = { t: 0, x: s.start.x, y: s.start.y };
-  const R = G.rules;
+  const rules = G.rules;
   let foul: Foul | null = null;
-  if (R.own && fc && fc.type === "ball" && ball(fc.id!).c === c) foul = foulInfo("own", c, sb, fc);
-  else if (R.hard && hard && direct(s) && cornerBall(c, s.start)) foul = foulInfo("hard", c, sb, at0);
-  else if (R.fly && hard && flyer(s.start, s.aim)) foul = foulInfo("fly", c, sb, at0);
+  if (rules.own && fc && fc.type === "ball" && ball(fc.id!).c === c) foul = foulInfo("own", c, sb, fc);
+  else if (rules.hard && hard && direct(s) && cornerBall(c, s.start)) foul = foulInfo("hard", c, sb, at0);
+  else if (rules.fly && hard && flyer(s.start, s.aim)) foul = foulInfo("fly", c, sb, at0);
+  else if (s.frames && !Object.keys(s.moved || {}).length && !inGroot(c, s.start, R))
+    foul = foulInfo("frame", c, sb, null); // SP/10.2: no ball left its frame, and the cue ball was not in the attack triangle
   G.queue = [];
   G.lastPots = s.pots;
   shot();
   const L = G.lastShot!;
   if (foul) {
-    L.foul = { ...foul, next: PENALTY };
-    G.balls = clone(G.snap!);
-    log(c, "fout", `Foul: ${foul.title.toLowerCase()} by ${nameOf(c)}.`, `${foul.why} ${PENALTY} (${foul.code})`);
+    // frame play: no ball left its frame, so nothing moved far; the rule only sends the cue ball to a spot (SP/10.2)
+    const next = foul.key === "frame" ? "Turn over and the ball goes to a penalty spot." : PENALTY;
+    L.foul = { ...foul, next };
+    if (foul.key !== "frame") G.balls = clone(G.snap!);
+    if (G.framePlay && s.fromSpot) G.spotFouls = [...(G.spotFouls || []), c + s.fromSpot];
+    log(c, "fout", "Foul by {name}: {foul}.", "{why} {next} ({code})", {
+      name: nameOf(c),
+      foul: foul.title,
+      why: foul.why,
+      next,
+      code: foul.code,
+    });
     G.queue = [s.shooter];
     G.nextMode = "switch";
     G.nextColor = o;
@@ -235,16 +129,17 @@ function evalStroke(): void {
     log(
       c,
       "doel",
-      own.length === 1
-        ? `Goal for ${nameOf(c)}. Shoot again.`
-        : `${own.length} goals in one shot for ${nameOf(c)}. Shoot again.`,
+      own.length === 1 ? "Goal for {name}. Shoot again." : "{n} goals in one shot for {name}. Shoot again.",
+      "",
+      { name: nameOf(c), n: own.length },
     );
   if (opp.length)
     log(
       o,
       "doel",
-      `${opp.length === 1 ? "A ball" : opp.length + " balls"} of ${nameOf(o)} went into a goal.`,
+      opp.length === 1 ? "A ball of {name} went into a goal." : "{n} balls of {name} went into a goal.",
       "Knocking an opponent's ball into any goal scores it for them. (SP/7.2)",
+      { name: nameOf(o), n: opp.length },
     );
   if (wrong.length) {
     const p = wrong[wrong.length - 1];
@@ -257,14 +152,17 @@ function evalStroke(): void {
     log(
       c,
       "fout",
-      `Foul: ${nameOf(c)}'s ball went into the wrong goal.`,
-      "Your balls only count in the goal at the far end. It goes to a penalty spot" +
-        (own.length ? ", but you also scored, so you keep shooting. (SP/7.3)" : " and your turn ends. (SP/7.2)"),
+      "Foul: {name}'s ball went into the wrong goal.",
+      own.length
+        ? "Your balls only count in the goal at the far end. It goes to a penalty spot, but you also scored, so you keep shooting. (SP/7.3)"
+        : "Your balls only count in the goal at the far end. It goes to a penalty spot and your turn ends. (SP/7.2)",
+      { name: nameOf(c) },
     );
   }
-  if (own.length && R.golden) {
+  guardedGoal(c, sb, own.length > 0);
+  if (own.length && rules.golden) {
     // house rule: the first goal wins the game, the rest of the shooter's balls go to the tray
-    log(c, "doel", `Golden goal: ${nameOf(c)} wins the game.`);
+    log(c, "doel", "Golden goal: {name} wins the game.", "", { name: nameOf(c) });
     for (const b of G.balls) if (b.on && b.c === c) Object.assign(b, { on: false, vx: 0, vy: 0, potN: ++G.potN });
   }
   if (own.length) {
@@ -275,9 +173,26 @@ function evalStroke(): void {
     G.nextColor = o;
     const ended = remaining("W") === 0 || remaining("R") === 0;
     const parked = !ended && triCheck(); // logs its own foul
-    if (!parked && !wrong.length) log(c, "beurt", `No goal. ${nameOf(o)} to play.`);
+    if (!parked && !wrong.length) log(c, "beurt", "No goal. {name} to play.", "", { name: nameOf(o) });
   }
   processQueue();
+}
+
+/** SP/9.5: while a defender's ball guards the small triangle, the cue ball may not end up in the big triangle */
+function guardedGoal(c: Color, sb: Ball, scored: boolean): void {
+  const o = other(c),
+    guard = (balls: Ball[], zone: typeof inGroot) => balls.some((b) => b.on && b.c === o && zone(c, b, R));
+  if (!G.rules.tri || !sb.on || !inGroot(c, sb, R) || !guard(G.snap!, inGroot) || !guard(G.balls, inKlein)) return;
+  const next = scored
+    ? "The ball goes to a penalty spot. You scored, so you keep shooting."
+    : "The ball goes to a penalty spot.";
+  if (G.lastShot) G.lastShot.foul = foulInfo("small", c, sb, { t: -1, x: sb.x, y: sb.y }, { next });
+  G.queue.push(sb.id);
+  log(c, "fout", "Foul: {name}'s ball stopped in front of a guarded goal.", "{why} {next} (SP/9.5)", {
+    name: nameOf(c),
+    why: FOULS.small.why,
+    next,
+  });
 }
 
 /** SP/9: a ball that started the turn in the big triangle must leave it during the turn */
@@ -292,12 +207,12 @@ function triCheck(): boolean {
   if (G.lastShot) G.lastShot.foul = foulInfo("tri", c, b, { t: -1, x: b.x, y: b.y }, { next: PENALTY });
   G.balls = clone(G.snap!);
   G.queue = stay.slice();
-  log(
-    c,
-    "fout",
-    `Foul: ${nameOf(c)} left a ball parked in the big triangle.`,
-    `${FOULS.tri.why} ${PENALTY} (SP/9.${ti.obligated.length > 1 ? 2 : 1})`,
-  );
+  log(c, "fout", "Foul: {name} left a ball parked in the big triangle.", "{why} {next} ({code})", {
+    name: nameOf(c),
+    why: FOULS.tri.why,
+    next: PENALTY,
+    code: `SP/9.${ti.obligated.length > 1 ? 2 : 1}`,
+  });
   return true;
 }
 
@@ -306,7 +221,9 @@ export function timeout(): void {
   G.strokeNo++;
   G.stroke = null;
   shot({ shooter: c, foul: foulInfo("time", c, null, null, { next: "Turn over." }) });
-  log(c, "fout", `Foul: ${nameOf(c)} ran out of time.`, "You have one minute per shot. Your turn ends. (SP/3.2)");
+  log(c, "fout", "Foul: {name} ran out of time.", "You have one minute per shot. Your turn ends. (SP/3.2)", {
+    name: nameOf(c),
+  });
   G.snap = clone(G.balls);
   G.queue = [];
   G.lastPots = [];
@@ -319,9 +236,17 @@ export function timeout(): void {
     log(
       c,
       "fout",
-      `${nameOf(c)}'s last ball goes to a penalty spot.`,
+      "{name}'s last ball goes to a penalty spot.",
       "Out of time with the last ball in the attack triangle. (SP/8.2.3)",
+      { name: nameOf(c) },
     );
+  } else if (G.framePlay && mine.length) {
+    // frame play: the opponent picks one of your balls for a penalty spot; they pick the one nearest its goal (SP/3.2)
+    const near = mine.sort((a, b) => Math.abs(a.x - att(c) * GOAL_X) - Math.abs(b.x - att(c) * GOAL_X))[0];
+    G.queue = [near.id];
+    log(c, "fout", "{name}'s ball nearest the goal goes to a penalty spot.", "Out of time in frame play. (SP/3.2)", {
+      name: nameOf(c),
+    });
   } else triCheck();
   processQueue();
   changed();

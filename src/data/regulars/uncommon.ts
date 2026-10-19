@@ -9,7 +9,8 @@ export const UNCOMMON: Opponent[] = [
     name: "Fred Feys",
     nick: "The Trucker",
     style: "Heavy cue, heavy smoke",
-    traits: ["Power hitter", "Chain smoker", "Loud"],
+    strong: ["Big power shots", "Decent straight aim"],
+    weak: ["Loses touch on soft shots", "Rarely defends"],
     bio: "Drives a truck to Antwerp and back every day. Plays like he drives: fast, heavy and with a cigar in his mouth.",
     look: {
       skin: "#d79c7a",
@@ -52,7 +53,8 @@ export const UNCOMMON: Opponent[] = [
     name: "Bart Bauwens",
     nick: "Cushion King",
     style: "Everything off a cushion",
-    traits: ["Never plays straight", "Loves the long cushion", "Talks geometry"],
+    strong: ["Every cushion angle", "Banks nobody else sees"],
+    weak: ["Never plays straight", "Takes his time"],
     bio: "Old carom player who refuses to hit a ball straight. Every shot goes off one cushion, preferably two, and he will explain the angle afterwards.",
     look: {
       skin: "#e0a888",
@@ -95,7 +97,8 @@ export const UNCOMMON: Opponent[] = [
     name: "Sofie Segers",
     nick: "The Sniper",
     style: "Dead straight, every time",
-    traits: ["Dead straight", "Never banks", "Bites her lip"],
+    strong: ["Dead straight aim", "Perfect pace"],
+    weak: ["Never banks off a cushion", "No defence at all"],
     bio: "Darts champion of the street, three years running. Lines up every ball straight at the goal and rarely misses one. Ask her to play off a cushion and she just shrugs.",
     look: {
       skin: "#f0c4a4",

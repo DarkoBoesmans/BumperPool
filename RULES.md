@@ -4,7 +4,7 @@ How the referee in `src/core/referee.ts` follows the GZV spelreglement 2026-2027
 
 | Article | What it says | In the game |
 | --- | --- | --- |
-| SP/3.2 | One minute per shot | Shot clock, a setting. Out of time: turn over |
+| SP/3.2 | One minute per shot | Shot clock, a setting. Out of time: turn over; in frame play your ball nearest its goal goes to a penalty spot (the opponent's pick, made for them) |
 | SP/4.1 | Balls on their marks; colours swap per game; a lag decides colours in a deciding game | Marks and swap as written. Deciding game: colours as in game 1, no lag (colour has no effect here) |
 | SP/4.3 | Stalled game: 3 more turns each, then replay | Not needed: the CPU always plays for a goal |
 | SP/5.1 | Opening: middle ball softly off the left cushion; closest to its goal starts; second bad opening is a penalty; a ball in the small triangle need not be played next | As written, tested |
@@ -21,6 +21,6 @@ How the referee in `src/core/referee.ts` follows the GZV spelreglement 2026-2027
 | SP/8.3 | Playing before everything stops | Can't happen: you aim once the balls stop |
 | SP/9.1, 9.2, 9.3 | A ball in the big triangle must leave it by the end of the turn, unless the last shot of a turn put it there; with several, one must leave; on the line counts as inside | As written, tested. The ball is ringed and the ribbon reminds you |
 | SP/9.4 | The triangle is no zone for the defender's balls | As written |
-| SP/9.5 | Defender in the small triangle: the attacker may not end in the big triangle | Not yet |
-| SP/10 | Frame play (kaderspel) once a player has one ball left | Not yet: the 15 frames need the rulebook's figure 1 |
-| SP/12 | Penalty spots 1 or 2 by the opponent's choice, else 3, else 4 or 5 | As written |
+| SP/9.5 | A defender's ball in the triangle: while it stays in the small triangle, the attacker's ball may not end in the big triangle | As written, after every shot: the ball goes to a penalty spot; a goal in the same shot keeps your turn. Tested |
+| SP/10 | Frame play (kaderspel) once a player has one ball left: every shot must send a ball out of its frame | As written, in `src/core/frames.ts`. The 15 frames are the lines on the cloth; on a line you leave by leaving the line; from the attack triangle no change is needed; your own defence triangle is no frame for you (SP/9.4). Tested |
+| SP/12 | Penalty spots 1 or 2 by the opponent's choice, else 3, else 4 or 5 | As written. SP/12.3: in frame play a spot a foul was shot from is skipped. Tested |

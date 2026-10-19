@@ -1,0 +1,206 @@
+# sheet: bars. Every bar in town and the legends' halls: the name, the line under it and the neon sign.
+# The sign over the door follows its bar.
+
+= The Old Brown Café
+v Het Oude Bruine Café
+a 't Oud Bruin Cafeeke
+
+= Nicotine walls, creaky floor, the same three regulars since forever
+v Nicotinemuren, een krakende vloer en al eeuwen dezelfde drie stamgasten
+a Gele muren van de rook, ne krakende vloer en al sinds altijd dezelfde drie sjtamgasten
+
+= THE OLD BROWN CAFÉ
+v HET OUDE BRUINE CAFÉ
+a 'T OUD BRUIN CAFEEKE
+
+= The Corner Pub
+v Het Hoekcafé
+a 't Cafeeke ip den Hoek
+
+= Lace curtains, a fireplace and the same stools since 1974
+v Kanten gordijnen, een open haard en dezelfde krukken sinds 1974
+a Kanten gordijnen, nen open hoard en dezelfde krukken sinds 1974
+
+= THE CORNER PUB
+v HET HOEKCAFÉ
+a CAFEEKE IP DEN HOEK
+
+= The Penalty Spot
+v De Strafschop
+a De Penalty
+
+= Football on the telly, darts in the corner and beer on tap
+v Voetbal op tv, darts in de hoek en bier van 't vat
+a Voetbal ip de tv, darts in den hoek en bier van 't vat
+
+= THE PENALTY SPOT
+v DE STRAFSCHOP
+a DE PENALTY
+
+= The Truck Stop
+v De Truckstop
+a ~
+
+= Chrome, red leather and coffee that could strip paint
+v Chroom, rood leer en koffie die verf kan afbijten
+a Chroom, rood leer en koffie woar ge verf mee kunt afbijten
+
+= TRUCK STOP
+v TRUCKSTOP
+a ~
+
+= The Golden Cue
+v De Gouden Keu
+a ~
+
+= Bottle green damask, brass lamps and a proper bar
+v Flessengroen damast, koperen lampen en een echte toog
+a Flessengroen damast, koperen lampen en ne fatsoenlijke toog
+
+= THE GOLDEN CUE
+v DE GOUDEN KEU
+a ~
+
+= The Bullseye
+v De Roos
+a ~
+
+= Darts on every wall and a trophy shelf that is mostly hers
+v Darts aan elke muur en een trofeeënplank die vooral van haar is
+a Darts aan elke muur en ne plank vol trofeeën die vooral van heur zijn
+
+= THE BULLSEYE
+v DE ROOS
+a ~
+
+= Club Midnight
+v Club Middernacht
+a ~
+
+= Blue neon, a checkerboard floor and a trio on the stage
+v Blauwe neon, een dambordvloer en een trio op het podium
+a Blauwe neon, ne vloer gelijk e dambord en e trio ip 't podium
+
+= CLUB MIDNIGHT
+v CLUB MIDDERNACHT
+a ~
+
+= The Sorting Office
+v Het Sorteercentrum
+a ~
+
+= An old post office: the parcel shelves stayed, the counter became the bar
+v Een oud postkantoor: de pakjesrekken bleven, het loket werd de toog
+a E oud postkantoor: de rekken veur de pakskes zen gebleven, 't loket es den toog geworden
+
+= THE SORTING OFFICE
+v HET SORTEERCENTRUM
+a ~
+
+= The Bar Association
+v De Balie
+a ~
+
+= Oak panels, green leather and silence while you aim
+v Eiken panelen, groen leer en stilte terwijl je mikt
+a Eiken panelen, groen leer en sjtilte as ge mikt
+
+= THE BAR ASSOCIATION
+v DE BALIE
+a ~
+
+= The Velvet Room
+v De Fluwelen Kamer
+a ~
+
+= Purple velvet, a chandelier and a velvet rope at the door
+v Paars fluweel, een kroonluchter en een fluwelen koord aan de deur
+a Paars fluweel, ne kroonluchter en ne fluwelen koord aan de deur
+
+= THE VELVET ROOM
+v DE FLUWELEN KAMER
+a ~
+
+= The Faculty Club
+v De Faculteitsclub
+a ~
+
+= Formulas on the boards, a fire in the hearth and physics in every shot
+v Formules op de borden, een vuur in de haard en fysica in elke stoot
+a Formules ip de borden, e vuur in den hoard en fysica in elke sjtoot
+
+= THE FACULTY CLUB
+v DE FACULTEITSCLUB
+a ~
+
+= The Lucky Seven
+v De Gelukkige Zeven
+a ~
+
+= Red velvet, gold trim and a bet on every shot
+v Rood fluweel, gouden boorden en een weddenschap op elke stoot
+a Rood fluweel, gouden boorden en ne weddenschap ip elke sjtoot
+
+= THE LUCKY SEVEN
+v DE GELUKKIGE ZEVEN
+a ~
+
+= Championship Hall
+v Kampioenschapszaal
+a Kampioenschapszoal
+
+= Stands, banners, cameras and a referee in white gloves
+v Tribunes, spandoeken, camera's en een scheidsrechter met witte handschoenen
+a Tribunes, spandoeken, camera's en ne scheids mee witte handschoenen
+
+= CITY CHAMPIONSHIP FINAL
+v FINALE STADSKAMPIOENSCHAP
+a FINALE KAMPIOENSCHAP VAN OILSJT
+
+= The Arena
+v De Arena
+a ~
+
+= The World Open: grandstands, cameras and total silence
+v De World Open: tribunes, camera's en doodse stilte
+a De World Open: tribunes, camera's en gene kik
+
+= WORLD OPEN
+v WORLD OPEN
+a ~
+
+= Studio Triangle
+v Studio Driehoek
+a ~
+
+= A live TV studio: three cameras, one table, the whole country watching
+v Een live tv-studio: drie camera's, één tafel, heel het land kijkt mee
+a E live tv-studio: drie camera's, ene tafel, heel 't land kijkt mee
+
+= LIVE: STUDIO TRIANGLE
+v LIVE: STUDIO DRIEHOEK
+a ~
+
+= A shipwreck on the sea floor. Neptune's table
+v Een scheepswrak op de zeebodem. De tafel van Neptune
+a E scheepswrak ip de zeebodem. Neptune zijn tafel
+
+= THE SUNKEN TAVERN
+v DE GEZONKEN TAVERNE
+a ~
+
+= Marble, moss and statues that used to be players
+v Marmer, mos en beelden die vroeger spelers waren
+a Marmer, mos en beelden die vroeger spelers woaren
+
+= THE STONE GARDEN
+v DE STENEN TUIN
+a DE SJTENEN HOF
+
+= Marble columns, eagle shields and lightning over the table
+v Marmeren zuilen, arendschilden en bliksem boven de tafel
+a Marmeren zuilen, arendschilden en bliksem boven de tafel
+
+= THE STORM HALL
+v DE STORMZAAL
+a DE SJTORMZOAL

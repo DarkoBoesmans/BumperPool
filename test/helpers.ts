@@ -1,6 +1,7 @@
 // Shared set-ups for the tests: a table with only the balls you list, and a shot rolled out without the referee.
 import * as g from "../src/core";
 import type { Ball, Shot } from "../src/types";
+import { fill } from "../src/i18n/fill";
 
 export type Spec = Partial<Ball> & Pick<Ball, "c" | "x" | "y">;
 
@@ -12,7 +13,7 @@ export function setup(balls: Spec[]): void {
   g.beginTurn("W", null);
 }
 
-export const logged = (code: string): boolean => g.G.log.some((e) => e.why.includes(code));
+export const logged = (code: string): boolean => g.G.log.some((e) => fill(e.why, e.v).includes(code));
 
 /** pure physics: strike the first ball and let everything roll out */
 export function roll(balls: Spec[], s: Shot): Ball[] {

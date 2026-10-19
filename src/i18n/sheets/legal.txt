@@ -1,0 +1,224 @@
+# sheet: legal. The small print (legal.html). Vlaams only: Oilsjters reads it in Vlaams, so it stays unambiguous.
+# The words match the game: Instellingen, Spel, Wis mijn gegevens, stamgasten, jetons, Muur van Schaamte.
+
+= Tjoepbiljart: the small print
+v Tjoepbiljart: de kleine lettertjes
+
+= Back to the game
+v Terug naar het spel
+
+= The small print
+v De kleine lettertjes
+
+= Privacy, terms and credits
+v Privacy, voorwaarden en dankwoord
+
+= A free hobby game that keeps your data in your own browser. Everything else, in plain words.
+v Een gratis hobbyspel dat je gegevens in je eigen browser houdt. De rest, in gewone woorden.
+
+= Last updated 13 October 2026
+v Laatst bijgewerkt op 13 oktober 2026
+
+= cookies
+v cookies
+
+= trackers or ads
+v trackers of advertenties
+
+= to pay, ever
+v te betalen, nu en altijd
+
+= place your data lives: your browser
+v plek waar je gegevens staan: je browser
+
+= On this page
+v Op deze pagina
+
+= Who makes this
+v Wie maakt dit
+
+= Cookies and storage
+v Cookies en opslag
+
+= Deleting your data
+v Je gegevens wissen
+
+= Refunds
+v Terugbetalingen
+
+= Credits and copyright
+v Dankwoord en auteursrecht
+
+= One person, for fun. No company, no ads, nothing for sale.
+v Eén persoon, voor de fun. Geen bedrijf, geen advertenties, niets te koop.
+
+= Tjoepbiljart is a free, non-commercial hobby game of Belgian tap billiards, made by Darko Boesmans in Belgium.
+v Tjoepbiljart is een gratis, niet-commercieel hobbyspel over golfbiljart, gemaakt door Darko Boesmans in België.
+
+= Questions or problems? Open an issue on
+v Vragen of problemen? Open een issue op
+
+= the project's GitHub page
+v de GitHub-pagina van het project
+
+= Issues there are public, so leave out anything personal. Ask for a private reply if you need one.
+v Issues zijn daar openbaar, dus laat alles wat persoonlijk is weg. Vraag om een privéantwoord als je dat nodig hebt.
+
+= Nothing about you is sent to the maker.
+v Niets over jou gaat naar de maker.
+
+= What stays on your device
+v Wat op je toestel blijft
+
+= Your player (the name you type and your look), your record, tokens, items, the regulars you beat, the Wall of Shame, your settings and your language are saved in your own browser. They never leave your device and the maker cannot see them.
+v Je speler (de naam die je typt en je uiterlijk), je palmares, jetons, spullen, de stamgasten die je versloeg, de Muur van Schaamte, je instellingen en je taal worden in je eigen browser bewaard. Ze verlaten je toestel nooit en de maker kan ze niet zien.
+
+= Online play
+v Online spelen
+
+= Online play is switched off for now. Before it comes back, this page will say exactly what it shares and with whom.
+v Online spelen staat voorlopig uit. Voor het terugkomt, staat hier precies wat het deelt en met wie.
+
+= Hosting
+v Hosting
+
+= The game is a static page, delivered by GitHub Pages or, for the copy published on claude.ai, by Anthropic. That host may keep short technical logs, such as IP addresses, to run and protect its service, under its own privacy policy. The game itself adds no tracking.
+v Het spel is een statische pagina, geleverd door GitHub Pages of, voor de kopie op claude.ai, door Anthropic. Die host kan korte technische logs bijhouden, zoals IP-adressen, om zijn dienst te laten draaien en te beschermen, onder zijn eigen privacybeleid. Het spel zelf volgt je niet.
+
+= What the game does not do
+v Wat het spel niet doet
+
+= No analytics, no tracking pixels, no ads, no social media buttons.
+v Geen analytics, geen trackingpixels, geen advertenties, geen knoppen van sociale media.
+
+= No third-party scripts or embeds: the 3D engine and the fonts ship with the game.
+v Geen scripts of embeds van derden: de 3D-engine en de lettertypes zitten in het spel zelf.
+
+= No accounts and no e-mail addresses, so no mailing list.
+v Geen accounts en geen e-mailadressen, dus ook geen mailinglijst.
+
+= No payments.
+v Geen betalingen.
+
+= Your rights
+v Je rechten
+
+= Under the GDPR you can ask what data is held about you, have it corrected or deleted, and complain to the Belgian Data Protection Authority (Gegevensbeschermingsautoriteit). The maker holds no data about you, so the delete button below answers most requests.
+v Onder de AVG kun je vragen welke gegevens er over jou bewaard worden, ze laten verbeteren of wissen, en klacht indienen bij de Gegevensbeschermingsautoriteit. De maker bewaart geen gegevens over jou, dus de wisknop hieronder beantwoordt de meeste vragen.
+
+= Children
+v Kinderen
+
+= The game is set in a café where people smoke cigars and drink whisky, so it is meant for players aged 16 and over. It asks for no age and collects no data about anyone.
+v Het spel speelt zich af in een café waar mensen sigaren roken en whisky drinken, dus het is bedoeld voor spelers vanaf 16 jaar. Het vraagt geen leeftijd en verzamelt over niemand gegevens.
+
+= No cookies. Five small notes in your browser, so the game remembers you.
+v Geen cookies. Vijf kleine notities in je browser, zodat het spel je onthoudt.
+
+= your player and progress
+v je speler en je voortgang
+
+= your settings
+v je instellingen
+
+= sound volumes
+v geluidsvolumes
+
+= the jukebox style
+v de stijl van de jukebox
+
+= your language
+v je taal
+
+= They live in your browser's local storage and are strictly necessary for features you ask for, such as keeping your progress. EU rules on cookies and device storage need no consent banner for that, so there is none. If the game ever adds anything that is not strictly necessary, it will ask first.
+v Ze staan in de lokale opslag van je browser en zijn strikt noodzakelijk voor wat je zelf vraagt, zoals je voortgang bijhouden. De Europese regels over cookies en opslag op je toestel vragen daarvoor geen toestemmingsbanner, dus die is er niet. Voegt het spel ooit iets toe dat niet strikt noodzakelijk is, dan vraagt het eerst toestemming.
+
+= Saves from before the game was called Tjoepbiljart move to these names once, the first time you play.
+v Bewaarde gegevens van voor het spel Tjoepbiljart heette, verhuizen één keer naar deze namen, de eerste keer dat je speelt.
+
+= One button, pressed twice, and everything is gone.
+v Eén knop, twee keer indrukken, en alles is weg.
+
+= In the game, open Settings.
+v Open in het spel de Instellingen.
+
+= Go to the Game tab.
+v Ga naar het tabblad Spel.
+
+= Press Delete my data, then press it again.
+v Druk op Wis mijn gegevens en druk dan nog een keer.
+
+= It removes your player, record, tokens, items and settings from this browser and starts the game fresh. Clearing this site's data in your browser does the same.
+v Dat wist je speler, palmares, jetons, spullen en instellingen uit deze browser en start het spel opnieuw. De gegevens van deze site wissen in je browser doet hetzelfde.
+
+= Free to play, for fun, as it is.
+v Gratis, voor de fun, zoals het is.
+
+= The game is free to play, for fun. It is provided as it is, without any guarantee that it works or keeps working.
+v Het spel is gratis, voor de fun. Je krijgt het zoals het is, zonder garantie dat het werkt of blijft werken.
+
+= As far as the law allows, the maker is not liable for any loss from using the game. Nothing here limits your rights as a consumer under the law of your country.
+v Voor zover de wet het toelaat, is de maker niet aansprakelijk voor schade door het gebruik van het spel. Niets hier beperkt je rechten als consument onder de wet van je land.
+
+= Tokens and items are part of the game. They cannot be bought, sold or exchanged, have no money value, and are gone if your browser storage is cleared.
+v Jetons en spullen horen bij het spel. Je kunt ze niet kopen, verkopen of ruilen, ze hebben geen geldwaarde en ze zijn weg als je browseropslag gewist wordt.
+
+= The characters, bars and posters in the game are made up. Any likeness to real people or businesses is a coincidence.
+v De personages, cafés en affiches in het spel zijn verzonnen. Elke gelijkenis met echte mensen of zaken is toeval.
+
+= The game follows the published rules of Belgian tap billiards, but it is not made, endorsed or checked by any club or federation.
+v Het spel volgt de gepubliceerde regels van het golfbiljart, maar het is niet gemaakt, gesteund of nagekeken door een club of federatie.
+
+= These terms may change; the date at the top says when. Belgian law applies.
+v Deze voorwaarden kunnen veranderen; de datum bovenaan zegt wanneer. Het Belgisch recht is van toepassing.
+
+= Nothing is sold, so there is nothing to refund.
+v Er wordt niets verkocht, dus er valt niets terug te betalen.
+
+= No purchases, no subscriptions, no in-game money for real money and no hidden costs. Tokens are only earned by playing.
+v Geen aankopen, geen abonnementen, geen spelgeld voor echt geld en geen verborgen kosten. Jetons verdien je alleen door te spelen.
+
+= The menus work with a keyboard and a screen reader.
+v De menu's werken met een toetsenbord en een schermlezer.
+
+= The menus have visible focus, labelled controls and checked colour contrast, and animations calm down when your system asks for reduced motion. Screen readers read out the referee's decisions.
+v De menu's hebben een zichtbare focus, benoemde knoppen en nagekeken kleurcontrast, en animaties worden rustiger als je systeem om minder beweging vraagt. Schermlezers lezen de beslissingen van de scheidsrechter voor.
+
+= At the table without a mouse
+v Aan tafel zonder muis
+
+= picks one of your balls
+v kiest een van je ballen
+
+= turn the aim, with Shift for fine steps
+v draaien het mikpunt, met Shift in kleine stapjes
+
+= set the power
+v zetten de kracht
+
+= shoots
+v stoot
+
+= lets go
+v laat los
+
+= set the spin
+v zetten het effect
+
+= top view, back to your end
+v bovenaanzicht, terug naar je eigen kant
+
+= Known limits
+v Bekende beperkingen
+
+= The table itself is a 3D picture, so judging angles needs sight, and the camera turns with a mouse or touch. If something does not work for you, say so through the contact above.
+v De tafel zelf is een 3D-beeld, dus hoeken inschatten vraagt zicht, en de camera draai je met een muis of een aanraking. Werkt iets niet voor jou, laat het weten via het contact hierboven.
+
+= Made by hand, built on open source.
+v Met de hand gemaakt, gebouwd op open source.
+
+= The game's code, art, characters and music are © Darko Boesmans.
+v De code, tekeningen, personages en muziek van het spel zijn © Darko Boesmans.
+
+= The licence texts ship with the game. The jukebox plays original tunes improvised over common jazz chord changes.
+v De licentieteksten zitten bij het spel. De jukebox speelt eigen deuntjes, geïmproviseerd over bekende jazzakkoorden.

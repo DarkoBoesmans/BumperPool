@@ -1,0 +1,156 @@
+// The small print's sections: the hanging number, the short line in italics, ruled lists, numbered steps and the
+// menu-card lists with dot leaders (storage keys, keys at the table, credits). The page frame is in legal.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-legal {
+  // a numbered section: the number hangs in the margin, the short line comes first
+  &__sec {
+    position: relative;
+    padding: $s5 0 $s4;
+    border-top: $poster-rule;
+    &:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+  &__num {
+    display: block;
+    font: 400 clamp(56px, 7vw, 84px) / 0.9 $f-display;
+    color: transparent;
+    -webkit-text-stroke: 1.5px $poster-red;
+    @supports not (-webkit-text-stroke: 1px black) {
+      color: $poster-red;
+    }
+  }
+  &__h2 {
+    margin: $s2 0 $s3;
+    @include display(clamp(28px, 4vw, 40px), 0.04em);
+  }
+  &__short {
+    .c-legal & {
+      max-width: 34ch;
+      margin-bottom: $s4;
+      font-size: clamp(20px, 2.6vw, 26px);
+      font-style: italic;
+      line-height: 1.4;
+    }
+  }
+  &__h3 {
+    display: flex;
+    align-items: center;
+    gap: $s2;
+    margin: $s4 0 $s2;
+    @include label(13px, 0.14em);
+    &::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: $poster-red;
+      transform: rotate(45deg);
+    }
+  }
+
+  // ruled lists: a small red diamond per line, steps numbered in display type
+  &__list,
+  &__steps {
+    max-width: 62ch;
+    margin: 0 0 $s3;
+    padding: 0;
+    list-style: none;
+    li {
+      position: relative;
+      padding: $s2 0 $s2 $s4;
+      border-bottom: $poster-hair;
+    }
+  }
+  &__list li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0.95em;
+    width: 7px;
+    height: 7px;
+    background: $poster-red;
+    transform: rotate(45deg);
+  }
+  &__steps {
+    counter-reset: step;
+    li {
+      counter-increment: step;
+      padding-left: $s5;
+      &::before {
+        content: counter(step);
+        position: absolute;
+        left: 0;
+        top: $s1;
+        font: 400 28px/1 $f-display;
+        color: $poster-red;
+      }
+    }
+  }
+
+  // a menu card: the name, dot leaders, then what it is
+  &__menu {
+    max-width: 62ch;
+    margin: 0 0 $s4;
+  }
+  &__item {
+    display: flex;
+    align-items: baseline;
+    gap: $s2;
+    padding: $s1 0;
+    dt {
+      flex: none;
+      font: 600 15px $f-ui;
+    }
+    dd {
+      margin: 0;
+      text-align: right;
+    }
+    &::after {
+      content: "";
+      order: 1;
+      flex: 1;
+      min-width: $s4;
+      border-bottom: 2px dotted rgba(31, 21, 14, 0.45);
+      transform: translateY(-0.3em);
+    }
+    dd {
+      order: 2;
+    }
+    @include below($bp-phone) {
+      flex-wrap: wrap;
+      &::after {
+        display: none;
+      }
+      dd {
+        flex-basis: 100%;
+        text-align: left;
+      }
+    }
+  }
+  &__menu--keys &__item {
+    @include below($bp-phone) {
+      flex-wrap: nowrap;
+      dd {
+        flex-basis: auto;
+      }
+    }
+  }
+
+  code {
+    font: 600 0.9em $f-ui;
+  }
+  kbd {
+    display: inline-block;
+    min-width: 2em;
+    padding: 1px 6px;
+    font: 700 13px/1.6 $f-ui;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.35);
+    border: 2px solid $poster-ink;
+    border-radius: 4px;
+    box-shadow: 0 2px 0 $poster-ink;
+  }
+}

@@ -1,0 +1,236 @@
+# sheet: regulars, pearlescent: the three legends. Who they are and what they say at the table.
+# Their names stay as they are. Vlaams lets them talk like people in a Flemish café; Oilsjters goes all the way.
+
+# Neptune Nacre, Lord of the Sea
+
+= Lord of the Sea
+v Heer van de Zee
+a Baas van de Zee
+
+= Bends every ball like a wave
+v Buigt elke bal als een golf
+a Buigt elke bol gelijk ne golf
+
+= Spin like the tide
+v Effect als het getij
+a Effect gelijk 't getij
+
+= Banks off everything
+v Speelt via alles
+a Sjpeelt via alles
+
+= Too proud to defend
+v Te trots om te verdedigen
+a Te fier om te verdedigen
+
+= Walked in from the sea one stormy night and never dried off. Every ball he plays curls off a cushion like a breaking wave. Once a game he raises his trident, calls the tide and his balls roll closer to home.
+v Kwam op een stormachtige nacht uit de zee binnen en is nooit meer droog geworden. Elke bal die hij speelt, krult van een band als een brekende golf. Eén keer per manche heft hij zijn drietand, roept het getij en rollen zijn ballen dichter bij huis.
+a Es ip ne sjtormnacht uit de zee binnengewandeld en es noait meer droog geworden. Elke bol die hij sjpeelt, krult van de band gelijk ne brekende golf. Ene kier per manche heft hij zijnen drietand, roept 't getij en rollen zijn bollen dichter bij hoeis.
+
+= The tide is turning.
+v Het tij keert.
+a 't Getij draait.
+
+= Rack the balls, mortal.
+v Leg de ballen klaar, sterveling.
+a Leg de bollen kloar, sjterveling.
+
+= Swept away.
+v Weggespoeld.
+a ~
+
+= Like the tide.
+v Zoals het getij.
+a Gelijk 't getij.
+
+= Into the deep.
+v De diepte in.
+a ~
+
+= A rogue wave.
+v Een verraderlijke golf.
+a Ne vuile golf.
+
+= Even the sea has storms.
+v Zelfs de zee kent stormen.
+a Zelfs de zee kent sjtormen.
+
+= A small splash.
+v Een klein plonsje.
+a E klein plonske.
+
+= The sea remembers.
+v De zee vergeet niet.
+a De zee vergeet nie.
+
+= Drowned by the rules.
+v Verdronken in de regels.
+a ~
+
+= Back to the shallows.
+v Terug naar het ondiepe.
+a Terug noar 't ondiep.
+
+= The ocean always wins.
+v De oceaan wint altijd.
+a ~
+
+= I shall return with the tide.
+v Ik keer terug met het getij.
+a Kik kom terug mee 't getij.
+
+# Minerva Marble, The Stone Shield
+
+= The Stone Shield
+v Het Stenen Schild
+a 't Sjtenen Schild
+
+= Freezes your balls in place
+v Zet je ballen vast
+a Zet ou bollen vast
+
+= Blocks every goal
+v Blokkeert elk doel
+a ~
+
+= Stone shield, once a game
+v Stenen schild, één keer per manche
+a Sjtenen schild, ene kier per manche
+
+= Slow to attack
+v Traag in de aanval
+a Troag in den aanval
+
+= Plays it safe
+v Speelt op veilig
+a Sjpeelt ip veilig
+
+= Goddess of wisdom, with a gorgon's head on her shield. She hides her balls behind the posts and waits. Once a game she turns the shield on the ball you wanted to play next, and it turns to stone until your turn is over.
+v Godin van de wijsheid, met een gorgohoofd op haar schild. Ze verstopt haar ballen achter de doppen en wacht. Eén keer per manche richt ze het schild op de bal die jij wilde spelen, en die wordt steen tot je beurt voorbij is.
+a Godin van de wijsheid, mee e gorgohoofd ip heur schild. Ze sjteekt heur bollen weg achter de doppen en wacht. Ene kier per manche draait ze 't schild noar de bol die gij wou sjpelen, en die wordt sjteen tot ou beurt gedaan es.
+
+= Think before you shoot.
+v Denk na voor je stoot.
+a Peis eerst, sjtoot dan.
+
+= Wisdom wins games, not muscle.
+v Wijsheid wint partijen, geen spieren.
+a Wijsheid wint partijen, gin spieren.
+
+= As planned.
+v Zoals gepland.
+a ~
+
+= Set in stone.
+v In steen gebeiteld.
+a In sjteen gebeiteld.
+
+= Even wisdom slips.
+v Zelfs wijsheid struikelt.
+a ~
+
+= A rare mistake.
+v Een zeldzame vergissing.
+a ~
+
+= Clever.
+v Slim.
+a ~
+
+= You thought ahead. Good.
+v Je dacht vooruit. Goed.
+a Ge hebt vooruit gepeisd. Goe.
+
+= You did not think.
+v Je dacht niet na.
+a Ge hebt nie gepeisd.
+
+= Haste, then regret.
+v Eerst haast, dan spijt.
+a Eerst hoast, dan spijt.
+
+= Another statue for my garden.
+v Nog een beeld voor mijn tuin.
+a Nog e beeld veur mijnen hof.
+
+= You out-thought a goddess. Remarkable.
+v Je was een godin te slim af. Opmerkelijk.
+a Ge zijt ne godin te slim af geweest. Sjterk.
+
+# Jupiter Jolt, King of the Sky
+
+= King of the Sky
+v Koning van de Hemel
+a ~
+
+= Hard as lightning, combos like thunder
+v Hard als de bliksem, combinaties als de donder
+a Hard gelijk de bliksem, combinaties gelijk den donder
+
+= Hits like thunder
+v Slaat als de donder
+a Sloat gelijk den donder
+
+= Combos off your balls
+v Combinaties via jouw ballen
+a Combinaties via ou bollen
+
+= Wine by the amphora
+v Wijn per amfora
+a ~
+
+= Leaves his goal open
+v Laat zijn doel open
+a Loat zijn doel open
+
+= Came down through the roof in a flash of lightning, ordered an amphora of wine and asked for the strongest player in the house. He smashes balls into balls and laughs when it works. Once a game a bolt comes down and clears his goal.
+v Kwam door het dak naar beneden in een bliksemflits, bestelde een amfora wijn en vroeg naar de sterkste speler van het huis. Hij knalt ballen tegen ballen en lacht als het lukt. Eén keer per manche slaat de bliksem in en is zijn doel vrij.
+a Es deur 't dak noar beneden gekomen in ne bliksemflits, bestelde nen amfora wijn en vroeg noar de sjterkste speler van 't hoeis. Hij knalt bollen tegen bollen en lacht as 't lukt. Ene kier per manche sloat de bliksem in en es zijn doel vrij.
+
+= Bring me wine and a worthy foe!
+v Breng me wijn en een waardige tegenstander!
+a Breng mij wijn en ne waardige tegensjtander!
+
+= The sky is listening.
+v De hemel luistert mee.
+a ~
+
+= By the heavens!
+v Bij de hemel!
+a ~
+
+= Struck like lightning.
+v Ingeslagen als de bliksem.
+a Ingesloagen gelijk de bliksem.
+
+= The bolt slipped.
+v De bliksem schoot uit.
+a ~
+
+= Mercury did this.
+v Dat heeft Mercurius gedaan.
+a Da es Mercurius zijn werk.
+
+= Worthy!
+v Waardig!
+a ~
+
+= Ha! A champion.
+v Ha! Een kampioen.
+a Ha! Ne kampioen.
+
+= Not worthy of the sky.
+v De hemel niet waardig.
+a ~
+
+= Back down to earth.
+v Terug naar de aarde.
+a Terug noar d'oarde.
+
+= To the heavens!
+v Naar de hemel!
+a Noar den hemel!
+
+= A worthy battle. More wine!
+v Een waardige strijd. Meer wijn!
+a E waardig gevecht. Meer wijn!

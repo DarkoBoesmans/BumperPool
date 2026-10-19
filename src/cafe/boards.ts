@@ -1,7 +1,8 @@
 // Boards on the walls: live chalkboards and posters, painted on canvases and redrawn only when what they show changes.
 import { THREE, add, lam, basic } from "../render/three";
 import { WX, WZ } from "./state";
-import { drawScore, drawFoulBook, drawRules, drawMarquee, drawRegular, drawClock, type BoardCtx } from "./boards-draw";
+import { drawScore, drawFoulBook, drawRules, type BoardCtx } from "./boards-draw";
+import { drawMarquee, drawRegular, drawClock } from "./boards-signs";
 import { drawArtPoster, drawWhisky, drawCigarAd, drawKonami, drawShame } from "./posters";
 
 /** draw(null, ctx) returns a key; the board is repainted when the key changes */

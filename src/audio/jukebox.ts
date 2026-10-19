@@ -1,16 +1,14 @@
 // The jukebox: a little jazz trio plus vibraphone, improvised live from the chord changes in songs.ts.
 // Bass walks (or sways), the drummer rides with brushes, the Rhodes comps, the vibes noodle a melody from the chord's scale.
 import { au, vol } from "./mixer";
+import { t as tr } from "../i18n";
 import { band, bass, rhodes, vibes, ride, brush, rim, sweep, kick } from "./band";
 import { SONGS, STYLE, chord, hz, near, type Song, type Style } from "./songs";
+import { load, save } from "../profile/store";
 
 const rnd = <T>(a: T[]): T => a[Math.floor(Math.random() * a.length)];
 export const juke = { title: "", info: "", style: "all" as "all" | Style, onChange: null as null | (() => void) };
-try {
-  juke.style = (globalThis.localStorage?.getItem("golfbiljart.jukebox") as "all" | Style) || "all";
-} catch {
-  /* default */
-}
+juke.style = (load("jukebox") as "all" | Style) || "all";
 const J = {
   song: 0,
   beat: 0,
@@ -31,11 +29,7 @@ const nextFit = (i: number) => {
 /** pick which records the jukebox plays; switches straight away if this one doesn't fit */
 export function setStyle(st: "all" | Style): void {
   juke.style = st;
-  try {
-    localStorage.setItem("golfbiljart.jukebox", st);
-  } catch {
-    /* not saved */
-  }
+  save("jukebox", st);
   if (au.A && J.started && !fits(J.song)) nextSong();
 }
 
@@ -97,7 +91,12 @@ function startSong(t: number): void {
   J.started = true;
   J.choruses = Math.max(2, Math.round(160 / ((s.chords.length * (s.meter || 4) * 60) / s.bpm))); // about two and a half minutes per record
   juke.title = s.title;
-  juke.info = `${STYLE[s.style]} · ${s.bpm} BPM · record ${J.song + 1} of ${SONGS.length}`;
+  juke.info = tr("{style} · {bpm} BPM · record {n} of {total}", {
+    style: tr(STYLE[s.style]),
+    bpm: s.bpm,
+    n: J.song + 1,
+    total: SONGS.length,
+  });
   juke.onChange?.();
 }
 export function nextSong(): void {

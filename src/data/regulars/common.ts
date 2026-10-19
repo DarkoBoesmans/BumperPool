@@ -1,25 +1,26 @@
-// Common: the Monday night crowd at the old brown café.
+// Common: the Monday night crowd round the market square. Each has a bar of their own (venue).
 import type { Opponent } from "../../types";
 
 export const COMMON: Opponent[] = [
   {
-    id: "kevin",
+    id: "jens",
     grade: "common",
     venue: "brown",
-    name: "Kevin Kracht",
+    name: "Jens Janssens",
     nick: "The Rookie",
     style: "Full power, no plan",
-    traits: ["Hits too hard", "Nervous", "On his phone"],
-    bio: "Started coming here last week. Plays every ball at full power and checks his phone between shots.",
+    strong: ["Fearless", "Shoots fast"],
+    weak: ["Hits everything too hard", "Never plans ahead"],
+    bio: "Started coming here last week, after he saw Kevin Kracht win on TV. Plays every ball at full power and checks his phone between shots.",
     look: {
-      skin: "#e9b896",
-      shirt: "#2f6fd6",
+      skin: "#f0c9a8",
+      shirt: "#3a9a5a",
       trim: "#ffffff",
       pants: "#25272e",
-      hair: "#3a2416",
+      hair: "#c8a060",
       hairStyle: "short",
-      hat: "cap",
-      hatColor: "#d0412c",
+      hat: "beanie",
+      hatColor: "#2a2a30",
       build: 0.9,
     },
     ai: {
@@ -34,7 +35,7 @@ export const COMMON: Opponent[] = [
     },
     habits: { smoke: 0, drink: 0.12 },
     quips: {
-      hello: ["I watched a video on this. How hard can it be?", "Let's gooo!"],
+      hello: ["I watched Kevin Kracht on TV. How hard can it be?", "Let's gooo!"],
       goal: ["Did you see that?!", "Too easy.", "Clip it, clip it!"],
       foul: ["Wait, that counts as a foul?", "My bad, my bad.", "The table is crooked."],
       oppGoal: ["Lucky.", "Okay, okay."],
@@ -50,7 +51,8 @@ export const COMMON: Opponent[] = [
     name: "Monique Moens",
     nick: "Since 1974",
     style: "Gentle little taps",
-    traits: ["Soft touch", "Chatty", "Never in a hurry"],
+    strong: ["Soft touch near the goal", "Uses the cushions"],
+    weak: ["Shaky aim", "Too soft from far away"],
     bio: "Has had the same stool since 1974. Plays gentle little shots and tells you about her grandchildren while you aim.",
     look: {
       skin: "#f0c7a8",
@@ -95,7 +97,8 @@ export const COMMON: Opponent[] = [
     name: "Wim Wuyts",
     nick: "The Wobbler",
     style: "Steady, until the third sip",
-    traits: ["Shakier every sip", "Lucky streaks", "Sings along"],
+    strong: ["Steady hand, at first", "Lucky streaks"],
+    weak: ["Shakier with every sip", "Forgets to defend"],
     bio: "Comes in for one beer and stays until closing. His first game is decent. After a few sips his hand starts to wander, and sometimes that is exactly what the shot needed.",
     look: {
       skin: "#efb99a",

@@ -1,0 +1,41 @@
+// Strengths and weaknesses of a regular: a plus or a minus per line, two lines of room each so nothing jumps.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-scout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $s3;
+  &__title {
+    display: block;
+    margin-bottom: 4px;
+    @include label(10.5px, 0.16em);
+    color: var(--ink-3);
+  }
+  &__list {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    align-items: start;
+    min-height: calc(2 * 1.3em);
+    font: 600 12.5px/1.3 $f-ui;
+    color: var(--ink-2);
+    &::before {
+      font: 700 15px/1 $f-ui;
+    }
+  }
+  &__col--strong &__item::before {
+    content: "+";
+    color: #1f6a2b;
+  }
+  &__col--weak &__item::before {
+    content: "\2212";
+    color: $poster-red;
+  }
+}

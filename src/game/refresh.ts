@@ -31,7 +31,7 @@ export function changed(): void {
 
 export const boardCtx = () => ({
   G,
-  opp: G?.mode === "cpu" ? app.opp : findOpponent("baron"),
+  opp: G?.mode === "cpu" ? app.opp : findOpponent("kevin"),
   turnName: G ? nameOf(G.turn) : "",
   venue: C.venue!,
   shame: me.shame,

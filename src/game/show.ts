@@ -22,6 +22,7 @@ import { quip } from "../ui/bubble";
 import { renderUI } from "../ui/hud";
 import { replayOverlay } from "../ui/replay-overlay";
 import { changed, refresh } from "./refresh";
+import { t } from "../i18n";
 import type { Color, Foul, LastShot } from "../types";
 
 export async function maybePresent(): Promise<void> {
@@ -72,14 +73,18 @@ async function present(L: LastShot): Promise<void> {
       "goal",
       "GOAL!",
       nameOf(c),
-      own.length > 1 ? `${own.length} in one shot!` : left === 1 ? "One to go" : `${left} to go`,
+      own.length > 1
+        ? t("{n} in one shot!", { n: own.length })
+        : left === 1
+          ? t("One to go")
+          : t("{n} to go", { n: left }),
     );
     if (can && replays === "all") await runReplay({ kind: "goal", pot: own[own.length - 1] });
   } else if (gifts.length) {
     const c = gifts[0].c;
     sfx("gift");
     if (cpu) quip(c === cc ? "oppGoal" : "goal");
-    await banner("gift", "GIFT!", nameOf(c), `${nameOf(L.shooter!)} scored for ${nameOf(c)}`);
+    await banner("gift", "GIFT!", nameOf(c), t("{a} scored for {b}", { a: nameOf(L.shooter!), b: nameOf(c) }));
     if (can && replays === "all") await runReplay({ kind: "goal", pot: gifts[gifts.length - 1] });
   }
 }
@@ -98,7 +103,9 @@ async function endShow(L: LastShot, can: boolean): Promise<void> {
     L.end!,
     L.end === "match" ? "MATCH!" : "GAME!",
     first(G.names[p]),
-    L.end === "match" ? `Wins ${G.wins[p]}-${G.wins[1 - p]}` : `Game ${G.manche} · ${G.wins[0]}-${G.wins[1]}`,
+    L.end === "match"
+      ? t("Wins {a}-{b}", { a: G.wins[p], b: G.wins[1 - p] })
+      : t("Game {n} · {a}-{b}", { n: G.manche, a: G.wins[0], b: G.wins[1] }),
     2800,
   );
   // a freeplay match with house rules is a friendly: nothing on the record
@@ -107,22 +114,31 @@ async function endShow(L: LastShot, can: boolean): Promise<void> {
     // 5-0: house rules, under the table you go
     const who = first(nameOf(lc));
     if (cpu && !friendly) recordCrawl(lc === G.colorOf[0], who, first(nameOf(w)), app.freeplay);
-    notes.push(`${who} crawled under the table.`);
+    notes.push(t("{name} crawled under the table.", { name: who }));
     await crawlShow(lc, who);
   }
   app.reward = "";
-  if (cpu && L.end === "match" && friendly) notes.push("House rules: a friendly, nothing on your record.");
+  if (cpu && L.end === "match" && friendly) notes.push(t("House rules: a friendly, nothing on your record."));
   if (cpu && L.end === "match" && app.opp && !friendly) {
     const won = w === G.colorOf[0],
       r = recordMatch(app.opp.id, won, { freeplay: app.freeplay, games: [G.wins[0], G.wins[1]] });
     app.reward =
-      `+${r.tokens} tokens` + (r.items.length ? ` · freeplay reward: ${r.items.map((i) => i.name).join(", ")}` : "");
+      t("+{n} tokens", { n: r.tokens }) +
+      (r.items.length
+        ? " · " + t("unlocked: {items}, collect it in the shop", { items: r.items.map((i) => t(i.name)).join(", ") })
+        : "");
     if (r.opened)
       notes.push(
-        r.opened.secret ? "The legends are in." : `${r.opened.label} is open: a new bar and three new regulars.`,
+        r.opened.secret
+          ? t("The legends are in.")
+          : t("{bar} is open: a new bar and three new regulars.", { bar: t(r.opened.label) }),
       );
     if (won && !app.freeplay && allRegularsBeaten() && !me.pearl)
-      notes.push("That's fifteen. Or is it? The barman says to ask the old arcade poster.");
+      notes.push(
+        t(
+          "That's fifteen. Or is it? The barman says the old arcade code opens the back room: up, up, down, down, left, right, left, right, B, A.",
+        ),
+      );
   }
   app.endNote = notes.join(" ");
 }

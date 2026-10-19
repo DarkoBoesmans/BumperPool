@@ -3,8 +3,7 @@ import type { Grade, GradeId, Look } from "../types";
 import { GRADES } from "../data/grades";
 import { OPPONENTS, findOpponent, gradeOf } from "../data/regulars";
 import { ITEMS, STARTER, itemById, type FreeStats, type Item } from "../data/shop";
-
-const KEY = "golfbiljart.profile";
+import { load, save } from "./store";
 
 export const DEFAULT_LOOK: Look = {
   skin: "#e2ae8c",
@@ -53,6 +52,10 @@ export interface Profile {
   best: number;
   /** venues you have played in */
   seen: Record<string, boolean>;
+  /** you made your player in the maker: the story waits for that */
+  made: boolean;
+  /** profile format: 2 renamed the regulars (see migrateIds) */
+  v: number;
 }
 
 const fresh = (): Profile => ({
@@ -72,6 +75,8 @@ const fresh = (): Profile => ({
   streak: 0,
   best: 0,
   seen: { golden: true },
+  made: false,
+  v: 2,
 });
 
 /** profiles saved by older versions kept hair styles in `hat` and used true/false for facial hair and lipstick */
@@ -91,9 +96,32 @@ export function migrateLook(l: Record<string, unknown>): Look {
   return look;
 }
 
+/** version 2: Kevin moved up to the legends in the Baron's place, Jens took his stool, and the gods became Roman */
+const RENAMED: Record<string, string> = {
+  kevin: "jens",
+  baron: "kevin",
+  poseidon: "neptune",
+  medusa: "minerva",
+  thor: "jupiter",
+};
+const rename = (r: Record<string, boolean> = {}) =>
+  Object.fromEntries(Object.entries(r).map(([k, v]) => [RENAMED[k] || k, v]));
+export function migrateIds(s: Partial<Profile>): void {
+  if ((s.v || 1) >= 2) return;
+  s.beaten = rename(s.beaten);
+  if (s.free) s.free = { ...s.free, beat: rename(s.free.beat) };
+  if (s.owned?.["bar-mead"]) s.owned = { ...s.owned, "bar-sky": true };
+  if (s.equip?.bar === "bar-mead") s.equip = { ...s.equip, bar: "bar-sky" };
+  if (s.seen?.mead) s.seen = { ...s.seen, sky: true };
+  // anyone who played before the maker became step one already has a player
+  s.made = !!(s.name || s.wins || s.losses || Object.keys(s.beaten).length);
+  s.v = 2;
+}
+
 export const me: Profile = fresh();
 try {
-  const s = JSON.parse(globalThis.localStorage?.getItem(KEY) || "{}");
+  const s = JSON.parse(load("profile") || "{}");
+  if (Object.keys(s).length) migrateIds(s);
   Object.assign(me, s, {
     look: migrateLook(s.look || {}),
     beaten: { ...s.beaten },
@@ -106,13 +134,7 @@ try {
 } catch {
   /* no storage (private mode, tests): start fresh */
 }
-export const saveMe = (): void => {
-  try {
-    globalThis.localStorage?.setItem(KEY, JSON.stringify(me));
-  } catch {
-    /* not saved */
-  }
-};
+export const saveMe = (): void => save("profile", JSON.stringify(me));
 export const resetMe = (): void => {
   Object.assign(me, fresh());
   saveMe();
@@ -191,18 +213,19 @@ export function recordCrawl(mine: boolean, who: string, by: string, freeplay = f
 }
 
 // ---------- the shop ----------
-/** freeplay rewards you have earned but not collected */
-const earnable = (): Item[] => ITEMS.filter((i) => i.free && !me.owned[i.id] && i.free.ok(me.free));
+/** rewards you have earned but not collected: freeplay goals and the trophies of regulars you beat */
+const earned = (i: Item): boolean => (i.from ? !!me.beaten[i.from] : !!i.free?.ok(me.free));
+const earnable = (): Item[] => ITEMS.filter((i) => (i.free || i.from) && !me.owned[i.id] && earned(i));
 export function canBuy(i: Item): boolean {
   if (me.owned[i.id]) return false;
-  if (i.free) return i.free.ok(me.free);
+  if (i.free || i.from) return earned(i);
   if (i.venue && !me.seen[i.venue]) return false;
   return me.tokens >= i.price;
 }
 export function buy(id: string): boolean {
   const i = itemById(id);
   if (!i || !canBuy(i)) return false;
-  if (!i.free) me.tokens -= i.price;
+  if (!i.free && !i.from) me.tokens -= i.price;
   me.owned[id] = true;
   equip(id);
   return true;

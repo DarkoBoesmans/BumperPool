@@ -3,6 +3,7 @@ import { G } from "../core/state";
 import { pick } from "../data/regulars";
 import { headScreen } from "../cafe";
 import { $, replay } from "./dom";
+import { t } from "../i18n";
 import { app } from "./app";
 import type { Color, QuipKind } from "../types";
 
@@ -11,7 +12,7 @@ let bubble: { color: Color | null; until: number } | null = null;
 export function say(who: string, text: string, color: Color | null = null, ms = 3400): void {
   const el = $("#bubble");
   $(".c-bubble__who", el).textContent = who;
-  $(".c-bubble__text", el).textContent = text;
+  $(".c-bubble__text", el).textContent = t(text); // regulars' quips and Marcel's lines are English keys
   el.hidden = false;
   replay(el, "is-popping");
   bubble = { color, until: performance.now() + ms };

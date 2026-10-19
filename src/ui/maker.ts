@@ -1,6 +1,7 @@
 // Your player: four tabs of choices. Hair, make-up, clothes and accessories let you look as masculine or feminine as you
 // like; nothing is tied to anything else. Things from the shop show up here once you own them.
 import type { Look } from "../types";
+import { t } from "../i18n";
 import { me, saveMe, DEFAULT_LOOK } from "../profile/profile";
 import { ITEMS } from "../data/shop";
 import { paintPortrait } from "../people/portrait";
@@ -182,9 +183,9 @@ function build(): void {
         const opts = r.opts();
         const body =
           r.kind === "sw"
-            ? `<div class="c-swatches" role="radiogroup" aria-label="${r.label}">${opts.map(([v, t]) => `<button class="c-swatches__swatch${v ? "" : " c-swatches__swatch--none"}" type="button" role="radio" data-k="${r.k}" data-v="${key(v)}" style="--c:${v || "transparent"}" aria-label="${esc(r.label)} ${esc(t)}" title="${esc(t)}"></button>`).join("")}</div>`
-            : `<div class="c-chips" role="radiogroup" aria-label="${r.label}">${opts.map(([v, t]) => `<button class="c-chips__chip" type="button" role="radio" data-k="${r.k}" data-v="${key(v)}">${esc(t)}</button>`).join("")}</div>`;
-        return `<div class="c-maker__row"><span class="c-maker__label">${r.label}</span>${body}</div>`;
+            ? `<div class="c-swatches" role="radiogroup" aria-label="${esc(t(r.label))}">${opts.map(([v, l]) => `<button class="c-swatches__swatch${v ? "" : " c-swatches__swatch--none"}" type="button" role="radio" data-k="${r.k}" data-v="${key(v)}" style="--c:${v || "transparent"}" aria-label="${esc(t(r.label))} ${esc(t(l))}" title="${esc(t(l))}"></button>`).join("")}</div>`
+            : `<div class="c-chips" role="radiogroup" aria-label="${esc(t(r.label))}">${opts.map(([v, l]) => `<button class="c-chips__chip" type="button" role="radio" data-k="${r.k}" data-v="${key(v)}">${esc(t(l))}</button>`).join("")}</div>`;
+        return `<div class="c-maker__row"><span class="c-maker__label">${esc(t(r.label))}</span>${body}</div>`;
       })
       .join("");
 }
@@ -228,13 +229,21 @@ function renderMe(): void {
       sync();
     });
     $("#meDone").addEventListener("click", () => {
-      me.name = $<HTMLInputElement>("#meName").value.trim();
+      const name = $<HTMLInputElement>("#meName");
+      if (!me.made && !name.value.trim()) {
+        $("#meFirst").textContent = t("Your player needs a name first.");
+        name.focus();
+        return;
+      }
+      me.name = name.value.trim();
       me.look = { ...draft };
+      me.made = true;
       saveMe();
       onSaved();
       showView(backView());
     });
   }
+  $("#meFirst").hidden = me.made;
   $<HTMLInputElement>("#meName").value = me.name;
   sync();
 }

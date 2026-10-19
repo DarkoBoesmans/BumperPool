@@ -1,0 +1,407 @@
+# sheet: table. Playing a match: the scoreboard, the ribbon, the power meter, the spin pad and the match drawer.
+# Words: goal = doel, foul = fout, penalty spot = strafplek, cushion = band, post = dop, game = manche,
+# frame = kader, frame play = kaderspel, cue ball = speelbal, shot = stoot. Oilsjters: bal = bol, stoot = sjtoot.
+
+= 15 seconds left for {name}.
+v Nog 15 seconden voor {name}.
+a Nog 15 seconden veur {name}. Allei!
+
+= Below the shooting line: a hard shot straight at the goal is a foul
+v Onder de schietlijn: een harde stoot recht op doel is fout
+a Onder de schietlijn: ne harde sjtoot recht ip 't doel es fout
+
+= On the cushion strip: hard along the cushion is a flyer
+v In de bandstrook: hard langs de band is een vlieger
+a In de bandsjtrook: hard langs de band es ne vlieger
+
+= rolls {m} m on its own
+v rolt {m} m uit zichzelf
+a rolt {m} m van zijn eigen
+
+= {name} is lining up
+v {name} legt aan
+a ~
+
+= Studying the angles.
+v Bestudeert de hoeken.
+a Bekijkt de hoeken.
+
+= Chalking the cue.
+v Krijt de keu.
+a Krijt zijn keu.
+
+= Waiting for {name}
+v Wachten op {name}
+a Wachten ip {name}
+
+= Their shot appears here live.
+v Hun stoot verschijnt hier live.
+a Hunne sjtoot komt hier live.
+
+= Opening shot · {name} with white
+v Openingsstoot · {name} met wit
+a Opening · {name} mee wit
+
+= Play the marked ball softly off your left cushion. It rolls once both players have aimed.
+v Speel de gemarkeerde bal zacht tegen je linkerband. Hij rolt zodra beide spelers gericht hebben.
+a Speel de gemarkeerde bol zachtjes tegen ou linkse band. Hij rolt van zohaast alle twee gemikt hebben.
+
+= Opening shot · {name} with red
+v Openingsstoot · {name} met rood
+a Opening · {name} mee rood
+
+= Play the marked ball off your left cushion. Closest to their goal starts.
+v Speel de gemarkeerde bal tegen je linkerband. Wie het dichtst bij zijn doel ligt, begint.
+a Speel de gemarkeerde bol tegen ou linkse band. Wie 't dichtst bij zijn doel ligt, begint.
+
+= Rolling
+v Rolt
+a Hij rolt
+
+= Checking the shot
+v Stoot wordt gecontroleerd
+a Efkes kijken
+
+= {name}'s table decides.
+v De tafel van {name} beslist.
+a De tafel van {name} beslist.
+
+= {name} to play with {colour}
+v {name} speelt met {colour}
+a {name} speelt mee {colour}
+
+= The ringed ball is in the big triangle: get it out or score it this turn, or it goes to a penalty spot.
+v De bal met de ring ligt in de grote driehoek: speel hem eruit of scoor hem deze beurt, anders gaat hij naar een strafplek.
+a De bol mee de ring ligt in de grote driehoek: speel hem eruit of scoor hem deze beurt, anders moet hij ip ne sjtrafplek.
+
+= Frame play: send at least one ball out of its frame, the boxes drawn on the cloth.
+v Kaderspel: speel minstens één bal uit zijn kader, de vakken op het laken.
+a Kaderspel: sjpeel minstens enen bol uit zijn kader, de vakskes ip 't laken.
+
+= Press one of your balls and pull back: the further you pull, the harder. Let go to shoot.
+v Druk op een van je ballen en trek terug: hoe verder je trekt, hoe harder. Laat los om te stoten.
+a Duw ip ene van ou bollen en trek achteruit: hoe verder ge trekt, hoe harder. Loat los om te sjtoten.
+
+= {name} picks a penalty spot
+v {name} kiest een strafplek
+a {name} kiest ne sjtrafplek
+
+= For {name}'s ball. Tap spot 1 or 2 beside the goal posts.
+v Voor de bal van {name}. Tik op plek 1 of 2 naast de doelpalen.
+a Veur de bol van {name}. Tik ip plek 1 of 2 naast de doelpoalen.
+
+= Waiting for their choice.
+v Wachten op hun keuze.
+a Wachten tot ze gekozen hebben.
+
+= {name} wins game {n}
+v {name} wint manche {n}
+a {name} pakt manche {n}
+
+= Colours swap for the next game.
+v De kleuren wisselen voor de volgende manche.
+a De kleuren wisselen veur de volgende manche.
+
+= {name} wins the match
+v {name} wint de match
+a {name} pakt de match
+
+= Final score {a}-{b} in games.
+v Eindstand {a}-{b} in manches.
+a ~
+
+= Centre ball
+v Midden van de bal
+a In 't midden
+
+= A touch off centre
+v Een tikje uit het midden
+a E tikske naast 't midden
+
+= {n} fouls
+v {n} fouten
+a ~
+
+= 1 foul
+v 1 fout
+a ~
+
+= {name}, {colour}: {n} of 5 balls in, {wins} games won, {fouls} fouls
+v {name}, {colour}: {n} van 5 ballen erin, {wins} manches gewonnen, {fouls} fouten
+a {name}, {colour}: {n} van 5 bollen erin, {wins} manches gepakt, {fouls} fouten
+
+= Take this seat
+v Neem deze plaats
+a Pak deze plekke
+
+= Free seat
+v Vrije plaats
+a Vrije plekke
+
+= You
+v Jij
+a Gij
+
+= Leave seat
+v Plaats verlaten
+a Opsjtoan
+
+= Opponent
+v Tegenstander
+a Den andere
+
+= You play white in game 1 and red in game 2. {name} takes the other colour.
+v Jij speelt met wit in manche 1 en met rood in manche 2. {name} neemt de andere kleur.
+a Gij speelt mee wit in manche 1 en mee rood in manche 2. {name} pakt den andere kleur.
+
+= Two players on this screen. The camera moves to whoever is up.
+v Twee spelers op dit scherm. De camera gaat naar wie aan de beurt is.
+a Twee spelers ip ene scherm. De camera goat noar wie aan de beurt es.
+
+= Online table. Your opponent joins the same table name from their device.
+v Online tafel. Je tegenstander kiest dezelfde tafelnaam op zijn toestel.
+a Online tafel. Den andere kiest dezelfde tafelnoam ip zijn toestel.
+
+= You are watching. Ask the owner for edit access to play.
+v Je kijkt mee. Vraag de eigenaar om bewerkrechten om te spelen.
+a Ge kijkt mee. Vroag aan de baas om mee te meugen sjpelen.
+
+= GAME {n}
+v MANCHE {n}
+a ~
+
+= best of 3
+v twee winnende manches
+a ~
+
+= Foul
+v Fout
+a ~
+
+= Goal
+v Goal
+a ~
+
+= Referee
+v Scheids
+a ~
+
+= Scoreboard
+v Scorebord
+a ~
+
+= Player 1
+v Speler 1
+a ~
+
+= GAME 1
+v MANCHE 1
+a ~
+
+= Player 2
+v Speler 2
+a ~
+
+= Loading
+v Laden
+a Efkes geduld
+
+= Penalty spot 1
+v Strafplek 1
+a Sjtrafplek 1
+
+= Penalty spot 2
+v Strafplek 2
+a Sjtrafplek 2
+
+= POWER
+v KRACHT
+a ~
+
+= SOFT
+v ZACHT
+a ~
+
+= Cue ball spin
+v Effect op de speelbal
+a Effect ip de speelbol
+
+= SPIN
+v EFFECT
+a ~
+
+= Where the cue tip hits the ball. Arrow keys also work, 0 resets.
+v Waar de pomerans de bal raakt. De pijltjestoetsen werken ook, 0 zet terug.
+a Woar de pomerans de bol raakt. De pijltjes werken ook, 0 zet 't terug.
+
+= Reset
+v Terugzetten
+a ~
+
+= Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T top view
+v Rechts slepen draait · Rechtsklik kijkt daarheen · Scrollen zoomt naar de muis · Shift + rechts slepen schuift · T bovenaanzicht
+a Rechts sleuren draait · Rechtsklik kijkt doarnoar · Scrollen zoomt noar de muis · Shift + rechts sleuren schuift · T van boven
+
+= Drag the cloth to turn · Pinch to zoom · Two fingers slide · Tap to look there
+v Sleep over het laken om te draaien · Knijp om te zoomen · Twee vingers schuiven · Tik om daarheen te kijken
+a Sleur over 't laken om te draaien · Knijp om te zoomen · Twee vingers schuiven · Tik om doarnoar te kijken
+
+= Game controls
+v Spelknoppen
+a ~
+
+= Menu
+v Menu
+a ~
+
+= Match
+v Match
+a ~
+
+= Settings
+v Instellingen
+a ~
+
+= Player view
+v Spelerszicht
+a Zicht van de speler
+
+= Top view
+v Bovenaanzicht
+a Van boven
+
+= Lines
+v Lijnen
+a ~
+
+= Cigar
+v Sigaar
+a ~
+
+= Smoke in the room
+v Rook in de zaal
+a Rook in de zoal
+
+= Whisky
+v Whisky
+a ~
+
+= Whisky level
+v Whiskypeil
+a Hoeveel whisky
+
+= Chalk
+v Krijt
+a ~
+
+= Chalk on your tip
+v Krijt op je pomerans
+a Krijt ip ou pomerans
+
+= Knock
+v Kloppen
+a ~
+
+= Match and rules
+v Match en regels
+a ~
+
+= Close
+v Sluiten
+a Toe doen
+
+= Players and log
+v Spelers en verslag
+a ~
+
+= Rules
+v Regels
+a ~
+
+= Name of player 1
+v Naam van speler 1
+a Noam van speler 1
+
+= Name of player 2
+v Naam van speler 2
+a Noam van speler 2
+
+= Last shots
+v Laatste stoten
+a Leste sjtoten
+
+= Sink your five balls
+v Speel je vijf ballen
+a Sjpeel ou vijf bollen
+
+= into the goal at the far end. Your goal has a ring in your colour.
+v in het doel aan de overkant. Jouw doel heeft een ring in jouw kleur.
+a in 't doel aan den overkant. Ou doel heeft ne ring in ou kleur.
+
+= Score and you shoot again.
+v Scoor je, dan speel je opnieuw.
+a Scoorde, dan meugde nog ne kier.
+
+= No goal and the turn passes.
+v Geen doelpunt, dan gaat de beurt over.
+a Gene goal, dan es 't aan den andere.
+
+= Never hit your own ball first.
+v Raak nooit eerst je eigen bal.
+a Raak noait eerst ou eigen bol.
+
+= Bounce off a cushion, a post or an opponent's ball.
+v Eerst een band, een dop of een bal van de tegenstander.
+a Eerst ne band, nen dop of ne bol van den andere.
+
+= No hard shots from the corners
+v Geen harde stoten vanuit de hoeken
+a Gene harde sjtoten vanuit de hoeken
+
+= near the goal, outside the shooting lines. Hard means over 1.5 m/s: the red part of the power meter.
+v bij het doel, buiten de schietlijnen. Hard is meer dan 1,5 m/s: het rode deel van de krachtmeter.
+a bij 't doel, buiten de schietlijnen. Hard es meer dan 1,5 m/s: 't rood sjtuk van de krachtmeter.
+
+= No hard shots along a long cushion
+v Geen harde stoten langs een lange band
+a Gene harde sjtoten langs ne lange band
+
+= from the 92 mm strip.
+v vanuit de strook van 92 mm.
+a vanuit de sjtrook van 92 mm.
+
+= Don't park in the big triangle.
+v Niet parkeren in de grote driehoek.
+a Nie parkeren in de grote driehoek.
+
+= A ball that starts your turn there must leave it that turn.
+v Een bal die daar ligt als je beurt begint, moet er die beurt uit.
+a Ne bol die doar ligt as ou beurt begint, moet er die beurt uit.
+
+= Wrong goal doesn't count.
+v Verkeerd doel telt niet.
+a Verkeerd doel telt nie.
+
+= Your ball goes to a penalty spot.
+v Je bal gaat naar een strafplek.
+a Ou bol moet ip ne sjtrafplek.
+
+= After a foul
+v Na een fout
+a Na ne fout
+
+= your turn ends, moved balls go back and your ball goes to a penalty spot your opponent picks.
+v is je beurt voorbij, gaan verschoven ballen terug en gaat je bal naar een strafplek die je tegenstander kiest.
+a es ou beurt gedaan, goan verschoven bollen terug en moet ou bol ip ne sjtrafplek die den andere kiest.
+
+= Best of three games,
+v Twee winnende manches,
+a ~
+
+= colours swap each game.
+v de kleuren wisselen elke manche.
+a de kleuren wisselen elke manche.
+
+= Open the tutorial
+v Open de uitleg
+a Doe de uitleg open
