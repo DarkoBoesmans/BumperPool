@@ -123,3 +123,19 @@ a 5-0 door {name}, oei
 = Tjoepbiljart table in a café
 v Tjoepbiljarttafel in een café
 a Tjoepbiljarttafel in e cafeeke
+
+= THE OLD CODE
+v DE OUDE CODE
+a DEN OUDEN CODE
+
+= THE LEGENDS ARE IN
+v DE LEGENDEN ZIJN BINNEN
+a DE LEGENDEN ZEN BINNEN
+
+= ON THE START SCREEN
+v OP HET STARTSCHERM
+a IP 'T SJTARTSCHERM
+
+= ON A PHONE: SWIPE, THEN TAP TWICE
+v OP EEN GSM: VEGEN, DAN TWEE KEER TIKKEN
+a IP NE GSM: VEGEN, DAN TWEE KIER TIKKEN

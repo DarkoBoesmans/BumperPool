@@ -7,7 +7,10 @@ import { SONGS, STYLE, chord, hz, near, type Song, type Style } from "./songs";
 import { load, save } from "../profile/store";
 
 const rnd = <T>(a: T[]): T => a[Math.floor(Math.random() * a.length)];
-export const juke = { title: "", info: "", style: "all" as "all" | Style, onChange: null as null | (() => void) };
+export const juke = { title: "", info: "", style: "all" as "all" | Style };
+const songListeners: (() => void)[] = [];
+/** run on every new record: the settings' jukebox line and the title card */
+export const onSong = (f: () => void): void => void songListeners.push(f);
 juke.style = (load("jukebox") as "all" | Style) || "all";
 const J = {
   song: 0,
@@ -79,8 +82,7 @@ export function initJukebox(): void {
   band.rhodes = trem(4.6, 0.18);
   band.vibes = trem(5.4, 0.3);
   J.song = nextFit((Math.random() * SONGS.length) | 0);
-  startSong(A.currentTime + 1.2);
-  setInterval(schedule, 25);
+  setInterval(schedule, 25); // the first record starts once the browser lets sound play
 }
 
 function startSong(t: number): void {
@@ -97,7 +99,7 @@ function startSong(t: number): void {
     n: J.song + 1,
     total: SONGS.length,
   });
-  juke.onChange?.();
+  for (const f of songListeners) f();
 }
 export function nextSong(): void {
   if (!au.A) return;
@@ -106,7 +108,8 @@ export function nextSong(): void {
 }
 function schedule(): void {
   const A = au.A;
-  if (!A || A.state !== "running" || !J.started) return;
+  if (!A || A.state !== "running") return;
+  if (!J.started) startSong(A.currentTime + 0.8);
   const s = SONGS[J.song],
     b = 60 / s.bpm;
   if (J.nextT < A.currentTime - 0.05) J.nextT = A.currentTime + 0.05; // the tab slept: pick up from now

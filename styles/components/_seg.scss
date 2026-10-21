@@ -31,9 +31,11 @@
     letter-spacing: 0.06em;
     text-transform: uppercase;
     cursor: pointer;
+    transition: box-shadow 0.15s;
     &:hover {
       color: var(--ink);
       background: var(--seg-hover);
+      box-shadow: inset 0 -3px 0 var(--accent);
     }
     &[aria-pressed="true"],
     &[aria-checked="true"] {

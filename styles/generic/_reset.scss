@@ -1,4 +1,5 @@
-// A small reset: border-box everywhere, controls inherit the type, and `hidden` always hides.
+// A small reset: border-box everywhere, controls inherit the type, and `hidden` always hides. Plus two page-wide
+// bits: the fade between pages and the fade under a scrolling box.
 *,
 *::before,
 *::after {
@@ -16,4 +17,27 @@ input {
 }
 [hidden] {
   display: none !important;
+}
+
+// going from the game to the legal page and back fades instead of flashing white
+@view-transition {
+  navigation: auto;
+}
+
+// the fade under a box that scrolls (the more-below mixin): a length, so it can animate
+@property --more-below {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@keyframes more-below {
+  from {
+    --more-below: 32px;
+  }
+  95% {
+    --more-below: 32px;
+  }
+  to {
+    --more-below: 0px;
+  }
 }

@@ -3,7 +3,8 @@ import { THREE, add, lam, basic } from "../render/three";
 import { WX, WZ } from "./state";
 import { drawScore, drawFoulBook, drawRules, type BoardCtx } from "./boards-draw";
 import { drawMarquee, drawRegular, drawClock } from "./boards-signs";
-import { drawArtPoster, drawWhisky, drawCigarAd, drawKonami, drawShame } from "./posters";
+import { drawArtPoster, drawWhisky, drawCigarAd, drawShame } from "./posters";
+import { drawKonami, drawCode } from "./arcade-posters";
 
 /** draw(null, ctx) returns a key; the board is repainted when the key changes */
 export type Draw = (c: CanvasRenderingContext2D | null, ctx: BoardCtx) => string | void;
@@ -60,6 +61,7 @@ export function buildBoards(room: THREE.Object3D): void {
   board(room, 0.5, 0.5, 1.0, 1.2, WZ - 0.03, Math.PI, 160, drawClock, { frame: 0x2a140a });
   board(room, 0.7, 0.98, -4.0, 0.8, WZ - 0.03, Math.PI, 240, drawCigarAd, { frame: 0x111111 });
   board(room, 0.42, 0.6, 3.55, 1.05, WZ - 0.03, Math.PI, 168, drawKonami, { frame: 0x111111 }); // a small arcade poster by the jukebox
+  board(room, 0.7, 0.98, -2.2, 1.32, WZ - 0.03, Math.PI, 240, drawCode, { frame: 0x111111 }); // the old code, spelled out
 }
 
 export function updateBoards(ctx: BoardCtx): void {

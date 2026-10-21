@@ -75,3 +75,13 @@
     @content;
   }
 }
+
+/** a scrolling box that has more below fades out at its bottom edge, and the fade shrinks to nothing as you reach the
+ * end. A browser without scroll timelines, or a box that fits, shows no fade at all. */
+@mixin more-below {
+  @supports (animation-timeline: scroll()) {
+    mask-image: linear-gradient(#000 calc(100% - var(--more-below)), transparent);
+    animation: more-below linear both;
+    animation-timeline: scroll(self);
+  }
+}

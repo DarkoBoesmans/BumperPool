@@ -1,0 +1,123 @@
+// The jukebox's title strip: a cream card with red bands, the record's name in display type, the style and tempo in
+// italics. It drops in from the right edge like a card into its slot, sits for a few seconds and slides back out.
+// Bottom right on the start screen; in a game it sits above the spin pad. It never takes a click.
+// On an upright phone it hangs from the top edge.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-nowplaying {
+  position: fixed;
+  right: 18px;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  z-index: 30;
+  display: grid;
+  width: min(280px, calc(100vw - 36px));
+  padding: 12px 16px 11px;
+  color: $poster-ink;
+  background: linear-gradient(180deg, #f6ecd2, #ead9b0);
+  border: 2px solid $poster-ink;
+  box-shadow:
+    inset 0 5px 0 $poster-red,
+    inset 0 -5px 0 $poster-red,
+    6px 6px 0 rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  transform-origin: 100% 50%;
+  // in a game: above the spin pad, which owns the bottom right corner
+  body:has(#start[hidden]) & {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 268px);
+  }
+  @include upright {
+    right: 50%;
+    bottom: auto;
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
+    transform-origin: 50% 0;
+    translate: 50% 0;
+    body:has(#start[hidden]) & {
+      bottom: auto;
+      top: calc(env(safe-area-inset-top, 0px) + 96px); // under the scoreboard
+    }
+    // the menu fills an upright phone, so the card shrinks to one slim line over the panel's top frame
+    body:has(#start:not([hidden])) & {
+      top: env(safe-area-inset-top, 0px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: auto;
+      max-width: calc(100vw - 72px);
+      padding: 6px 14px 5px;
+      box-shadow:
+        inset 0 3px 0 $poster-red,
+        inset 0 -3px 0 $poster-red,
+        4px 4px 0 rgba(0, 0, 0, 0.45);
+      .c-nowplaying__label {
+        font-size: 0; // the note alone; the aside's label still names it
+      }
+      .c-nowplaying__title {
+        margin: 0;
+        font-size: 17px;
+      }
+      .c-nowplaying__info {
+        display: none;
+      }
+    }
+  }
+  &.is-in {
+    animation: c-nowplaying-in 560ms cubic-bezier(0.2, 0.9, 0.25, 1.15) both;
+  }
+  &.is-out {
+    animation: c-nowplaying-out 380ms cubic-bezier(0.5, 0, 0.9, 0.4) both;
+  }
+  @include calm {
+    &.is-in,
+    &.is-out {
+      animation-name: c-nowplaying-fade;
+    }
+    &.is-out {
+      animation-direction: reverse;
+    }
+  }
+  &__label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    @include label(11px, 0.18em);
+    color: $poster-red-ink;
+  }
+  &__icon {
+    width: 14px;
+    height: 14px;
+  }
+  &__title {
+    margin-top: 3px;
+    @include display(22px, 0.03em);
+    @include ellipsis;
+  }
+  &__info {
+    margin-top: 3px;
+    font: italic 400 13px/1.3 $f-serif;
+    color: #4b3826;
+    @include ellipsis;
+  }
+}
+
+@keyframes c-nowplaying-in {
+  from {
+    transform: translateX(calc(100% + 40px)) rotate(4deg);
+  }
+  70% {
+    transform: translateX(-6px) rotate(-0.6deg);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes c-nowplaying-out {
+  to {
+    transform: translateX(calc(100% + 40px)) rotate(3deg);
+  }
+}
+@keyframes c-nowplaying-fade {
+  from {
+    opacity: 0;
+  }
+}

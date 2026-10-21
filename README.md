@@ -10,14 +10,14 @@ Belgian tap billiards (golfbiljart) in the browser, set in a smoky low-poly caf√
 - Every regular has a bar and a table of their own: fifteen bars plus the three legends' halls
 - The better the regular, the less the game helps you: the lines on the cloth, the aim line, the ghost ball and the foul warnings go one by one
 - Make your own player: body, frame, skirt or trousers, thirteen hair styles, makeup, glasses, jewellery, hats
-- Players walk round the table, lean over the rail and hold the cue for every shot. Lose 5-0 and you crawl under the table, and your name goes on the Wall of Shame
+- Players walk round the table, lean over the rail and hold the cue for every shot. Lose 5-0 and you crawl under the table on hands and knees, and your name goes on the Wall of Shame
 - Whisky blurs your view but your aim line reaches further. Cigars fill the room with smoke. Chalk gives full spin without a miscue, but chalk dust makes your ball cling
-- Knock on the table to thank it right after a goal; after a lucky one, tradition says you must
+- Pull off a trick shot (off a cushion or a post, a combination, two in one, from the far half) and tradition says you knock twice on the table; the regulars do it too
 - A referee that explains every foul in plain words, goal cam and foul cam replays, an end card after every game
-- Synthesised sound and a jazz jukebox that improvises seven original tunes
+- Synthesised sound and a jazz jukebox that improvises seven original tunes, so there is no music licence to worry about. Sound starts with your first touch, click or key anywhere (browsers allow nothing earlier), and a title card shows each new record
 - Plays on a phone, upright or on its side: the controls move beside the table, and the camera frames the table in the room they leave
 - **Three languages**: Vlaams, English and Oilsjters (the dialect of Aalst), picked under the main menu. The game's name is never translated
-- The old arcade code (up, up, down, down, left, right, left, right, B, A; on a phone: swipe, then tap twice) opens the back room early. The story and the shop both hint at it
+- The old arcade code (up, up, down, down, left, right, left, right, B, A; on a phone: swipe, then tap twice) opens the back room early. A poster on the caf√© wall spells it out, and the story and the shop hint at it
 
 **Play it:** https://darkoboesmans.github.io/BumperPool/ (always the latest version on `main`)
 

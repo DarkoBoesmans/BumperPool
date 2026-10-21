@@ -20,6 +20,7 @@ export interface Figure {
   head: THREE.Group;
   torso: THREE.Group;
   hips: THREE.Group[];
+  knees: THREE.Group[];
   r: Arm;
   l: Arm;
   anim: { kind: Kind; t0: number; puffed?: boolean } | null;
@@ -115,7 +116,8 @@ export function figure(L: Look, pose: "stand" | "sit" = "stand"): Figure {
     hipY = sit ? 0.46 : 0.86,
     hipW = frame === "curvy" ? 1.08 : 1,
     belly = b > 1.1 ? (b - 1) * 0.35 : 0,
-    hips: THREE.Group[] = [];
+    hips: THREE.Group[] = [],
+    knees: THREE.Group[] = [];
   for (const s of [-1, 1]) {
     const hip = new THREE.Group();
     hip.position.set(s * 0.092 * b * hipW, hipY, 0);
@@ -125,6 +127,7 @@ export function figure(L: Look, pose: "stand" | "sit" = "stand"): Figure {
     const knee = new THREE.Group();
     knee.position.y = -0.44;
     hip.add(knee);
+    knees.push(knee);
     add(knee, new THREE.SphereGeometry(0.058 * b, 8, 5), legs);
     limb(knee, 0.057 * b, 0.042 * b, 0.36, legs);
     shoe(knee, shoes, -0.374); // the sole lands on the floor: 0.44 + 0.374 + 0.046 = hip height
@@ -197,6 +200,7 @@ export function figure(L: Look, pose: "stand" | "sit" = "stand"): Figure {
     head,
     torso,
     hips,
+    knees,
     r: arm(-1),
     l: arm(1),
     anim: null,

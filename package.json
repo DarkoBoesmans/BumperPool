@@ -1,6 +1,6 @@
 {
   "name": "tjoepbiljart",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "private": true,
   "type": "module",
   "description": "Tjoepbiljart: Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
@@ -9,7 +9,7 @@
     "build": "bun tools/build.ts",
     "check": "tsc --noEmit",
     "test": "bun test",
-    "format": "prettier --write src styles test tools html index.html legal.html"
+    "format": "prettier --write src styles test tools html index.html legal.html 404.html"
   },
   "dependencies": {
     "three": "0.128.0"

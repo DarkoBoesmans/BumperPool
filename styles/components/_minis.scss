@@ -29,7 +29,10 @@
     transition:
       transform 0.12s,
       box-shadow 0.12s;
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 $poster-ink;
       background: rgba(165, 42, 30, 0.08);
     }
     &:active {
@@ -49,5 +52,11 @@
   }
   @include below($bp-phone) {
     grid-template-columns: repeat(2, 1fr);
+    &__btn {
+      flex-direction: row; // icon beside the word: two short rows instead of two tall ones
+      gap: 6px;
+      min-height: 44px;
+      padding-block: 4px;
+    }
   }
 }

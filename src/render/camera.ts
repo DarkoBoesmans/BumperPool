@@ -3,7 +3,7 @@
 // click glides that point to where you clicked, scroll zooms towards the pointer (the point follows), and
 // middle-drag or shift + right-drag slides it. Turning round a point you look at never swings the view.
 import { THREE, M } from "./three";
-import { S, rayAt } from "./renderer";
+import { S, rayAt, calm } from "./renderer";
 import { R } from "../core/table";
 import type { Color } from "../types";
 import { home, att } from "../core/table";
@@ -33,7 +33,6 @@ export const camS = {
   fdist: 2,
   focus: null as THREE.Vector3 | null,
 };
-const reduced = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 const CLOTH = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 const BALLS = new THREE.Plane(new THREE.Vector3(0, 1, 0), -R * M);
 
@@ -70,7 +69,7 @@ export function updateCamera(dt: number, vc: Color, portrait: boolean, room: Ins
     k = camS.replay.cut ? 1 : 1 - Math.pow(0.002, dt);
     camS.replay.cut = false;
   } else if (m === "intro") {
-    if (!reduced && performance.now() > camS.hold) camS.az += dt * 0.08;
+    if (!calm && performance.now() > camS.hold) camS.az += dt * 0.08;
     pos = orbit(camS.az, camS.iel, (portrait ? 4.4 : 3.4) * camS.idist);
     look.set(portrait ? 0 : -0.45, 0.1, 0);
   } else if (m === "free") {
@@ -196,4 +195,23 @@ export function lookingDown(): boolean {
 export function toTable(e: { clientX: number; clientY: number }): { x: number; y: number } | null {
   const p = new THREE.Vector3();
   return rayAt(e).intersectPlane(BALLS, p) ? { x: p.x / M, y: p.z / M } : null;
+}
+
+/** the ball under the pointer from any angle, even with the camera down at the cloth: the nearest ball whose centre
+ * the pointer's ray passes within `r` mm of, or -1. toTable alone misses there: the ray meets the ball plane far
+ * behind a ball you click near its top. */
+export function rayPick(e: { clientX: number; clientY: number }, pts: { x: number; y: number }[], r: number): number {
+  const ray = rayAt(e),
+    c = new THREE.Vector3();
+  let best = -1,
+    near = Infinity;
+  pts.forEach((p, i) => {
+    c.set(p.x * M, R * M, p.y * M);
+    const t = c.clone().sub(ray.origin).dot(ray.direction);
+    if (t > 0 && t < near && ray.distanceSqToPoint(c) < (r * M) ** 2) {
+      near = t;
+      best = i;
+    }
+  });
+  return best;
 }

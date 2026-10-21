@@ -2,7 +2,7 @@
 import { describe, expect, test } from "bun:test";
 import * as g from "../src/core";
 import { setup, logged, at } from "./helpers";
-import type { Rules } from "../src/types";
+import type { Rules, Stroke } from "../src/types";
 
 describe("referee", () => {
   test("a straight ball between the goal posts counts and white shoots again", () => {
@@ -177,7 +177,7 @@ describe("house rules (freeplay)", () => {
     expect(g.ball(0).wy).toBe(0);
   });
 
-  test("a goal off another of your balls is a lucky one", () => {
+  test("a goal off another of your balls is a trick shot (here both drop: two in one shot)", () => {
     setup([
       { c: "W", x: 500, y: 0 },
       { c: "W", x: 700, y: 0 },
@@ -196,6 +196,28 @@ describe("house rules (freeplay)", () => {
     g.fire(0, { dx: 1, dy: 0, p: at(900) });
     g.runToRest();
     expect(g.G.lastShot!.pots.some((p) => p.id === 1)).toBe(true);
-    expect(g.G.lastShot!.lucky).toBe(true);
+    expect(g.G.lastShot!.trick).toBe("double");
+  });
+
+  test("only a trick shot asks for a knock: off a cushion, off a post, two contacts, from the far half", () => {
+    const stroke = (over: Partial<Stroke>): Stroke => ({
+      opening: false,
+      shooter: 0,
+      first: {},
+      pots: [{ id: 0, c: "W", h: g.att("W"), t: 1, x: g.att("W") * g.GOAL_X, y: 0 }],
+      power: 0.5,
+      spin: [0, 0],
+      start: { x: g.att("W") * 500, y: 0 },
+      aim: { x: g.att("W"), y: 0 },
+      touches: 0,
+      ...over,
+    });
+    const hit = (type: "band" | "dop" | "ball") => ({ 0: { type, t: 0.2, x: 0, y: 0 } });
+    expect(g.trickOf(stroke({}), "W")).toBe(null); // straight in from close by
+    expect(g.trickOf(stroke({ first: hit("band"), touches: 1 }), "W")).toBe("bank");
+    expect(g.trickOf(stroke({ first: hit("dop"), touches: 1 }), "W")).toBe("post");
+    expect(g.trickOf(stroke({ first: hit("ball"), touches: 2 }), "W")).toBe("carom");
+    expect(g.trickOf(stroke({ start: { x: -g.att("W") * 400, y: 0 } }), "W")).toBe("long");
+    expect(g.trickOf(stroke({ pots: [] }), "W")).toBe(null);
   });
 });

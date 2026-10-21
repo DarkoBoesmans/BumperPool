@@ -36,7 +36,9 @@ export function placeBubble(): void {
     h = el.offsetHeight;
   let x = p && !p.behind ? p.x - w / 2 : innerWidth - w - 24,
     y = p && !p.behind ? p.y - h - 18 : 120;
-  const left = ($(".c-rail").getBoundingClientRect().right || 0) + 12; // never over the menu rail
+  // never over the menu rail when it runs down the left side; on an upright phone it lies along the bottom instead
+  const r = $(".c-rail").getBoundingClientRect(),
+    left = r.height > r.width ? r.right + 12 : 12;
   x = Math.max(left, Math.min(innerWidth - w - 12, x));
   y = Math.max(110, Math.min(innerHeight - h - 160, y));
   el.style.transform = `translate(${x | 0}px, ${y | 0}px)`;

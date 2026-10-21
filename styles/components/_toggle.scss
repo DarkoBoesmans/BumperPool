@@ -45,15 +45,28 @@
       height: 18px;
       background: var(--ink-3);
       transition:
-        left 0.15s,
+        translate 0.15s,
         background 0.15s;
     }
   }
+  &:hover &__switch::after {
+    translate: 3px 0; // leans toward the other side
+  }
+  // on: the track fills, the knob turns light, so it reads without the colour too
   &[aria-checked="true"] &__switch {
     border-color: var(--toggle-on);
+    background: var(--toggle-on);
     &::after {
-      left: 26px;
-      background: var(--toggle-on);
+      translate: 24px 0;
+      background: #{$paper};
+    }
+  }
+  &[aria-checked="true"]:hover &__switch::after {
+    translate: 21px 0;
+  }
+  @include calm {
+    &__switch::after {
+      transition: none;
     }
   }
   @include short {

@@ -61,7 +61,7 @@ async function present(L: LastShot): Promise<void> {
     await banner(time ? "time" : "foul", time ? "TIME!" : "FOUL!", nameOf(f.c), f.title);
     if (!time && can) await runReplay({ kind: "foul", foul: f }, f);
   }
-  if (!L.foul && own.length && L.shooter) offerKnock(L.shooter, !!L.lucky, cpu && L.shooter === cc);
+  if (!L.foul && own.length && L.shooter) offerKnock(L.shooter, L.trick ?? null, cpu && L.shooter === cc);
   if (L.end) return endShow(L, can);
   if (L.foul) return;
   if (own.length) {

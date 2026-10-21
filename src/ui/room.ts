@@ -1,20 +1,23 @@
 // What the HUD covers on a small screen, so the camera can frame the table in the part left free. Each HUD block
 // pushes in the screen edge that costs the least room: the scoreboard the top, the controls the bottom or the left.
+// On a big screen the HUD floats over the café, except in the top view: there the menu rail and the spin pad would
+// sit on the table's ends, so those two push the sides in.
 import type { Insets } from "../render/camera";
 
 export const room: Insets = { l: 0, t: 0, r: 0, b: 0 };
 const BLOCKS = [".c-scoreboard", ".c-ribbon", ".c-rail", ".c-spin"];
 let next = 0;
 
-export function measureRoom(now: number): void {
+export function measureRoom(now: number, top: boolean): void {
   if (now < next) return;
   next = now + 250;
   const W = innerWidth,
     H = innerHeight,
     o: Insets = { l: 0, t: 0, r: 0, b: 0 },
     area = (a: Insets) => Math.max(0, W - a.l - a.r) * Math.max(0, H - a.t - a.b);
-  if (W <= 900 || H <= 520)
-    for (const q of BLOCKS) {
+  const small = W <= 900 || H <= 520;
+  if (small || top)
+    for (const q of small ? BLOCKS : [".c-rail", ".c-spin"]) {
       const r = document.querySelector(q)?.getBoundingClientRect();
       if (!r?.width) continue; // hidden
       const best = [

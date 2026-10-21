@@ -9,3 +9,4 @@ export * from "./penalty";
 export * from "./fouls";
 export * from "./powers";
 export * from "./rules";
+export { trickOf, LONG } from "./verdict";

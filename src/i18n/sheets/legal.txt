@@ -7,6 +7,9 @@ v Tjoepbiljart: de kleine lettertjes
 = Back to the game
 v Terug naar het spel
 
+= Skip to the text
+v Naar de tekst
+
 = The small print
 v De kleine lettertjes
 

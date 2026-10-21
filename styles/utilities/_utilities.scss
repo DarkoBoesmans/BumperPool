@@ -10,3 +10,18 @@
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
 }
+// a link that only shows when you tab to it: the first stop, it jumps over the bar and the contents list
+.u-skip {
+  position: fixed !important;
+  top: 8px;
+  left: 8px;
+  z-index: 100;
+  padding: 10px 16px;
+  background: #1f150e;
+  color: #f1e5c8 !important;
+  font-weight: 700;
+  translate: 0 -200%;
+  &:focus-visible {
+    translate: none;
+  }
+}

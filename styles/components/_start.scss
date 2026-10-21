@@ -19,12 +19,20 @@
     display: flex;
     flex-direction: column;
     width: min(488px, 100%);
+    // one height for every view where you pick things: choosing a tab, a chapter, a language or the next slide
+    // never resizes the poster, so nothing jumps. Only the two short forms (local, online) take their own height.
+    height: min(780px, 100%);
     max-height: 100%;
+    &[data-view="local"],
+    &[data-view="online"] {
+      height: auto;
+    }
     padding: clamp(18px, 3.4vh, 34px) clamp(18px, 3vw, 34px);
     &--wide {
       width: min(1004px, 100%);
     }
     @include below($bp-phone) {
+      height: 100%; // a phone gives the poster all of its height
       padding: 18px 14px 14px;
     }
     @include short {
@@ -41,10 +49,12 @@
     padding-bottom: 8px;
   }
 }
-// one screen of the start menu
+// one screen of the start menu: it fills the poster, the middle (__body) takes the room that is left and scrolls
+// inside itself, and the footer row with Back always sits on the bottom edge, in the same spot in every view
 .c-view {
   display: flex;
   flex-direction: column;
+  flex: 1 1 auto;
   gap: clamp(5px, 1.2vh, 8px);
   min-height: 0;
   > * {
@@ -53,11 +63,25 @@
   }
   // the middle of a view; it comes after `> *` so it wins at the same weight
   &__body {
-    flex: 0 1 auto;
+    flex: 1 1 auto;
     min-height: 0;
     overflow: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
+    @include more-below;
+  }
+  > .o-row--foot,
+  > .c-record {
+    margin-top: auto;
+  }
+  // the home screen has no middle part of its own: on a short screen the whole list scrolls, with room for focus rings
+  &[data-view="home"] {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    margin-inline: -6px;
+    padding-inline: 6px;
+    @include more-below;
   }
   &__title {
     margin: 0 0 $s1;
@@ -87,10 +111,13 @@
   font: 600 12px/1.6 $f-ui;
   color: var(--ink-3);
   a {
+    display: inline-block;
+    padding-block: 4px; // 24 px tall: a finger can hit it
     color: inherit;
     text-underline-offset: 2px;
     &:hover {
       color: var(--ink);
+      text-decoration-thickness: 2px;
     }
   }
 }

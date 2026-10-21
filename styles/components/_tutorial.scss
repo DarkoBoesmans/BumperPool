@@ -8,28 +8,34 @@
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: min(34vh, 360px);
+    max-height: min(48vh, 440px); // the tutorial has the wide poster: the drawing gets the room
     margin: 0 auto;
     border: 2px solid $poster-ink;
     @include short {
       max-height: 30vh;
     }
   }
+  &__text,
+  &__why {
+    max-width: 680px; // a readable line under the drawing, not the full width of the poster
+    margin-inline: auto;
+  }
   &__text {
-    margin: 2px 0 0;
+    margin-top: $s3;
+    margin-bottom: $s2;
     min-height: 4.6em;
-    font: 400 14px/1.6 $f-serif;
+    font: 400 16px/1.6 $f-serif;
     @include short {
       min-height: 0;
       font-size: 13px;
     }
   }
   &__why {
-    margin: 0;
+    margin: 0 auto;
     min-height: 3em;
     padding-left: $s3;
     border-left: 3px solid $poster-red;
-    font: italic 400 13.5px/1.5 $f-serif;
+    font: italic 400 15px/1.5 $f-serif;
     color: var(--ink-2);
     &:empty {
       display: none;
