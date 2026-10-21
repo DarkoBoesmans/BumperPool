@@ -320,3 +320,7 @@ a sjtamgasten geklopt
 = Skip
 v Overslaan
 a Oversloan
+
+= Now playing
+v Nu op de jukebox
+a Nu ip de jukebox

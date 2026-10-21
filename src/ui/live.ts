@@ -65,7 +65,7 @@ export function liveUI(s: Shot | null, b: Ball | null): void {
   placeBubble();
 }
 
-/** whisky, smoke and chalk meters on their buttons; the knock button glows after a lucky goal, and a big knock button
+/** whisky, smoke and chalk meters on their buttons; the knock button glows after a trick shot, and a big knock button
  * shows right after one of your goals, over the banner and the replay */
 export function buzzUI(drink: number, smoke: number, chalk: number, fluke: boolean, knockNow: boolean): void {
   $$("#lvWhisky b").forEach((b, i) => b.classList.toggle("is-on", i < Math.ceil(drink - 0.05)));

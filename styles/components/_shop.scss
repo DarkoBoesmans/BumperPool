@@ -2,9 +2,15 @@
 @use "../settings/tokens" as *;
 @use "../tools/mixins" as *;
 
+// One scroller only: the grid takes whatever height the poster has left and scrolls inside, the tabs and the notes
+// stay put, so every tab looks the same size whatever it holds.
 .c-shop {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: $s3;
+  > * {
+    flex: none;
+  }
   &__head {
     display: flex;
     align-items: center;
@@ -18,9 +24,14 @@
     grid-template-columns: repeat(auto-fill, minmax(178px, 1fr));
     align-content: start;
     gap: $s2;
-    height: clamp(150px, 44vh, 377px);
+    .c-shop > & {
+      flex: 1 1 0;
+    }
+    min-height: 140px;
     overflow-y: auto;
+    overscroll-behavior: contain;
     scrollbar-width: thin;
+    @include more-below;
   }
   &__note {
     margin: 0;
@@ -73,9 +84,19 @@
     border: 2px solid $poster-ink;
     background: var(--c, #ccc);
   }
+  // the whole name, on two lines if it must: a cut-off name in a shop is a price tag you can't read
   &__name {
     @include display(15px, 0.04em);
-    @include ellipsis;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  @include below($bp-phone) {
+    grid-template-columns: 32px 1fr;
+    &__swatch {
+      width: 32px;
+      height: 32px;
+    }
   }
   &__desc {
     font: italic 400 11.5px/1.35 $f-serif;

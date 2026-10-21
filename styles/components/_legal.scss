@@ -31,6 +31,7 @@ html:has(.c-legal) {
     outline-color: $poster-red-ink;
   }
   a {
+    padding-block: 2px; // the box a finger hits grows to 26 px; inline padding leaves the lines where they are
     color: $poster-red-ink;
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
@@ -72,8 +73,14 @@ html:has(.c-legal) {
       color: $poster-ink;
       text-decoration: none;
     }
+    span {
+      transition: translate 0.18s;
+    }
     &:hover {
       color: $poster-red-ink;
+      span {
+        translate: -5px 0;
+      }
     }
   }
 
@@ -202,12 +209,18 @@ html:has(.c-legal) {
         color: $poster-ink;
         text-decoration: none;
       }
+      transition: translate 0.18s;
       &::before {
         content: counter(toc, decimal-leading-zero);
         color: $poster-red-ink;
       }
-      &:hover {
+      &:hover,
+      &[aria-current] {
         color: $poster-red-ink;
+        translate: 4px 0;
+      }
+      &[aria-current] {
+        box-shadow: -8px 0 0 -4px $poster-red; // a red tick before the section you are reading
       }
     }
   }

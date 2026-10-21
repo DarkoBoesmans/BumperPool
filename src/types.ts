@@ -100,6 +100,10 @@ export interface Foul extends Point {
   next?: string;
 }
 
+/** a goal that was more than a plain direct shot: off a cushion or a post, a combination, two at once, a carom
+ * off two or more things, or from the far half */
+export type Trick = "bank" | "post" | "combo" | "double" | "carom" | "long";
+
 export interface LastShot {
   n: number;
   shooter: Color | null;
@@ -109,8 +113,8 @@ export interface LastShot {
   winner?: Color;
   starter?: Color;
   opening?: boolean;
-  /** a goal with luck in it: off another ball, or after three or more cushions, posts and balls */
-  lucky?: boolean;
+  /** a goal worth knocking on the table for (house rule), see core/verdict.ts */
+  trick?: Trick | null;
 }
 
 export interface Spot extends Point {

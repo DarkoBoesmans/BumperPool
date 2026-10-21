@@ -1,7 +1,7 @@
 // Smoke: soft point sprites that drift up and spread. More cigars, more smoke, all over the room.
 // Under the sea the same particles are bubbles: smaller, quicker, straight up.
 import { THREE, canvasTex } from "./three";
-import { S } from "./renderer";
+import { S, calm } from "./renderer";
 
 const MAXP = 320;
 interface P {
@@ -111,7 +111,7 @@ export function stepSmoke(dt: number): void {
     lv = sm.level,
     wide = 0.9 + lv * 2.6;
   sm.ambient -= dt;
-  if (sm.ambient < 0) {
+  if (sm.ambient < 0 && !calm) {
     sm.ambient = sm.bubbles ? 0.08 : 0.35 / (1 + 6 * lv);
     if (sm.bubbles) emit(rnd(-4, 4), -0.7, rnd(-3, 3), 0, rnd(0.25, 0.5), 0, 9, 0.02, 0.05, 0.5);
     else

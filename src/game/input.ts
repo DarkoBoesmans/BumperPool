@@ -6,7 +6,7 @@ import { G, ball, other, fire, choosePen, R, GOAL_X, att } from "../core";
 import type { Ball } from "../types";
 import type { Drag } from "../ui/app";
 import { S } from "../render/renderer";
-import { camS, toFree, focusAt, zoomAt, panBy, orbitBy, toTable } from "../render/camera";
+import { camS, toFree, focusAt, zoomAt, panBy, orbitBy, toTable, rayPick } from "../render/camera";
 import { initAudio } from "../audio/mixer";
 import { app, canAct } from "../ui/app";
 import { $ } from "../ui/dom";
@@ -67,7 +67,16 @@ function onDown(e: PointerEvent): void {
     return;
   }
   initAudio();
-  const w = toTable(e);
+  const w = toTable(e),
+    cand = playable(),
+    hit = rayPick(e, cand, R * (touch ? 2.2 : 1.5)); // a ball under the pointer, from any camera angle
+  if (hit >= 0 && G.phase !== "penalty") {
+    const b = cand[hit];
+    app.drag = { id: b.id, x: w?.x ?? b.x, y: w?.y ?? b.y, px: e.clientX, py: e.clientY };
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    e.preventDefault();
+    return;
+  }
   if (!w) {
     if (touch) startOrbit(e, false);
     return;
@@ -81,8 +90,7 @@ function onDown(e: PointerEvent): void {
     if (i >= 0) choosePen(i);
     return;
   }
-  const cand = playable(),
-    i = nearest(cand, w, Math.max(R * 2.4, reach));
+  const i = nearest(cand, w, Math.max(R * 2.4, reach));
   if (i >= 0) {
     app.drag = { id: cand[i].id, x: w.x, y: w.y, px: e.clientX, py: e.clientY };
     (e.target as HTMLElement).setPointerCapture(e.pointerId);

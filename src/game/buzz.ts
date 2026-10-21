@@ -1,7 +1,7 @@
 // Whisky, cigars and chalk: risk and reward. drink: sips per colour (0..4), smoke: the room (0..1), chalk: on each
 // tip (0..1). All of it wears off. A whisky buys back aim line and shows the next bounce, but blurs your view. Smoke
 // makes the regulars aim worse, and you see less. Fresh chalk means full spin without a miscue, but some dust lands on
-// your ball and makes it cling to the first ball it hits. And after a lucky goal, you knock twice on the table.
+// your ball and makes it cling to the first ball it hits. And after a trick shot, you knock twice on the table.
 import { G } from "../core/state";
 import { camS } from "../render/camera";
 import { emote, type Emote } from "../cafe";
@@ -9,7 +9,8 @@ import { sfx } from "../audio/sfx";
 import { sendEmote } from "../net/online";
 import { app, canAct, help } from "../ui/app";
 import { say } from "../ui/bubble";
-import type { Color, Shot } from "../types";
+import type { Color, Shot, Trick } from "../types";
+import { t } from "../i18n";
 import type { AimHelp } from "../render/aim";
 
 const both = <T>(v: T): Record<Color, T> => ({ W: v, R: v });
@@ -20,9 +21,9 @@ export const buzz = {
   chalk: both(1),
   /** chalked since the last shot: the next shot carries dust */
   dust: both(false),
-  /** a lucky goal the table has not been thanked for yet */
+  /** a trick shot the table has not been thanked for yet */
   fluke: both(false),
-  /** after one of your goals the knock button shows until this time (ms) */
+  /** after one of your trick shots the knock button shows until this time (ms) */
   knockUntil: both(0),
   told: {} as Record<string, boolean>,
 };
@@ -75,32 +76,38 @@ export function chalkShot(c: Color, s: Shot, mine = true): Shot {
   return out;
 }
 
-/** right after one of your goals, while the banner and replay run: a knock button for a few seconds, Marcel's nudge
- * when there was luck in it. Regulars knock by themselves. */
-export function offerKnock(c: Color, isLucky: boolean, cpu: boolean): void {
+/** what Marcel calls each trick shot */
+const trickLine = (k: Trick): string =>
+  ({
+    bank: t("Off the cushion and in!"),
+    post: t("Off the post and in!"),
+    combo: t("A combination!"),
+    double: t("Two in one shot!"),
+    carom: t("What a trick shot!"),
+    long: t("From the far end!"),
+  })[k];
+
+/** right after a trick shot, while the banner and replay run: a knock button for a few seconds and Marcel's nudge.
+ * A plain direct goal needs no knock. Regulars knock by themselves after their own trick shots. */
+export function offerKnock(c: Color, trick: Trick | null, cpu: boolean): void {
+  if (!trick) return;
+  buzz.fluke[c] = true;
   if (cpu) {
-    if (!isLucky) return;
-    lucky(c, false);
     if (Math.random() < 0.8) setTimeout(() => doEmote(c, "knock", false), 1200); // most regulars know the tradition
     return;
   }
   if (!canAct(c)) return;
   buzz.knockUntil[c] = performance.now() + 9000;
-  if (isLucky) lucky(c, true);
-}
-
-/** a lucky goal: the table wants thanking */
-function lucky(c: Color, mine: boolean): void {
-  buzz.fluke[c] = true;
-  if (mine)
-    say(
-      "Marcel",
-      buzz.told.knock
-        ? "Lucky! Knock twice on the table (4)."
-        : "That one had luck in it. Tradition says you thank the table: knock on it twice (4).",
-      null,
-      4200,
-    );
+  say(
+    "Marcel",
+    buzz.told.knock
+      ? t("{shot} Knock twice on the table (4).", { shot: trickLine(trick) })
+      : t("{shot} After a shot like that, tradition says you thank the table: knock on it twice (4).", {
+          shot: trickLine(trick),
+        }),
+    null,
+    4200,
+  );
   buzz.told.knock = true;
 }
 /** the next shot went without a knock */

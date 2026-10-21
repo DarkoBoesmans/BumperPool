@@ -2,6 +2,9 @@
 import { THREE } from "./three";
 import { FX_DEFAULTS, NLIGHTS, POST_VS, POST_FS, BLEND_FS, type Fx } from "./post";
 
+/** the player asked their system for less motion: the camera stops drifting, the grain stands still, no ambient smoke */
+export const calm = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export interface Flare {
   pos: THREE.Vector3;
   k: number;
@@ -176,7 +179,7 @@ export function render(now = 0): void {
     src = next.texture;
   } else S.accLive = false;
   u.t.value = src;
-  u.time.value = now / 1000;
+  u.time.value = calm ? 0 : now / 1000;
   u.drunk.value = S.drunk || 0;
   u.flash.value = S.flash || 0;
   for (let i = 0; i < NLIGHTS; i++) {

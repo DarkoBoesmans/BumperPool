@@ -226,7 +226,7 @@ const SLIDES: Slide[] = [
   {
     title: "Make yourself at home",
     text: "The buttons top left: a cigar (1) fills the room with smoke, so the regulars aim worse and you see less. Whisky (2) blurs your view but stretches your aim line. Chalk (3) gives full spin without a miscue, but the dust makes your ball cling to the first ball it hits.",
-    why: "Score with a bit of luck and you thank the table: knock twice (4). Lose a game 5-0 and you crawl under the table, onto the Wall of Shame. House rules.",
+    why: "Pull off a trick shot (off a cushion or a post, a combination, from the far end) and you thank the table: knock twice (4). Lose a game 5-0 and you crawl under the table, onto the Wall of Shame. House rules.",
   },
 ];
 

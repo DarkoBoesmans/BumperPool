@@ -235,7 +235,7 @@ v Waar de pomerans de bal raakt. De pijltjestoetsen werken ook, 0 zet terug.
 a Woar de pomerans de bol raakt. De pijltjes werken ook, 0 zet 't terug.
 
 = Reset
-v Terugzetten
+v Midden
 a ~
 
 = Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T top view

@@ -7,7 +7,7 @@ import { t } from "../i18n";
 import { app } from "./app";
 
 export type View = "home" | "story" | "pick" | "rules" | "me" | "shop" | "local" | "online" | "tutorial";
-const WIDE: View[] = ["story", "pick", "rules", "me", "shop"];
+const WIDE: View[] = ["story", "pick", "rules", "me", "shop", "tutorial"];
 /** what each view draws when it opens (set by the view modules) */
 export const views: Partial<Record<View, () => void>> = {};
 let back: View = "home";

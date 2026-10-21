@@ -10,10 +10,11 @@ import { buildSmoke } from "./render/smoke";
 import { replaqueAll } from "./render/plaques";
 import { buildCafe, fontsChanged, C } from "./cafe";
 import { setPlayers, PL } from "./people/player";
+import { crawl } from "./people/crawl";
 import { recTick } from "./replay/recorder";
 import { play } from "./replay/replay";
 import { sfx } from "./audio/sfx";
-import { initAudio } from "./audio/mixer";
+import { au, initAudio } from "./audio/mixer";
 import { net, available, netHooks, push, takeSeat, leaveSeat } from "./net/online";
 import { me, saveMe } from "./profile/profile";
 import { $, $$ } from "./ui/dom";
@@ -28,6 +29,7 @@ import { initTutorial } from "./ui/tutorial";
 import { initKonami } from "./ui/konami";
 import { showView, redrawView, type View } from "./ui/menu";
 import { initLang } from "./ui/lang";
+import { initNowPlaying } from "./ui/nowplaying";
 import { story, renderStory } from "./ui/story";
 import { roster, renderRoster, pickedOpponent, pickOpponent } from "./ui/roster";
 import { onMeSaved } from "./ui/maker";
@@ -167,10 +169,17 @@ function wireGame(): void {
     else if (e.key === "4") doEmote(viewColor(), "knock", true);
   });
   document.addEventListener("click", (e) => {
-    if (!(e.target as HTMLElement).closest("button")) return;
-    initAudio();
-    sfx("ui");
+    if ((e.target as HTMLElement).closest("button")) sfx("ui");
   });
+  // Sound may only start after the first touch, click or key press: that is the browser's rule, not ours. So the very
+  // first one, anywhere on the page, starts the café and the jukebox. A browser that already trusts this site plays
+  // straight away (see boot).
+  const GESTURES = ["pointerdown", "pointerup", "touchend", "keydown", "click"] as const;
+  const unlock = () => {
+    initAudio();
+    if (au.A?.state === "running") for (const g of GESTURES) removeEventListener(g, unlock, true);
+  };
+  for (const g of GESTURES) addEventListener(g, unlock, true);
   initKonami(() => {
     if (me.pearl) return;
     me.pearl = true;
@@ -229,6 +238,8 @@ function boot(): void {
     replaqueAll();
     refresh();
   });
+  initNowPlaying();
+  initAudio(); // a browser that already trusts this site starts the jukebox now; the others wait for the first input
   // handy in the console of a local build only: the published game keeps its state out of reach
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname))
     (window as unknown as Record<string, unknown>).tjoepbiljart = {
@@ -239,6 +250,7 @@ function boot(): void {
       me,
       core,
       PL,
+      crawl,
       startCpu,
       get G() {
         return G;

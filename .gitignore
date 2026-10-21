@@ -7,3 +7,4 @@ _update/
 .env*
 *.pem
 *.key
+.jury/

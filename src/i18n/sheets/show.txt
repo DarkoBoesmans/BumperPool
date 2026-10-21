@@ -93,13 +93,7 @@ a Ketser! Ne droge pomerans schuift van de bol. Eerst krijten (3).
 v Ketser! Die pomerans was droog.
 a Ketser! Die pomerans was kurkdroog.
 
-= Lucky! Knock twice on the table (4).
-v Geluk! Klop twee keer op de tafel (4).
-a Chance! Klop twee kier ip tafel (4).
 
-= That one had luck in it. Tradition says you thank the table: knock on it twice (4).
-v Daar zat geluk in. De traditie wil dat je de tafel bedankt: klop er twee keer op (4).
-a Doar zat chance in. Den traditie wil da ge de tafel bedankt: klop er twee kier ip (4).
 
 = No knock for the table? It remembers, you know.
 v Geen klopje voor de tafel? Ze onthoudt dat, weet je.
@@ -208,3 +202,35 @@ a Herhaling oversloan
 = Knock on the table
 v Klop op de tafel
 a Klop ip tafel
+
+= Off the cushion and in!
+v Via de band en erin!
+a Via de band en erin, manneke!
+
+= Off the post and in!
+v Via de dop en erin!
+a Via den dop en erin!
+
+= A combination!
+v Een combinatie!
+a E combinatieke!
+
+= Two in one shot!
+v Twee in één stoot!
+a Twee in ene sjtoot!
+
+= What a trick shot!
+v Wat een trickshot!
+a Wa ne trickshot!
+
+= From the far end!
+v Van helemaal aan de overkant!
+a Van helemoal aan den overkant!
+
+= {shot} Knock twice on the table (4).
+v {shot} Klop twee keer op de tafel (4).
+a {shot} Klop twee kier ip tafel (4).
+
+= {shot} After a shot like that, tradition says you thank the table: knock on it twice (4).
+v {shot} Na zo'n stoot wil de traditie dat je de tafel bedankt: klop er twee keer op (4).
+a {shot} Na zo ne sjtoot wil den traditie da ge de tafel bedankt: klop er twee kier ip (4).

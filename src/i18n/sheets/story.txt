@@ -284,9 +284,6 @@ a Doe gelijk of ge thuis zijt
 v De knoppen linksboven: een sigaar (1) vult de zaal met rook, zodat de stamgasten slechter mikken en jij minder ziet. Whisky (2) maakt je zicht wazig maar verlengt je richtlijn. Krijt (3) geeft vol effect zonder ketser, maar door het stof plakt je bal aan de eerste bal die hij raakt.
 a De knoppen linksboven: ne sigoar (1) vult de zoal mee rook, zodat de sjtamgasten slechter mikken en gij minder ziet. Whisky (2) maakt ou zicht wazig mor verlengt ou mikleiding. Krijt (3) geeft vol effect zonder ketser, mor door 't sjtof plakt ou bol aan den eersten bol die hij raakt.
 
-= Score with a bit of luck and you thank the table: knock twice (4). Lose a game 5-0 and you crawl under the table, onto the Wall of Shame. House rules.
-v Scoor je met wat geluk, dan bedank je de tafel: klop twee keer (4). Verlies je een manche met 5-0, dan kruip je onder de tafel, op de Muur van Schaamte. Huisregels.
-a Scoorde mee e bitteke chance, dan bedankte de tafel: klop twee kier (4). Verliesde ne manche mee 5-0, dan kruipte onder de tafel, ip de Muur van Schande. Huisregels.
 
 = Done
 v Klaar
@@ -411,3 +408,7 @@ a Sjterktes
 = Weaknesses
 v Zwaktes
 a Zwakke plekken
+
+= Pull off a trick shot (off a cushion or a post, a combination, from the far end) and you thank the table: knock twice (4). Lose a game 5-0 and you crawl under the table, onto the Wall of Shame. House rules.
+v Lukt een trickshot (via een band of een dop, een combinatie, van de overkant), dan bedank je de tafel: klop twee keer (4). Verlies je een manche met 5-0, dan kruip je onder de tafel, op de Muur van Schaamte. Huisregels.
+a Lukt ne trickshot (via ne band of nen dop, e combinatieke, van den overkant), dan bedankte de tafel: klop twee kier (4). Verliesde ne manche mee 5-0, dan kruipte onder de tafel, ip de Muur van Schande. Huisregels.

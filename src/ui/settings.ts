@@ -3,7 +3,7 @@ import { FX_DEFAULTS, type Fx } from "../render/post";
 import { t, onLang } from "../i18n";
 import { wipe as wipeData } from "../profile/store";
 import { vol, setVol, type Bus } from "../audio/mixer";
-import { juke, nextSong, setStyle } from "../audio/jukebox";
+import { juke, nextSong, setStyle, onSong } from "../audio/jukebox";
 import { $, $$, esc } from "./dom";
 import { app, saveSettings, type Settings } from "./app";
 import { initTabs } from "./tabs";
@@ -131,7 +131,7 @@ export function initSettings(apply: (k: Applied) => void): (on: boolean) => void
     $("#songInfo").textContent = juke.info || t("Starts with your first tap or click");
     $("#jukebox").classList.toggle("is-on", !!juke.title && vol.music > 0);
   };
-  juke.onChange = song;
+  onSong(song);
   onLang(song);
   $("#songNext").addEventListener("click", () => {
     nextSong();

@@ -92,7 +92,7 @@ export function frame(now: number): void {
       camS.replay.look.set(p.x, -0.45, 0);
     }
   }
-  measureRoom(now);
+  measureRoom(now, camS.mode === "top");
   updateCamera(dt, vc, portrait(), room);
   const cj = app.cpu,
     aim: Aim | null = play.on
