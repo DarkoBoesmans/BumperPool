@@ -1,17 +1,24 @@
-// The jukebox: a little jazz trio plus vibraphone, improvised live from the chord changes in songs.ts.
-// Bass walks (or sways), the drummer rides with brushes, the Rhodes comps, the vibes noodle a melody from the chord's scale.
+// The jukebox. It plays records (records.ts): those of this bar's mood, or all of them. Or it lets the house trio
+// play: a little jazz trio plus vibraphone, improvised live from the chord changes in songs.ts. Bass walks (or sways),
+// the drummer rides with brushes, the Rhodes comps, the vibes noodle a melody from the chord's scale.
 import { au, vol } from "./mixer";
 import { t as tr } from "../i18n";
 import { band, bass, rhodes, vibes, ride, brush, rim, sweep, kick } from "./band";
-import { SONGS, STYLE, chord, hz, near, type Song, type Style } from "./songs";
+import { SONGS, STYLE, chord, hz, near, type Song } from "./songs";
 import { load, save } from "../profile/store";
+import { RECORDS, ARTIST, moodOf, type Record_ } from "../data/records";
+import { C } from "../cafe/state";
+import { initRecords, playRecord, stopRecord, wake } from "./records";
 
 const rnd = <T>(a: T[]): T => a[Math.floor(Math.random() * a.length)];
-export const juke = { title: "", info: "", style: "all" as "all" | Style };
+/** what the jukebox plays: this bar's records, all records, or the house trio */
+export type Pick = "bar" | "all" | "trio";
+export const juke = { title: "", info: "", style: "bar" as Pick };
 const songListeners: (() => void)[] = [];
 /** run on every new record: the settings' jukebox line and the title card */
 export const onSong = (f: () => void): void => void songListeners.push(f);
-juke.style = (load("jukebox") as "all" | Style) || "all";
+const saved = load("jukebox") as Pick;
+juke.style = saved === "all" || saved === "trio" ? saved : "bar";
 const J = {
   song: 0,
   beat: 0,
@@ -22,18 +29,39 @@ const J = {
   comp: [] as number[],
   started: false,
   choruses: 2,
+  /** the record on the turntable, or null while the trio plays */
+  rec: null as Record_ | null,
 };
-const fits = (i: number) => juke.style === "all" || SONGS[i].style === juke.style;
-const nextFit = (i: number) => {
-  for (let k = 1; k <= SONGS.length; k++) if (fits((i + k) % SONGS.length)) return (i + k) % SONGS.length;
-  return i;
-};
+const nextFit = (i: number) => (i + 1) % SONGS.length;
+/** the records that fit: this bar's mood, or every record */
+const crate = () => (juke.style === "all" ? RECORDS : RECORDS.filter((r) => r.mood === moodOf(C.venue?.id)));
 
-/** pick which records the jukebox plays; switches straight away if this one doesn't fit */
-export function setStyle(st: "all" | Style): void {
+/** pick what the jukebox plays; switches straight away */
+export function setStyle(st: Pick): void {
   juke.style = st;
   save("jukebox", st);
-  if (au.A && J.started && !fits(J.song)) nextSong();
+  if (au.A && J.started) nextSong();
+}
+
+function startRecord(r: Record_): void {
+  const list = crate();
+  J.rec = r;
+  J.started = true;
+  juke.title = r.title;
+  juke.info = tr("{artist} · {genre} · record {n} of {total}", {
+    artist: ARTIST,
+    genre: tr(r.genre),
+    n: list.indexOf(r) + 1,
+    total: list.length,
+  });
+  playRecord(r, () => nextSong());
+  for (const f of songListeners) f();
+}
+/** inside a press, the first one: the first record starts in the same breath, which a phone needs */
+export function wakeJukebox(): void {
+  if (!au.A) return;
+  if (juke.style !== "trio" && !J.started) startRecord(rnd(crate()));
+  wake();
 }
 
 export function initJukebox(): void {
@@ -81,11 +109,14 @@ export function initJukebox(): void {
   };
   band.rhodes = trem(4.6, 0.18);
   band.vibes = trem(5.4, 0.3);
-  J.song = nextFit((Math.random() * SONGS.length) | 0);
+  initRecords(verb);
+  J.song = (Math.random() * SONGS.length) | 0;
   setInterval(schedule, 25); // the first record starts once the browser lets sound play
 }
 
 function startSong(t: number): void {
+  stopRecord();
+  J.rec = null;
   const s = SONGS[J.song];
   J.beat = 0;
   J.nextT = t;
@@ -103,13 +134,24 @@ function startSong(t: number): void {
 }
 export function nextSong(): void {
   if (!au.A) return;
+  if (juke.style !== "trio") {
+    const list = crate(),
+      i = J.rec ? list.indexOf(J.rec) : ((Math.random() * list.length) | 0) - 1; // from the trio: any record
+    startRecord(list[(i + 1) % list.length]);
+    return;
+  }
   J.song = nextFit(J.song);
   startSong(au.A.currentTime + 0.4);
 }
 function schedule(): void {
   const A = au.A;
   if (!A || A.state !== "running") return;
-  if (!J.started) startSong(A.currentTime + 0.8);
+  if (juke.style !== "trio") {
+    // records: start one, and change the crate when the bar changes
+    if (!J.rec || (juke.style === "bar" && J.rec.mood !== moodOf(C.venue?.id))) startRecord(rnd(crate()));
+    return;
+  }
+  if (!J.started || J.rec) startSong(A.currentTime + 0.8);
   const s = SONGS[J.song],
     b = 60 / s.bpm;
   if (J.nextT < A.currentTime - 0.05) J.nextT = A.currentTime + 0.05; // the tab slept: pick up from now

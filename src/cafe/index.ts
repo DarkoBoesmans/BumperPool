@@ -17,10 +17,13 @@ import { buildViewmodel, animateViewmodel } from "./viewmodel";
 import { buildProp, animateVenue, paintBanners } from "./venue-props";
 import { tintMoreProps } from "./more-props";
 import { C, rnd } from "./state";
+import { setGuests as seat, animateGuests } from "./guests";
 import type { Color, Game } from "../types";
 import { t } from "../i18n";
 
 export { C } from "./state";
+/** the regulars you beat, at the bar of your own café (an empty list in anyone else's) */
+export const setGuests = (who: Parameters<typeof seat>[1]): void => seat(scene, who);
 export { emote, type Emote } from "./emote";
 export { updateBoards, fontsChanged } from "./boards";
 
@@ -109,6 +112,7 @@ export function updateCafe(dt: number, now: number, ctx: CafeCtx): void {
     bt.r.el.rotation.x = -1.2;
     bt.head.rotation.y = Math.sin(bt.phase * 0.3) * 0.6;
   }
+  animateGuests(dt, now);
   animateViewmodel(now);
   animateVenue(now / 1000);
   smokeSources(dt);

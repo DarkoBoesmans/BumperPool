@@ -204,6 +204,9 @@
   &__state {
     font: italic 400 11.5px $f-serif;
     color: var(--ink-3);
+    .is-next & {
+      color: $poster-ink; // the next card is tinted darker: full ink keeps the line at AA
+    }
     .is-beaten & {
       color: $poster-red;
       font-style: normal;

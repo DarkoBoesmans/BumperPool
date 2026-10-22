@@ -1,7 +1,7 @@
 // The camera effects. Pass 1 renders the café into a low-resolution target (the PS2 slider sets how low).
 // Pass 2 (only with motion blur) blends it with the previous frame, the way PS2 games faked motion blur.
 // Pass 3 adds bloom, lens flares from the lamps, chromatic aberration, grain, vignette and the PS2 dither.
-export const FX_DEFAULTS = { ps2: 60, bloom: 50, flare: 35, grain: 25, vignette: 55, blur: 0, chroma: 15 };
+export const FX_DEFAULTS = { ps2: 60, bloom: 50, flare: 35, grain: 25, vignette: 55, blur: 0, chroma: 15, psx: 0 };
 export type Fx = typeof FX_DEFAULTS;
 export const NLIGHTS = 6;
 

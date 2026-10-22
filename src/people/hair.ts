@@ -72,7 +72,7 @@ export function hatMesh(L: Look, head: THREE.Object3D): void {
         0.03,
         0.01,
       ).scale.set(1, 0.6, 1.1);
-      add(head, new THREE.BoxGeometry(0.15, 0.012, 0.07), m, 0, 0.045, 0.12);
+      add(head, new THREE.BoxGeometry(0.15, 0.012, 0.07), m, 0, 0.04, 0.118).rotation.x = 0.3; // the peak dips: its top catches the lamp
       break;
     case "fedora":
       add(head, facet(new THREE.CylinderGeometry(0.09, 0.105, 0.11, 7)), m, 0, y + 0.04, 0);
@@ -178,8 +178,8 @@ export function extrasMesh(L: Look, head: THREE.Object3D, torso: THREE.Object3D,
       new THREE.BoxGeometry(0.17, 0.035, 0.02),
       phong(0x08080a, { shininess: 90, specular: 0x888888 }),
       0,
-      0.02,
-      0.105,
+      0.004, // over the eyes, not the forehead
+      0.1,
     );
   if (L.earrings === "studs")
     for (const s of [-1, 1]) add(head, new THREE.SphereGeometry(0.009, 5, 3), gold(), s * 0.106, -0.03, 0);

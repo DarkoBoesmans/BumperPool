@@ -324,3 +324,11 @@ a Oversloan
 = Now playing
 v Nu op de jukebox
 a Nu ip de jukebox
+
+= Press start
+v Druk op start
+a Drukt ip start
+
+= Any key, click or tap. Sound on.
+v Eender welke toets, klik of tik. Met geluid.
+a Gelijk welke toets, klik of tik. Mee geluid.

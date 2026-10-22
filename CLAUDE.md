@@ -4,7 +4,7 @@ Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-20
 
 ## Stack
 - TypeScript strict, three.js 0.128.0 from npm, Dart Sass, bun. Only open source, local tools.
-- `bun run dev` watch server, `bun run build` to `dist/` (index.html, legal.html + legal.js, 404.html, og.jpg, robots.txt, sitemap.xml, licenses/), `bun run check` tsc, `bun test`, `bun run format` prettier.
+- `bun run dev` watch server, `bun run build` to `dist/` (index.html, legal.html + legal.js, 404.html, og.jpg, robots.txt, sitemap.xml, music/, licenses/), `bun run check` tsc, `bun test`, `bun run format` prettier.
 - Page markup in `html/` partials, pulled into `index.html` by `<!-- include: html/x.html -->` at build. No inline styles except data-driven CSS vars.
 - GitHub Pages via `.github/workflows/pages.yml` (Source: GitHub Actions): https://darkoboesmans.github.io/BumperPool/. PRs run check/test/build; deploy only from `main`. Actions pinned to SHA + tag comment.
 
@@ -21,7 +21,8 @@ Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-20
 - Text: every shown string through `t("English {name}", vars)` (`src/i18n`). Referee log stores key + `v`, HUD translates (`tLog`). Lines in `src/i18n/sheets/*.txt` (`=` en, `v` Vlaams, `a` Oilsjters, `a ~` same). Legal sheet Vlaams only. `bun tools/i18n-keys.ts` prints missing lines; `test/i18n.test.ts` checks. Dynamic text: redraw on `onLang`.
 - Phone: HUD sits beside table, camera frames table in free room (`src/ui/room.ts`). New fixed HUD block: add to `BLOCKS`. Desktop top view: rail + spin pad push sides in. Upright phone = `upright` mixin.
 - Knock = thanks for a trick shot only (`trickOf` in `src/core/verdict.ts`). Ball pick = ray against balls (`rayPick`, `src/render/camera.ts`), works at any tilt.
-- Jukebox: original synth tunes, start on first gesture (browser rule). New record: `onSong` listeners, title card `src/ui/nowplaying.ts`.
+- Title screen (`src/ui/title.ts`): its press = the browser's first gesture, starts audio. Jukebox: records (`src/data/records.ts`, Kevin MacLeod CC BY 4.0, `bun tools/records.ts` fetches into `music/`, credits in `legal.html`), crate per bar mood, or the house trio (synth, `songs.ts`). New record: `onSong` listeners, title card `src/ui/nowplaying.ts`.
+- Home café: `goHome()` (`src/game/flow.ts`) = home venue + beaten regulars on bar stools (`src/cafe/guests.ts`); landlord frame + photo wall boards. PS1 look: vertex snap patched into every material (`renderer.ts`).
 - Reduced motion: `calm` (`src/render/renderer.ts`): no drift, still grain, no ambient smoke. CSS: `calm` mixin.
 
 ## Styles

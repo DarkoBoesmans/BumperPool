@@ -14,6 +14,7 @@ const CALLS: Record<string, number[]> = {
   log: [2, 3],
   banner: [1, 3],
   trophy: [2, 3],
+  disc: [2],
 };
 /** in the data files, the fields that hold text (a regular's name and ids stay as they are) */
 const PROPS = new Set(
@@ -34,7 +35,7 @@ export function areaOf(file: string): string {
   if (/^src\/(data\/(story|grades)|ui\/(story|tutorial|grades|roster|scout))\.ts$/.test(file)) return "story";
   if (/^src\/core\//.test(file)) return "referee";
   if (/^src\/(cafe|render)\//.test(file)) return "cafe";
-  if (/^(src\/ui\/settings\.ts|src\/audio\/|html\/settings\.html)/.test(file)) return "settings";
+  if (/^(src\/ui\/settings\.ts|src\/audio\/|src\/data\/records\.ts|html\/settings\.html)/.test(file)) return "settings";
   if (/^(src\/game\/(show|buzz)|src\/ui\/(endcard|replay-overlay|banner)|html\/show)/.test(file)) return "show";
   if (/^(src\/(game|replay|cpu)\/|src\/ui\/(hud|status|live|spinpad|bubble)\.ts|html\/hud\.html)/.test(file))
     return "table";

@@ -64,6 +64,7 @@ export async function buildAll({ minify = true } = {}): Promise<boolean> {
   await cp("og.jpg", `${OUT}/og.jpg`); // the picture for shared links
   await cp("404.html", `${OUT}/404.html`); // GitHub Pages shows it for any address that doesn't exist
   for (const f of ["robots.txt", "sitemap.xml"]) await cp(f, `${OUT}/${f}`); // the two pages, for search engines
+  await cp("music", `${OUT}/music`, { recursive: true }); // the jukebox's records (tools/records.ts)
   console.log(`built ${OUT}/ in ${Math.round(performance.now() - t0)} ms`);
   return true;
 }

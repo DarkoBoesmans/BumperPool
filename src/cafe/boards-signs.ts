@@ -1,4 +1,4 @@
-// The signs: the neon marquee over the door, the regular of the month and the clock.
+// The signs: the neon marquee over the door, the regular of the month (or you, at home), the photo wall and the clock.
 import { paintPortrait } from "../people/portrait";
 import { t } from "../i18n";
 import { POSTER, fit, type BoardCtx } from "./boards-draw";
@@ -31,25 +31,70 @@ export function drawMarquee(c: CanvasRenderingContext2D | null, { G, venue }: Bo
   }
 }
 
-export function drawRegular(c: CanvasRenderingContext2D | null, { opp }: BoardCtx): string | void {
-  if (!c) return opp ? opp.id : "none";
+export function drawRegular(c: CanvasRenderingContext2D | null, { opp, host }: BoardCtx): string | void {
+  if (!c) return opp ? opp.id : host ? host.name + JSON.stringify(host.look) : "none";
   const w = c.canvas.width,
-    h = c.canvas.height;
+    h = c.canvas.height,
+    who = opp || (host && { look: host.look, name: host.name });
   c.fillStyle = "#1a120c";
   c.fillRect(0, 0, w, h);
   c.fillStyle = "#c9a35b";
   c.font = `17px ${POSTER}`;
   c.textAlign = "center";
-  c.fillText(t("REGULAR OF THE MONTH"), w / 2, 24);
-  if (!opp) return;
+  c.fillText(opp ? t("REGULAR OF THE MONTH") : t("THE LANDLORD"), w / 2, 24);
+  if (!who) return;
   const p = document.createElement("canvas");
   p.width = p.height = 64;
-  paintPortrait(p, opp);
+  paintPortrait(p, who);
   c.imageSmoothingEnabled = false;
   c.drawImage(p, 16, 34, w - 32, w - 32);
   c.fillStyle = "#efe4c8";
-  fit(c, opp.name.toUpperCase(), (s) => `${s}px ${POSTER}`, 26, w - 16);
-  c.fillText(opp.name.toUpperCase(), w / 2, h - 18);
+  fit(c, who.name.toUpperCase(), (s) => `${s}px ${POSTER}`, 26, w - 16);
+  c.fillText(who.name.toUpperCase(), w / 2, h - 18);
+}
+
+/** the photo wall: a snapshot of every regular you have beaten, an empty frame for the rest */
+export function drawPhotoWall(c: CanvasRenderingContext2D | null, { regulars }: BoardCtx): string | void {
+  if (!c) return regulars.map((r) => +r.beaten).join("");
+  const w = c.canvas.width,
+    h = c.canvas.height,
+    cols = 6,
+    rows = Math.ceil(regulars.length / cols),
+    cw = (w - 24) / cols,
+    ch = (h - 52) / rows,
+    ps = Math.min(cw - 14, ch - 26);
+  c.fillStyle = "#3a2416";
+  c.fillRect(0, 0, w, h);
+  c.fillStyle = "#efe4c8";
+  c.textAlign = "center";
+  c.font = `26px ${POSTER}`;
+  c.fillText(t("THE REGULARS"), w / 2, 34);
+  const p = document.createElement("canvas");
+  p.width = p.height = 64;
+  c.imageSmoothingEnabled = false;
+  regulars.forEach(({ o, beaten }, i) => {
+    const x = 12 + (i % cols) * cw + (cw - ps) / 2,
+      y = 46 + Math.floor(i / cols) * ch;
+    c.save();
+    c.translate(x + ps / 2, y + ps / 2);
+    c.rotate(((i * 37) % 7) / 100 - 0.03); // pinned up by hand, never quite straight
+    c.fillStyle = "#f4ead2";
+    c.fillRect(-ps / 2 - 4, -ps / 2 - 4, ps + 8, ps + 18); // a white photo border, wider at the bottom
+    if (beaten) {
+      paintPortrait(p, o);
+      c.drawImage(p, -ps / 2, -ps / 2, ps, ps);
+    } else {
+      c.fillStyle = "#2a1c14";
+      c.fillRect(-ps / 2, -ps / 2, ps, ps);
+      c.fillStyle = "#6a5a48";
+      c.font = `${ps * 0.6}px ${POSTER}`;
+      c.fillText("?", 0, ps * 0.22);
+    }
+    c.fillStyle = "#2a1c14";
+    c.font = `11px ${POSTER}`;
+    if (beaten) c.fillText(o.name.split(" ")[0].toUpperCase(), 0, ps / 2 + 11);
+    c.restore();
+  });
 }
 
 export function drawClock(c: CanvasRenderingContext2D | null): string | void {

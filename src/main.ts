@@ -15,6 +15,7 @@ import { recTick } from "./replay/recorder";
 import { play } from "./replay/replay";
 import { sfx } from "./audio/sfx";
 import { au, initAudio } from "./audio/mixer";
+import { wakeJukebox } from "./audio/jukebox";
 import { net, available, netHooks, push, takeSeat, leaveSeat } from "./net/online";
 import { me, saveMe } from "./profile/profile";
 import { $, $$ } from "./ui/dom";
@@ -30,6 +31,7 @@ import { initKonami } from "./ui/konami";
 import { showView, redrawView, type View } from "./ui/menu";
 import { initLang } from "./ui/lang";
 import { initNowPlaying } from "./ui/nowplaying";
+import { initTitle } from "./ui/title";
 import { story, renderStory } from "./ui/story";
 import { roster, renderRoster, pickedOpponent, pickOpponent } from "./ui/roster";
 import { onMeSaved } from "./ui/maker";
@@ -177,6 +179,7 @@ function wireGame(): void {
   const GESTURES = ["pointerdown", "pointerup", "touchend", "keydown", "click"] as const;
   const unlock = () => {
     initAudio();
+    wakeJukebox();
     if (au.A?.state === "running") for (const g of GESTURES) removeEventListener(g, unlock, true);
   };
   for (const g of GESTURES) addEventListener(g, unlock, true);
@@ -239,7 +242,11 @@ function boot(): void {
     refresh();
   });
   initNowPlaying();
-  initAudio(); // a browser that already trusts this site starts the jukebox now; the others wait for the first input
+  initTitle(() => {
+    initAudio(); // the press that opens the menu is the one the browser waits for: café, jukebox and menu start together
+    wakeJukebox();
+    sfx("ui");
+  });
   // handy in the console of a local build only: the published game keeps its state out of reach
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname))
     (window as unknown as Record<string, unknown>).tjoepbiljart = {

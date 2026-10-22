@@ -2,7 +2,7 @@
 import { THREE, add, lam, basic } from "../render/three";
 import { WX, WZ } from "./state";
 import { drawScore, drawFoulBook, drawRules, type BoardCtx } from "./boards-draw";
-import { drawMarquee, drawRegular, drawClock } from "./boards-signs";
+import { drawMarquee, drawRegular, drawPhotoWall, drawClock } from "./boards-signs";
 import { drawArtPoster, drawWhisky, drawCigarAd, drawShame } from "./posters";
 import { drawKonami, drawCode } from "./arcade-posters";
 
@@ -58,6 +58,7 @@ export function buildBoards(room: THREE.Object3D): void {
   }
   board(room, 2.6, 0.42, 0, 2.1, -WZ + 0.04, 0, 640, drawMarquee, { lit: true });
   board(room, 0.62, 0.82, 0, 1.0, WZ - 0.03, Math.PI, 192, drawRegular, { frame: 0xc9a35b });
+  board(room, 1.1, 0.72, -0.95, 0.92, WZ - 0.03, Math.PI, 480, drawPhotoWall, { frame: 0x2a140a }); // the regulars you beat, under a picture light
   board(room, 0.5, 0.5, 1.0, 1.2, WZ - 0.03, Math.PI, 160, drawClock, { frame: 0x2a140a });
   board(room, 0.7, 0.98, -4.0, 0.8, WZ - 0.03, Math.PI, 240, drawCigarAd, { frame: 0x111111 });
   board(room, 0.42, 0.6, 3.55, 1.05, WZ - 0.03, Math.PI, 168, drawKonami, { frame: 0x111111 }); // a small arcade poster by the jukebox
