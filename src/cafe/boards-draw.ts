@@ -1,5 +1,5 @@
 // The live boards: tonight's score, the foul book and the house rules. The signs are in boards-signs.ts.
-import type { Game, Opponent } from "../types";
+import type { Game, Look, Opponent } from "../types";
 import type { Venue } from "../data/venues";
 import type { Shame } from "../profile/profile";
 import { t, tLog } from "../i18n";
@@ -8,6 +8,10 @@ import { rnd } from "./state";
 export interface BoardCtx {
   G: Game | null;
   opp: Opponent | null;
+  /** in your own café: you, the landlord, on the frame where a regular's bar hangs its regular of the month */
+  host: { name: string; look: Look } | null;
+  /** every regular, and which of them you have beaten: the photo wall */
+  regulars: { o: Opponent; beaten: boolean }[];
   turnName: string;
   venue: Venue;
   shame: Shame[];

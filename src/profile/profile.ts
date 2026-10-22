@@ -1,5 +1,5 @@
 // You: name, look, record, tokens, what you own and which grades are open. Kept in this browser only (localStorage).
-import type { Grade, GradeId, Look } from "../types";
+import type { Grade, GradeId, Look, Opponent } from "../types";
 import { GRADES } from "../data/grades";
 import { OPPONENTS, findOpponent, gradeOf } from "../data/regulars";
 import { ITEMS, STARTER, itemById, type FreeStats, type Item } from "../data/shop";
@@ -150,7 +150,9 @@ export function unlocked(gradeId: GradeId): boolean {
   return i === 0 || OPPONENTS.filter((o) => o.grade === GRADES[i - 1].id).every((o) => me.beaten[o.id]);
 }
 export const visibleGrades = (): Grade[] => GRADES.filter((g) => !g.secret || me.pearl);
-export const beatenCount = (): number => OPPONENTS.filter((o) => me.beaten[o.id]).length;
+/** the regulars you have beaten, weakest first */
+export const beatenRegulars = (): Opponent[] => OPPONENTS.filter((o) => me.beaten[o.id]);
+export const beatenCount = (): number => beatenRegulars().length;
 export const TOTAL = OPPONENTS.length;
 /** the next regular the story sends you to, or null when everyone you can reach is beaten */
 export function nextInStory(): string | null {

@@ -2,13 +2,13 @@
 import { G, setG, newMatch, newManche, REGLEMENT } from "../core";
 import { S } from "../render/renderer";
 import { camS } from "../render/camera";
-import { setVenue } from "../cafe";
+import { setVenue, setGuests } from "../cafe";
 import { setPlayers } from "../people/player";
 import { findOpponent, venueOf } from "../data/regulars";
 import { itemById } from "../data/shop";
 import { initAudio } from "../audio/mixer";
 import { joinOnline, leaveOnline, push } from "../net/online";
-import { me, myName, homeVenue, sawVenue } from "../profile/profile";
+import { me, myName, homeVenue, sawVenue, beatenRegulars } from "../profile/profile";
 import { $ } from "../ui/dom";
 import { app } from "../ui/app";
 import { quip } from "../ui/bubble";
@@ -20,6 +20,11 @@ import { t } from "../i18n";
 import { applyLooks, refresh } from "./refresh";
 
 const portrait = () => S.w < S.h;
+/** your own café, with the regulars you beat at the bar */
+const goHome = () => {
+  setVenue(homeVenue());
+  setGuests(beatenRegulars());
+};
 const myCue = () => itemById(me.equip.cue)?.cue || null;
 
 export function setViewPills(): void {
@@ -31,7 +36,7 @@ export function openStart(v: View = "home"): void {
   $("#start").hidden = false;
   $("#hud").hidden = true;
   camS.mode = "intro";
-  if (!app.inGame) setVenue(homeVenue());
+  if (!app.inGame) goHome();
   showView(v);
   renderUI();
 }
@@ -72,6 +77,7 @@ export function startCpu(id: string, freeplay: boolean): void {
   setPlayers([me.look, o.look], [myCue(), null]);
   const v = venueOf(o);
   setVenue(v);
+  setGuests([]);
   sawVenue(v);
   applyLooks();
   enterGame();
@@ -91,7 +97,7 @@ export function startLocal(): void {
   });
   fresh();
   setPlayers([me.look, null], [myCue(), null]);
-  setVenue(homeVenue());
+  goHome();
   applyLooks();
   enterGame();
 }
@@ -108,7 +114,7 @@ export async function startOnline(): Promise<void> {
     await joinOnline($<HTMLInputElement>("#tableName").value, $<HTMLInputElement>("#nOnline").value.trim() || myName());
     fresh();
     setPlayers([null, null]);
-    setVenue(homeVenue());
+    goHome();
     applyLooks();
     enterGame();
   } catch (e) {

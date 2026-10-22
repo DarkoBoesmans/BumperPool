@@ -6,9 +6,9 @@ import { setCueLook } from "../render/aim";
 import { updatePlaques } from "../render/plaques";
 import { updateBoards, C } from "../cafe";
 import { GRADES } from "../data/grades";
-import { findOpponent, gradeOf } from "../data/regulars";
+import { OPPONENTS, gradeOf } from "../data/regulars";
 import { itemById } from "../data/shop";
-import { me } from "../profile/profile";
+import { me, myName } from "../profile/profile";
 import { renderUI } from "../ui/hud";
 import { app, help } from "../ui/app";
 import { clothMarks } from "./aiming";
@@ -31,7 +31,9 @@ export function changed(): void {
 
 export const boardCtx = () => ({
   G,
-  opp: G?.mode === "cpu" ? app.opp : findOpponent("kevin"),
+  opp: G?.mode === "cpu" ? app.opp : null,
+  host: G?.mode === "cpu" ? null : { name: myName(), look: me.look },
+  regulars: OPPONENTS.filter((o) => o.grade !== "pearl" || me.pearl).map((o) => ({ o, beaten: !!me.beaten[o.id] })),
   turnName: G ? nameOf(G.turn) : "",
   venue: C.venue!,
   shame: me.shame,

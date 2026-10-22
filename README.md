@@ -14,7 +14,10 @@ Belgian tap billiards (golfbiljart) in the browser, set in a smoky low-poly caf�
 - Whisky blurs your view but your aim line reaches further. Cigars fill the room with smoke. Chalk gives full spin without a miscue, but chalk dust makes your ball cling
 - Pull off a trick shot (off a cushion or a post, a combination, two in one, from the far half) and tradition says you knock twice on the table; the regulars do it too
 - A referee that explains every foul in plain words, goal cam and foul cam replays, an end card after every game
-- Synthesised sound and a jazz jukebox that improvises seven original tunes, so there is no music licence to worry about. Sound starts with your first touch, click or key anywhere (browsers allow nothing earlier), and a title card shows each new record
+- A title screen with PRESS START: that first press is the one browsers wait for, so the café, the jukebox and the menu start together
+- A jukebox with twenty records by Kevin MacLeod (CC BY 4.0): every bar plays the ones that fit its mood, or all of them, or a house trio that improvises seven original tunes. A title card shows each new record
+- **Your café is home**: the regulars you beat come for a drink at your bar and watch the table, their photos go up on the wall, and your own face hangs where other bars put their regular of the month
+- Four looks: Clean, PS2, a PS1 look whose corners shiver on a coarse grid, and Cinema
 - Plays on a phone, upright or on its side: the controls move beside the table, and the camera frames the table in the room they leave
 - **Three languages**: Vlaams, English and Oilsjters (the dialect of Aalst), picked under the main menu. The game's name is never translated
 - The old arcade code (up, up, down, down, left, right, left, right, B, A; on a phone: swipe, then tap twice) opens the back room early. A poster on the café wall spells it out, and the story and the shop hint at it
