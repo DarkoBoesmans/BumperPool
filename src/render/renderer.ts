@@ -5,6 +5,21 @@ import { FX_DEFAULTS, NLIGHTS, POST_VS, POST_FS, BLEND_FS, type Fx } from "./pos
 /** the player asked their system for less motion: the camera stops drifting, the grain stands still, no ambient smoke */
 export const calm = typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+// The first PlayStation's wobble: every vertex snaps to a coarse screen grid, so edges shiver as the camera moves.
+// Patched into every built-in material at compile time; psxGrid is the grid in cells per half screen, 0 is off.
+// ponytail: vertex snapping only; the PS1's warped (affine) textures would need every material's fragment shader.
+const psxGrid = { value: new THREE.Vector2(0, 0) };
+THREE.Material.prototype.onBeforeCompile = function (sh) {
+  if (!sh.vertexShader.includes("#include <project_vertex>")) return;
+  sh.uniforms.psxGrid = psxGrid;
+  sh.vertexShader =
+    "uniform vec2 psxGrid;\n" +
+    sh.vertexShader.replace(
+      "#include <project_vertex>",
+      "#include <project_vertex>\nif (psxGrid.x > 0.) gl_Position.xy = floor(gl_Position.xy / gl_Position.w * psxGrid + .5) / psxGrid * gl_Position.w;",
+    );
+};
+
 export interface Flare {
   pos: THREE.Vector3;
   k: number;
@@ -136,6 +151,8 @@ function resize(): void {
   S.post.uniforms.res.value.set(bw, bh);
   S.post.uniforms.aspect.value = w / h;
   S.bh = bh;
+  const px = 1 + (S.fx.psx / 100) * 5; // up to 6 render pixels per step
+  psxGrid.value.set(S.fx.psx > 0 ? bw / 2 / px : 0, S.fx.psx > 0 ? bh / 2 / px : 0);
   S.accLive = false;
   S.camera.aspect = w / h;
   S.camera.fov = w < h ? 58 : 42;
@@ -144,7 +161,7 @@ function resize(): void {
 
 /** fx: 0..100 per effect (see FX_DEFAULTS) */
 export function setFx(fx: Partial<Fx>): void {
-  const ps2Changed = fx.ps2 !== S.lastPs2;
+  const ps2Changed = fx.ps2 !== S.lastPs2 || fx.psx !== S.fx.psx;
   S.fx = { ...FX_DEFAULTS, ...fx };
   S.lastPs2 = S.fx.ps2;
   const u = S.post.uniforms,

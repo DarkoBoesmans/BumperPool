@@ -6,8 +6,11 @@ import type { Look } from "../types";
 const BALDISH = new Set(["bald", "buzz", "mohawk"]);
 
 export function faceTex(L: Look): THREE.CanvasTexture {
-  return canvasTex(128, 64, (c, w, h) => {
-    const fx = 32,
+  return canvasTex(256, 128, (c) => {
+    c.scale(2, 2); // painted on the 128 by 64 plan below, at twice the pixels: room for half-pixel detail
+    const w = 128,
+      h = 64,
+      fx = 32,
       dark = shade(L.skin, 0.72),
       deep = shade(L.skin, 0.55);
     c.fillStyle = L.skin;
@@ -38,6 +41,14 @@ export function faceTex(L: Look): THREE.CanvasTexture {
       c.fillRect(0, 0, w, 12);
       c.fillRect(64, 0, 64, 32);
     }
+    // a little light on the forehead and the cheekbones, shadow in the eye sockets
+    c.fillStyle = "rgba(255,240,220,.1)";
+    c.fillRect(fx - 12, 9, 24, 8);
+    c.fillRect(fx - 12, 29, 6, 3);
+    c.fillRect(fx + 6, 29, 6, 3);
+    c.fillStyle = "rgba(40,10,0,.12)";
+    c.fillRect(fx - 13, 21, 11, 9);
+    c.fillRect(fx + 2, 21, 11, 9);
     // brows, eyes with whites and a lid line, the nose's shadow and nostrils, the mouth
     c.fillStyle = shade(L.hair, 0.85);
     c.fillRect(fx - 13, 19, 10, 2);
@@ -59,6 +70,9 @@ export function faceTex(L: Look): THREE.CanvasTexture {
     c.fillStyle = "#0a0606";
     c.fillRect(fx - 8, 25, 2, 2);
     c.fillRect(fx + 6, 25, 2, 2);
+    c.fillStyle = "#fffaf0"; // a catchlight from the lamp above the table
+    c.fillRect(fx - 8, 24.5, 1, 1);
+    c.fillRect(fx + 6, 24.5, 1, 1);
     c.fillStyle = L.lashes ? "#0a0606" : deep;
     c.fillRect(fx - 12, 23, 9, L.lashes ? 2 : 1);
     c.fillRect(fx + 3, 23, 9, L.lashes ? 2 : 1);
@@ -68,6 +82,17 @@ export function faceTex(L: Look): THREE.CanvasTexture {
     }
     c.fillStyle = dark;
     c.fillRect(fx + 1, 26, 2, 9);
+    c.fillStyle = "rgba(255,240,220,.22)"; // the bridge and the tip catch the light
+    c.fillRect(fx - 0.5, 25, 1.5, 9);
+    // the lines from the nose down past the mouth
+    c.strokeStyle = "rgba(40,10,0,.22)";
+    c.lineWidth = 0.8;
+    c.beginPath();
+    c.moveTo(fx - 5, 35);
+    c.lineTo(fx - 8, 42);
+    c.moveTo(fx + 5, 35);
+    c.lineTo(fx + 8, 42);
+    c.stroke();
     c.fillStyle = deep;
     c.fillRect(fx - 4, 35, 3, 2);
     c.fillRect(fx + 1, 35, 3, 2);
@@ -79,6 +104,8 @@ export function faceTex(L: Look): THREE.CanvasTexture {
     c.fillRect(fx - 6, 41, 12, 1);
     c.fillStyle = lips;
     c.fillRect(fx - 5, 42, 10, L.lips ? 3 : 2);
+    c.fillStyle = "rgba(255,240,220,.25)";
+    c.fillRect(fx - 3, L.lips ? 43.5 : 43, 6, 0.6);
     c.fillStyle = dark;
     c.fillRect(fx - 3, 48, 6, 1); // under the lip
     const f = L.facial || "none";

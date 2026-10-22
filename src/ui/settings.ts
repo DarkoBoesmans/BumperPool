@@ -16,11 +16,13 @@ const FX: { k: keyof Fx; title: string; desc: string }[] = [
   { k: "vignette", title: "Vignette", desc: "Darker corners" },
   { k: "blur", title: "Motion blur", desc: "Smears fast camera moves" },
   { k: "chroma", title: "Chromatic aberration", desc: "Colour fringes towards the edges" },
+  { k: "psx", title: "PS1 wobble", desc: "Corners snap to a coarse grid and shiver as the camera moves" },
 ];
 const LOOKS: Record<string, Fx> = {
-  clean: { ps2: 0, bloom: 30, flare: 15, grain: 0, vignette: 25, blur: 0, chroma: 0 },
+  clean: { ps2: 0, bloom: 30, flare: 15, grain: 0, vignette: 25, blur: 0, chroma: 0, psx: 0 },
   ps2: { ...FX_DEFAULTS },
-  cinema: { ps2: 15, bloom: 70, flare: 65, grain: 45, vignette: 75, blur: 35, chroma: 30 },
+  psx: { ps2: 85, bloom: 20, flare: 10, grain: 20, vignette: 65, blur: 0, chroma: 10, psx: 60 },
+  cinema: { ps2: 15, bloom: 70, flare: 65, grain: 45, vignette: 75, blur: 35, chroma: 30, psx: 0 },
 };
 export type Applied = "fx" | "lines" | "cloth" | "clock";
 

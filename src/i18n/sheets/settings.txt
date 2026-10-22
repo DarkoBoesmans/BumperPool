@@ -4,6 +4,71 @@
 v {style} · {bpm} BPM · plaat {n} van {total}
 a ~
 
+= {artist} · {genre} · record {n} of {total}
+v {artist} · {genre} · plaat {n} van {total}
+a ~
+
+# the records' genres
+= Ragtime
+v Ragtime
+a ~
+
+= Swing
+v Swing
+a ~
+
+= Blues piano
+v Bluespiano
+a ~
+
+= Blues
+v Blues
+a ~
+
+= Boogie-woogie
+v Boogie-woogie
+a ~
+
+= Rock and roll
+v Rock-'n-roll
+a ~
+
+= Bossa nova
+v Bossa nova
+a ~
+
+= Cool jazz
+v Cool jazz
+a ~
+
+= Lounge
+v Lounge
+a ~
+
+= Samba
+v Samba
+a ~
+
+= Vibraphone jazz
+v Vibrafoonjazz
+a ~
+
+= Jazz
+v Jazz
+a ~
+
+= Club jazz
+v Clubjazz
+a ~
+
+= Noir jazz
+v Noirjazz
+a ~
+
+= Exotica
+v Exotica
+a ~
+
 = PS2 filter
 v PS2-filter
 a ~
@@ -108,24 +173,16 @@ a ~
 v Platen die de jukebox speelt
 a Platen die de jukebox opleit
 
-= All
-v Alle
-a Allemoal
+= This bar's records
+v Platen van dit café
+a Ploaten van dees café
 
-= Swing
-v Swing
-a ~
+= All records
+v Alle platen
+a Al de ploaten
 
-= Bossa
-v Bossa
-a ~
-
-= Waltz
-v Wals
-a ~
-
-= Ballad
-v Ballade
+= The house trio
+v Het huistrio
 a ~
 
 = Look
@@ -211,3 +268,11 @@ a Ou mannetje, palmares, jetons, gerief en instellingen sjtoan alleen in deze br
 = Privacy
 v Privacy
 a ~
+
+= PS1 wobble
+v PS1-gewiebel
+a PS1-gewiebel
+
+= Corners snap to a coarse grid and shiver as the camera moves
+v Hoeken springen naar een grof raster en trillen als de camera beweegt
+a Hoeken springen noar e grof raster en trillen as de camera beweegt

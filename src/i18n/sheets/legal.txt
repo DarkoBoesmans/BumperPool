@@ -19,8 +19,8 @@ v Privacy, voorwaarden en dankwoord
 = A free hobby game that keeps your data in your own browser. Everything else, in plain words.
 v Een gratis hobbyspel dat je gegevens in je eigen browser houdt. De rest, in gewone woorden.
 
-= Last updated 13 October 2026
-v Laatst bijgewerkt op 13 oktober 2026
+= Last updated 22 October 2026
+v Laatst bijgewerkt op 22 oktober 2026
 
 = cookies
 v cookies
@@ -127,8 +127,8 @@ v je instellingen
 = sound volumes
 v geluidsvolumes
 
-= the jukebox style
-v de stijl van de jukebox
+= what the jukebox plays
+v wat de jukebox speelt
 
 = your language
 v je taal
@@ -220,8 +220,8 @@ v De tafel zelf is een 3D-beeld, dus hoeken inschatten vraagt zicht, en de camer
 = Made by hand, built on open source.
 v Met de hand gemaakt, gebouwd op open source.
 
-= The game's code, art, characters and music are © Darko Boesmans.
-v De code, tekeningen, personages en muziek van het spel zijn © Darko Boesmans.
+= The game's code, art and characters, and the house trio's tunes, are © Darko Boesmans.
+v De code, tekeningen en personages van het spel, en de deuntjes van het huistrio, zijn © Darko Boesmans.
 
-= The licence texts ship with the game. The jukebox plays original tunes improvised over common jazz chord changes.
-v De licentieteksten zitten bij het spel. De jukebox speelt eigen deuntjes, geïmproviseerd over bekende jazzakkoorden.
+= The licence texts ship with the game. The jukebox plays records by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0. For the jukebox they are shortened to at most three and a half minutes and mixed to mono.
+v De licentieteksten zitten bij het spel. De jukebox speelt platen van Kevin MacLeod (incompetech.com), met een Creative Commons-licentie: Naamsvermelding 4.0. Voor de jukebox zijn ze ingekort tot hoogstens drie en een halve minuut en naar mono gemengd.

@@ -1,7 +1,8 @@
 // A person in the style of a PS2 open-world game (think San Andreas): real proportions, smooth-shaded tapered limbs,
 // a lathed torso shaped by build and frame, mitten hands with a thumb, shoes with a toe, a jawed head with a nose,
 // ears and a painted face, then hair, hat and accessories. Standing or sitting. About 1.7 m tall.
-import { THREE, add, lam } from "../render/three";
+import { THREE, add, lam, facet } from "../render/three";
+import { BufferGeometryUtils } from "three/examples/jsm/utils/BufferGeometryUtils";
 import { blobMat } from "../render/balls";
 import { faceTex, clothTex, shade } from "./face";
 import { hairMesh, hatMesh, extrasMesh } from "./hair";
@@ -89,11 +90,31 @@ function headGeo(): THREE.BufferGeometry {
   return new THREE.LatheGeometry(pts, 14, -Math.PI / 2);
 }
 
+/** a hand in one mesh: a palm with knuckles, four fingers of their own length curled a little, a thumb in two parts.
+ * Built once per side and shared by everyone. */
+const HANDS: Record<number, THREE.BufferGeometry> = {};
+function handGeo(s: number): THREE.BufferGeometry {
+  if (HANDS[s]) return HANDS[s];
+  const parts: THREE.BufferGeometry[] = [],
+    put = (g: THREE.BufferGeometry, x: number, y: number, z: number, rx = 0, rz = 0) => {
+      const o = new THREE.Object3D();
+      o.position.set(x, y, z);
+      o.rotation.set(rx, 0, rz);
+      o.updateMatrix();
+      parts.push(g.applyMatrix4(o.matrix));
+    };
+  put(new THREE.BoxGeometry(0.066, 0.062, 0.03), 0, -0.036, 0); // palm
+  put(new THREE.BoxGeometry(0.068, 0.014, 0.034), 0, -0.066, 0.002); // knuckles
+  [0.046, 0.052, 0.049, 0.039].forEach((len, i) => {
+    const x = (i - 1.5) * 0.0165 * -s;
+    put(new THREE.BoxGeometry(0.0155, len, 0.019), x, -0.07 - len / 2 + 0.004, 0.012, 0.42 + i * 0.05);
+  });
+  put(new THREE.BoxGeometry(0.019, 0.032, 0.02), s * 0.036, -0.036, 0.012, 0, s * 0.5); // thumb
+  put(new THREE.BoxGeometry(0.016, 0.026, 0.017), s * 0.05, -0.062, 0.022, 0.3, s * 0.2);
+  return (HANDS[s] = facet(BufferGeometryUtils.mergeBufferGeometries(parts.map((g) => g.toNonIndexed()))));
+}
 function hand(parent: THREE.Object3D, skin: THREE.Material, s: number): void {
-  add(parent, new THREE.BoxGeometry(0.07, 0.08, 0.032), skin, 0, -0.045, 0);
-  add(parent, new THREE.BoxGeometry(0.066, 0.055, 0.028), skin, 0, -0.105, 0.006).rotation.x = 0.35; // fingers
-  const t = add(parent, new THREE.BoxGeometry(0.02, 0.05, 0.022), skin, s * 0.038, -0.05, 0.016); // thumb
-  t.rotation.z = s * 0.45;
+  add(parent, handGeo(s), skin);
 }
 
 function shoe(parent: THREE.Object3D, m: THREE.Material, y: number): void {
@@ -168,8 +189,18 @@ export function figure(L: Look, pose: "stand" | "sit" = "stand"): Figure {
   const head = new THREE.Group();
   head.position.y = 0.77;
   torso.add(head);
-  add(head, headGeo(), lam(0xffffff, { map: faceTex(L) })).scale.z = 0.94;
-  add(head, new THREE.BoxGeometry(0.017, 0.032, 0.02), skin, 0, -0.006, 0.096); // nose
+  const ft = faceTex(L); // a little self-light, as if baked in, so a face still reads with the lamp behind it
+  add(head, headGeo(), lam(0xffffff, { map: ft, emissiveMap: ft, emissive: 0x3a3a3a })).scale.z = 0.94;
+  // the face in relief: a wedge of a nose, brows that jut out over the eyes, a chin
+  const nose = add(head, facet(new THREE.CylinderGeometry(0.003, 0.012, 0.036, 3)), skin, 0, -0.004, 0.091);
+  nose.rotation.x = -0.28;
+  const browCol = lam(shade(L.hair, 0.8));
+  for (const s of [-1, 1]) {
+    const br = add(head, new THREE.BoxGeometry(0.034, 0.009, 0.014), browCol, s * 0.026, 0.06, 0.088);
+    br.rotation.set(-0.25, s * 0.28, s * -0.12); // follows the forehead, the outer end a touch lower
+  }
+  const bearded = L.facial === "beard" || L.facial === "goatee";
+  add(head, new THREE.BoxGeometry(0.044, 0.026, 0.018), bearded ? lam(L.hair) : skin, 0, -0.094, 0.046);
   for (const s of [-1, 1])
     add(head, new THREE.BoxGeometry(0.014, 0.042, 0.026), lam(shade(L.skin, 0.88)), s * 0.1, -0.008, -0.004);
   hairMesh(L, head);
