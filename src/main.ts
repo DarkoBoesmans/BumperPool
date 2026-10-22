@@ -16,7 +16,8 @@ import { play } from "./replay/replay";
 import { sfx } from "./audio/sfx";
 import { au, initAudio } from "./audio/mixer";
 import { wakeJukebox } from "./audio/jukebox";
-import { net, available, netHooks, push, takeSeat, leaveSeat } from "./net/online";
+import { netHooks, push } from "./net/online";
+import { initOnlineMenu, initCafeBox } from "./ui/cafe-online";
 import { me, saveMe } from "./profile/profile";
 import { $, $$ } from "./ui/dom";
 import { app, viewColor } from "./ui/app";
@@ -39,7 +40,16 @@ import { shop } from "./ui/shop";
 import { changed, refresh, applyLooks } from "./game/refresh";
 import { doEmote } from "./game/buzz";
 import { wireInput, gameKey } from "./game/input";
-import { openStart, enterGame, startCpu, startLocal, startOnline, nextGame, setViewPills } from "./game/flow";
+import {
+  openStart,
+  enterGame,
+  startCpu,
+  startLocal,
+  startOnline,
+  leaveCafe,
+  nextGame,
+  setViewPills,
+} from "./game/flow";
 import { skipReplay } from "./game/show";
 import { frame } from "./game/loop";
 import { itemById } from "./data/shop";
@@ -49,7 +59,7 @@ hooks.changed = changed;
 hooks.push = () => push();
 hooks.sfx = sfx;
 hooks.frame = recTick;
-netHooks({ changed, emote: (c, kind) => doEmote(c, kind, false) });
+netHooks({ changed, emote: (c, kind) => doEmote(c, kind, false), seated: (looks) => setPlayers(looks) });
 
 function wireMenus(): void {
   for (const b of $$("[data-go]")) b.addEventListener("click", () => showView(b.dataset.go as View));
@@ -62,11 +72,8 @@ function wireMenus(): void {
   $("#btnStory").addEventListener("click", () => story.go());
   $("#btnChallenge").addEventListener("click", roster.challenge);
   $("#btnPlayLocal").addEventListener("click", startLocal);
-  $("#btnJoin").addEventListener("click", () => void startOnline());
+  initOnlineMenu(startOnline);
   $("#btnResume").addEventListener("click", enterGame);
-  available().then((ok) => {
-    $("#onlineOff").hidden = ok;
-  });
   onMeSaved(() => {
     if (!app.inGame) setPlayers([me.look, null]);
   });
@@ -140,12 +147,7 @@ function wireGame(): void {
     });
     inp.addEventListener("change", () => push());
   }
-  $("#sheet").addEventListener("click", (e) => {
-    const t = (e.target as HTMLElement).closest<HTMLElement>("[data-seat],[data-leave]");
-    if (!t || !net.uid) return;
-    if (t.dataset.seat) takeSeat(+t.dataset.seat);
-    else leaveSeat(+t.dataset.leave!);
-  });
+  initCafeBox(leaveCafe);
   document.addEventListener("keydown", (e) => {
     const t = e.target as HTMLElement;
     if (e.key === "Enter" && t.dataset.enter) {

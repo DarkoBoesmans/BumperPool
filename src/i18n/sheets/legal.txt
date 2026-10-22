@@ -79,8 +79,14 @@ v Je speler (de naam die je typt en je uiterlijk), je palmares, jetons, spullen,
 = Online play
 v Online spelen
 
-= Online play is switched off for now. Before it comes back, this page will say exactly what it shares and with whom.
-v Online spelen staat voorlopig uit. Voor het terugkomt, staat hier precies wat het deelt en met wie.
+= When you open a café or walk into one, the game sends your name in the café, your player's look and the game itself (where the balls are, the score, the referee's log) to the others in that café. It goes through Supabase Realtime, run by Supabase on servers in Frankfurt, which passes the messages on and keeps none of them: no database, no account.
+v Als je een café opent of er binnenstapt, stuurt het spel je naam in het café, het uiterlijk van je speler en het spel zelf (waar de ballen liggen, de stand, het logboek van de scheidsrechter) naar de anderen in dat café. Dat gaat via Supabase Realtime, van Supabase, op servers in Frankfurt, dat de berichten doorgeeft en er geen enkel bewaart: geen databank, geen account.
+
+= An open café shows in the list of open cafés, with its code, your name in the café and how many people are in it, to anyone who opens the online menu. A café that is not open is only found with its code.
+v Een open café staat in de lijst van open cafés, met zijn code, je naam in het café en hoeveel mensen er binnen zijn, voor iedereen die het online menu opent. Een café dat niet open staat, vind je alleen met zijn code.
+
+= The name you type is all that says who you are, so a nickname is fine. Supabase may keep short technical logs, such as IP addresses, to run and protect its service, under its own privacy policy. You start online play yourself and it is needed to play together; leave the café and nothing of you stays there.
+v De naam die je typt is het enige dat zegt wie je bent, dus een bijnaam is prima. Supabase kan korte technische logs bijhouden, zoals IP-adressen, om zijn dienst te laten werken en te beschermen, onder zijn eigen privacybeleid. Je start online spelen zelf en het is nodig om samen te spelen; verlaat het café en er blijft niets van jou achter.
 
 = Hosting
 v Hosting
@@ -94,8 +100,8 @@ v Wat het spel niet doet
 = No analytics, no tracking pixels, no ads, no social media buttons.
 v Geen analytics, geen trackingpixels, geen advertenties, geen knoppen van sociale media.
 
-= No third-party scripts or embeds: the 3D engine and the fonts ship with the game.
-v Geen scripts of embeds van derden: de 3D-engine en de lettertypes zitten in het spel zelf.
+= No third-party scripts or embeds: the 3D engine, the fonts and the online play client ship with the game.
+v Geen scripts of embeds van derden: de 3D-engine, de lettertypes en de software voor online spelen zitten in het spel zelf.
 
 = No accounts and no e-mail addresses, so no mailing list.
 v Geen accounts en geen e-mailadressen, dus ook geen mailinglijst.

@@ -3,6 +3,7 @@ import type { Color, Opponent, Rules, Shot } from "../types";
 import { load, save } from "../profile/store";
 import { REGLEMENT } from "../core/rules";
 import { G } from "../core/state";
+import { shooterOf } from "../core/doubles";
 import { FX_DEFAULTS, type Fx } from "../render/post";
 import { FULL_HELP } from "../data/grades";
 import { gradeOf } from "../data/regulars";
@@ -86,14 +87,16 @@ export const help = () => (G?.mode === "cpu" && app.opp ? gradeOf(app.opp).help 
 
 export function canAct(c: Color): boolean {
   if (G.mode === "cpu") return c === G.colorOf[0];
-  if (G.mode === "online") return net.canWrite && G.seats[G.colorOf.indexOf(c)] === net.uid;
+  if (G.mode === "online") return shooterOf(team(G.colorOf.indexOf(c)), c, G) === net.uid;
   return true;
 }
+/** online: the players on a side, one or (in doubles) two */
+export const team = (p: number): string[] => [G.seats[p], G.seats[p + 2]].filter((u): u is string => !!u);
 /** the colour whose end the camera sits behind: yours, or in a two-player game whoever is up */
 export function viewColor(): Color {
   if (G.mode === "cpu") return G.colorOf[0];
   if (G.mode === "online") {
-    const mine = [0, 1].filter((p) => G.seats[p] === net.uid);
+    const mine = [0, 1].filter((p) => team(p).includes(net.uid));
     if (mine.length === 1) return G.colorOf[mine[0]];
   }
   return G.phase === "openW" ? "W" : G.phase === "openR" ? "R" : G.turn;

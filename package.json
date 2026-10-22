@@ -1,6 +1,6 @@
 {
   "name": "tjoepbiljart",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "private": true,
   "type": "module",
   "description": "Tjoepbiljart: Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",
@@ -12,6 +12,7 @@
     "format": "prettier --write src styles test tools html index.html legal.html 404.html"
   },
   "dependencies": {
+    "@supabase/realtime-js": "^2.118.0",
     "three": "0.128.0"
   },
   "devDependencies": {

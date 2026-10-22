@@ -10,3 +10,4 @@ export * from "./fouls";
 export * from "./powers";
 export * from "./rules";
 export { trickOf, LONG } from "./verdict";
+export { shooterOf } from "./doubles";

@@ -1,6 +1,7 @@
 // Builds the game into dist/: the TypeScript bundled by Bun, the SCSS compiled by Dart Sass, the page and the fonts.
 // `bun run build` for the site, tools/dev.ts calls it again whenever a file changes.
 import * as sass from "sass";
+import { HOST } from "../src/net/supa";
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
 export const OUT = "dist";
@@ -14,11 +15,12 @@ export async function page(file: string): Promise<string> {
   return text.replace(INCLUDE, () => parts[i++]);
 }
 
-/** only our own files may run or load; inline styles carry the data-driven colours. The copy published inside Claude
- * skips it (NO_CSP=1), since that host adds its own script to the page for online play. */
+/** only our own files may run or load, and the only line out is to the online cafés; inline styles carry the
+ * data-driven colours. The copy published inside Claude skips it (NO_CSP=1): that host adds its own script. */
 const CSP =
   `<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; ` +
-  `style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; ` +
+  `style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; ` +
+  `connect-src 'self' https://${HOST} wss://${HOST}; ` + // the online cafés
   `object-src 'none'; base-uri 'none'; form-action 'none'" />`;
 
 export async function buildAll({ minify = true } = {}): Promise<boolean> {
@@ -53,6 +55,10 @@ export async function buildAll({ minify = true } = {}): Promise<boolean> {
   );
   await mkdir(`${OUT}/licenses`, { recursive: true });
   await cp("node_modules/three/LICENSE", `${OUT}/licenses/three.txt`);
+  // the online play client and what it brings along
+  await cp("node_modules/@supabase/realtime-js/LICENSE", `${OUT}/licenses/realtime-js.txt`);
+  await cp("node_modules/@supabase/phoenix/LICENSE.md", `${OUT}/licenses/phoenix.txt`);
+  await cp("node_modules/tslib/LICENSE.txt", `${OUT}/licenses/tslib.txt`);
   // the version from package.json goes on the page: the published game and your local build compare at a glance
   const { version } = JSON.parse(await readFile("package.json", "utf8"));
   for (const file of ["index.html", "legal.html"]) {

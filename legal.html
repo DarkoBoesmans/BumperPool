@@ -92,10 +92,21 @@
               of Shame, your settings and your language are saved in your own browser. They never leave your device and
               the maker cannot see them.
             </p>
-            <h3 class="c-legal__h3">Online play</h3>
+            <h3 class="c-legal__h3" id="online">Online play</h3>
             <p>
-              Online play is switched off for now. Before it comes back, this page will say exactly what it shares and
-              with whom.
+              When you open a café or walk into one, the game sends your name in the café, your player's look and the
+              game itself (where the balls are, the score, the referee's log) to the others in that café. It goes
+              through Supabase Realtime, run by Supabase on servers in Frankfurt, which passes the messages on and keeps
+              none of them: no database, no account.
+            </p>
+            <p>
+              An open café shows in the list of open cafés, with its code, your name in the café and how many people are
+              in it, to anyone who opens the online menu. A café that is not open is only found with its code.
+            </p>
+            <p>
+              The name you type is all that says who you are, so a nickname is fine. Supabase may keep short technical
+              logs, such as IP addresses, to run and protect its service, under its own privacy policy. You start online
+              play yourself and it is needed to play together; leave the café and nothing of you stays there.
             </p>
             <h3 class="c-legal__h3">Hosting</h3>
             <p>
@@ -106,7 +117,10 @@
             <h3 class="c-legal__h3">What the game does not do</h3>
             <ul class="c-legal__list">
               <li>No analytics, no tracking pixels, no ads, no social media buttons.</li>
-              <li>No third-party scripts or embeds: the 3D engine and the fonts ship with the game.</li>
+              <li>
+                No third-party scripts or embeds: the 3D engine, the fonts and the online play client ship with the
+                game.
+              </li>
               <li>No accounts and no e-mail addresses, so no mailing list.</li>
               <li>No payments.</li>
             </ul>
@@ -266,6 +280,13 @@
               <div class="c-legal__item">
                 <dt>three.js</dt>
                 <dd><a href="licenses/three.txt">MIT</a></dd>
+              </div>
+              <div class="c-legal__item">
+                <dt>Supabase Realtime client, Phoenix</dt>
+                <dd>
+                  <a href="licenses/realtime-js.txt">MIT</a>, <a href="licenses/phoenix.txt">MIT</a>,
+                  <a href="licenses/tslib.txt">0BSD</a>
+                </dd>
               </div>
               <div class="c-legal__item">
                 <dt>Anton, Chakra Petch, Abril Fatface, Merriweather</dt>

@@ -130,10 +130,6 @@ a ~
 v {name}, {colour}: {n} van 5 ballen erin, {wins} manches gewonnen, {fouls} fouten
 a {name}, {colour}: {n} van 5 bollen erin, {wins} manches gepakt, {fouls} fouten
 
-= Take this seat
-v Neem deze plaats
-a Pak deze plekke
-
 = Free seat
 v Vrije plaats
 a Vrije plekke
@@ -141,10 +137,6 @@ a Vrije plekke
 = You
 v Jij
 a Gij
-
-= Leave seat
-v Plaats verlaten
-a Opsjtoan
 
 = Opponent
 v Tegenstander
@@ -157,14 +149,6 @@ a Gij speelt mee wit in manche 1 en mee rood in manche 2. {name} pakt den andere
 = Two players on this screen. The camera moves to whoever is up.
 v Twee spelers op dit scherm. De camera gaat naar wie aan de beurt is.
 a Twee spelers ip ene scherm. De camera goat noar wie aan de beurt es.
-
-= Online table. Your opponent joins the same table name from their device.
-v Online tafel. Je tegenstander kiest dezelfde tafelnaam op zijn toestel.
-a Online tafel. Den andere kiest dezelfde tafelnoam ip zijn toestel.
-
-= You are watching. Ask the owner for edit access to play.
-v Je kijkt mee. Vraag de eigenaar om bewerkrechten om te spelen.
-a Ge kijkt mee. Vroag aan de baas om mee te meugen sjpelen.
 
 = GAME {n}
 v MANCHE {n}
@@ -405,3 +389,28 @@ a de kleuren wisselen elke manche.
 = Open the tutorial
 v Open de uitleg
 a Doe de uitleg open
+
+# online: the café box in the match drawer
+= Copy the code
+v Kopieer de code
+a Kopieert de code
+
+= Doubles
+v Dubbel
+a ~
+
+= Two against two; partners take turns at the table
+v Twee tegen twee; partners spelen om beurten
+a Twie tegen twie; partners sjpelen om beurten
+
+= Leave the café
+v Verlaat het café
+a Goa uit 't café
+
+= Lost the connection to the café.
+v De verbinding met het café is weg.
+a De verbinding mee 't café is weg.
+
+= Your last move goes out again as soon as the line is back.
+v Je laatste zet gaat opnieuw de deur uit zodra de lijn terug is.
+a Ou leste zet goat opnieuw de deur uit as de lijn were is.
