@@ -15,7 +15,8 @@ Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-20
 - Power = ball speed, four equal meter quarters (`src/core/power.ts`). Hard = over 1.5 m/s. Pull measured on screen.
 - House rules: `G.rules` (`src/core/rules.ts`). Story always `REGLEMENT`. House-rule games = friendly, no record.
 - Every regular has own bar (`src/data/venues-street.ts`, `venues-grand.ts`), own table, own trophy (`src/data/trophies.ts`).
-- Story needs a made player first (`me.made`, gate in `src/ui/menu.ts`). Online play off ("Coming soon") until finished.
+- Story needs a made player first (`me.made`, gate in `src/ui/menu.ts`).
+- Online: Supabase Realtime (`src/net/supa.ts`, project fikiiwkgyiljsnxcaagj, Frankfurt), public channels, nothing stored. Café = channel `tjoep:cafe:CODE` (Broadcast `state`/`emote`, Presence members, max 4); open cafés = Presence on `tjoep:lobby`. Leader (first in) seats people, board = chalk queue, doubles = seats 2/3 partners (`core/doubles.ts`). Full-state sync, shooter decides. Test with Chromium through the agent proxy (`proxy`, route the game from `dist/`).
 - Deliberate shortcut or calibration guess: `ponytail:` comment with ceiling + upgrade path.
 - Every rule or physics change: one test in `test/`.
 - Text: every shown string through `t("English {name}", vars)` (`src/i18n`). Referee log stores key + `v`, HUD translates (`tLog`). Lines in `src/i18n/sheets/*.txt` (`=` en, `v` Vlaams, `a` Oilsjters, `a ~` same). Legal sheet Vlaams only. `bun tools/i18n-keys.ts` prints missing lines; `test/i18n.test.ts` checks. Dynamic text: redraw on `onLang`.
@@ -33,7 +34,7 @@ Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-20
 ## Privacy, a11y
 - No cookies, analytics, ads, third-party scripts or embeds. Only `tjoepbiljart.*` localStorage via `src/profile/store.ts` (strictly necessary; old `golfbiljart.*` moved once). New storage or tracking: update `legal.html` first, ask consent if not strictly necessary.
 - Keep menus keyboard + screen-reader friendly; run axe-core on every view after UI changes. Text contrast AA.
-- Security: build adds CSP meta (artifact build `NO_CSP=1`, host injects its own script). Escape every value put in `innerHTML` (`esc`), translations too. Online updates pass `src/net/sane.ts`. Console handle localhost only.
+- Security: build adds CSP meta (artifact build `NO_CSP=1`, host injects its own script). Escape every value put in `innerHTML` (`esc`), translations too. Every online message passes `src/net/sane.ts`. CSP `connect-src` allows only the Supabase host. Console handle localhost only.
 
 ## Release
 - Every version: bump `package.json` version, `bun run check && bun test && bun run build`, branch + PR, green CI, user merges (Pages deploys). Artifact: `NO_CSP=1 bun run build`, publish `dist/`. Local `Documents/Bumper Pool` is a git clone: user runs `git pull` (Windows Controlled Folder Access blocks overwrites from the device shell). Version shows under main menu (`v%VERSION%` filled by build).

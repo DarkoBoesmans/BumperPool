@@ -1,0 +1,103 @@
+// Online play in the menu: your name, three printed cards (open your café, a code, the list of open cafés), and in
+// the match drawer the café's code in big letters to read out across the table.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-online {
+  display: grid;
+  gap: $s3;
+  &__card {
+    display: grid;
+    gap: $s2;
+    padding: $s3;
+    border: 2px solid $poster-ink;
+    background: rgba(255, 255, 255, 0.28);
+    box-shadow: 3px 3px 0 $poster-ink;
+  }
+  &__head {
+    margin: 0;
+    @include display(17px, 0.06em);
+  }
+  &__text {
+    margin: 0;
+    font: italic 400 13px/1.45 $f-serif;
+    color: var(--ink-2);
+  }
+  &__join {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: $s2;
+  }
+  &__code {
+    @include display(24px, 0.4em);
+    text-align: center;
+  }
+  &__list {
+    display: grid;
+    gap: 6px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__empty {
+    font: italic 400 13px $f-serif;
+    color: var(--ink-3);
+  }
+  // one open café: whose it is, how full, its code; the whole line walks you in
+  &__cafe {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: $s3;
+    width: 100%;
+    min-height: 44px;
+    padding: 6px $s3;
+    border: 2px solid $poster-ink;
+    background: $paper;
+    color: $poster-ink;
+    text-align: left;
+    cursor: pointer;
+    transition: translate 0.15s;
+    &:hover,
+    &:focus-visible {
+      translate: 4px 0;
+      background: rgba(165, 42, 30, 0.08);
+    }
+    &:disabled {
+      cursor: default;
+      color: var(--ink-3);
+      translate: none;
+    }
+    b {
+      @include display(16px, 0.04em);
+    }
+    @include calm {
+      transition: none;
+    }
+  }
+  &__n {
+    font: 600 12px $f-ui;
+    letter-spacing: 0.08em;
+  }
+  &__tag {
+    padding: 2px 8px;
+    font: 400 15px $f-display;
+    letter-spacing: 0.2em;
+    color: $paper;
+    background: $poster-ink;
+  }
+}
+.c-cafe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $s2;
+  margin: $s2 0;
+  &__code {
+    @include display(30px, 0.35em);
+    color: var(--accent);
+  }
+  &__doubles {
+    flex-basis: 100%;
+  }
+}

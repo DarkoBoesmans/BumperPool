@@ -19,6 +19,7 @@ Belgian tap billiards (golfbiljart) in the browser, set in a smoky low-poly caf�
 - **Your café is home**: the regulars you beat come for a drink at your bar and watch the table, their photos go up on the wall, and your own face hangs where other bars put their regular of the month
 - Four looks: Clean, PS2, a PS1 look whose corners shiver on a coarse grid, and Cinema
 - Plays on a phone, upright or on its side: the controls move beside the table, and the camera frames the table in the room they leave
+- **Online**: open your own café and share its code of four letters, or walk into an open one from the list. Up to four people: two at the table, the others chalk their name on the board and play the winner, or two against two with partners taking turns. Nothing is stored
 - **Three languages**: Vlaams, English and Oilsjters (the dialect of Aalst), picked under the main menu. The game's name is never translated
 - The old arcade code (up, up, down, down, left, right, left, right, B, A; on a phone: swipe, then tap twice) opens the back room early. A poster on the café wall spells it out, and the story and the shop hint at it
 

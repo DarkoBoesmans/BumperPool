@@ -20,6 +20,7 @@ export function newMatch(
     opp: o.opp ?? prev?.opp ?? null,
     names,
     seats: mode === "online" && prev?.mode === "online" ? prev.seats : [null, null],
+    ...(mode === "online" && prev?.mode === "online" ? { doubles: prev.doubles, board: prev.board } : {}),
     wins: [0, 0],
     manche: 0,
     colorOf: ["W", "R"],
@@ -81,6 +82,7 @@ export function newManche(): void {
 
 export function startOpening(): void {
   G.open.shots = {};
+  G.visits = { W: 0, R: 0 };
   G.phase = "openW";
   G.turn = "W";
   changed();
@@ -88,6 +90,7 @@ export function startOpening(): void {
 
 export function beginTurn(c: Color, exemptId: number | null): void {
   G.turn = c;
+  G.visits = { W: 0, R: 0, ...G.visits, [c]: (G.visits?.[c] ?? 0) + 1 }; // a new visit: in doubles, the next partner
   for (const b of G.balls) if (b.c === other(c)) b.stone = false; // Minerva's stone wears off once your turn is over
   G.turnInfo = {
     obligated: G.rules.tri

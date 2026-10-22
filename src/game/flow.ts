@@ -7,7 +7,7 @@ import { setPlayers } from "../people/player";
 import { findOpponent, venueOf } from "../data/regulars";
 import { itemById } from "../data/shop";
 import { initAudio } from "../audio/mixer";
-import { joinOnline, leaveOnline, push } from "../net/online";
+import { leaveOnline, push, rotate } from "../net/online";
 import { me, myName, homeVenue, sawVenue, beatenRegulars } from "../profile/profile";
 import { $ } from "../ui/dom";
 import { app } from "../ui/app";
@@ -102,28 +102,23 @@ export function startLocal(): void {
   enterGame();
 }
 
-export async function startOnline(): Promise<void> {
-  const err = $("#onlineErr"),
-    btn = $<HTMLButtonElement>("#btnJoin");
-  err.hidden = true;
-  btn.disabled = true;
-  $(".c-btn__label", btn).textContent = "Connecting…";
-  try {
-    app.syncShown = true;
-    app.opp = null;
-    await joinOnline($<HTMLInputElement>("#tableName").value, $<HTMLInputElement>("#nOnline").value.trim() || myName());
-    fresh();
-    setPlayers([null, null]);
-    goHome();
-    applyLooks();
-    enterGame();
-  } catch (e) {
-    err.textContent = (e as Error).message;
-    err.hidden = false;
-  } finally {
-    btn.disabled = false;
-    $(".c-btn__label", btn).textContent = "Join table";
-  }
+/** an online café, your own or someone else's: `walkIn` opens or joins it, then the table is set up around it */
+export async function startOnline(walkIn: () => Promise<unknown>): Promise<void> {
+  app.syncShown = true;
+  app.opp = null;
+  await walkIn();
+  fresh();
+  goHome();
+  applyLooks();
+  enterGame();
+  refresh();
+}
+
+/** out of the café, back to the menu */
+export function leaveCafe(): void {
+  leaveOnline();
+  app.inGame = false;
+  openStart("online");
 }
 
 /** the end card's big button: the next game, or a rematch */
@@ -131,6 +126,7 @@ export function nextGame(): void {
   app.endNote = "";
   app.reward = "";
   if (G.phase === "matchEnd") {
+    rotate(); // online: whoever lost makes way for the next name on the board
     newMatch(G.mode, { rules: G.rules }); // a rematch keeps the rules
     fresh();
     if (G.mode === "cpu") setTimeout(() => quip("hello"), 700);

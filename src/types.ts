@@ -176,6 +176,12 @@ export interface Game {
   mover: string | null;
   /** a Pearlescent legend's table power, once per game */
   powerUsed: boolean;
+  /** online: two to a side, seats 2 and 3 are the partners of seats 0 and 1 */
+  doubles?: boolean;
+  /** online: who chalked their name on the board to play the winner, in order */
+  board?: string[];
+  /** doubles: how often each colour has come to the table this game, so partners take turns (see core/doubles.ts) */
+  visits?: Record<Color, number>;
   /** frame play has started this game (SP/10), and the penalty spots a foul was shot from since (SP/12.3) */
   framePlay?: boolean;
   spotFouls?: string[];

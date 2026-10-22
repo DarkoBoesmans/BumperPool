@@ -149,14 +149,6 @@ a Geef de keu deur
 v Online spelen
 a Online sjpelen
 
-= Two devices, one table
-v Twee toestellen, één tafel
-a Twee toestellen, ene tafel
-
-= Coming soon
-v Binnenkort
-a Seffens
-
 = Your player
 v Je speler
 a Ou mannetje
@@ -241,33 +233,6 @@ a ~
 v Speler bewaren
 a Mannetje bewoaren
 
-= Online play runs inside Claude, where this game is published. In this copy you can play offline.
-v Online spelen werkt in Claude, waar dit spel gepubliceerd is. In deze versie speel je offline.
-a Online sjpelen werkt in Claude, woar dit sjpel opsjtoat. In deze versie sjpeelde offline.
-
-= You and your opponent open the game and join the same table name.
-v Jij en je tegenstander openen het spel en kiezen dezelfde tafelnaam.
-a Gij en den andere doen 't sjpel open en kiezen dezelfde tafelnoam.
-
-= The table name, both names and the game are saved in this page's shared storage so you both see the same table. Use a nickname.
-v De tafelnaam, beide namen en het spel worden bewaard in de gedeelde opslag van deze pagina, zodat jullie dezelfde tafel zien. Gebruik een bijnaam.
-a De tafelnoam, de twee noamen en 't sjpel worden bewoard in de gedeelde opslag van deze pagina, zodat ge alle twee dezelfde tafel ziet. Pak ne bijnoam.
-
-= Table name
-v Tafelnaam
-a Tafelnoam
-
-= cafe
-v cafe
-a ~
-
-= Your nickname
-v Je bijnaam
-a Ou bijnoam
-
-= Join table
-v Aan tafel
-a ~
 
 = Grade
 v Graad
@@ -332,3 +297,96 @@ a Drukt ip start
 = Any key, click or tap. Sound on.
 v Eender welke toets, klik of tik. Met geluid.
 a Gelijk welke toets, klik of tik. Mee geluid.
+
+# online play: the menu's cards and the café line in the drawer
+= Open your café or walk into a friend's
+v Open je café of stap binnen bij een vriend
+a Doet ou café open of stapt binnen bij e maat
+
+= Your name in the café
+v Je naam in het café
+a Ou noam in 't café
+
+= Your café
+v Je café
+a Ou café
+
+= Open it and share the code. Up to four: two at the table, the others chalk their name on the board and play the winner.
+v Open het en deel de code. Tot vier: twee aan de tafel, de anderen zetten hun naam met krijt op het bord en spelen tegen de winnaar.
+a Doet 't open en geeft de code door. Tot vier: twie aan de toafel, d'andere zetten under noam mee krijt ip 't bord en sjpelen tegen de winnoar.
+
+= In the list of open cafés
+v In de lijst van open cafés
+a ~
+
+= Off: only people with the code get in
+v Uit: alleen wie de code heeft, komt binnen
+a Af: alleen wie de code ee, komt binnen
+
+= Open my café
+v Open mijn café
+a Doet maan café open
+
+= Join with a code
+v Binnenkomen met een code
+a Binnenkommen mee e code
+
+= KX7P
+v KX7P
+a ~
+
+= Walk in
+v Stap binnen
+a Stapt binnen
+
+= Open cafés
+v Open cafés
+a ~
+
+= Your name, your player's look and the game go to the others in the café through Supabase, on servers in Frankfurt. Nothing is kept.
+v Je naam, het uiterlijk van je speler en het spel gaan via Supabase, op servers in Frankfurt, naar de anderen in het café. Er wordt niets bewaard.
+a Ou noam, oe da ou mannetje eruit ziet en 't sjpel goan via Supabase, ip servers in Frankfurt, noar d'andere in 't café. Der wordt niks bewoard.
+
+= {name}'s café
+v Café van {name}
+a ~
+
+= Full
+v Vol
+a ~
+
+= {n} of {max}
+v {n} van {max}
+a ~
+
+= No open cafés right now. Open yours and be the first.
+v Nu geen open cafés. Open het jouwe en wees de eerste.
+a Gien open cafés nu. Doet ou café open en zijt den ieste.
+
+= Café {code} · {n} of {max} here
+v Café {code} · {n} van {max} binnen
+a ~
+
+= On the board: {names}
+v Op het bord: {names}
+a Ip 't bord: {names}
+
+= You play the winner.
+v Jij speelt tegen de winnaar.
+a Gij sjpeelt tegen de winnoar.
+
+= A café code has four letters or digits.
+v Een cafécode heeft vier letters of cijfers.
+a E cafécode ee vier letters of cijfers.
+
+= No café is open with code {code}.
+v Er is geen café open met code {code}.
+a Der is gien café open mee code {code}.
+
+= That café is full: four people already.
+v Dat café zit vol: er zijn al vier mensen.
+a Da café zit vol: der zen al vier man.
+
+= Can't reach the online cafés right now. Check your connection and try again.
+v De online cafés zijn nu niet bereikbaar. Controleer je verbinding en probeer opnieuw.
+a De online cafés zen nu nie te bereiken. Kijkt ou verbinding noa en probeert opnieuw.

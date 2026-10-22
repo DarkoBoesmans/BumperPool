@@ -94,7 +94,7 @@ export async function codeKeys(): Promise<{ keys: Map<string, string>; warnings:
   const keys = new Map<string, string>(),
     warnings: string[] = [];
   for await (const file of new Glob("src/**/*.ts").scan(".")) {
-    if (/^src\/(net|i18n)\//.test(file)) continue; // ponytail: online play is off and untranslated until it is back
+    if (/^src\/i18n\//.test(file)) continue;
     const sf = ts.createSourceFile(file, await Bun.file(file).text(), ts.ScriptTarget.Latest, true),
       add = (s: string) => {
         const k = squeeze(s);

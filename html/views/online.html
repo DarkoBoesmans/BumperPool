@@ -1,41 +1,56 @@
 <div class="c-view" data-view="online" hidden>
   <h2 class="c-view__title">Play online</h2>
-  <p class="c-note" id="onlineOff" hidden>
-    Online play runs inside Claude, where this game is published. In this copy you can play offline.
-  </p>
-  <p class="c-note">You and your opponent open the game and join the same table name.</p>
-  <p class="c-note">
-    The table name, both names and the game are saved in this page's shared storage so you both see the same table. Use
-    a nickname. <a href="legal.html#privacy" target="_blank" rel="noopener">Privacy</a>
-  </p>
-  <label class="c-field"
-    ><span class="c-field__label">Table name</span
-    ><input
-      class="c-field__input"
-      id="tableName"
-      placeholder="cafe"
-      maxlength="24"
-      autocomplete="off"
-      data-enter="#btnJoin"
-  /></label>
-  <label class="c-field"
-    ><span class="c-field__label">Your nickname</span
-    ><input
-      class="c-field__input"
-      id="nOnline"
-      placeholder="Your nickname"
-      maxlength="20"
-      autocomplete="nickname"
-      data-enter="#btnJoin"
-  /></label>
-  <p class="c-error" id="onlineErr" hidden></p>
+  <div class="c-online c-view__body">
+    <label class="c-field"
+      ><span class="c-field__label">Your name in the café</span
+      ><input class="c-field__input" id="nOnline" maxlength="20" autocomplete="nickname"
+    /></label>
+    <section class="c-online__card" aria-labelledby="hOpen">
+      <h3 class="c-online__head" id="hOpen">Your café</h3>
+      <p class="c-online__text">
+        Open it and share the code. Up to four: two at the table, the others chalk their name on the board and play the
+        winner.
+      </p>
+      <button class="c-toggle" type="button" role="switch" id="cafeOpen" aria-checked="true">
+        <span class="c-toggle__text"
+          ><b class="c-toggle__title">In the list of open cafés</b
+          ><small class="c-toggle__desc">Off: only people with the code get in</small></span
+        ><i class="c-toggle__switch"></i>
+      </button>
+      <button class="c-btn c-btn--cta" type="button" id="btnOpenCafe">
+        <span class="c-btn__label">Open my café</span>
+      </button>
+    </section>
+    <section class="c-online__card" aria-labelledby="hCode">
+      <h3 class="c-online__head" id="hCode">Join with a code</h3>
+      <div class="c-online__join">
+        <input
+          class="c-field__input c-online__code"
+          id="cafeCode"
+          maxlength="4"
+          autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-labelledby="hCode"
+          placeholder="KX7P"
+          data-enter="#btnJoinCode"
+        />
+        <button class="c-btn" type="button" id="btnJoinCode"><span class="c-btn__label">Walk in</span></button>
+      </div>
+    </section>
+    <section class="c-online__card" aria-labelledby="hList">
+      <h3 class="c-online__head" id="hList">Open cafés</h3>
+      <ul class="c-online__list" id="cafeList" aria-live="polite"></ul>
+    </section>
+    <p class="c-note">
+      Your name, your player's look and the game go to the others in the café through Supabase, on servers in Frankfurt.
+      Nothing is kept. <a href="legal.html#online" target="_blank" rel="noopener">Privacy</a>
+    </p>
+    <p class="c-error" id="onlineErr" role="alert" hidden></p>
+  </div>
   <div class="o-row o-row--foot">
     <button class="c-btn c-btn--ghost" type="button" data-go="home">
       <span class="c-btn__label">Back</span>
-    </button>
-    <span class="u-grow"></span>
-    <button class="c-btn c-btn--cta" type="button" id="btnJoin">
-      <span class="c-btn__label">Join table</span>
     </button>
   </div>
 </div>

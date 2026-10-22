@@ -221,3 +221,30 @@ describe("house rules (freeplay)", () => {
     expect(g.trickOf(stroke({ pots: [] }), "W")).toBe(null);
   });
 });
+
+describe("doubles", () => {
+  test("partners take turns: the opening alternates per game, every new visit goes to the other partner", () => {
+    const g0 = { phase: "openW" as const, manche: 1, visits: { W: 0, R: 0 } };
+    expect(g.shooterOf(["a", "b"], "W", g0)).toBe("a");
+    expect(g.shooterOf(["a", "b"], "W", { ...g0, manche: 2 })).toBe("b");
+    expect(g.shooterOf(["a", "b"], "W", { ...g0, phase: "aim", visits: { W: 1, R: 0 } })).toBe("b");
+    expect(g.shooterOf(["a", "b"], "W", { ...g0, phase: "aim", visits: { W: 2, R: 0 } })).toBe("a");
+    expect(g.shooterOf(["solo"], "R", { ...g0, phase: "aim", visits: { W: 3, R: 5 } })).toBe("solo");
+    // the referee counts visits: a turn that passes is a new visit, a goal is not
+    setup([
+      { c: "W", x: 700, y: 0 },
+      { c: "W", x: -600, y: -300 },
+      { c: "W", x: -500, y: 300 },
+      { c: "R", x: -835, y: 330 },
+      { c: "R", x: 300, y: 300 },
+    ]);
+    const before = structuredClone(g.G.visits);
+    g.fire(0, { dx: 1, dy: 0, p: at(500) }); // a goal: white stays at the table
+    g.runToRest();
+    expect(g.G.visits).toEqual(before);
+    g.fire(1, { dx: 0, dy: -1, p: at(200) }); // a soft one into the near cushion, no goal: red comes to the table
+    g.runToRest();
+    expect(g.G.turn).toBe("R");
+    expect(g.G.visits?.R).toBe((before?.R ?? 0) + 1);
+  });
+});

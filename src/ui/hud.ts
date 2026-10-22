@@ -6,7 +6,8 @@ import { venueById } from "../data/venues";
 import { net } from "../net/online";
 import { C } from "../cafe";
 import { $, esc, replay } from "./dom";
-import { app, canAct } from "./app";
+import { app, canAct, team } from "./app";
+import { cafeNote, drawCafeBox } from "./cafe-online";
 import { statusText } from "./status";
 import { endcard } from "./endcard";
 import { lang, t, tLog } from "../i18n";
@@ -27,7 +28,7 @@ export function renderUI(): void {
     $(".c-ball", plate).dataset.c = c;
     $(".c-ball", row).dataset.c = c;
     plate.classList.toggle("is-active", live && G.turn === c);
-    $(".c-scoreboard__name", plate).textContent = G.names[p];
+    $(".c-scoreboard__name", plate).textContent = G.names[p] || (G.mode === "online" ? t("Free seat") : "");
     $(".c-scoreboard__pips", plate).innerHTML = Array.from(
       { length: 5 },
       (_, i) => `<i class="c-scoreboard__pip${i < inn ? " is-in" : ""}"></i>`,
@@ -51,29 +52,26 @@ export function renderUI(): void {
     );
     const inp = $<HTMLInputElement>("#name" + p);
     if (document.activeElement !== inp) inp.value = G.names[p];
-    inp.disabled = (G.mode === "online" && G.seats[p] !== net.uid) || (G.mode === "cpu" && p === 1);
-    const s = G.seats[p];
+    inp.disabled = G.mode === "online" || (G.mode === "cpu" && p === 1); // online, names come from the café
+    const side = G.mode === "online" ? team(p) : [];
     $(".c-player-row__seat", row).innerHTML =
       G.mode === "cpu" && p === 1 && app.opp
         ? `${esc(t(app.opp.nick))} · <span class="c-gtag" style="--g:${gradeOf(app.opp).color}">${esc(t(gradeOf(app.opp).label))}</span>`
         : G.mode !== "online" || !net.ready
           ? ""
-          : !s
-            ? net.canWrite
-              ? `<button class="c-link" type="button" data-seat="${p}">${esc(t("Take this seat"))}</button>`
-              : t("Free seat")
-            : s === net.uid
-              ? `${esc(t("You"))} <button class="c-link" type="button" data-leave="${p}">${esc(t("Leave seat"))}</button>`
-              : t("Opponent");
+          : !side.length
+            ? esc(t("Free seat"))
+            : side.includes(net.uid)
+              ? esc(t("You"))
+              : esc(t("Opponent"));
   }
   $("#netNote").textContent =
     G.mode === "cpu"
       ? t("You play white in game 1 and red in game 2. {name} takes the other colour.", { name: app.opp?.name || "" })
       : G.mode === "local"
         ? t("Two players on this screen. The camera moves to whoever is up.")
-        : net.canWrite
-          ? t("Online table. Your opponent joins the same table name from their device.")
-          : t("You are watching. Ask the owner for edit access to play.");
+        : cafeNote();
+  drawCafeBox();
   $("#gameLbl").textContent = t("GAME {n}", { n: G.manche });
   $("#venueLbl").textContent = C.venue ? t(venueById(C.venue.id).name) : t("best of 3");
   const [m, h] = statusText();

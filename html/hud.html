@@ -185,6 +185,29 @@
           <div class="c-player-row__seat"></div>
         </div>
         <p class="c-note" id="netNote"></p>
+        <!-- online: the café's code to share, doubles for the leader, the door -->
+        <div class="c-cafe" id="cafeBox" hidden>
+          <span class="c-cafe__code" translate="no" id="cafeCodeShow"></span>
+          <button class="c-btn c-btn--small" type="button" id="btnCopyCode">
+            <span class="c-btn__label">Copy the code</span>
+          </button>
+          <button
+            class="c-toggle c-cafe__doubles"
+            type="button"
+            role="switch"
+            id="optDoubles"
+            aria-checked="false"
+            hidden
+          >
+            <span class="c-toggle__text"
+              ><b class="c-toggle__title">Doubles</b
+              ><small class="c-toggle__desc">Two against two; partners take turns at the table</small></span
+            ><i class="c-toggle__switch"></i>
+          </button>
+          <button class="c-btn c-btn--small c-btn--ghost" type="button" id="btnLeaveCafe">
+            <span class="c-btn__label">Leave the café</span>
+          </button>
+        </div>
         <h3 class="c-subhead">Last shots</h3>
         <ol class="c-log" id="log"></ol>
       </section>
