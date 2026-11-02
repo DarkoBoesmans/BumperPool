@@ -1,6 +1,6 @@
 {
   "name": "tjoepbiljart",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "private": true,
   "type": "module",
   "description": "Tjoepbiljart: Belgian tap billiards (golfbiljart) in a smoky low-poly café, in the browser.",

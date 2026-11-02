@@ -7,9 +7,7 @@ const SKIP = /^(Tab|Shift|Control|Alt|Meta|CapsLock|F\d+)$/;
 export function initTitle(onStart: () => void): void {
   const title = $("#title"),
     start = $("#start");
-  start.inert = true;
-  start.classList.add("is-titled");
-  $("#pressStart").focus();
+  $("#pressStart").focus(); // the menu waits under the title: hidden and inert in the page itself, so it never flashes
   let gone = false;
   const go = () => {
     if (gone) return;
@@ -18,6 +16,7 @@ export function initTitle(onStart: () => void): void {
     title.classList.add("is-going");
     start.inert = false;
     start.classList.replace("is-titled", "is-arriving");
+    setTimeout(() => start.classList.remove("is-arriving"), 1000); // the slide-in plays once, not on every return
     setTimeout(() => {
       title.hidden = true;
       document.removeEventListener("keydown", key, true);

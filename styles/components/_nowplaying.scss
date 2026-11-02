@@ -1,9 +1,33 @@
 // The jukebox's title strip: a cream card with red bands, the record's name in display type, the style and tempo in
 // italics. It drops in from the right edge like a card into its slot, sits for a few seconds and slides back out.
 // Bottom right on the start screen; in a game it sits above the spin pad. It never takes a click.
-// On an upright phone it hangs from the top edge.
+// On a phone it shrinks to one slim line: atop the menu, and in a game above the controls, off the referee's ribbon.
 @use "../settings/tokens" as *;
 @use "../tools/mixins" as *;
+
+// one slim line: the note, the title, nothing else (an upright phone, a phone on its side in a game)
+@mixin slim {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  max-width: calc(100vw - 72px);
+  padding: 6px 14px 5px;
+  box-shadow:
+    inset 0 3px 0 $poster-red,
+    inset 0 -3px 0 $poster-red,
+    4px 4px 0 rgba(0, 0, 0, 0.45);
+  .c-nowplaying__label {
+    font-size: 0; // the note alone; the aside's label still names it
+  }
+  .c-nowplaying__title {
+    margin: 0;
+    font-size: 17px;
+  }
+  .c-nowplaying__info {
+    display: none;
+  }
+}
 
 .c-nowplaying {
   position: fixed;
@@ -32,33 +56,27 @@
     top: calc(env(safe-area-inset-top, 0px) + 12px);
     transform-origin: 50% 0;
     translate: 50% 0;
-    body:has(#start[hidden]) & {
-      bottom: auto;
-      top: calc(env(safe-area-inset-top, 0px) + 96px); // under the scoreboard
-    }
     // the menu fills an upright phone, so the card shrinks to one slim line over the panel's top frame
     body:has(#start:not([hidden])) & {
       top: env(safe-area-inset-top, 0px);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: auto;
-      max-width: calc(100vw - 72px);
-      padding: 6px 14px 5px;
-      box-shadow:
-        inset 0 3px 0 $poster-red,
-        inset 0 -3px 0 $poster-red,
-        4px 4px 0 rgba(0, 0, 0, 0.45);
-      .c-nowplaying__label {
-        font-size: 0; // the note alone; the aside's label still names it
-      }
-      .c-nowplaying__title {
-        margin: 0;
-        font-size: 17px;
-      }
-      .c-nowplaying__info {
-        display: none;
-      }
+      @include slim;
+    }
+    // in a game: one slim line above the controls, clear of the scoreboard and the referee's ribbon
+    body:has(#start[hidden]) & {
+      top: auto;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 164px);
+      @include slim;
+    }
+    body:has(#start[hidden]):has(#coach:not([hidden])) & {
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 240px); // above the camera tips
+    }
+  }
+  // a phone on its side: one slim line above the spin pad
+  @include short {
+    body:has(#start[hidden]) & {
+      right: 10px;
+      bottom: calc(env(safe-area-inset-bottom, 0px) + 158px);
+      @include slim;
     }
   }
   &.is-in {

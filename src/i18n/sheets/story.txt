@@ -148,13 +148,13 @@ a ~
 v Sleep een vinger over het laken om de tafel te draaien. Knijp om te zoomen, schuif met twee vingers langs de tafel, en tik op een plek om ernaar te kijken zodra je gedraaid hebt. De knoppen met het oog en van boven zetten de camera terug.
 a Sleur ne vinger over 't laken om de tafel te draaien. Knijp om te zoomen, schuif mee twee vingers langs de tafel, en tik ip ne plek om ernoar te kijken van zohaast ge gedraaid hebt. De knoppen mee 't oog en van boven zetten de camera terug.
 
-= Right-drag turns the table round the point you look at. Right-click a ball to look at it, so a ball against the cushion is easy to check. Scroll zooms towards the pointer. Shift and right-drag slides along the table. T is the top view, P puts you back behind your end.
-v Rechts slepen draait de tafel rond het punt waar je naar kijkt. Rechtsklik op een bal om ernaar te kijken, zo controleer je makkelijk een bal tegen de band. Scrollen zoomt naar de muis. Shift en rechts slepen schuift langs de tafel. T is het bovenaanzicht, P zet je terug achter je eigen kant.
-a Rechts sleuren draait de tafel rond 't punt woar ge noar kijkt. Rechtsklik ip ne bol om ernoar te kijken, zo zieden gemakkelijk ne bol tegen de band. Scrollen zoomt noar de muis. Shift en rechts sleuren schuift langs de tafel. T es van boven, P zet ou terug achter ou eigen kant.
+= Drag the table (away from your balls) or right-drag anywhere to turn it round the point you look at. Right-click a ball to look at it, so a ball against the cushion is easy to check. Scroll zooms towards the pointer, Shift and drag slides along the table. T is the top view, P puts you back behind your end.
+v Sleep aan de tafel (weg van je ballen) of sleep ergens met rechts om ze te draaien rond het punt waar je naar kijkt. Rechtsklik op een bal om ernaar te kijken, zo is een bal tegen de band makkelijk te checken. Scrollen zoomt naar de muis, Shift en slepen schuift langs de tafel. T is het bovenaanzicht, P zet je terug achter je eigen kant.
+a Sleur aan den toafel (weg van ou bollen) of sleur ieverans mee rechts om ze te draaien rond 't punt woar da ge noar ziet. Rechtsklik op ne bol om ernoar te zien, zo is ne bol tegen de band gemakkelijk te checken. Scrollen zoomt noar de muis, Shift en sleuren schuift langs den toafel. T is van boven, P zet ou terug achter ou eigen kant.
 
-= No mouse? B picks one of your balls, A and D turn the aim, W and S set the power and Space shoots.
-v Geen muis? B kiest een van je ballen, A en D draaien het mikpunt, W en S zetten de kracht en Spatie stoot.
-a Gene muis? B kiest ene van ou bollen, A en D draaien 't mikpunt, W en S zetten de kracht en Spatie sjtoot.
+= On the keyboard: Q and E turn, R and F tilt, + and - zoom. No mouse? B picks one of your balls, A and D turn the aim, W and S set the power and Space shoots.
+v Met het toetsenbord: Q en E draaien, R en F kantelen, + en - zoomen. Geen muis? B kiest een van je ballen, A en D draaien het mikpunt, W en S zetten de kracht en Spatie stoot.
+a Mee 't klavier: Q en E draaien, R en F kantelen, + en - zoomen. Gene muis? B kiest ene van ou bollen, A en D draaien 't mikpunt, W en S zetten de kracht en Spatie sjtoot.
 
 = Put some spin on it
 v Geef er wat effect op

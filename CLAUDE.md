@@ -22,8 +22,12 @@ Belgian tap billiards (golfbiljart) in browser. Rules: GZV spelreglement 2026-20
 - Text: every shown string through `t("English {name}", vars)` (`src/i18n`). Referee log stores key + `v`, HUD translates (`tLog`). Lines in `src/i18n/sheets/*.txt` (`=` en, `v` Vlaams, `a` Oilsjters, `a ~` same). Legal sheet Vlaams only. `bun tools/i18n-keys.ts` prints missing lines; `test/i18n.test.ts` checks. Dynamic text: redraw on `onLang`.
 - Phone: HUD sits beside table, camera frames table in free room (`src/ui/room.ts`). New fixed HUD block: add to `BLOCKS`. Desktop top view: rail + spin pad push sides in. Upright phone = `upright` mixin.
 - Knock = thanks for a trick shot only (`trickOf` in `src/core/verdict.ts`). Ball pick = ray against balls (`rayPick`, `src/render/camera.ts`), works at any tilt.
+- Camera: drag off your balls or right-drag turns, keys in `src/game/keys.ts` (Q/E R/F +/-). Free view eases in spherical terms (`view` in `camera.ts`), view changes via `setView` (a replay keeps them). Camera input waits while a replay plays. First games: coach card (`src/ui/coach.ts`, `me.tips.camera`).
 - Title screen (`src/ui/title.ts`): its press = the browser's first gesture, starts audio. Jukebox: records (`src/data/records.ts`, Kevin MacLeod CC BY 4.0, `bun tools/records.ts` fetches into `music/`, credits in `legal.html`), crate per bar mood, or the house trio (synth, `songs.ts`). New record: `onSong` listeners, title card `src/ui/nowplaying.ts`.
-- Home café: `goHome()` (`src/game/flow.ts`) = home venue + beaten regulars on bar stools (`src/cafe/guests.ts`); landlord frame + photo wall boards. PS1 look: vertex snap patched into every material (`renderer.ts`).
+- Home café: `goHome()` (`src/game/flow.ts`) = home venue + beaten regulars on bar stools (`src/cafe/guests.ts`); landlord frame + photo wall boards. PS1 look: vertex snap patched into every material (`renderer.ts`), only vertices in front of the camera, grid 480 to 160 lines (75 = 240).
+- Café sound: recorded beds per mood (`src/data/beds.ts`, BigSoundBank CC0, `bun tools/beds.ts` fetches into `music/`, credits in `legal.html`), looped with overlapping soft edges (`src/audio/beds.ts`). No synthesised noise.
+- Pint between shots: model in `src/core/tap.ts` (tested), dialog `src/ui/tap.ts` + `html/tap.html`, offered on the regular's turn (`maybeOrder`), max two per match, pauses the game (`blocked()`), tips in tokens. First step of the landlord evening.
+- Many small static meshes of one kind: merge them with vertex colours (`src/cafe/bottles.ts`).
 - Reduced motion: `calm` (`src/render/renderer.ts`): no drift, still grain, no ambient smoke. CSS: `calm` mixin.
 
 ## Styles

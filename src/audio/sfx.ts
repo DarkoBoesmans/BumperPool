@@ -129,6 +129,13 @@ export function sfx(kind: string, v = 1): void {
       tone(4300, 0.1, 0.03, "sine", 0.9);
       tone(3900, 0.1, 0.025, "sine", 1.05);
       break;
+    case "pour": // the tap wide open: a fizzing rush, sent again every few frames while it runs
+      burst(0.16, 0.16 * a, "bandpass", 2200 + Math.random() * 1400, 0.7);
+      burst(0.12, 0.1 * a, "lowpass", 500, 0.8);
+      break;
+    case "skim": // the spatula across the rim
+      burst(0.12, 0.3, "highpass", 3200, 0.8, 0, au.fx, 6000);
+      break;
     case "chalk": // the cube twisted on the tip: a few dry scrapes
       for (let i = 0; i < 4; i++) burst(0.09, 0.22, "bandpass", 2600 + i * 300, 1.4, i * 0.13);
       break;

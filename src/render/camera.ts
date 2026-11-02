@@ -33,6 +33,12 @@ export const camS = {
   fdist: 2,
   focus: null as THREE.Vector3 | null,
 };
+/** the free view on screen: it eases towards what you asked for round the point it looks at, so a quick turn swings
+ * the camera along the circle instead of cutting across it (which would dip it towards the table) */
+const view = { az: 0, el: 0.6, d: 2, t: new THREE.Vector3() };
+/** 0 to 1: how far the free view has taken over from where the camera was, after a replay hands it back */
+let grip = 1,
+  last: CamMode = "intro";
 const CLOTH = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
 const BALLS = new THREE.Plane(new THREE.Vector3(0, 1, 0), -R * M);
 
@@ -72,14 +78,22 @@ export function updateCamera(dt: number, vc: Color, portrait: boolean, room: Ins
     if (!calm && performance.now() > camS.hold) camS.az += dt * 0.08;
     pos = orbit(camS.az, camS.iel, (portrait ? 4.4 : 3.4) * camS.idist);
     look.set(portrait ? 0 : -0.45, 0.1, 0);
+    if (S.orbit?.intro) k = 1; // your hand turns it: follow it exactly, a lag would cut across the circle
   } else if (m === "free") {
     if (camS.focus) {
       camS.target.lerp(camS.focus, 1 - Math.pow(0.004, dt));
       if (camS.target.distanceTo(camS.focus) < 0.002) camS.focus = null;
     }
-    pos = freePos();
-    look = camS.target.clone();
-    k = 1 - Math.pow(1e-6, dt);
+    if (last !== "free") grip = 0;
+    const e = 1 - Math.pow(1e-6, dt);
+    view.az += (camS.faz - view.az) * e;
+    view.el += (camS.fel - view.el) * e;
+    view.d += (freeDist() - view.d) * e; // the same ease for the distance and the point keeps a zoom on the pointer
+    view.t.lerp(camS.target, e);
+    pos = dirOf(view.az, view.el).multiplyScalar(view.d).add(view.t);
+    look = view.t.clone();
+    grip = Math.min(1, grip + dt * 1.5);
+    k = Math.max(k, grip * grip);
   } else if (m === "top") {
     const ext = portrait ? [1.2, 2.14] : [2.14, 1.2];
     pos = new THREE.Vector3(0, 1.12 * Math.max(ext[1] / 2 / tv, ext[0] / 2 / th), 0.0001);
@@ -91,6 +105,7 @@ export function updateCamera(dt: number, vc: Color, portrait: boolean, room: Ins
     pos = new THREE.Vector3(h * (1.0 + d * Math.cos(el)), d * Math.sin(el) + 0.12, 0);
     look.set(-h * 0.25, 0.02, 0);
   }
+  last = m;
   cam.position.lerp(pos, k);
   S.look.lerp(look, k);
   cam.up.lerp(up, k).normalize();
@@ -110,12 +125,16 @@ function onTable(p: THREE.Vector3): THREE.Vector3 {
 }
 const dirOf = (az: number, el: number) =>
   new THREE.Vector3(Math.cos(el) * Math.cos(az), Math.sin(el), Math.cos(el) * Math.sin(az));
-/** how far the camera can back away from `t` along `d` before it leaves the room */
+/** how far the camera can back away from `t` along `d` before it leaves the room. Looking steeply down the ceiling
+ * is hidden (cafe/index.ts), so the camera may rise through it, as high as the top view: turning from the top view
+ * then keeps the whole table in sight instead of diving to the ceiling. The lift fades in, so a tilt never jumps. */
 function roomLimit(t: THREE.Vector3, d: THREE.Vector3): number {
+  const lift = clamp((d.y - 0.88) / 0.09, 0, 1),
+    top = Y_MAX + 4 * lift * lift * (3 - 2 * lift);
   let best = 99;
   for (const [o, v, lo, hi] of [
     [t.x, d.x, -ROOM_X, ROOM_X],
-    [t.y, d.y, Y_MIN, Y_MAX],
+    [t.y, d.y, Y_MIN, top],
     [t.z, d.z, -ROOM_Z, ROOM_Z],
   ])
     if (v > 1e-6) best = Math.min(best, (hi - o) / v);
@@ -124,7 +143,6 @@ function roomLimit(t: THREE.Vector3, d: THREE.Vector3): number {
 }
 /** the camera's distance right now: what you asked for, or less where a wall is in the way */
 const freeDist = () => Math.min(camS.fdist, roomLimit(camS.target, dirOf(camS.faz, camS.fel)));
-const freePos = () => dirOf(camS.faz, camS.fel).multiplyScalar(freeDist()).add(camS.target);
 
 /** start the free view from wherever the camera is: it keeps looking where it looked */
 export function toFree(): void {
@@ -134,13 +152,25 @@ export function toFree(): void {
     t = new THREE.Vector3();
   if (!(d.y < -0.05 && new THREE.Ray(cam.clone(), d).intersectPlane(CLOTH, t))) t.copy(S.look);
   onTable(t);
-  const off = cam.clone().sub(t);
+  const off = cam.clone().sub(t),
+    up = S.camera.up;
   camS.target.copy(t);
   camS.fdist = off.length();
-  camS.fel = clamp(Math.asin(off.y / camS.fdist), EL_MIN, EL_MAX);
-  camS.faz = Math.atan2(off.z, off.x);
+  const el = Math.asin(Math.min(1, off.y / camS.fdist));
+  camS.fel = clamp(el, EL_MIN, EL_MAX);
+  // straight down (the top view) has no side to stand on: keep what is up on screen, so nothing turns
+  camS.faz = Math.hypot(off.x, off.z) < 0.05 * camS.fdist ? Math.atan2(-up.z, -up.x) : Math.atan2(off.z, off.x);
   camS.focus = null;
   camS.mode = "free";
+  Object.assign(view, { az: camS.faz, el, d: camS.fdist });
+  view.t.copy(t);
+  grip = 1; // the view starts exactly where the camera is
+  last = "free";
+}
+/** pick a view; during a replay it is the view the replay hands back to */
+export function setView(m: "player" | "top"): void {
+  if (camS.mode === "replay") camS.prev = m;
+  else camS.mode = m;
 }
 /** turn round the point you look at: dx sideways, dy up and down */
 export function orbitBy(dx: number, dy: number): void {
@@ -164,7 +194,7 @@ function pointAt(e: { clientX: number; clientY: number }): THREE.Vector3 | null 
 export function zoomAt(e: { clientX: number; clientY: number }, s: number): void {
   const p = pointAt(e);
   const cur = freeDist(),
-    d = clamp(cur * s, 0.35, 4.5);
+    d = clamp(cur * s, 0.35, Math.max(4.5, cur)); // from the top view you may start further out: never jump in
   if (p)
     onTable(
       camS.target

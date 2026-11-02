@@ -231,3 +231,6 @@ v De code, tekeningen en personages van het spel, en de deuntjes van het huistri
 
 = The licence texts ship with the game. The jukebox plays records by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0. For the jukebox they are shortened to at most three and a half minutes and mixed to mono.
 v De licentieteksten zitten bij het spel. De jukebox speelt platen van Kevin MacLeod (incompetech.com), met een Creative Commons-licentie: Naamsvermelding 4.0. Voor de jukebox zijn ze ingekort tot hoogstens drie en een halve minuut en naar mono gemengd.
+
+= The café you hear is two real rooms recorded by Joseph Sardin and Axeline T. for BigSoundBank, given to the public domain (CC0). For the game a minute of each is cut out, mixed to mono and evened out.
+v Het café dat je hoort zijn twee echte zalen, opgenomen door Joseph Sardin en Axeline T. voor BigSoundBank en vrijgegeven in het publieke domein (CC0). Voor het spel is van elk een minuut uitgeknipt, naar mono gemengd en gelijkmatig gemaakt.

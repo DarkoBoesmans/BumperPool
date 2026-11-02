@@ -1,0 +1,226 @@
+// Tapping a pint between shots. The order is a small chip bottom centre (it never covers a ball for long); the
+// dialog is a poster with the glass on the left: the brass tap, the stream while it runs, the beer, the head
+// crowning the rim and running down the glass, the line two fingers under the rim, and the spatula that skims.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+.c-order {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 8px 8px 14px;
+  font: 700 13px $f-ui;
+  color: var(--ink);
+  border: 0;
+  border-left: 4px solid $amber;
+  @include glass($glass-strong);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  translate: -50% 0;
+  animation: c-order-in 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  transition: translate 0.15s;
+  .o-icon {
+    color: $amber;
+  }
+  &__go {
+    padding: 5px 10px;
+    @include label(11px, 0.1em);
+    color: $ink;
+    background: $amber;
+    border-radius: 2px;
+  }
+  &:hover {
+    translate: -50% -3px;
+  }
+  &:focus-visible {
+    outline: 2px solid $amber;
+    outline-offset: 3px;
+  }
+  body:has(#start:not([hidden])) &,
+  .is-ending &,
+  .is-replaying & {
+    display: none;
+  }
+  @include upright {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 164px); // above the controls
+  }
+  @include short {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+  }
+  @include calm {
+    animation: none;
+  }
+}
+@keyframes c-order-in {
+  from {
+    opacity: 0;
+    translate: -50% 20px;
+  }
+}
+
+.c-tap {
+  z-index: 31;
+  &__dialog {
+    width: min(560px, 100%);
+    grid-template-columns: 150px 1fr;
+    grid-template-areas:
+      "kicker kicker"
+      "title title"
+      "glass side"
+      "glass acts";
+    column-gap: 22px;
+    @include below($bp-phone) {
+      grid-template-columns: 84px 1fr;
+      grid-template-areas:
+        "kicker kicker"
+        "title title"
+        "glass side"
+        "acts acts";
+      column-gap: 14px;
+    }
+    @include short {
+      grid-template-columns: 96px 1fr;
+    }
+  }
+  &__kicker {
+    grid-area: kicker;
+    margin: 0;
+    @include label(11px, 0.2em);
+    color: $poster-red-ink;
+  }
+  &__title {
+    grid-area: title;
+    margin: 0 0 4px;
+    font: 400 clamp(26px, 5vw, 34px) / 1 $f-poster;
+    color: $poster-red;
+    text-shadow: 2px 2px 0 rgba(31, 21, 14, 0.18);
+  }
+  &__glass {
+    grid-area: glass;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  &__font {
+    fill: #b8862a;
+    stroke: $poster-ink;
+    stroke-width: 2;
+  }
+  &__stream {
+    fill: #e8a83a;
+    opacity: 0;
+    transition: opacity 0.1s;
+    .is-open & {
+      opacity: 0.9;
+    }
+  }
+  &__beer {
+    transition: none;
+  }
+  &__foam,
+  &__crown {
+    fill: #fbf4e2;
+  }
+  &__crown {
+    stroke: rgba(31, 21, 14, 0.25);
+  }
+  &__drip {
+    fill: none;
+    stroke: #fbf4e2;
+    stroke-width: 5;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.4s;
+    .is-running & {
+      opacity: 0.9;
+    }
+  }
+  &__mark {
+    stroke: $poster-red;
+    stroke-width: 2;
+    stroke-dasharray: 5 4;
+  }
+  &__cup {
+    fill: rgba(255, 255, 255, 0.12);
+    stroke: $poster-ink;
+    stroke-width: 3;
+    stroke-linejoin: round;
+  }
+  &__spatula {
+    fill: #9aa2ab;
+    stroke: $poster-ink;
+    stroke-width: 1.5;
+    opacity: 0;
+    .is-skimmed & {
+      animation: c-tap-skim 0.45s ease-out both;
+    }
+  }
+  &__side {
+    grid-area: side;
+    min-width: 0;
+    display: grid;
+    align-content: start;
+    gap: 12px;
+  }
+  &__steps {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    @include below($bp-phone) {
+      font-size: 13px;
+    }
+  }
+  &__result {
+    min-height: 2.8em;
+    margin: 0;
+    font: 700 15px/1.4 $f-ui;
+    color: $poster-ink;
+  }
+  &__acts {
+    grid-area: acts;
+    align-self: end;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  &__go {
+    min-width: 150px;
+    @include below($bp-phone) {
+      flex: 1;
+      min-width: 0;
+      padding-inline: 10px;
+      font-size: 13px;
+    }
+    touch-action: none; // a long press pours, it must not scroll or open a menu
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  @include calm {
+    .is-skimmed &__spatula {
+      animation: none;
+      opacity: 1;
+    }
+  }
+}
+@keyframes c-tap-skim {
+  0% {
+    opacity: 1;
+    translate: -40px 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: 40px 0;
+  }
+}

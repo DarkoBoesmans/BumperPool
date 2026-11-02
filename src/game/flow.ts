@@ -18,6 +18,8 @@ import { pickOpponent } from "../ui/roster";
 import { resetBuzz } from "./buzz";
 import { t } from "../i18n";
 import { applyLooks, refresh } from "./refresh";
+import { showCoach } from "../ui/coach";
+import { resetOrders } from "../ui/tap";
 
 const portrait = () => S.w < S.h;
 /** your own café, with the regulars you beat at the bar */
@@ -50,10 +52,7 @@ export function enterGame(): void {
   $("#hud").hidden = false;
   camS.mode = portrait() ? "top" : "player"; // on a phone held upright the top view plays best
   setViewPills();
-  const h = $("#orbitHint");
-  h.style.animation = "none";
-  void h.offsetWidth;
-  h.style.animation = "";
+  showCoach();
   refresh();
 }
 
@@ -68,6 +67,7 @@ function fresh(): void {
 /** a match against a regular, in the story or as a freeplay rematch; it is played in their bar */
 export function startCpu(id: string, freeplay: boolean): void {
   leaveOnline();
+  resetOrders();
   const o = (app.opp = findOpponent(id));
   app.freeplay = freeplay;
   pickOpponent(o.id);

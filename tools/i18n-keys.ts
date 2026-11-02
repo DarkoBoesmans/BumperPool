@@ -37,7 +37,11 @@ export function areaOf(file: string): string {
   if (/^src\/(cafe|render)\//.test(file)) return "cafe";
   if (/^(src\/ui\/settings\.ts|src\/audio\/|src\/data\/records\.ts|html\/settings\.html)/.test(file)) return "settings";
   if (/^(src\/game\/(show|buzz)|src\/ui\/(endcard|replay-overlay|banner)|html\/show)/.test(file)) return "show";
-  if (/^(src\/(game|replay|cpu)\/|src\/ui\/(hud|status|live|spinpad|bubble)\.ts|html\/hud\.html)/.test(file))
+  if (
+    /^(src\/(game|replay|cpu)\/|src\/ui\/(hud|status|live|spinpad|bubble|coach|tap)\.ts|html\/(hud|tap)\.html)/.test(
+      file,
+    )
+  )
     return "table";
   return "menu";
 }
