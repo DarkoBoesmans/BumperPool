@@ -9,7 +9,13 @@
     width: 100%;
     height: 100%;
     touch-action: none;
-    cursor: crosshair;
+    cursor: grab; // a drag turns the table
+    &[data-cursor="aim"] {
+      cursor: crosshair; // one of your balls: drag it back to aim
+    }
+    &[data-cursor="grabbing"] {
+      cursor: grabbing;
+    }
   }
   &__nogl {
     position: fixed;

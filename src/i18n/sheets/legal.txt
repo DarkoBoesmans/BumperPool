@@ -19,8 +19,8 @@ v Privacy, voorwaarden en dankwoord
 = A free hobby game that keeps your data in your own browser. Everything else, in plain words.
 v Een gratis hobbyspel dat je gegevens in je eigen browser houdt. De rest, in gewone woorden.
 
-= Last updated 22 October 2026
-v Laatst bijgewerkt op 22 oktober 2026
+= Last updated 2 November 2026
+v Laatst bijgewerkt op 2 november 2026
 
 = cookies
 v cookies
@@ -220,8 +220,11 @@ v bovenaanzicht, terug naar je eigen kant
 = Known limits
 v Bekende beperkingen
 
-= The table itself is a 3D picture, so judging angles needs sight, and the camera turns with a mouse or touch. If something does not work for you, say so through the contact above.
-v De tafel zelf is een 3D-beeld, dus hoeken inschatten vraagt zicht, en de camera draai je met een muis of een aanraking. Werkt iets niet voor jou, laat het weten via het contact hierboven.
+= The table itself is a 3D picture, so judging angles needs sight. If something does not work for you, say so through the contact above.
+v De tafel zelf is een 3D-beeld, dus hoeken inschatten vraagt zicht. Werkt iets niet voor jou, laat het weten via het contact hierboven.
+
+= turn, tilt and zoom the camera
+v de camera draaien, kantelen en zoomen
 
 = Made by hand, built on open source.
 v Met de hand gemaakt, gebouwd op open source.
@@ -231,3 +234,6 @@ v De code, tekeningen en personages van het spel, en de deuntjes van het huistri
 
 = The licence texts ship with the game. The jukebox plays records by Kevin MacLeod (incompetech.com), licensed under Creative Commons: By Attribution 4.0. For the jukebox they are shortened to at most three and a half minutes and mixed to mono.
 v De licentieteksten zitten bij het spel. De jukebox speelt platen van Kevin MacLeod (incompetech.com), met een Creative Commons-licentie: Naamsvermelding 4.0. Voor de jukebox zijn ze ingekort tot hoogstens drie en een halve minuut en naar mono gemengd.
+
+= The café you hear is two real rooms recorded by Joseph Sardin and Axeline T. for BigSoundBank, given to the public domain (CC0). For the game a minute of each is cut out, mixed to mono and evened out.
+v Het café dat je hoort zijn twee echte zalen, opgenomen door Joseph Sardin en Axeline T. voor BigSoundBank en vrijgegeven in het publieke domein (CC0). Voor het spel is van elk een minuut uitgeknipt, naar mono gemengd en gelijkmatig gemaakt.

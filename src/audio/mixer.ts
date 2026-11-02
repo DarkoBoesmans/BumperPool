@@ -1,6 +1,9 @@
-// Every sound is synthesised on the fly: no audio files. Four volume busses: master, fx (table and referee),
-// amb (the café) and music (the jukebox). The café itself is brown noise, a murmur and the odd glass on the bar.
+// The table and the referee are synthesised on the fly; the café is a recorded room (beds.ts), the jukebox plays
+// records (records.ts) or the house trio. Four volume busses: master, fx (table and referee), amb (the café) and
+// music (the jukebox).
 import { initJukebox } from "./jukebox";
+import { syncBed } from "./beds";
+import { C } from "../cafe/state";
 import { load, save } from "../profile/store";
 
 export const au = {} as {
@@ -42,51 +45,11 @@ export function initAudio(): void {
     d = buf.getChannelData(0);
   for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   au.noise = buf;
-  // room tone: brown noise, low and steady
-  const bn = A.createBuffer(1, A.sampleRate * 4, A.sampleRate),
-    bd = bn.getChannelData(0);
-  let l = 0;
-  for (let i = 0; i < bd.length; i++) {
-    l = (l + 0.02 * (Math.random() * 2 - 1)) / 1.02;
-    bd[i] = l * 3.5;
-  }
-  loop(bn, "lowpass", 420, 0.5, 0.35);
-  // murmur: voices in the next room, a band of noise whose level wanders
-  const murmur = loop(au.noise, "bandpass", 520, 0.9, 0.0);
-  setInterval(() => {
-    if (A.state === "running") murmur.gain.setTargetAtTime(0.06 + Math.random() * 0.12, A.currentTime, 0.35);
-  }, 450);
-  setInterval(() => {
-    if (Math.random() < 0.4) {
-      const f = 2600 + Math.random() * 1200;
-      tone(f, 0.35, 0.03, "sine", 0, 0, au.amb);
-      tone(f * 1.5, 0.25, 0.018, "sine", 0.05, 0, au.amb);
-    }
-  }, 6000);
-  setInterval(() => {
-    if (Math.random() < 0.25) {
-      burst(0.05, 0.12, "lowpass", 700, 1, 0, au.amb); // a glass set down on the bar
-      tone(160, 0.12, 0.06, "sine", 0, 0, au.amb);
-    }
-  }, 9000);
   initJukebox();
+  void syncBed(C.venue?.id);
+  setInterval(() => void syncBed(C.venue?.id), 1000); // follows the bar you are in
 }
 
-function loop(buffer: AudioBuffer, type: BiquadFilterType, f: number, q: number, g: number): GainNode {
-  const A = au.A!,
-    s = A.createBufferSource(),
-    fl = A.createBiquadFilter(),
-    gn = A.createGain();
-  s.buffer = buffer;
-  s.loop = true;
-  fl.type = type;
-  fl.frequency.value = f;
-  fl.Q.value = q;
-  gn.gain.value = g;
-  s.connect(fl).connect(gn).connect(au.amb);
-  s.start();
-  return gn;
-}
 function applyVol(): void {
   if (!au.A) return;
   au.out.gain.value = (vol.master / 100) ** 2;

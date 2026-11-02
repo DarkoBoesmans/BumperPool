@@ -23,7 +23,8 @@ export function buildBooths(scene: THREE.Scene): THREE.Group {
       for (let z = -0.55; z <= 0.55; z += 0.37)
         add(g, new THREE.BoxGeometry(0.02, 0.9, 0.012), lam(0x12281b), s * 0.78, 0.72, z); // tufted pleats
     }
-    add(g, new THREE.CylinderGeometry(0.36, 0.36, 0.035, 8), basic(0xf3dfb0), 0, 0.74, 0).rotation.y = Math.PI / 8;
+    // a marble top, lit by the globe above it (unlit it glowed across the dark room like a floating bar)
+    add(g, new THREE.CylinderGeometry(0.36, 0.36, 0.035, 8), lam(0xe2d3b0), 0, 0.74, 0).rotation.y = Math.PI / 8;
     add(g, new THREE.CylinderGeometry(0.03, 0.03, 0.72, 6), lam(0x141414), 0, 0.37, 0);
     add(g, new THREE.CylinderGeometry(0.2, 0.22, 0.02, 8), lam(0x141414), 0, 0.01, 0);
     add(g, new THREE.SphereGeometry(0.14, 8, 6), globe, 0, 2.15, 0);

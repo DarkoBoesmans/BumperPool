@@ -39,8 +39,8 @@ const SLIDES: Slide[] = [
     title: "Look around",
     text: touch
       ? "Drag a finger over the cloth to turn the table. Pinch to zoom, slide two fingers to move along the table, and once you have turned it, tap a spot to look at it. The eye and top buttons put the camera back."
-      : "Right-drag turns the table round the point you look at. Right-click a ball to look at it, so a ball against the cushion is easy to check. Scroll zooms towards the pointer. Shift and right-drag slides along the table. T is the top view, P puts you back behind your end.",
-    why: "No mouse? B picks one of your balls, A and D turn the aim, W and S set the power and Space shoots.",
+      : "Drag the table (away from your balls) or right-drag anywhere to turn it round the point you look at. Right-click a ball to look at it, so a ball against the cushion is easy to check. Scroll zooms towards the pointer, Shift and drag slides along the table. T is the top view, P puts you back behind your end.",
+    why: "On the keyboard: Q and E turn, R and F tilt, + and - zoom. No mouse? B picks one of your balls, A and D turn the aim, W and S set the power and Space shoots.",
   },
   {
     title: "Put some spin on it",

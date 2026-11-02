@@ -2,7 +2,7 @@
 import * as core from "./core";
 import { G, hooks, newMatch, choosePen, resetTimer } from "./core";
 import { S, initScene, setFx } from "./render/renderer";
-import { camS } from "./render/camera";
+import { camS, setView } from "./render/camera";
 import { buildTable } from "./render/table";
 import { buildBalls } from "./render/balls";
 import { buildAim } from "./render/aim";
@@ -39,7 +39,10 @@ import { onMeSaved } from "./ui/maker";
 import { shop } from "./ui/shop";
 import { changed, refresh, applyLooks } from "./game/refresh";
 import { doEmote } from "./game/buzz";
-import { wireInput, gameKey } from "./game/input";
+import { wireInput } from "./game/input";
+import { gameKey } from "./game/keys";
+import { initCoach } from "./ui/coach";
+import { initTap, tapOpen, closeTap } from "./ui/tap";
 import {
   openStart,
   enterGame,
@@ -93,11 +96,11 @@ function wireGame(): void {
   $("#ecMenu").addEventListener("click", () => openStart("home"));
   $("#ecPick").addEventListener("click", () => openStart(app.freeplay ? "pick" : "story"));
   $("#vPlayer").addEventListener("click", () => {
-    camS.mode = "player";
+    setView("player");
     setViewPills();
   });
   $("#vTop").addEventListener("click", () => {
-    camS.mode = "top";
+    setView("top");
     setViewPills();
   });
   $("#btnCigar").addEventListener("click", () => doEmote(viewColor(), "cigar", true));
@@ -148,6 +151,8 @@ function wireGame(): void {
     inp.addEventListener("change", () => push());
   }
   initCafeBox(leaveCafe);
+  initCoach();
+  initTap();
   document.addEventListener("keydown", (e) => {
     const t = e.target as HTMLElement;
     if (e.key === "Enter" && t.dataset.enter) {
@@ -157,7 +162,8 @@ function wireGame(): void {
     }
     if (t.matches("input, textarea")) return;
     if (e.key === "Escape") {
-      if (app.drag?.kb)
+      if (tapOpen()) closeTap();
+      else if (app.drag?.kb)
         app.drag = null; // let go of a keyboard aim
       else if (!$("#settings").hidden) openSettings(false);
       else if ($("#sheet").classList.contains("is-open")) sheet(false);
@@ -165,7 +171,7 @@ function wireGame(): void {
       else if (!$("#start").hidden && app.inGame) enterGame();
       return;
     }
-    if (!app.inGame || !$("#start").hidden) return;
+    if (!app.inGame || !$("#start").hidden || tapOpen()) return;
     if (gameKey(e)) return;
     if (e.key === "1") doEmote(viewColor(), "cigar", true);
     else if (e.key === "2") doEmote(viewColor(), "glass", true);
@@ -215,6 +221,7 @@ function boot(): void {
       textContent: t("This device does not support WebGL, which the 3D café needs."),
     });
     $("#stage").replaceChildren(p);
+    $("#title").hidden = true;
     return;
   }
   S.lines = app.set.lines;

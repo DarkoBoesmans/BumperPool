@@ -1,8 +1,9 @@
-// Mouse, touch and keys. Left-drag a ball to aim and pull back. Right-drag turns the table, a right click looks at
-// the spot you clicked, scroll zooms towards the pointer, middle-drag or shift + right-drag slides along the table.
-// Touch: a finger on one of your balls aims, a finger on the cloth turns the table, two fingers pinch to zoom and
-// slide, a tap looks at that spot once you have turned the table.
-import { G, ball, other, fire, choosePen, R, GOAL_X, att } from "../core";
+// Mouse, touch and keys. Drag one of your balls to aim and pull back. Drag anywhere else on the table (or right-drag
+// anywhere) to turn it, a right click looks at the spot you clicked, scroll or pinch zooms towards the pointer,
+// middle-drag or shift + drag slides along the table. Touch: a finger on the cloth turns the table, two fingers pinch
+// to zoom and slide, a tap looks at that spot once you have turned the table. The keys are in keys.ts. The camera
+// keeps still while a replay plays: the replay has it.
+import { G, ball, other, fire, choosePen, R } from "../core";
 import type { Ball } from "../types";
 import type { Drag } from "../ui/app";
 import { S } from "../render/renderer";
@@ -10,12 +11,15 @@ import { camS, toFree, focusAt, zoomAt, panBy, orbitBy, toTable, rayPick } from 
 import { initAudio } from "../audio/mixer";
 import { app, canAct } from "../ui/app";
 import { $ } from "../ui/dom";
-import { setSpin, nudgeSpin, ARROWS } from "../ui/spinpad";
+import { setSpin } from "../ui/spinpad";
 import { shotFrom } from "./aiming";
+import { coachDid } from "../ui/coach";
+import { tapOpen } from "../ui/tap";
 import { setViewPills } from "./flow";
 import { chalkShot, forgotKnock } from "./buzz";
 
-export const blocked = (): boolean => !app.inGame || app.show || !$("#start").hidden || !$("#settings").hidden;
+export const blocked = (): boolean =>
+  !app.inGame || app.show || !$("#start").hidden || !$("#settings").hidden || tapOpen();
 
 const fingers = new Map<number, { x: number; y: number }>();
 /** two fingers down: their spread and middle. Stays set until every finger is up, so the last one does nothing. */
@@ -38,10 +42,12 @@ function nearest(pts: { x: number; y: number }[], w: { x: number; y: number }, m
   return best;
 }
 
-function startOrbit(e: PointerEvent, intro: boolean, pan = false): void {
-  S.orbit = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, intro, pan };
+/** `tap`: a click without a drag looks at that spot (a right click, or a tap on a phone) */
+function startOrbit(e: PointerEvent, intro: boolean, pan = false, tap = true): void {
+  S.orbit = { x: e.clientX, y: e.clientY, sx: e.clientX, sy: e.clientY, intro, pan, tap };
   (e.target as HTMLElement).setPointerCapture(e.pointerId);
 }
+export const replaying = (): boolean => camS.mode === "replay";
 
 function onDown(e: PointerEvent): void {
   const touch = e.pointerType === "touch";
@@ -55,6 +61,7 @@ function onDown(e: PointerEvent): void {
     }
   }
   if (e.button === 2 || e.button === 1) {
+    if (replaying()) return;
     const intro = camS.mode === "intro";
     if (!intro) toFree();
     startOrbit(e, intro, e.button === 1 || e.shiftKey);
@@ -63,7 +70,7 @@ function onDown(e: PointerEvent): void {
   }
   if (e.button !== 0) return;
   if (blocked()) {
-    if (touch && camS.mode === "intro") startOrbit(e, true); // look round the start screen
+    if (camS.mode === "intro") startOrbit(e, true); // look round the start screen
     return;
   }
   initAudio();
@@ -77,8 +84,10 @@ function onDown(e: PointerEvent): void {
     e.preventDefault();
     return;
   }
+  // nothing of yours under the pointer: the drag turns the table (a mouse click alone does nothing, it may have missed)
+  const turn = () => !replaying() && startOrbit(e, false, e.shiftKey, touch);
   if (!w) {
-    if (touch) startOrbit(e, false);
+    turn();
     return;
   }
   // a finger needs more room than a mouse: 34 px round the touch, measured on the table
@@ -95,11 +104,11 @@ function onDown(e: PointerEvent): void {
     app.drag = { id: cand[i].id, x: w.x, y: w.y, px: e.clientX, py: e.clientY };
     (e.target as HTMLElement).setPointerCapture(e.pointerId);
     e.preventDefault();
-  } else if (touch) startOrbit(e, false);
+  } else turn();
 }
 
 /** the balls you may shoot right now */
-function playable(): Ball[] {
+export function playable(): Ball[] {
   let cand: Ball[] = [];
   if (G.phase === "aim" && canAct(G.turn)) cand = G.balls.filter((b) => b.on && b.c === G.turn && !b.stone);
   else if (G.phase === "openW" && canAct("W")) cand = [ball(G.open.ids.W)];
@@ -109,7 +118,7 @@ function playable(): Ball[] {
 }
 
 /** shoot what is aimed: a knock you forgot is noted, chalk and a dry tip have their say */
-function shoot(d: Drag): void {
+export function shoot(d: Drag): void {
   app.drag = null;
   const s = shotFrom(d);
   if (!s || s.p < 0.02 || blocked()) return;
@@ -119,40 +128,6 @@ function shoot(d: Drag): void {
   setSpin(0, 0);
 }
 
-// Keyboard aiming: B picks one of your balls, A and D turn (Shift for fine steps), W and S set the power,
-// Space shoots, Esc lets go. The aim is a direction and a power, so no pointer is needed.
-const kb = { ang: 0, p: 0.3 };
-function kbDrag(id: number): void {
-  const b = ball(id);
-  app.drag = { id, x: b.x - Math.cos(kb.ang) * R * 3, y: b.y - Math.sin(kb.ang) * R * 3, p: kb.p, kb: true };
-}
-function kbKey(e: KeyboardEvent): boolean {
-  const d = app.drag?.kb ? app.drag : null,
-    k = e.key.toLowerCase();
-  if (k === "b" && !blocked()) {
-    const cand = playable();
-    if (!cand.length) return false;
-    const i = d ? (cand.findIndex((b) => b.id === d.id) + 1) % cand.length : 0,
-      b = cand[i];
-    if (!d) kb.ang = Math.atan2(-b.y, att(b.c) * GOAL_X - b.x); // start aimed at the goal you attack
-    kbDrag(b.id);
-    return true;
-  }
-  if (!d) return false;
-  const turn = e.shiftKey ? 0.004 : 0.03;
-  if (k === "a") kb.ang -= turn;
-  else if (k === "d") kb.ang += turn;
-  else if (k === "w") kb.p = Math.min(1, kb.p + 0.025);
-  else if (k === "s") kb.p = Math.max(0, kb.p - 0.025);
-  else if (k === " " || k === "enter") {
-    if ((e.target as HTMLElement).closest("button")) return false; // Space on a focused button presses the button
-    shoot(d);
-    return true;
-  } else return false;
-  kbDrag(d.id);
-  return true;
-}
-
 function onMove(e: PointerEvent): void {
   if (fingers.has(e.pointerId)) {
     fingers.set(e.pointerId, { x: e.clientX, y: e.clientY });
@@ -160,10 +135,11 @@ function onMove(e: PointerEvent): void {
       if (fingers.size !== 2) return;
       const n = spread();
       if (camS.mode === "intro") camS.idist = Math.min(1.6, Math.max(0.5, (camS.idist * pinch.d) / n.d));
-      else {
+      else if (!replaying()) {
         toFree();
         zoomAt({ clientX: n.x, clientY: n.y }, pinch.d / n.d);
         panBy(n.x - pinch.x, n.y - pinch.y);
+        if (Math.abs(n.d - pinch.d) > 1) coachDid("zoom");
         setViewPills();
       }
       pinch = n;
@@ -175,6 +151,7 @@ function onMove(e: PointerEvent): void {
     if (Math.hypot(e.clientX - o.sx, e.clientY - o.sy) < 5) return; // still a click
     o.moved = true;
     if (!o.intro) toFree();
+    if (e.pointerType === "mouse") point(e);
   }
   if (o?.intro) {
     // the start screen: look around, it starts turning again by itself a moment after you let go
@@ -191,12 +168,16 @@ function onMove(e: PointerEvent): void {
   }
   if (o) {
     orbitBy(e.clientX - o.x, e.clientY - o.y);
+    coachDid("turn");
     S.orbit = { ...o, x: e.clientX, y: e.clientY };
     setViewPills();
     return;
   }
   const d = app.drag;
-  if (!d || d.cpu) return;
+  if (!d || d.cpu) {
+    if (e.pointerType === "mouse") point(e);
+    return;
+  }
   const w = toTable(e);
   if (w) {
     d.x = w.x;
@@ -204,6 +185,16 @@ function onMove(e: PointerEvent): void {
   }
   d.px = e.clientX;
   d.py = e.clientY;
+}
+
+/** the mouse pointer says what a drag does here: grab turns the table, a crosshair over a ball you may shoot */
+function point(e: PointerEvent): void {
+  const cv = e.target as HTMLElement,
+    cand = blocked() ? [] : playable(),
+    w = cand.length ? toTable(e) : null,
+    aim = cand.length > 0 && (rayPick(e, cand, R * 1.5) >= 0 || (!!w && nearest(cand, w, R * 2.4) >= 0)),
+    c = S.orbit ? "grabbing" : aim ? "aim" : "grab";
+  if (cv.dataset.cursor !== c) cv.dataset.cursor = c;
 }
 
 /** a finger lifted: after two fingers nothing else happens until every finger is up */
@@ -218,8 +209,12 @@ function onUp(e: PointerEvent): void {
   const o = S.orbit;
   if (o) {
     S.orbit = null;
+    if (e.pointerType === "mouse") point(e);
     // a tap only looks somewhere in the free view, so a stray touch never moves the camera
-    if (!o.moved && !o.intro && !o.pan && (e.pointerType !== "touch" || camS.mode === "free")) focusAt(e);
+    if (!o.moved && o.tap && !o.intro && !o.pan && (e.pointerType !== "touch" || camS.mode === "free")) {
+      focusAt(e);
+      coachDid("look");
+    }
     return;
   }
   const d = app.drag;
@@ -229,12 +224,17 @@ function onUp(e: PointerEvent): void {
 
 function onWheel(e: WheelEvent): void {
   e.preventDefault();
+  if (replaying()) return;
+  // lines (some mice in Firefox) and pages count as pixels; a touchpad pinch comes as small steps with Ctrl held
+  const px = e.deltaY * (e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? innerHeight : 1),
+    s = Math.pow(e.ctrlKey ? 1.01 : 1.0015, Math.max(-200, Math.min(200, px)));
   if (camS.mode === "intro") {
-    camS.idist = Math.min(1.6, Math.max(0.5, camS.idist * Math.pow(1.0015, e.deltaY)));
+    camS.idist = Math.min(1.6, Math.max(0.5, camS.idist * s));
     return;
   }
   toFree();
-  zoomAt(e, Math.pow(1.0015, e.deltaY));
+  zoomAt(e, s);
+  coachDid("zoom");
   setViewPills();
 }
 
@@ -250,25 +250,4 @@ export function wireInput(): void {
     S.orbit = null;
   });
   cv.addEventListener("wheel", onWheel, { passive: false });
-}
-
-/** game keys: keyboard aiming, arrows set spin, 0 resets, T top view, P player view; 1 to 4 are wired in main.ts */
-export function gameKey(e: KeyboardEvent): boolean {
-  if (kbKey(e)) {
-    e.preventDefault();
-    return true;
-  }
-  const k = ARROWS[e.key];
-  if (k && (e.target as HTMLElement).id !== "cueball") {
-    e.preventDefault();
-    nudgeSpin(k[0], k[1]);
-  } else if (e.key === "0") setSpin(0, 0);
-  else if (e.key === "t" || e.key === "T") {
-    camS.mode = camS.mode === "top" ? "player" : "top";
-    setViewPills();
-  } else if (e.key === "p" || e.key === "P") {
-    camS.mode = "player";
-    setViewPills();
-  } else return false;
-  return true;
 }

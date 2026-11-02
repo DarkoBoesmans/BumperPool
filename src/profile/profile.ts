@@ -54,6 +54,8 @@ export interface Profile {
   seen: Record<string, boolean>;
   /** you made your player in the maker: the story waits for that */
   made: boolean;
+  /** tips you have learned, so they stay away (camera: how to look around) */
+  tips: Record<string, boolean>;
   /** profile format: 2 renamed the regulars (see migrateIds) */
   v: number;
 }
@@ -76,6 +78,7 @@ const fresh = (): Profile => ({
   best: 0,
   seen: { golden: true },
   made: false,
+  tips: {},
   v: 2,
 });
 
@@ -130,6 +133,7 @@ try {
     free: { ...me.free, ...s.free, beat: { ...s.free?.beat } },
     shame: s.shame || [],
     seen: { ...me.seen, ...s.seen },
+    tips: { ...s.tips },
   });
 } catch {
   /* no storage (private mode, tests): start fresh */

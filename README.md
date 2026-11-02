@@ -16,8 +16,10 @@ Belgian tap billiards (golfbiljart) in the browser, set in a smoky low-poly caf�
 - A referee that explains every foul in plain words, goal cam and foul cam replays, an end card after every game
 - A title screen with PRESS START: that first press is the one browsers wait for, so the café, the jukebox and the menu start together
 - A jukebox with twenty records by Kevin MacLeod (CC BY 4.0): every bar plays the ones that fit its mood, or all of them, or a house trio that improvises seven original tunes. A title card shows each new record
+- The café sounds like one: two real rooms full of people (CC0 recordings), a busy one for the pubs and halls, a hushed one behind the curtains of the jazz clubs and the legends' rooms
+- **A pint between shots**: on a busy night the regular orders one while it is their turn. Hold to pour, let go at two fingers under the rim, skim the foam: a good pint earns a tip
 - **Your café is home**: the regulars you beat come for a drink at your bar and watch the table, their photos go up on the wall, and your own face hangs where other bars put their regular of the month
-- Four looks: Clean, PS2, a PS1 look whose corners shiver on a coarse grid, and Cinema
+- Four looks: Clean, PS2, a PS1 look whose corners shiver on the console's own 240-line grid, and Cinema
 - Plays on a phone, upright or on its side: the controls move beside the table, and the camera frames the table in the room they leave
 - **Online**: open your own café and share its code of four letters, or walk into an open one from the list. Up to four people: two at the table, the others chalk their name on the board and play the winner, or two against two with partners taking turns. Nothing is stored
 - **Three languages**: Vlaams, English and Oilsjters (the dialect of Aalst), picked under the main menu. The game's name is never translated
@@ -126,10 +128,11 @@ a Goal veur {name}. Nog ne kier!
 | Left-drag a ball | Aim and pull back, release to shoot |
 | `B`, `A` `D`, `W` `S`, `Space` | Keyboard aiming: pick a ball, turn (Shift for fine steps), power, shoot. `Esc` lets go |
 | Spin pad or arrow keys | Where the tip hits the cue ball, `0` resets |
-| Right-drag | Turn the table round the point you look at |
+| Drag the table (away from your balls), right-drag anywhere | Turn the table round the point you look at |
 | Right-click | Look at the spot you clicked (the view glides there) |
 | Scroll | Zoom towards the pointer |
-| Middle-drag, Shift + right-drag | Slide along the table |
+| Middle-drag, Shift + drag | Slide along the table |
+| `Q` `E`, `R` `F`, `+` `-` | Turn, tilt and zoom the camera |
 | `T`, `P` | Top view, player view |
 | `1`, `2`, `3`, `4` | Cigar, whisky, chalk, knock on the table |
 | `Esc` | Close a panel or skip a replay |
@@ -144,7 +147,7 @@ On a touch screen:
 | Tap | Look at that spot, once you have turned the table |
 | Eye and top buttons | Back to the player view or the top view |
 
-In Settings, Game: your own player can be shown, see-through when close to the camera, or hidden.
+Your first games show a small card with the three camera moves, ticked off as you try them. In Settings, Game: your own player can be shown, see-through when close to the camera, or hidden.
 
 ## Code map
 
@@ -205,4 +208,4 @@ See [SECURITY.md](SECURITY.md): how to report a problem privately and what is in
 
 ## Licences
 
-three.js (MIT) comes from npm; the build puts its licence in `dist/licenses/three.txt` and a notice at the top of `main.js`. Anton, Chakra Petch, Abril Fatface and Merriweather (SIL OFL 1.1) and Permanent Marker (Apache 2.0) are in `fonts/` with their licences.
+three.js (MIT) comes from npm; the build puts its licence in `dist/licenses/three.txt` and a notice at the top of `main.js`. Anton, Chakra Petch, Abril Fatface and Merriweather (SIL OFL 1.1) and Permanent Marker (Apache 2.0) are in `fonts/` with their licences. The café sounds are BigSoundBank recordings by Joseph Sardin and Axeline T. (CC0), fetched and looped by `bun tools/beds.ts`.

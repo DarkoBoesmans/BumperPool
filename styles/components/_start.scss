@@ -21,7 +21,7 @@
     width: min(488px, 100%);
     // one height for every view where you pick things: choosing a tab, a chapter, a language or the next slide
     // never resizes the poster, so nothing jumps. Only the two short forms (local, online) take their own height.
-    height: min(780px, 100%);
+    height: min(800px, 100%);
     max-height: 100%;
     &[data-view="local"],
     &[data-view="online"] {
@@ -66,8 +66,7 @@
     flex: 1 1 auto;
     min-height: 0;
     overflow: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    @include scroller;
     @include more-below;
   }
   > .o-row--foot,
@@ -77,8 +76,7 @@
   // the home screen has no middle part of its own: on a short screen the whole list scrolls, with room for focus rings
   &[data-view="home"] {
     overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    @include scroller;
     margin-inline: -6px;
     padding-inline: 6px;
     @include more-below;
@@ -146,5 +144,11 @@
   @include below($bp-phone) {
     flex-basis: 100%;
     justify-content: center;
+  }
+}
+// a game to go back to: on a phone the record line makes room for Resume as well
+.c-start__panel:has(#btnResume:not([hidden])) #homeRecord {
+  @include below($bp-phone) {
+    display: none;
   }
 }

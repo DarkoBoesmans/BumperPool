@@ -40,6 +40,6 @@ export function placeBubble(): void {
   const r = $(".c-rail").getBoundingClientRect(),
     left = r.height > r.width ? r.right + 12 : 12;
   x = Math.max(left, Math.min(innerWidth - w - 12, x));
-  y = Math.max(110, Math.min(innerHeight - h - 160, y));
+  y = Math.max($(".c-ribbon").getBoundingClientRect().bottom + 10, Math.min(innerHeight - h - 160, y)); // under the ribbon
   el.style.transform = `translate(${x | 0}px, ${y | 0}px)`;
 }

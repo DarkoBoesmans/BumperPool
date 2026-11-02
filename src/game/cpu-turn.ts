@@ -7,6 +7,7 @@ import { PL } from "../people/player";
 import { app } from "../ui/app";
 import { buzz, doEmote, chalkShot } from "./buzz";
 import { powerShow } from "./show";
+import { maybeOrder } from "../ui/tap";
 import { R } from "../core/table";
 
 export function cpuTick(now: number, blocked: boolean): void {
@@ -26,6 +27,7 @@ export function cpuTick(now: number, blocked: boolean): void {
       (G.phase === "openW" && cc === "W") ||
       (G.phase === "openR" && cc === "R");
     if (aiming) {
+      maybeOrder(); // between shots: the regular may order a pint
       if (o.power && G.phase === "aim" && wantsPower(o.power, cc)) {
         app.cpu = { readyAt: now + 900, act: () => void powerShow(o.power!, cc) };
         return;

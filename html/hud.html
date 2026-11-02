@@ -77,12 +77,32 @@
     <button class="c-btn c-btn--small" type="button" id="spinReset">Reset</button>
   </div>
 
-  <p class="c-hint" id="orbitHint">
-    <span class="c-hint__mouse"
-      >Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T top
-      view</span
-    ><span class="c-hint__touch">Drag the cloth to turn · Pinch to zoom · Two fingers slide · Tap to look there</span>
-  </p>
+  <aside class="c-coach" id="coach" aria-labelledby="coachTitle" hidden>
+    <p class="c-coach__title" id="coachTitle">Look around</p>
+    <ol class="c-coach__steps">
+      <li class="c-coach__step" data-step="turn">
+        <svg class="o-icon c-coach__icon" aria-hidden="true"><use href="#i-turn" /></svg>
+        <svg class="o-icon c-coach__tick" aria-hidden="true"><use href="#i-check" /></svg>
+        <span class="c-coach__mouse"><b>Drag the table</b> to turn</span>
+        <span class="c-coach__touch"><b>Drag the cloth</b> to turn</span>
+      </li>
+      <li class="c-coach__step" data-step="zoom">
+        <svg class="o-icon c-coach__icon c-coach__mouse" aria-hidden="true"><use href="#i-wheel" /></svg>
+        <svg class="o-icon c-coach__icon c-coach__touch" aria-hidden="true"><use href="#i-pinch" /></svg>
+        <svg class="o-icon c-coach__tick" aria-hidden="true"><use href="#i-check" /></svg>
+        <span class="c-coach__mouse"><b>Scroll</b> to zoom</span>
+        <span class="c-coach__touch"><b>Pinch</b> to zoom</span>
+      </li>
+      <li class="c-coach__step" data-step="look">
+        <svg class="o-icon c-coach__icon c-coach__mouse" aria-hidden="true"><use href="#i-click" /></svg>
+        <svg class="o-icon c-coach__icon c-coach__touch" aria-hidden="true"><use href="#i-tap" /></svg>
+        <svg class="o-icon c-coach__tick" aria-hidden="true"><use href="#i-check" /></svg>
+        <span class="c-coach__mouse"><b>Right-click</b> to look there</span>
+        <span class="c-coach__touch"><b>Tap a spot</b> to look there</span>
+      </li>
+    </ol>
+    <button class="c-coach__ok" type="button" id="coachOk">Got it</button>
+  </aside>
 
   <nav class="c-rail" aria-label="Game controls">
     <button class="c-rail__btn" type="button" id="btnMenu">
