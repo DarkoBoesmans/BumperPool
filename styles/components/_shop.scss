@@ -29,8 +29,9 @@
     }
     min-height: 140px;
     overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    padding-right: 8px; // the cards keep their distance from the bar
+    scrollbar-gutter: stable; // and every tab has the same width, scrolling or not
+    @include scroller;
     @include more-below;
   }
   &__note {

@@ -1,0 +1,192 @@
+// How to look around, for your first games: three steps, each ticked off as you do it, then the card bows out.
+// Bottom centre on a big screen; on a phone one slim row of three over the near end of the table. Drags go through
+// it to the table, only Got it takes a click.
+@use "../settings/tokens" as *;
+@use "../tools/mixins" as *;
+
+// a phone: one slim row of three, the title only for screen readers
+@mixin slim {
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px 7px 10px;
+  &__title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  &__steps {
+    grid-template-columns: repeat(3, auto);
+    gap: 12px;
+  }
+  &__step {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    &.is-done {
+      translate: 0 2px;
+    }
+  }
+  &__mouse b,
+  &__touch b {
+    display: block;
+  }
+}
+
+.c-coach {
+  position: fixed;
+  left: 50%;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 18px);
+  z-index: 5;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: end;
+  gap: 4px 18px;
+  padding: 10px 12px 10px 16px;
+  border-left: 4px solid $gold;
+  @include glass($glass-strong);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+  --x: -50%; // centred; an upright phone spans the width instead
+  translate: var(--x) 0;
+  animation: c-coach-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  .is-ending &,
+  .is-replaying & {
+    visibility: hidden;
+  }
+  &.is-learned {
+    animation: c-coach-out 0.4s 1s ease-in both; // the last tick shows a moment, then it drops away
+  }
+  &__title {
+    grid-column: 1 / -1;
+    margin: 0;
+    @include label(10px, 0.18em);
+    color: $gold;
+  }
+  &__steps {
+    display: grid;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    color: var(--ink-2);
+    transition:
+      color 0.2s,
+      translate 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    b {
+      color: var(--ink);
+    }
+    &.is-done {
+      color: var(--ink-3);
+      translate: 4px 0; // done steps step aside
+      b {
+        color: inherit;
+      }
+    }
+  }
+  &__icon,
+  &__tick {
+    width: 18px;
+    height: 18px;
+  }
+  &__tick {
+    display: none;
+    color: $lime;
+    stroke-width: 2.6;
+    .is-done & {
+      display: block;
+      animation: c-coach-tick 0.35s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+    }
+  }
+  &__touch {
+    display: none !important;
+  }
+  @media (pointer: coarse) {
+    &__mouse {
+      display: none !important;
+    }
+    &__touch {
+      display: inline !important;
+      &.o-icon {
+        display: block !important;
+      }
+    }
+  }
+  .is-done &__icon.o-icon {
+    display: none !important; // the tick takes its place
+  }
+  &__ok {
+    pointer-events: auto;
+    padding: 6px 12px;
+    font: 700 12px $f-ui;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $ink;
+    background: $gold;
+    border: 0;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: translate 0.15s;
+    &:hover {
+      translate: 0 -2px;
+    }
+    &:active {
+      translate: 0 1px;
+    }
+    &:focus-visible {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+  }
+  @include upright {
+    left: 8px;
+    right: 8px;
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 164px); // above the controls and the spin pad
+    --x: 0;
+    @include slim;
+    .c-coach__steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @include short {
+    bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+    @include slim;
+  }
+  @include calm {
+    animation: none;
+    &.is-learned {
+      animation: c-coach-out 0.01s 1s both;
+    }
+    .is-done &__tick {
+      animation: none;
+    }
+  }
+}
+@keyframes c-coach-in {
+  from {
+    opacity: 0;
+    translate: var(--x) 16px;
+  }
+}
+@keyframes c-coach-out {
+  to {
+    opacity: 0;
+    translate: var(--x) 16px;
+  }
+}
+@keyframes c-coach-tick {
+  from {
+    scale: 0.2;
+  }
+}

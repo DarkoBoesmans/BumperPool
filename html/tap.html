@@ -1,0 +1,45 @@
+<!-- ======================= Tapping a pint ======================= -->
+<button class="c-order" type="button" id="tapOrder" hidden>
+  <svg class="o-icon" aria-hidden="true"><use href="#i-glass" /></svg
+  ><span class="c-order__text" id="tapOrderText">A regular wants a pint</span><span class="c-order__go">Tap it</span>
+</button>
+<div class="c-modal c-tap" id="tap" hidden>
+  <div class="c-modal__dialog c-poster c-tap__dialog" role="dialog" aria-modal="true" aria-labelledby="tapTitle">
+    <p class="c-tap__kicker">Busy night</p>
+    <h2 class="c-tap__title" id="tapTitle">A pint</h2>
+    <svg class="c-tap__glass" viewBox="0 0 120 230" aria-hidden="true">
+      <defs>
+        <clipPath id="tapCup"><path d="M28 70 L92 70 L84 214 Q60 220 36 214 Z" /></clipPath>
+        <linearGradient id="tapBeer" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0" stop-color="#f6c64a" />
+          <stop offset="1" stop-color="#c47d12" />
+        </linearGradient>
+      </defs>
+      <path class="c-tap__font" d="M44 6 h32 v18 h-8 v14 h-4 v6 h-8 v-6 h-4 v-14 h-8 z" />
+      <rect class="c-tap__stream" id="tapStream" x="57" y="44" width="6" height="170" />
+      <g clip-path="url(#tapCup)">
+        <rect class="c-tap__beer" id="tapBeerFill" x="20" y="214" width="80" height="0" fill="url(#tapBeer)" />
+        <rect class="c-tap__foam" id="tapFoam" x="20" y="214" width="80" height="0" />
+      </g>
+      <path class="c-tap__crown" id="tapCrown" d="M30 70 Q60 70 90 70 Z" />
+      <path class="c-tap__drip" id="tapDrip" d="M28 72 q-4 30 -2 60 M92 72 q4 24 2 44" />
+      <line class="c-tap__mark" id="tapMark" x1="31" x2="89" y1="99" y2="99" />
+      <path class="c-tap__cup" d="M28 70 L92 70 L84 214 Q60 220 36 214 Z" />
+      <rect class="c-tap__spatula" id="tapSpatula" x="10" y="64" width="100" height="5" rx="1" />
+    </svg>
+    <div class="c-tap__side">
+      <ol class="c-tap__steps">
+        <li><b>Hold</b> to open the tap. The foam runs over: that is how it should be.</li>
+        <li><b>Let go</b> when the beer reaches the line, two fingers under the rim.</li>
+        <li><b>Skim</b> the foam off straight away, before it sinks.</li>
+      </ol>
+      <p class="c-tap__result" id="tapResult" role="status" aria-live="polite"></p>
+    </div>
+    <div class="c-tap__acts">
+      <button class="c-btn c-btn--ghost" type="button" id="tapLater"><span class="c-btn__label">Not now</span></button>
+      <button class="c-btn c-btn--cta c-tap__go" type="button" id="tapGo">
+        <span class="c-btn__label" id="tapGoLabel">Hold to pour</span>
+      </button>
+    </div>
+  </div>
+</div>

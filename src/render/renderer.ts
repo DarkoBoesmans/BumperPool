@@ -7,6 +7,8 @@ export const calm = typeof matchMedia === "function" && matchMedia("(prefers-red
 
 // The first PlayStation's wobble: every vertex snaps to a coarse screen grid, so edges shiver as the camera moves.
 // Patched into every built-in material at compile time; psxGrid is the grid in cells per half screen, 0 is off.
+// Only vertices in front of the camera snap: one behind it (a floor running under your feet) would land anywhere
+// once the triangle is clipped, and the floor would tear. The grid is the console's own, about 240 lines (resize).
 // ponytail: vertex snapping only; the PS1's warped (affine) textures would need every material's fragment shader.
 const psxGrid = { value: new THREE.Vector2(0, 0) };
 THREE.Material.prototype.onBeforeCompile = function (sh) {
@@ -16,7 +18,7 @@ THREE.Material.prototype.onBeforeCompile = function (sh) {
     "uniform vec2 psxGrid;\n" +
     sh.vertexShader.replace(
       "#include <project_vertex>",
-      "#include <project_vertex>\nif (psxGrid.x > 0.) gl_Position.xy = floor(gl_Position.xy / gl_Position.w * psxGrid + .5) / psxGrid * gl_Position.w;",
+      "#include <project_vertex>\nif (psxGrid.x > 0. && gl_Position.w > 0.) gl_Position.xy = floor(gl_Position.xy / gl_Position.w * psxGrid + .5) / psxGrid * gl_Position.w;",
     );
 };
 
@@ -52,7 +54,16 @@ export interface Stage {
   /** render height in pixels: smoke sizes follow it */
   bh: number;
   /** a right or middle drag: where it started (a press that never moves is a click) and the last pointer */
-  orbit: { x: number; y: number; sx: number; sy: number; moved?: boolean; intro?: boolean; pan?: boolean } | null;
+  orbit: {
+    x: number;
+    y: number;
+    sx: number;
+    sy: number;
+    moved?: boolean;
+    intro?: boolean;
+    pan?: boolean;
+    tap?: boolean;
+  } | null;
 }
 export const S = {
   lines: true,
@@ -151,8 +162,9 @@ function resize(): void {
   S.post.uniforms.res.value.set(bw, bh);
   S.post.uniforms.aspect.value = w / h;
   S.bh = bh;
-  const px = 1 + (S.fx.psx / 100) * 5; // up to 6 render pixels per step
-  psxGrid.value.set(S.fx.psx > 0 ? bw / 2 / px : 0, S.fx.psx > 0 ? bh / 2 / px : 0);
+  // square cells, from 480 lines (barely there) to 160 (chunky); 75 is the console's 240. Never finer than a pixel.
+  const lines = Math.min(bh, 480 - 3.2 * S.fx.psx);
+  psxGrid.value.set(S.fx.psx > 0 ? ((lines / 2) * bw) / bh : 0, S.fx.psx > 0 ? lines / 2 : 0);
   S.accLive = false;
   S.camera.aspect = w / h;
   S.camera.fov = w < h ? 58 : 42;

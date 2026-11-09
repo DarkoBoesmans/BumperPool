@@ -222,13 +222,45 @@ a Woar de pomerans de bol raakt. De pijltjes werken ook, 0 zet 't terug.
 v Midden
 a ~
 
-= Right-drag turns · Right-click looks there · Scroll zooms to the pointer · Shift + right-drag slides · T top view
-v Rechts slepen draait · Rechtsklik kijkt daarheen · Scrollen zoomt naar de muis · Shift + rechts slepen schuift · T bovenaanzicht
-a Rechts sleuren draait · Rechtsklik kijkt doarnoar · Scrollen zoomt noar de muis · Shift + rechts sleuren schuift · T van boven
+= Drag the table
+v Sleep aan de tafel
+a Sleur aan den toafel
 
-= Drag the cloth to turn · Pinch to zoom · Two fingers slide · Tap to look there
-v Sleep over het laken om te draaien · Knijp om te zoomen · Twee vingers schuiven · Tik om daarheen te kijken
-a Sleur over 't laken om te draaien · Knijp om te zoomen · Twee vingers schuiven · Tik om doarnoar te kijken
+= Drag the cloth
+v Sleep over het laken
+a Sleur over 't laken
+
+= to turn
+v om te draaien
+a ~
+
+= Scroll
+v Scrollen
+a ~
+
+= Pinch
+v Knijpen
+a Nijpen
+
+= to zoom
+v om te zoomen
+a ~
+
+= Right-click
+v Rechtsklikken
+a ~
+
+= Tap a spot
+v Tik ergens
+a Tik ieverans
+
+= to look there
+v om daar te kijken
+a om doar te zien
+
+= Got it
+v Begrepen
+a Verstoan
 
 = Game controls
 v Spelknoppen
@@ -414,3 +446,99 @@ a De verbinding mee 't café is weg.
 = Your last move goes out again as soon as the line is back.
 v Je laatste zet gaat opnieuw de deur uit zodra de lijn terug is.
 a Ou leste zet goat opnieuw de deur uit as de lijn were is.
+
+= A regular wants a pint
+v Een vaste klant wil een pint
+a Ne vaste klant wilt ne pint
+
+= {name} wants a pint
+v {name} wil een pint
+a {name} wilt ne pint
+
+= Tap it
+v Tappen
+a ~
+
+= Busy night
+v Drukke avond
+a Drukken oavond
+
+= A pint
+v Een pint
+a Ne pint
+
+= Hold
+v Houd vast
+a Hau vast
+
+= to open the tap. The foam runs over: that is how it should be.
+v om de kraan open te zetten. Het schuim loopt over: zo hoort het.
+a om de kraan open te zetten. 't Schuim loopt over: zo moet da.
+
+= Let go
+v Laat los
+a ~
+
+= when the beer reaches the line, two fingers under the rim.
+v als het bier aan de lijn komt, twee vingers onder de rand.
+a as 't bier aan de lijn komt, twie vingers onder de rand.
+
+= the foam off straight away, before it sinks.
+v doe je meteen, voor het schuim inzakt.
+a doede direct, veur da 't schuim inzakt.
+
+= Not now
+v Nu niet
+a Nu nie
+
+= Hold to pour
+v Houd vast om te tappen
+a Hau vast om te tappen
+
+= Skim
+v Afschuimen
+a ~
+
+= Cheers
+v Santé
+a ~
+
+= Tip: 1 token.
+v Fooi: 1 token.
+a Drinkgeld: 1 token.
+
+= Tip: {n} tokens.
+v Fooi: {n} tokens.
+a Drinkgeld: {n} tokens.
+
+= No tip.
+v Geen fooi.
+a Gene drinkgeld.
+
+= Perfect: two fingers of foam.
+v Perfect: twee vingers schuim.
+a Perfect: twie vingers schuim.
+
+= Half of it went down the drain.
+v De helft is door de gootsteen gegaan.
+a D'helft is in de goot geloupen.
+
+= That glass is half empty.
+v Dat glas is half leeg.
+a Da glas is half leeg.
+
+= A glass of foam.
+v Een glas schuim.
+a Ne glas schuim.
+
+= Flat as a pancake.
+v Zo plat als een pannenkoek.
+a Zo plat as ne pannekoek.
+
+= A good pint.
+v Een goeie pint.
+a Ne goeie pint.
+
+= It will do.
+v Het kan ermee door.
+a 't Ken ermee deur.

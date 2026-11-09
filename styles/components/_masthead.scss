@@ -5,6 +5,9 @@
 .c-masthead {
   text-align: center;
   margin-bottom: clamp(8px, 2vh, 21px);
+  @include below($bp-phone) {
+    margin-bottom: 8px;
+  }
   .c-start__panel:not([data-view="home"]) & {
     display: none;
   }
@@ -26,6 +29,10 @@
     color: $paper;
     background: $poster-ink;
     clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 50%, 100% 100%, 0 100%, 12px 50%);
+  }
+  // a game to go back to: its Resume button takes the line's place, so the poster keeps its height and never scrolls
+  .c-start__panel:has(#btnResume:not([hidden])) &__lede {
+    display: none;
   }
   &__lede {
     margin: clamp(6px, 1.3vh, 13px) auto 0;

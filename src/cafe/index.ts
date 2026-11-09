@@ -28,6 +28,8 @@ export { emote, type Emote } from "./emote";
 export { updateBoards, fontsChanged } from "./boards";
 
 let scene: THREE.Scene;
+/** venue props that hang over the table: string lights, chandeliers, banners */
+const HANGING: Prop[] = ["lanterns", "chandelier", "banners"];
 
 export function buildCafe(sc: THREE.Scene): void {
   scene = sc;
@@ -82,11 +84,14 @@ export function updateCafe(dt: number, now: number, ctx: CafeCtx): void {
   fog.near = 4.5 - 3.4 * lv;
   fog.far = 12 - 8.4 * lv;
   fog.color.copy(fogBase.set(C.venue!.fog)).lerp(fogSmoke, lv * 0.8);
-  C.lamps!.visible = C.overhead!.visible = !(
+  // looking down on the table: whatever hangs from the ceiling goes, or it would sit right over the cloth
+  const up = !(
     camS.mode === "top" ||
     (camS.mode === "free" && lookingDown()) ||
     (camS.mode === "replay" && camS.replay?.high)
   );
+  C.lamps!.visible = C.overhead!.visible = up;
+  for (const k of HANGING) if (C.groups[k]) C.groups[k]!.visible = up && C.venue!.props.includes(k);
   if (G)
     for (const c of COLORS) {
       const F = playerFig(c, G.colorOf);
